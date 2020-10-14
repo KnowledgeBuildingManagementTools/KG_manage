@@ -1,0 +1,76 @@
+{% extends "index.html" %}
+{% load static %}
+
+{% block mycss %}
+<link href="{% static 'js/lib/layui/css/layui.css' %}" rel="stylesheet">
+{% endblock %}
+{% block content %}
+    <div class="container-fluid">
+
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-toolbar clearfix">
+                        <form name="form1" class="pull-left search-bar" method="POST" role="form"
+                              enctype="multipart/form-data">{% csrf_token %}
+                            <div style="margin-bottom: 30px;width: 800px">
+                                <input type="text" name="path" readonly hidden="hidden">
+                                <input id="choose_file" type="file" multiple="multiple"
+                                       style="height: 0;width: 0;z-index: -1;" name="choosed_file"
+                                       onChange="return process_file(this)">
+                                <select name="file_type" id="file_type"
+                                        class="btn btn-default dropdown-toggle">
+                                    <option value="">请选择上传文件类型</option>
+                                    <option value="SQL">SQL文件</option>
+                                    <option value="html">网页html源码</option>
+                                    <option value="word">Word文档</option>
+                                    <option value="pdf">PDF文档</option>
+                                    <option value="txt">txt文档</option>
+                                </select>
+                                <input id="hidden_btn" type="button" onclick="getElementById('choose_file').click()"
+                                       class="btn btn-primary" value="选择文件">
+                                <p class="layui-inline" style="color: red" id="file_name"></p>
+
+                                <input onclick="return check(this.form)" type="submit" id="file_assess"
+                                       data-loading-text="处理中..."
+                                       class="btn btn-primary" style="margin-left: 0px"
+                                       value="抽取">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block myjs %}
+    <script type="text/javascript" src="{% static 'js/lib/layui/layui.all.js' %}"></script>
+    <script type="text/javascript">
+        function process_file(obj) {
+            document.form1.path.value = obj.value;
+            $('#file_name').html($('#choose_file').val().split('\\').slice(-1))
+        }
+
+
+        function check(form) {
+            var file_path = $('#choose_file').val();
+            if (form.choosed_file.value == '') {
+                layer.msg("选择文件为空！");
+                form.choosed_file.focus();
+                return false;
+            }
+            if (form.file_type.value == '') {
+                alert("file_typr", form.file_type.value)
+                layer.msg("请选择文件类型");
+                form.file_type.focus();
+                return false
+            }
+            var index = layer.load(1, {
+                shade: [0.2, '#666666'] //0.1透明度的白色背景
+            });
+            return true;
+        }
+    </script>
+
+{% endblock %}
