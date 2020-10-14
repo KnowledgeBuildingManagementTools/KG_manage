@@ -1,0 +1,47 @@
+Lustre:
+http://www-verimag.imag.fr/Lustre-V6.html?lang=en  
+
+kind2:
+https://github.com/kind2-mc/kind2
+
+
+simulink
+
+BNF范式是一种用递归的思想来表述计算机语言符号集的定义规范法则：
+    在双引号中的字("word")代表着这些字符本身。而double_quote用来代表双引号。
+    在双引号外的字（有可能有下划线）代表着语法部分。
+    尖括号( < > )内包含的为必选项。
+    方括号( [ ] )内包含的为可选项。
+    大括号( { } )内包含的为可重复0至无数次的项。
+    竖线( | )表示在其左右两边任选一项，相当于"OR"的意思。
+    ::= 是“被定义为”的意思。
+
+4)EBNF的基本内容： 
+　　"..." : 术语符号 
+　　[...] : 选项:最多出现一次 
+　　{...} : 重复项: 任意次数，包括 0 次 
+　　(...) : 分组 
+　　| : 并列选项，只能选一个 
+　　斜体字: 参数，在其它地方有解释 
+  扩展BNF（EBNF）通过引入下列操作符： 
+　　l ?：意思是操作符左边的符号（或括号中的一组符号）是可选项（可以出现0到多次）。 
+　　l *：是指可以重复多次。 
+　　l +：是指可以出现多次。
+    例子 ：  S := '-'? D+ ('.' D+)? 
+                 D := '0' | '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' 
+
+
+示例定义java中的switch语句：
+<switch statement> ::= switch ( <expression> ) <switch block>
+<switch block> ::= { <switch block statement groups><switch labels> }
+<switch block statement groups> ::= <switch block statement group> | <switch block statement groups> <switch block statement group>
+<switch block statement group> ::= <switch labels>
+<block statements><switch labels> ::= <switch label> | <switch labels> <switch label>
+<switch label> ::= case <constant expression> :<……> | default :< ……>
+现在在网络上大多数能搜出来的都是extended BNF ，允许使用循环，但正真的BNF只需要递归就够了。（多看一些例子就懂了~
+
+基本结构为：
+<non-terminal> ::= <replacement>
+non-terminal意为非终止符，就是说我们还没有定义完的东西，还可以继续由右边的replacement，也就是代替物来进一步解释、定义。
+例1. <句子> ::= <主语><谓语><宾语>
+例2. <主语> ::= <名词>|<代词>

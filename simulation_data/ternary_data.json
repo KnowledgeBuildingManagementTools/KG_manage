@@ -1,0 +1,32 @@
+{
+  "code": 0,
+  "msg": "",
+  "count": 4,
+  "totalRow": {
+    "experience": "666",
+    "logins": "999"
+  },
+  "data": [
+    {
+      "id": "10002",
+      "entity_name": "计算机研究所",
+      "declare_time": "2019-01-10",
+      "declare_result": "通过，符合要求"
+    },{
+      "id": "10003",
+      "entity_name": "航天科技公司",
+      "declare_time": "2010-09-06",
+      "declare_result": "不通过，资料不符合要求"
+    },{
+      "id": "10004",
+      "entity_name": "科工事业部",
+      "declare_time": "2020-09-23",
+      "declare_result": "通过，符合要求"
+    },{
+      "id": "10005",
+      "entity_name": "十七所测评中心",
+      "declare_time": "2018-05-19",
+      "declare_result": "不通过，资料不全"
+    }
+  ]
+}  

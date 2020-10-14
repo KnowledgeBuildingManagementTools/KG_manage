@@ -20,5 +20,6 @@ from kg_code_manage import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('index/', views.index),
-    path('model',views.model ,name="model")
+    path('model',views.model ,name="model"),
+    path('extract_data',views.extract_data ,name="extract_data")
 ]
