@@ -1,0 +1,34 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
+    <title>军事需求</title>
+    <link rel="icon" href="favicon.ico" type="image/ico">
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/materialdesignicons.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/style.min.css' %}" rel="stylesheet">
+    {% block mycss %}
+
+    {% endblock %}
+</head>
+
+<body>
+{% block content %}
+
+{% endblock %}
+
+<script type="text/javascript" src="{% static 'js/jquery.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/bootstrap.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/perfect-scrollbar.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/main.min.js' %}"></script>
+
+<!--图表插件-->
+<script type="text/javascript" src="{% static 'js/Chart.js' %}"></script>
+
+
+{% block myjs %}
+{% endblock %}
+</body>
+</html>

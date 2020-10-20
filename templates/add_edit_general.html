@@ -1,0 +1,31 @@
+{% extends 'index.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>title</title>
+    <link href="{% static 'bootstrap-3.3.7-dist/css/bootstrap.min.css' %}" rel="stylesheet">
+</head>
+
+<body>
+
+{% block title %}
+<span class="navbar-page-title"> JSXQ知识百科 - 百科模板 - {{ label }}</span>
+{% endblock %}
+
+{% block content %}
+{% include 'add_edit_mode.html' %}
+{% endblock %}
+
+
+</body>
+<script src="{% static 'js/jquery.min.js' %}"></script>
+<script src="{% static 'bootstrap-3.3.7-dist/js/bootstrap.min.js' %}"></script>
+<script>
+
+</script>
+
+</html>

@@ -1,0 +1,141 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="utf-8">
+    <title>抽取知识关系图</title>
+    <script src="{% static 'map/jquery-3.2.1.js' %}"></script>
+    <script src="{% static 'map/echarts.js' %}"></script>
+</head>
+
+<body>
+<div id="main" style="width:800px;height:600px"></div>
+<script type="text/javascript">
+    var myChart = echarts.init(document.getElementById('main'));
+    var categories = [];
+    for (var i = 0; i < 2; i++) {
+        categories[i] = {
+            name: '类目' + i
+        };
+    }
+    option = {
+        // 图的标题
+        title: {
+            text: '三元组图谱预览'
+        },
+        // 提示框的配置
+        tooltip: {
+            formatter: function (x) {
+                return x.data.des;
+            }
+        },
+        // 工具箱
+        toolbox: {
+            // 显示工具箱
+            show: true,
+            feature: {
+                mark: {
+                    show: true
+                }
+            }
+        },
+        legend: [{
+            data: categories.map(function (a) {
+                return a.name;
+            })
+        }],
+        series: [{
+            type: 'graph', // 类型:关系图
+            layout: 'force', //图的布局，类型为力导图
+            symbolSize: 40, // 调整节点的大小
+            roam: true, // 是否开启鼠标缩放和平移漫游。默认不开启。如果只想要开启缩放或者平移,可以设置成 'scale' 或者 'move'。设置成 true 为都开启
+            edgeSymbol: ['circle', 'arrow'],
+            edgeSymbolSize: [2, 10],
+            edgeLabel: {
+                normal: {
+                    textStyle: {
+                        fontSize: 20
+                    }
+                }
+            },
+            force: {
+                repulsion: 2500,
+                edgeLength: [10, 50]
+            },
+            draggable: true,
+            lineStyle: {
+                normal: {
+                    width: 2,
+                    color: '#4b565b',
+                }
+            },
+            edgeLabel: {
+                normal: {
+                    show: true,
+                    formatter: function (x) {
+                        return x.data.name;
+                    }
+                }
+            },
+            label: {
+                normal: {
+                    show: true,
+                    textStyle: {}
+                }
+            },
+
+            // 数据
+            data: [{
+                name: '异构知识的统一存储、映射、检索和接口技术',
+                des: '构知识的统一存储、映射、检索和接口技术',
+                symbolSize: 70,
+                category: 0,
+            }, {
+                name: '异构知识种类不少于5种；知识的存储容量规模达到万级，不少于1GB；',
+                des: '异构知识种类不少于5种；知识的存储容量规模达到万级，不少于1GB；',
+                symbolSize: 50,
+                category: 1,
+            }, {
+                name: '探测与识别',
+                des: '探测与识别',
+                symbolSize: 50,
+                category: 1,
+            }, {
+                name: '计算机与软件',
+                des: '计算机与软件',
+                symbolSize: 50,
+                category: 1,
+            }, {
+                name: '体系建造',
+                des: '体系建造',
+                symbolSize: 50,
+                category: 1,
+            }],
+            links: [{
+                source: '异构知识的统一存储、映射、检索和接口技术',
+                target: '异构知识种类不少于5种；知识的存储容量规模达到万级，不少于1GB；',
+                name: '技术指标',
+                des: '技术指标'
+            }, {
+                source: '异构知识的统一存储、映射、检索和接口技术',
+                target: '探测与识别',
+                name: '专业领域',
+                des: '专业领域'
+            }, {
+                source: '异构知识的统一存储、映射、检索和接口技术',
+                target: '计算机与软件',
+                name: '专业领域',
+                des: '专业领域'
+            }, {
+                source: '异构知识的统一存储、映射、检索和接口技术',
+                target: '体系建造',
+                name: '专业领域',
+                des: '专业领域'
+            }],
+            categories: categories,
+        }]
+    };
+    myChart.setOption(option);
+</script>
+</body>
+</html>

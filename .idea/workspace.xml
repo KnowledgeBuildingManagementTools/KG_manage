@@ -2,12 +2,148 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a665e11a-c64c-4f09-9e75-63b9b8d2a86a" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/kg_code_manage/myforms.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/statics/F-22战斗机_百度百科_files/3db44258c9a193efc251355e87af5ce5.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/statics/F-22战斗机_百度百科_files/48540923dd54564e9258ea54fc948b82d158ccbfe10e" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/statics/F-22战斗机_百度百科_files/48540923dd54564eea8af0d7b9de9c82d0584f74" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/statics/F-22战斗机_百度百科_files/4ec2d5628535e5dd7fd075797dc6a7efcf1b629c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/statics/F-22战斗机_百度百科_files/54fbb2fb43166d224309027a4c2309f79152d2e5" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/statics/F-22战斗机_百度百科_files/5ab5c9ea15ce36d3fbd997de30f33a87e850b17a" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/statics/F-22战斗机_百度百科_files/63d9f2d3572c11df54d9abcd692762d0f603c2d0" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/statics/F-22战斗机_百度百科_files/8601a18b87d6277f6f311d5623381f30e924fcb9" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/statics/F-22战斗机_百度百科_files/95eef01f3a292df58a9dbafbb6315c6035a87385" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/statics/F-22战斗机_百度百科_files/960a304e251f95ca2e1509dcc2177f3e660952fc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/statics/F-22战斗机_百度百科_files/962bd40735fae6cd8b9676c704b30f2442a70f72" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/statics/F-22战斗机_百度百科_files/9e31e5b514b16d4c878fa4af141f20a0.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/statics/F-22战斗机_百度百科_files/abclite-2020-s.js.下载" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/statics/F-22战斗机_百度百科_files/ac4bd11373f08202992786d141fbfbedaa641ba2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/statics/F-22战斗机_百度百科_files/adx.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/statics/F-22战斗机_百度百科_files/ae51f3deb48f8c544aaf44963b292df5e0fe7f0f" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/statics/F-22战斗机_百度百科_files/announcement_cba33f4.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/statics/F-22战斗机_百度百科_files/auto_dup" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/statics/F-22战斗机_百度百科_files/c2fdfc039245d6884c21b390a6c27d1ed21b24e6" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/statics/F-22战斗机_百度百科_files/c83d70cf3bc79f3dc0f1af65b1a1cd11728b2956" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/statics/F-22战斗机_百度百科_files/contribute-flag-1_c1b820f.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/statics/F-22战斗机_百度百科_files/copy_rignt_24.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/statics/F-22战斗机_百度百科_files/cpro.js.下载" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/statics/F-22战斗机_百度百科_files/create_c3f33b6.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/statics/F-22战斗机_百度百科_files/d439b6003af33a87dd701640c05c10385343b54e" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/statics/F-22战斗机_百度百科_files/dbb44aed2e738bd40853d43ca28b87d6277ff949" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/statics/F-22战斗机_百度百科_files/declaration_545ee22.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/statics/F-22战斗机_百度百科_files/distinctiveIcon_a9a2d74.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/statics/F-22战斗机_百度百科_files/e61190ef76c6a7efce1ba351c8b0b851f3deb48fc838" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/statics/F-22战斗机_百度百科_files/eac4b74543a982269bac81b78682b9014a90eb35" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/statics/F-22战斗机_百度百科_files/fb.js.下载" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/statics/F-22战斗机_百度百科_files/fd039245d688d43fa1720c4b7c1ed21b0ff43bab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/statics/F-22战斗机_百度百科_files/fp.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/statics/F-22战斗机_百度百科_files/hm.js.下载" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/statics/F-22战斗机_百度百科_files/label_1b0bc0e.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/statics/F-22战斗机_百度百科_files/larkplayer_9f95c7c.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/statics/F-22战斗机_百度百科_files/layout_76ea466.js.下载" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/statics/F-22战斗机_百度百科_files/lemmaReferenceTip_d6baf99.js.下载" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/statics/F-22战斗机_百度百科_files/lemmaRelation_496a30a.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/statics/F-22战斗机_百度百科_files/logo-sm.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/statics/F-22战斗机_百度百科_files/logo.js.下载" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/statics/F-22战斗机_百度百科_files/mainContent_de18096.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/statics/F-22战斗机_百度百科_files/mod_4302fe0.js.下载" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/statics/F-22战斗机_百度百科_files/new-icon_a64774d.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/statics/F-22战斗机_百度百科_files/o.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/statics/F-22战斗机_百度百科_files/overlay_543bb29(1).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/statics/F-22战斗机_百度百科_files/overlay_543bb29.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/statics/F-22战斗机_百度百科_files/pageMask_ff9a193.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/statics/F-22战斗机_百度百科_files/pc右下悬浮135x180（潘玮柏）.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/statics/F-22战斗机_百度百科_files/perfect_b3eae1e.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/statics/F-22战斗机_百度百科_files/searchHeader-n_f9a6e5b.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/statics/F-22战斗机_百度百科_files/share_style0_16.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/statics/F-22战斗机_百度百科_files/sideShare_ce843cd.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/statics/F-22战斗机_百度百科_files/ta-logo-blue_5458427(1).png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/statics/F-22战斗机_百度百科_files/ta-logo-blue_5458427.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/statics/F-22战斗机_百度百科_files/toolButtons-n_8b4919b.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/statics/F-22战斗机_百度百科_files/userInfo-n_7e90184.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/statics/F-22战斗机_百度百科_files/userbar-n_2890903.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/statics/F-22战斗机_百度百科_files/webuploader_08d9db4.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/statics/F-22战斗机_百度百科_files/wh.js.下载" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/statics/F-22战斗机_百度百科_files/wiki-common-base_6ec4028.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/statics/F-22战斗机_百度百科_files/wiki-common-base_fb47678.js.下载" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/statics/F-22战斗机_百度百科_files/wiki-lemma-module-lemmaRelation_a27ce6d.js.下载" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/statics/F-22战斗机_百度百科_files/wiki-lemma-module_2676ad3.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/statics/F-22战斗机_百度百科_files/wiki-lemma_8433d50.js.下载" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/statics/F-22战斗机_百度百科_files/wiki-lemma_cda086e.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/statics/F-22战斗机_百度百科_files/zcqm.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/statics/F-22战斗机_百度百科_files/zhixin_3b0d7a5.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/statics/F-22战斗机_百度百科_files/zhixin_ea4d2ff.js.下载" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/statics/bootstrap-3.3.7-dist/css/bootstrap-theme.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/statics/bootstrap-3.3.7-dist/css/bootstrap-theme.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/statics/bootstrap-3.3.7-dist/css/bootstrap-theme.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/statics/bootstrap-3.3.7-dist/css/bootstrap-theme.min.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/statics/bootstrap-3.3.7-dist/css/bootstrap.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/statics/bootstrap-3.3.7-dist/css/bootstrap.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/statics/bootstrap-3.3.7-dist/css/bootstrap.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/statics/bootstrap-3.3.7-dist/css/bootstrap.min.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/statics/bootstrap-3.3.7-dist/fonts/glyphicons-halflings-regular.eot" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/statics/bootstrap-3.3.7-dist/fonts/glyphicons-halflings-regular.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/statics/bootstrap-3.3.7-dist/fonts/glyphicons-halflings-regular.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/statics/bootstrap-3.3.7-dist/fonts/glyphicons-halflings-regular.woff" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/statics/bootstrap-3.3.7-dist/fonts/glyphicons-halflings-regular.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/statics/bootstrap-3.3.7-dist/js/bootstrap.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/statics/bootstrap-3.3.7-dist/js/bootstrap.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/statics/bootstrap-3.3.7-dist/js/npm.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/statics/css/font.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/statics/css/layui.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/statics/css/xadmin.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/statics/fonts/iconfont.eot" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/statics/fonts/iconfont.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/statics/fonts/iconfont.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/statics/fonts/iconfont.woff" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/statics/js/echarts/config.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/statics/js/echarts/echarts.all.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/statics/js/echarts/echarts.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/statics/js/echarts/esl.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/statics/js/echarts/jquery-3.2.1.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/statics/js/echarts/jquery.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/statics/js/xadmin.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/statics/map/echarts.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/statics/map/jquery-3.2.1.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/F-22战斗机_百度百科.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/add_card_template.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/add_edit_general.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/add_edit_mode.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/add_knowledge_card.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/add_require_wikipedia.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/add_wikipedia_template.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/base.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/card_template.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/datashow.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/edit_card_template.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/edit_knowledge_card.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/edit_require_wikipedia.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/edit_wikipedia_template.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/knowledge_card.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/knowledge_card_preview.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/knowledge_creat.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/not_find.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/noumenon_add.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/noumenon_edit.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/table.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/tree_legend.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/upload_file/知识构建与管理工具设计文档-1014-16.docx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/upload_file/知识构建与管理工具设计文档-V0.1(1).docx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/deployment.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/deployment.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/KG_manage/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/KG_manage/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/KG_manage/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/KG_manage/settings.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/KG_manage/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/KG_manage/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kg_code_manage/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/kg_code_manage/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/kg_code_manage/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/kg_code_manage/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/statics/admin/css/reset.css" beforeDir="false" afterPath="$PROJECT_DIR$/statics/admin/css/reset.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/statics/css/style.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/statics/css/style.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/model_create.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/model_create.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/新建 Microsoft Word 文档.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/test.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/test.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/upload_file/网址.txt" beforeDir="false" />
     </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -22,6 +158,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="JavaScript File" />
         <option value="HTML File" />
       </list>
     </option>
@@ -40,22 +177,23 @@
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/simulation_data" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+    <property name="settings.editor.selected.configurable" value="web.server" />
+    <property name="two.files.diff.last.used.file" value="$PROJECT_DIR$/../KG_manage(3)/KG_manage3/manage.py" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\Project\temporary_files\KG_manage\simulation_data" />
-      <recent name="D:\Project\temporary_files\KG_manage\templates" />
-      <recent name="D:\project\KG_manage\statics\js" />
-      <recent name="D:\Project\temporary_files\KG_manage\statics\images" />
-      <recent name="D:\Project\temporary_files\KG_manage\statics" />
+      <recent name="C:\Users\liubing\Desktop\KG_manage" />
+      <recent name="D:\project\KG_manage\upload_file" />
+      <recent name="D:\project\KG_manage\statics" />
+      <recent name="D:\project\KG_manage\kg_code_manage" />
+      <recent name="D:\project\KG_manage\templates" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -109,6 +247,17 @@
       <workItem from="1602567561432" duration="5746000" />
       <workItem from="1602578880434" duration="4816000" />
       <workItem from="1602637611352" duration="3126000" />
+      <workItem from="1602674092775" duration="6133000" />
+      <workItem from="1602720696660" duration="308000" />
+      <workItem from="1602721280953" duration="2823000" />
+      <workItem from="1602724774986" duration="36020000" />
+      <workItem from="1602916114958" duration="1233000" />
+      <workItem from="1602919036830" duration="1111000" />
+      <workItem from="1602920616295" duration="6019000" />
+      <workItem from="1603069000575" duration="5497000" />
+      <workItem from="1603076666028" duration="20076000" />
+      <workItem from="1603119880355" duration="786000" />
+      <workItem from="1603154861767" duration="4084000" />
     </task>
     <servers />
   </component>
@@ -120,34 +269,106 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
     </option>
   </component>
   <component name="WindowStateProjectService">
-    <state x="96" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog" />
-    <state x="96" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1280.680@0.0.1280.680" />
-    <state x="421" y="99" key="FileChooserDialogImpl" />
-    <state x="421" y="99" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" />
-    <state width="1237" height="163" key="GridCell.Tab.0.bottom" />
-    <state width="1237" height="163" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" />
-    <state width="1237" height="163" key="GridCell.Tab.0.center" />
-    <state width="1237" height="163" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" />
-    <state width="1237" height="163" key="GridCell.Tab.0.left" />
-    <state width="1237" height="163" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" />
-    <state width="1237" height="163" key="GridCell.Tab.0.right" />
-    <state width="1237" height="163" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" />
-    <state width="1237" height="204" key="GridCell.Tab.1.bottom" />
-    <state width="1237" height="204" key="GridCell.Tab.1.bottom/0.0.1280.680@0.0.1280.680" />
-    <state width="1237" height="204" key="GridCell.Tab.1.center" />
-    <state width="1237" height="204" key="GridCell.Tab.1.center/0.0.1280.680@0.0.1280.680" />
-    <state width="1237" height="204" key="GridCell.Tab.1.left" />
-    <state width="1237" height="204" key="GridCell.Tab.1.left/0.0.1280.680@0.0.1280.680" />
-    <state width="1237" height="204" key="GridCell.Tab.1.right" />
-    <state width="1237" height="204" key="GridCell.Tab.1.right/0.0.1280.680@0.0.1280.680" />
-    <state x="144" y="0" key="SettingsEditor" />
-    <state x="144" y="0" key="SettingsEditor/0.0.1280.680@0.0.1280.680" />
+    <state x="96" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1602918732956">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="96" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1280.680@0.0.1280.680" timestamp="1602918732956" />
+    <state x="381" y="149" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1602919941437">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="381" y="149" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1280.680@0.0.1280.680" timestamp="1602919941437" />
+    <state x="371" y="90" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1603110581169">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="371" y="90" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1280.680@0.0.1280.680" timestamp="1603110581169" />
+    <state x="93" y="93" width="1095" height="495" maximized="true" key="DiffContextDialog" timestamp="1603112441949">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="93" y="93" width="1095" height="495" maximized="true" key="DiffContextDialog/0.0.1280.680@0.0.1280.680" timestamp="1603112441949" />
+    <state x="376" y="104" key="EnvironmentVariablesDialog" timestamp="1602918728719">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="376" y="104" key="EnvironmentVariablesDialog/0.0.1280.680@0.0.1280.680" timestamp="1602918728719" />
+    <state x="421" y="99" key="FileChooserDialogImpl" timestamp="1603112431053">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="421" y="99" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1603112431053" />
+    <state width="1237" height="201" key="GridCell.Tab.0.bottom" timestamp="1603112542719">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="201" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1603112542719" />
+    <state width="1237" height="201" key="GridCell.Tab.0.center" timestamp="1603112542719">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="201" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1603112542719" />
+    <state width="1237" height="201" key="GridCell.Tab.0.left" timestamp="1603112542718">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="201" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1603112542718" />
+    <state width="1237" height="201" key="GridCell.Tab.0.right" timestamp="1603112542719">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="201" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1603112542719" />
+    <state width="1237" height="204" key="GridCell.Tab.1.bottom" timestamp="1602724839934" />
+    <state width="1237" height="204" key="GridCell.Tab.1.bottom/0.0.1280.680@0.0.1280.680" timestamp="1602724839934" />
+    <state width="1237" height="204" key="GridCell.Tab.1.center" timestamp="1602724839934" />
+    <state width="1237" height="204" key="GridCell.Tab.1.center/0.0.1280.680@0.0.1280.680" timestamp="1602724839934" />
+    <state width="1237" height="204" key="GridCell.Tab.1.left" timestamp="1602724839934" />
+    <state width="1237" height="204" key="GridCell.Tab.1.left/0.0.1280.680@0.0.1280.680" timestamp="1602724839934" />
+    <state width="1237" height="204" key="GridCell.Tab.1.right" timestamp="1602724839934" />
+    <state width="1237" height="204" key="GridCell.Tab.1.right/0.0.1280.680@0.0.1280.680" timestamp="1602724839934" />
+    <state x="144" y="0" key="SettingsEditor" timestamp="1602918626483">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="144" y="0" key="SettingsEditor/0.0.1280.680@0.0.1280.680" timestamp="1602918626483" />
+    <state x="332" y="100" width="617" height="480" key="find.popup" timestamp="1603075243450">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="332" y="100" width="617" height="480" key="find.popup/0.0.1280.680@0.0.1280.680" timestamp="1603075243450" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/templates/model_create.html</url>
+          <line>108</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://F:/前段页面模板/incubator-echarts-master/test/tree-legend.html</url>
+          <line>156</line>
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/../static/datashow.html</url>
+          <line>90</line>
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/templates/datashow.html</url>
+          <line>53</line>
+          <option name="timeStamp" value="10" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/templates/datashow.html</url>
+          <line>314</line>
+          <option name="timeStamp" value="12" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/kg_code_manage/views.py</url>
+          <line>22</line>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

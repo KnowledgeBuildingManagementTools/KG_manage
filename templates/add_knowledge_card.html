@@ -1,0 +1,43 @@
+{% extends 'index.html' %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>title</title>
+    <link href="{% static 'bootstrap-3.3.7-dist/css/bootstrap.min.css' %}" rel="stylesheet">
+</head>
+
+<body>
+
+{% block title %}
+    <span class="navbar-page-title"> JSXQ知识百科 - 知识卡片模板 - 添加 </span>
+{% endblock %}
+
+
+{% block content %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <form action="{% url 'add_knowledge_card' %}" method="post">
+                    {% csrf_token %}
+                    <input type="text" name="all_tem" style="display: none;" value="{{ tem_content_str }}">
+
+                    <span style="font-weight: bold;">知识卡片名称</span>
+                    <input type="text" name="name" class="form-control">
+                    {% for tem_content in tem_content_list %}
+                        <span style="font-weight: bold;">{{ tem_content }}</span>
+                        <input type="text" name="{{ tem_content }}" class="form-control">
+                    {% endfor %}
+
+                    <br>
+                    <button type="submit" class="btn btn-primary" style="margin-top: 3px">提交</button>
+                    <a class='btn btn-primary' href="javascript:history.back(-1);" style="margin-right: 10px;">取消</a>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

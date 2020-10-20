@@ -14,7 +14,7 @@
     {% endblock %}
 </head>
 
-<body>
+<body data-logobg="color_headerbg" data-sidebarbg="color_headerbg" data-headerbg="color_headerbg">
 <div class="lyear-layout-web">
     <div class="lyear-layout-container">
         <!--左侧导航-->
@@ -23,20 +23,39 @@
             <!-- logo -->
             <div id="logo" class="sidebar-header">
                 <a href="index.html">
-                    <div style="height: 68px;font-weight: bolder;font-size: larger;"><h1>JSXQ</h1></div>
+                    <div style="height: 68px;font-weight: bolder;font-size: larger;"><h1 style="color: white;">JSXQ</h1></div>
                 </a>
             </div>
             <div class="lyear-layout-sidebar-scroll">
 
                 <nav class="sidebar-main">
                     <ul class="nav nav-drawer">
-                        <li class="nav-item active"><a href="{% url 'model' %}"><i class="mdi mdi-home"></i> JSXQ业务模型构建</a>
+
+                        <li class="nav-item nav-item-has-subnav">
+                            <a href="javascript:void(0)"><i class="mdi mdi-home"></i> JSXQ业务模型构建</a>
+                            <ul class="nav nav-subnav">
+                                <li><a href="{% url 'model' %}">知识构建</a></li>
+                                <li><a href="{% url 'knowledge' %}">业务模型构建</a></li>
+                            </ul>
                         </li>
-                        <li class="nav-item "><a href="{% url 'model' %}"><i class="mdi mdi-home"></i> JSXQ知识百科</a>
+                        <li class="nav-item nav-item-has-subnav">
+                            <a href="javascript:void(0)"><i class="mdi mdi-home"></i> JSXQ知识百科</a>
+                            <ul class="nav nav-subnav">
+
+                                <li><a href="{% url 'wikipedia_template' %}">百科模板</a></li>
+                                <li><a href="{% url 'require_wikipedia' %}">需求百科</a></li>
+                                <li><a href="{% url 'card_template' %}">知识卡片</a></li>
+                            </ul>
+
                         </li>
-                        <li class="nav-item "><a href="{% url 'model' %}"><i class="mdi mdi-home"></i> JSXQ图谱分析</a>
+                        <li class="nav-item nav-item-has-subnav"><a href="javascript:void(0)"><i class="mdi mdi-home"></i> JSXQ图谱分析</a>
+                            <ul class="nav nav-subnav">
+                                <li><a href="{% url 'association_analysis' %}">关联图分析</a></li>
+                                <li><a href="{% url 'knowledge' %}">地图分析</a></li>
+                                <li><a href="{% url 'knowledge' %}">分析助手</a></li>
+                            </ul>
                         </li>
-                        <li class="nav-item "><a href="{% url 'model' %}"><i class="mdi mdi-home"></i> 知识图谱服务接口</a>
+                        <li class="nav-item "><a href="{% url 'noumenon' %}"><i class="mdi mdi-home"></i> 知识图谱服务接口</a>
                         </li>
                     </ul>
                 </nav>
@@ -58,13 +77,15 @@
                             <span class="lyear-toggler-bar"></span>
                             <span class="lyear-toggler-bar"></span>
                         </div>
-                        <span class="navbar-page-title"> JSXQ业务模型构建 </span>
+                        {% block title %}
+                            <span class="navbar-page-title"> JSXQ业务模型构建 </span>
+                        {% endblock %}
                     </div>
 
                     <ul class="topbar-right">
                         <li class="dropdown dropdown-profile">
                             <a href="javascript:void(0)" data-toggle="dropdown">
-                                <span>admin<span class="caret"></span></span>
+                                <span>超级管理员<span class="caret"></span></span>
                             </a>
                             <ul class="dropdown-menu dropdown-menu-right">
                                 <li><a href="lyear_pages_profile.html"><i class="mdi mdi-account"></i> 个人信息</a></li>
@@ -436,49 +457,7 @@
 <!--图表插件-->
 <script type="text/javascript" src="{% static 'js/Chart.js' %}"></script>
 <script type="text/javascript">
-    $(document).ready(function (e) {
-        var $dashChartBarsCnt = jQuery('.js-chartjs-bars')[0].getContext('2d'),
-            $dashChartLinesCnt = jQuery('.js-chartjs-lines')[0].getContext('2d');
 
-        var $dashChartBarsData = {
-            labels: ['周一', '周二', '周三', '周四', '周五', '周六', '周日'],
-            datasets: [
-                {
-                    label: '注册用户',
-                    borderWidth: 1,
-                    borderColor: 'rgba(0,0,0,0)',
-                    backgroundColor: 'rgba(51,202,185,0.5)',
-                    hoverBackgroundColor: "rgba(51,202,185,0.7)",
-                    hoverBorderColor: "rgba(0,0,0,0)",
-                    data: [2500, 1500, 1200, 3200, 4800, 3500, 1500]
-                }
-            ]
-        };
-        var $dashChartLinesData = {
-            labels: ['2003', '2004', '2005', '2006', '2007', '2008', '2009', '2010', '2011', '2012', '2013', '2014'],
-            datasets: [
-                {
-                    label: '交易资金',
-                    data: [20, 25, 40, 30, 45, 40, 55, 40, 48, 40, 42, 50],
-                    borderColor: '#358ed7',
-                    backgroundColor: 'rgba(53, 142, 215, 0.175)',
-                    borderWidth: 1,
-                    fill: false,
-                    lineTension: 0.5
-                }
-            ]
-        };
-
-        new Chart($dashChartBarsCnt, {
-            type: 'bar',
-            data: $dashChartBarsData
-        });
-
-        var myLineChart = new Chart($dashChartLinesCnt, {
-            type: 'line',
-            data: $dashChartLinesData,
-        });
-    });
 </script>
 
 {% block myjs %}

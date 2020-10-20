@@ -1,0 +1,127 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+    多策略智能问答-管理员
+{% endblock %}
+{% block mycss %}
+    <link rel="stylesheet" href="{% static 'css/font.css' %}">
+    <link rel="stylesheet" href="{% static 'css/xadmin.css' %}">
+    <!-- <link rel="stylesheet" href="./css/theme5.css"> -->
+    <script src="{% static 'js/lib/layui/layui.js' %}" charset="utf-8"></script>
+    <script type="text/javascript" src="{% static 'js/xadmin.js' %}"></script>
+    <!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
+    <!--[if lt IE 9]>
+    <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+    <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <script>
+        // 是否开启刷新记忆tab功能
+        // var is_remember = false;
+    </script>
+{% endblock %}
+
+{% block content %}
+
+    <div class="layui-fluid">
+        <div class="layui-row">
+            <form class="layui-form" method="post">
+                <div class="layui-form-item">
+                    <label for="noumenon_name" class="layui-form-label" style="width: 100px">
+                        <span class="x-red">*</span>本体名称
+                    </label>
+                    <div class="layui-input-inline">
+                        <input type="text" id="noumenon_name" name="noumenon_name" required=""
+                               lay-verify="required|noumenon_name"
+                               autocomplete="off" class="layui-input" readonly value="{{ noumenon.noumenon_name }}">
+                    </div>
+                    <div class="layui-form-mid layui-word-aux">
+                        <span class="x-red">*</span>本体唯一名称
+                    </div>
+                </div>
+
+
+                <div class="layui-form-item">
+                    <label for="noumenon_attribute" class="layui-form-label" style="width: 100px">
+                        <span class="x-red">*</span>本体属性
+                    </label>
+                    <div class="layui-input-inline">
+                        <input type="text" id="noumenon_attribute" name="noumenon_attribute" required=""
+                               lay-verify="noumenon_attribute"
+                               autocomplete="off" class="layui-input" value="{{ noumenon.noumenon_attribute }}">
+                    </div>
+                    <div class="layui-form-mid layui-word-aux">
+                        <span class="x-red">*</span>本体属性输入时已“、”隔开
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <button class="layui-btn center-align" lay-filter="add" lay-submit="add">
+                        修改
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+
+
+
+
+{% endblock %}
+{% block myjs %}
+    <script>layui.use(['form', 'layer'],
+        function () {
+            $ = layui.jquery;
+            var form = layui.form,
+                layer = layui.layer;
+
+            //自定义验证规则
+            form.verify({
+                noumenon_name: function (value) {
+                    if (value.length < 1) {
+                        return '本体名称不能为空';
+                    }
+                },
+                noumenon_attribute: function (value) {
+                    if (value.length < 1) {
+                        return '本体属性不能为空';
+                    }
+                },
+
+
+            });
+
+            //监听提交
+            //监听提交
+            form.on('submit(add)',
+                function (data) {
+                    $.getJSON('{% url 'noumenon_edit_submit' %}', {
+                            id:{{noumenon.id}},
+                            noumenon_name: data.field.noumenon_name,
+                            noumenon_attribute: data.field.noumenon_attribute,
+                        }, function (data) {
+                            if (data.status == 1) {
+                                layer.alert("修改成功", {
+                                        icon: 6
+                                    },
+                                    function () {
+                                        //关闭当前frame
+                                        xadmin.close();
+
+                                        // 可以对父窗口进行刷新
+                                        xadmin.father_reload();
+                                    });
+                            } else {
+                                layer.alert('添加失败')
+                            }
+                        }
+                    );
+
+
+                    return false;
+                });
+
+        });</script>
+
+{% endblock %}
+

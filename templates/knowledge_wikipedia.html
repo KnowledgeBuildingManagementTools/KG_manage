@@ -1,0 +1,45 @@
+{% extends "index.html" %}
+{% load static %}
+
+{% block mycss %}
+    <link href="{% static 'js/lib/layui/css/layui.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block title %}
+    <span class="navbar-page-title"> JSXQ知识百科 </span>
+{% endblock %}
+
+{% block content %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-5">
+                <div class="layui-card">
+                    <div class="layui-card-header">知识百科</div>
+                    <div class="layui-card-body">
+                        <textarea name="memo" id="memo" cols="55" rows="10">
+                          默认内容
+                        </textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-2">
+                <img src="{% static 'images/right.jpg' %}" alt="点击转换成知识卡片" style="margin-top: 100px;height: 80px;width:80px;margin-left: 50px;">
+            </div>
+            <div class="col-lg-5">
+                <div class="layui-card">
+                    <div class="layui-card-header">知识卡片</div>
+                    <div class="layui-card-body">
+                        <textarea name="memo" id="memo" cols="55" rows="10">
+                          默认内容
+                        </textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block myjs %}
+    <script type="text/javascript" src="{% static 'js/lib/layui/layui.all.js' %}"></script>
+{% endblock %}

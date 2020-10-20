@@ -4221,6 +4221,12 @@ body[data-theme='translucent'] {
 [data-sidebarbg='color_8'] .lyear-layout-sidebar-scroll {
     background-color: #465161;
 }
+/*jsxq 颜色*/
+[data-headerbg='color_headerbg'] .lyear-layout-header,
+[data-logobg='color_headerbg'] .sidebar-header,
+[data-sidebarbg='color_headerbg'] .lyear-layout-sidebar-scroll {
+    background-color: #042C70;
+}
 
 [data-logobg*='color_'] .sidebar-header img,
 [data-theme='translucent'] .sidebar-header img {

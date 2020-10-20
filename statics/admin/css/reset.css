@@ -31,7 +31,7 @@
 .panel-default .panel-header {
   border-color: transparent;
   background-color: #fff;
-  color: #555555;
+  color: #00FFFF;
 }
 .panel-header {
   border-bottom: solid 1px transparent;
@@ -41,11 +41,11 @@
 }
 .layui-form-select dl dd.layui-this {
   background: #f2f2f2;
-  color: #333;
+  color: #00FFFF;
 }
 .layui-btn-primary:hover {
   border-color: #00b5f9;
-  color: #333;
+  color: #00FFFF;
 }
 .layui-tab-bar {
   position: absolute;
@@ -80,19 +80,19 @@
   color: #00b5f9;
 }
 .layui-nav-no-bg.layui-nav .layui-nav-item a {
-  color: #333;
+  color: #00FFFF;
 }
 .layui-nav-no-bg .layui-nav-itemed > a,
 .layui-nav-no-bg .layui-nav-tree .layui-nav-title a,
 .layui-nav-no-bg .layui-nav-tree .layui-nav-title a:hover {
   background: transparent!important;
-  color: #333!important;
+  color: #00FFFF!important;
 }
 .layui-nav-no-bg.layui-nav-tree .layui-nav-child a {
   height: 40px;
   line-height: 40px;
   text-indent: 10px;
-  color: #666;
+  color: #00FFFF;
 }
 .layui-nav-no-bg.layui-nav-tree .layui-nav-child dd.layui-this,
 .layui-nav-no-bg.layui-nav-tree .layui-this,
