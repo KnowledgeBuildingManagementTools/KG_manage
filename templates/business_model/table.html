@@ -1,0 +1,200 @@
+{% extends 'index.html' %}
+{% load static %}
+
+{% block mycss %}
+    <link href="{% static 'js/lib/layui/css/layui.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block title %}
+    <span class="navbar-page-title"> JSXQ业务模型构建 - 业务模型构建 </span>
+{% endblock %}
+
+{% block content %}
+
+    <div class="container-fluid">
+
+        <div class="row">
+
+            <div class="card">
+                <div class="card-body">
+                    <div class="table-responsive">
+
+                        <table id="noumenon_table" lay-filter="noumenon_table"></table>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+    </div>
+
+{% endblock %}
+
+{% block myjs %}
+    <script type="text/javascript" src="{% static 'js/lib/layui/layui.all.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/xadmin.js' %}"></script>
+    <script type="text/html" id="barDemo">
+        <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+        <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="delete">删除</a>
+    </script>
+    <script type="text/html" id="toolbarDemo">
+        <div class="layui-btn-container">
+            <button class="layui-btn layui-btn-sm" lay-event="create">新增本体</button>
+        </div>
+    </script>
+    <script>
+        document.getElementById("jsxqywmxgj").style.display = 'block';
+        document.getElementById("ywmxgj").style.backgroundColor = 'rgba(30,21,21,0.44)';
+
+
+        layui.use(['table', 'upload'], function () {
+            var checkbox_set = new Set();
+
+            var table = layui.table;
+            var upload = layui.upload;
+
+            // todo 表格渲染
+            table.render({
+
+                {#parseData: function (res) {#}
+                {#    for (var i in res.data) {#}
+                {#        if (checkbox_set.has(res.data[i].id)) {#}
+                {#            //如果set集合中有的话，给rows添加check属性选中#}
+                {#            res.data[i]["LAY_CHECKED"] = true;#}
+                {#        }#}
+                {#    }#}
+                {#    return {#}
+                {#        "code": res.code, //解析接口状态#}
+                {#        "count": res.count, //解析数据长度#}
+                {#        "data": res.data //解析数据列表#}
+                {#    };#}
+                {##}
+
+
+
+                elem: '#noumenon_table',
+                url: "{% url 'noumenon_load' %}"
+                //,width: 900
+                //,height: 274
+                , toolbar: '#toolbarDemo'
+                , defaultToolbar: []
+                , cols: [[ //标题栏
+                    {type: 'checkbox', width: '10%'}
+                    , {type: 'numbers', title: '序号', width: '10%', align: 'center'}
+                    , {field: 'name', title: '本体名称', width: '30%', align: 'center'}
+                    , {field: 'attributes', title: '本体属性', width: '30%', align: 'center'}
+                    {#, {field: 'forecase_detail', title: '预测详情', width: 150}#}
+                    {#, {field: 'confirm_rank', title: '确认密级', width: 90}#}
+                    {#, {field: 'feedback', title: '用户反馈', width: 150}#}
+                    , {title: '操作', toolbar: '#barDemo', width: '20%', align: 'center'}
+                ]]
+                , id: 'noumenon_table'
+                , skin: 'row' //表格风格
+                , even: true
+                //,size: 'lg' //尺寸
+                , page: true //是否显示分页
+                , limits: [8, 20, 50]
+                , limit: 8 //每页默认显示的数量
+                //,loading: false //请求数据时，是否显示loading
+            });
+
+
+            // TODO 编辑与删除
+            table.on('tool(noumenon_table)', function (obj) {
+                var data = obj.data;
+
+                console.log(data);
+                console.log(data.id, data.name, data.attributes);
+
+                if (obj.event === 'edit') {
+                    xadmin.open('编辑', "{% url 'noumenon_edit' %}?id=" + data.id + "&name=" + data.name + "&attributes=" + data.attributes, 600, 400);
+
+
+                } else if (obj.event === 'delete') {
+                    noumenon_del(obj, data.id);
+
+                }
+            });
+
+
+            table.on('checkbox(noumenon_table)',
+                function (obj) {
+                    var table_checkbox_all = table.cache.noumenon_table;
+                    if (obj.checked == true) {
+                        if (obj.type == 'one') {
+                            checkbox_set.add(obj.data.id)
+                        }
+                        if (obj.type == 'all') {
+                            for (i = 0; i < table_checkbox_all.length; i++) {
+                                checkbox_set.add(table_checkbox_all[i].id);
+                            }
+                        }
+                    } else {
+                        if (obj.type == 'one') {
+                            checkbox_set.delete(obj.data.id)
+                        }
+                        if (obj.type == 'all') {
+                            for (i = 0; i < table_checkbox_all.length; i++) {
+                                checkbox_set.delete(table_checkbox_all[i].id);
+                            }
+                        }
+                    }
+                });
+
+            table.on('toolbar(noumenon_table)',
+                function (obj) {
+                    if (obj.event === 'create') {
+                        xadmin.open('添加本体', '{% url 'noumenon_create' %}', 600, 400)
+                    }
+                });
+        });
+
+        {% comment %}                //todo 查詢
+                        function search() {
+                            //执行重载
+                            layui.use(['table'], function () {
+                                var table = layui.table;
+                                // todo 表格渲染
+                                var search_keyword = $("#search_keyword").val();
+                                var yuce = $("#yuce").val();
+                                var queren = $("#queren").val();
+                                console.log(search_keyword, yuce, queren);
+                                //上述方法等价于
+                                table.reload('sentence_table', {
+                                    where: { //设定异步数据接口的额外参数，任意设
+                                        search_keyword: search_keyword
+                                        , yuce: yuce
+                                        , queren: queren
+                                    }
+                                    , page: {
+                                        curr: 1 //重新从第 1 页开始
+                                    }
+                                }); //只重载数据
+                            })
+                        }{% endcomment %}
+
+        {#TODO 删除方法#}
+
+        function noumenon_del(obj, id) {
+            layer.confirm('确认要删除吗？', function (index) {
+                //发异步删除数据
+                console.log(id)
+                $.getJSON('{% url 'noumenon_delete' %}', {
+                    id: id
+                }, function (data) {
+                    if (data.status == 1) {
+                        location.reload();
+                        layer.msg('已删除!', {icon: 1, time: 1000});
+                    } else {
+                        layer.msg('删除失败！', {icon: 1, time: 1000})
+                    }
+
+                })
+
+            });
+        }
+
+    </script>
+
+{% endblock %}

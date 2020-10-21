@@ -1,0 +1,90 @@
+{% extends 'index.html' %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>title</title>
+    <link href="{% static 'bootstrap-3.3.7-dist/css/bootstrap.min.css' %}" rel="stylesheet">
+</head>
+
+<body>
+
+{% block title %}
+    <span class="navbar-page-title"> JSXQ知识百科 - 知识卡片模板 </span>
+{% endblock %}
+
+
+{% block content %}
+    <div class='container-fluid'>
+        <!-- 知识卡片/模板 选择 -->
+        <label for="">知识卡片/模板：</label>
+        <select name="card_template_choiced" id="card_template_choiced" class="form-control" onchange="card_template_choiced()" style="width: auto;display: inline;">
+            <option value="知识卡片模板">知识卡片模板</option>
+            <option value="知识卡片">知识卡片</option>
+        </select>
+        &nbsp;&nbsp;&nbsp;
+        <!-- 添加记录 -->
+        <label for="">知识卡片模板添加：</label>
+        <a class='btn btn-primary btn-sm' href="{% url 'add_card_template' %}" style="height: 37px;text-align: center;line-height: 30px;">添加</a>
+
+        <p></p>
+
+        <div class="form-group">
+            <!-- 页面信息展示 -->
+            <table class="table table-bordered table-hover table-striped">
+                <thead>
+                <tr>
+                    <th style="width:5%;text-align: center;"></th>
+                    <th style="width:5%;text-align: center;">序号</th>
+                    <th style="width:20%;text-align: center;">知识卡片模板名称</th>
+                    <th style="width:20%;text-align: center;">知识卡片模板内容</th>
+                    <th style="width:20%;text-align: center;">创建时间</th>
+                    <th style="width:20%;text-align: center;">操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for single_data in card_obj %}
+                    <tr style="text-align: center">
+                        <td><input type="checkbox" name="checked" value="{{ single_data.id }}"></td>
+                        <td>{{ forloop.counter }}</td>
+                        <td>{{ single_data.name }}</td>
+                        <td>{{ single_data.content }}</td>
+                        <td>{{ single_data.create_time|date:"Y-m-d H:i:s" }}</td>
+                        <td>
+                            <a href="{% url 'edit_card_template' single_data.id %}" class="btn">编辑</a>
+                            <a href="{% url 'delete_card_template' single_data.id %}" class="btn">删除</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}
+
+{% block myjs %}
+    <script>
+        $('#card_template_choiced').val('知识卡片模板');
+
+        document.getElementById("jsxqzsbk").style.display = 'block';
+        document.getElementById("zskp").style.backgroundColor = 'rgba(30,21,21,0.44)';
+
+        function card_template_choiced() {
+            var choiced = $('#card_template_choiced').val();
+            console.log(choiced);
+            if (choiced === "知识卡片模板") {
+                location.href = "{% url 'card_template' %}"
+            } else {
+                location.href = "{% url 'knowledge_card' %}"
+            }
+        }
+    </script>
+{% endblock %}
+
+</body>
+
+</html>

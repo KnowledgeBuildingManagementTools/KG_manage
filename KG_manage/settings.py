@@ -25,7 +25,7 @@ SECRET_KEY = 'iai7-&hw3=3tzqc+p^-=d5b+00&7wev^)_@z)p3bi&!dg3*f(l'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -145,4 +145,7 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'statics')
 ]
+
+service_ip = 'http://192.168.43.189:8989'
+
 

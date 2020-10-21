@@ -25,6 +25,8 @@ urlpatterns = [
     path('model', views.model, name="model"),
     # 知识构建 图谱预览
     path('map_preview', views.map_preview, name="map_preview"),
+    # 知识构建 插入图谱
+    path('insert_map', views.insert_map, name="insert_map"),
     # 业务模型构建
     path('knowledge', views.knowledge, name="knowledge"),
     # 知识百科
@@ -76,13 +78,23 @@ urlpatterns = [
     # 知识卡片 - 预览
     path('preview_knowledge_card/<int:id>/', views.preview_knowledge_card, name="preview_knowledge_card"),
 
-    path('chart', views.chart, name="chart"),
-    path('noumenon', views.noumenon, name="noumenon"),
-    path('noumenon_load', views.noumenon_load, name="noumenon_load"),
-    path('noumenon_create', views.noumenon_create, name="noumenon_create"),
-    path('noumenon_add', views.noumenon_add, name="noumenon_add"),
-    path('noumenon_delete', views.noumenon_delete, name="noumenon_delete"),
-    path('noumenon_edit', views.noumenon_edit, name="noumenon_edit"),
-    path('noumenon_edit_submit', views.noumenon_edit_submit, name="noumenon_edit_submit"),
-    path('association_analysis', views.association_analysis, name="association_analysis"),
+    # 知识图谱服务接口
+
+    path('service_interface', views.service_interface, name="service_interface"),
+
+    path('chart',views.chart ,name="chart"),
+    path('noumenon',views.noumenon ,name="noumenon"),
+    path('noumenon_load',views.noumenon_load ,name="noumenon_load"),
+    path('noumenon_create',views.noumenon_create ,name="noumenon_create"),
+    path('noumenon_add',views.noumenon_add ,name="noumenon_add"),
+    path('noumenon_delete',views.noumenon_delete ,name="noumenon_delete"),
+    path('noumenon_edit',views.noumenon_edit ,name="noumenon_edit"),
+    path('noumenon_edit_submit',views.noumenon_edit_submit ,name="noumenon_edit_submit"),
+    path('association_analysis',views.association_analysis ,name="association_analysis"),
+    path('map_analysis',views.map_analysis ,name="map_analysis"),
+    path('analysis_aide',views.analysis_aide ,name="analysis_aide"),
+    path('histogram',views.histogram ,name="histogram"),
+    path('timeline',views.timeline ,name="timeline"),
+    path('history_load',views.history_load ,name="history_load"),
+    path('history_delete',views.history_delete ,name="history_delete"),
 ]

@@ -1,0 +1,116 @@
+{% extends 'index.html' %}
+{% load static %}
+
+{% block mycss %}
+    <link rel="stylesheet" type="text/css" href="{% static 'F-22战斗机_百度百科_files/wiki-lemma-module_2676ad3.css' %}">
+{% endblock %}
+
+{% block content %}
+    <a class='btn btn-primary btn-sm' href="javascript:history.back(-1);" style="float: right;margin: 10px;">返回</a>
+    <div style="margin:10px;">
+        <div class="layui-card">
+            <div class="layui-card-header"><h2>{{ name }}</h2></div>
+
+            <div class="layui-card-body">
+                <div style="margin:10px;">{{ name }}简介内容</div>
+                <div style="margin:10px;">{{ name }}知识卡片内容</div>
+                <div style="margin:10px;">知识卡片示例 ↓</div>
+                <div style="height: 250px;">
+                    <div class="basic-info cmn-clearfix">
+                        <dl class="basicInfo-block basicInfo-left">
+                            <dt class="basicInfo-item name">中文名称</dt>
+                            <dd class="basicInfo-item value">
+                                xxx
+                            </dd>
+                            <dt class="basicInfo-item name">英文名称</dt>
+                            <dd class="basicInfo-item value">
+                                xxx<sup class="sup--normal" data-sup="3" data-ctrmap=":3,">
+                                [3]</sup><a class="sup-anchor" name="ref_[3]_54559">&nbsp;</a>
+                            </dd>
+                            <dt class="basicInfo-item name">前型/级</dt>
+                            <dd class="basicInfo-item value">
+                                <a target="_blank" href="https://baike.baidu.com/item/F-15%E6%88%98%E6%96%97%E6%9C%BA/564755" data-lemmaid="564755">xxx</a><sup class="sup--normal" data-sup="2"
+                                                                                                                                                                data-ctrmap=":2,">
+                                [2]</sup><a class="sup-anchor" name="ref_[2]_54559">&nbsp;</a>
+                            </dd>
+                            <dt class="basicInfo-item name">研制时间</dt>
+                            <dd class="basicInfo-item value">
+                                xxxx年-xxxx年<sup class="sup--normal" data-sup="3" data-ctrmap=":3,">
+                                [3]</sup><a class="sup-anchor" name="ref_[3]_54559">&nbsp;</a>
+                            </dd>
+                            <dt class="basicInfo-item name">服役时间</dt>
+                            <dd class="basicInfo-item value">
+                                xxxx年
+                            </dd>
+                            <dt class="basicInfo-item name">定型时间</dt>
+                            <dd class="basicInfo-item value">
+                                xxxx年
+                            </dd>
+                            <dt class="basicInfo-item name">国&nbsp;&nbsp;&nbsp;&nbsp;家</dt>
+                            <dd class="basicInfo-item value">
+                                <a target="_blank" href="https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486" data-lemmaid="125486">xx</a>
+                            </dd>
+                            <dt class="basicInfo-item name">立项时间</dt>
+                            <dd class="basicInfo-item value">
+                                xxxx年
+                            </dd>
+                        </dl>
+                        <dl class="basicInfo-block basicInfo-right">
+                            <dt class="basicInfo-item name">首飞时间</dt>
+                            <dd class="basicInfo-item value">
+                                xxxx年
+                            </dd>
+                            <dt class="basicInfo-item name">制造商</dt>
+                            <dd class="basicInfo-item value">
+                                xxx公司、xxxx公司
+                            </dd>
+                            <dt class="basicInfo-item name">数&nbsp;&nbsp;&nbsp;&nbsp;量</dt>
+                            <dd class="basicInfo-item value">
+                                xxx架
+                            </dd>
+                            <dt class="basicInfo-item name">单机造价</dt>
+                            <dd class="basicInfo-item value">
+                                xxx美元
+                            </dd>
+                            <dt class="basicInfo-item name">主要用户</dt>
+                            <dd class="basicInfo-item value">
+                                <a target="_blank" href="https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD%E7%A9%BA%E5%86%9B">xxxx</a>
+                            </dd>
+                            <dt class="basicInfo-item name">衍生型</dt>
+                            <dd class="basicInfo-item value">
+                                <a target="_blank" href="https://baike.baidu.com/item/X-44">X-44</a>、<a target="_blank" href="https://baike.baidu.com/item/FB-22">xxxx</a>、<a target="_blank"
+                                                                                                                                                                              href="https://baike.baidu.com/item/F-35">F-35</a>
+                            </dd>
+                            <dt class="basicInfo-item name">绰&nbsp;&nbsp;&nbsp;&nbsp;号</dt>
+                            <dd class="basicInfo-item value">
+                                xxxx
+                            </dd>
+                            <dt class="basicInfo-item name">通&nbsp;&nbsp;&nbsp;&nbsp;称</dt>
+                            <dd class="basicInfo-item value">
+                                xxxx
+                            </dd>
+                        </dl>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {% for single_data in res_data %}
+            <div class="layui-card">
+                <div class="layui-card-header"><h2>{{ single_data.key }}</h2></div>
+                <div class="layui-card-body">
+                    <div style="margin:10px;">{{ single_data.value }}</div>
+                </div>
+            </div>
+        {% endfor %}
+
+    </div>
+{% endblock %}
+
+
+{% block myjs %}
+    <script>
+        document.getElementById("jsxqzsbk").style.display = 'block';
+        document.getElementById("xqbk").style.backgroundColor = 'rgba(30,21,21,0.44)';
+    </script>
+{% endblock %}

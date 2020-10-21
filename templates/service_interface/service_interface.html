@@ -1,0 +1,39 @@
+{% extends 'index.html' %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>title</title>
+    <link href="{% static 'bootstrap-3.3.7-dist/css/bootstrap.min.css' %}" rel="stylesheet">
+</head>
+
+<body>
+
+{% block title %}
+    <span class="navbar-page-title"> 知识图谱服务接口 </span>
+{% endblock %}
+
+
+{% block content %}
+    <div class='container-fluid'>
+        <iframe src="http://127.0.0.1:5000/apidocs/" style="width: 100%;" id="iframe"></iframe>
+    </div>
+{% endblock %}
+
+{% block myjs %}
+    <script>
+        // document.getElementById("jsxqywmxgj").style.display = 'block';
+        document.getElementById("zstpfwjk").style.backgroundColor = 'rgba(30,21,21,0.44)';
+
+        var screen_height = window.screen.availHeight;
+        document.getElementById("iframe").style.height = screen_height + 'px';
+    </script>
+{% endblock %}
+
+</body>
+
+</html>

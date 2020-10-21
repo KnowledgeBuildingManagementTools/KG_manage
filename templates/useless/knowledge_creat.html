@@ -1,0 +1,155 @@
+{% extends 'index.html' %}
+{% load static %}
+
+{% block mycss %}
+    <script src="{% static 'js/echarts/echarts.js' %}"></script>
+
+{% endblock %}
+
+{% block title %}
+<span class="navbar-page-title"> JSXQ业务模型构建 </span>
+{% endblock %}
+
+{% block content %}
+    <div class="container-fluid">
+
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-body">
+                        <ul id="myTabs" class="nav nav-tabs" role="tablist">
+                            <li class="active"><a href="#home" id="home-tab" role="tab" data-toggle="tab">数据挖掘</a></li>
+                            <li><a href="#profile" role="tab" id="profile-tab" data-toggle="tab">知识推理</a></li>
+
+                            <li><a href="#dropdown" role="tab" id="dropdown-tab" data-toggle="tab">关联分析</a></li>
+                        </ul>
+                        <div id="myTabContent" class="tab-content">
+                            <div class="tab-pane fade active in" id="home">
+                                <select name="file_type" id="file_type"
+                                        class="btn btn-default dropdown-toggle">
+                                    <option value="">请选择挖掘的类型</option>
+                                    <option value="SQL">SQL文件</option>
+                                    <option value="html">网页html源码</option>
+                                    <option value="word">Word文档</option>
+                                    <option value="pdf">PDF文档</option>
+                                    <option value="txt">txt文档</option>
+                                </select>
+                                <input type="button" class="btn btn-primary" value="开始挖掘">
+
+                            </div>
+                            <div class="tab-pane fade" id="profile">
+                                <div class="row">
+                                    <div class="col-xs-5">
+                                          <input type="text" placeholder="输入推理起点" id="profile_text"
+                                           class="form-control">
+                                    </div>
+                                    <div class="col-xs-2">
+                                        <input type="button" class="btn btn-primary" value="开始推理" id="profile_button">
+                                    </div>
+                                </div>
+                                <div id="main" class="" style="width: 800px;height: 400px"></div>
+                            </div>
+                            <div class="tab-pane fade" id="dropdown">
+                                <div class="row">
+                                    <div class="col-xs-2"><input type="text" placeholder="开始节点"
+                                                                 class="form-control"></div>
+                                    <div class="col-xs-2"><input type="text" placeholder="结束节点"
+                                                                 class="form-control"></div>
+                                    <div class="col-xs-2"><input type="text" placeholder="最大跳数"
+                                                                 class="form-control"></div>
+                                    <div class="col-xs-2">
+                                        <input type="button" class="btn btn-primary" value="关联分析">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block myjs %}
+    <script>
+            document.getElementById("jsxqywmxgj").style.display = 'block';
+        document.getElementById("ywmxgj").style.backgroundColor = 'rgba(30,21,21,0.44)';
+
+
+        $('#profile_button').click(function () {
+            var profile_text = $('#profile_text').val();
+            var formdata = new FormData();
+
+
+            formdata.append("profile_text", profile_text);
+
+
+            $.ajax({
+                url: '{% url 'chart' %}',
+                type: 'POST',
+                async: false,
+                data: formdata,
+                processData: false, // 使数据不做处理
+                contentType: false, // 不要设置Content-Type请求头
+                success: function (data) {
+                    charts(data)
+                },
+                error: function (response) {
+                    console.log(response);
+                }
+            });
+        })
+    </script>
+    <script>
+        function charts(data) {
+            var myChart = echarts.init(document.getElementById('main'));
+
+
+            var option = {
+                tooltip: {
+                    trigger: 'item',
+                    triggerOn: 'mousemove'
+                },
+
+                series: [{
+                    type: 'tree',
+
+                    name: 'tree1',
+
+                    data: [data],
+
+                    top: '5%',
+                    left: '7%',
+                    bottom: '2%',
+                    right: '10%',
+
+                    symbolSize: 7,
+
+                    label: {
+                        position: 'left',
+                        verticalAlign: 'middle',
+                        align: 'right'
+                    },
+
+                    leaves: {
+                        label: {
+                            position: 'right',
+                            verticalAlign: 'middle',
+                            align: 'left'
+                        }
+                    },
+
+                    expandAndCollapse: true,
+                    animationDuration: 550,
+                    animationDurationUpdate: 750,
+                    initialTreeDepth: 1,
+
+                }]
+            };
+
+            // 使用刚指定的配置项和数据显示图表。
+            myChart.setOption(option);
+
+        }
+    </script>
+{% endblock %}

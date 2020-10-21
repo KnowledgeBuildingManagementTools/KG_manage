@@ -1,0 +1,390 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block mycss %}
+    <script type="text/javascript" src="{% static 'js/echarts/jquery-3.2.1.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/echarts/echarts.js' %}"></script>
+{% endblock %}
+{% block title %}
+    <span class="navbar-page-title">JSXQ图谱分析 - 关联图分析</span>
+{% endblock %}
+{% block content %}
+
+
+    <div class="container-fluid">
+
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-xs-2">
+                                <select name="noumenon" id="noumenon" class="btn btn-default dropdown-toggle">
+                                    <option value="">请输入本体名称</option>
+                                    {% for noumenon in noumenons %}
+                                        <option value="{{ noumenon }}">{{ noumenon }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            <div class="col-xs-3">
+                                <input type="text" id="entity" class="form-control" placeholder="请输入实体名称" value="">
+                            </div>
+                            <div class="col-xs-2">
+                                <input type="button" class="btn btn-w-md btn-primary" value="查询" id="noumenon_serach">
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-body">
+
+                        <div id="main" style="width: 100%;height: 600%"></div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}
+{% block myjs %}
+    <script type="text/javascript">
+        document.getElementById("jsxqtpfx").style.display = 'block';
+        document.getElementById("gltfx").style.backgroundColor = 'rgba(30,21,21,0.44)';
+
+
+
+        $('#noumenon_serach').click(function () {
+
+            var noumenon = $('#noumenon').val();
+            var entity = $('#entity').val();
+            console.log(noumenon, entity);
+
+            var formdata = new FormData();
+
+
+            formdata.append("noumenon", noumenon);
+            formdata.append("entity", entity);
+
+
+            $.ajax({
+                url: '{% url 'association_analysis' %}',
+                type: 'POST',
+                async: false,
+                data: formdata,
+                processData: false, // 使数据不做处理
+                contentType: false, // 不要设置Content-Type请求头
+                success: function (data) {
+                    {#todo 执行函数#}
+                    atlas(data.data.nodes, data.data.edges)
+                },
+                error: function (response) {
+                    console.log(response);
+                }
+            });
+        })
+    </script>
+    <script type="text/javascript">
+        function atlas(nodes, edges) {
+
+
+            var myChart = echarts.init(document.getElementById('main'));
+            {#todo 读取文件等待#}
+            {% comment %}        myChart.showLoading();
+                    <!--$.get(ROOT_PATH + '/data/asset/data/webkit-dep.json', function (webkitDep) {}-->
+                    myChart.hideLoading();{% endcomment %}
+            {# TODO 计算类目#}
+            var types = {};
+            var categoryi = 0;
+            var label = '';
+            nodes.forEach(function (node) {
+                if (!types.hasOwnProperty(node.label)) {
+                    types[node.label] = categoryi;
+                    categoryi++;
+                }
+                node.category = types[node.label];
+            });
+            var categories = [];
+            var length = Object.keys(types).length;
+            for (var i = 0; i < length; i++) {
+                categories[i] = {
+                    name: '类目' + i
+                };
+            }
+            option = {
+
+                // 提示框的配置
+                tooltip: {
+                    //triggerOn: 'click',
+                    formatter: function (x) {
+                        var htmlStr = '';
+                        if (x.data.uuid !== undefined) {
+                            console.log('aaa');
+                            htmlStr += 'id : ' + x.data.id + '<br/>';
+                            htmlStr += 'uuid : ' + x.data.uuid + '<br/>';
+                            htmlStr += 'label : ' + x.data.label + '<br/>';
+                            for (var k in x.data.properties) {
+                                htmlStr += k + ' : ' + x.data.properties[k] + '<br/>';
+                            }
+                        } else {
+                            for (k in x.data) {
+                                htmlStr += k + ' : ' + x.data[k] + '<br/>';
+                            }
+                        }
+
+
+                        return htmlStr;
+                    }
+                },
+                // 工具箱
+                toolbox: {
+                    // 显示工具箱
+                    show: true,
+                    feature: {
+                        mark: {
+                            show: true
+                        },
+                        // 还原
+                        restore: {
+                            show: true,
+                        },
+                        // 保存为图片
+                        saveAsImage: {
+                            show: true
+                        }
+                    }
+                },
+                legend: [{
+                    data: categories.map(function (a) {
+                        return a.name;
+                    }),
+                    selected: {
+                        //'类目1': false,
+                        //'类目0': false,
+                    }
+                }],
+                animationDuration: 1500,
+                animationEasingUpdate: 'quinticInOut',
+
+                series: [{
+                    name: 'Les Miserables',
+                    type: 'graph', // 类型:关系图
+                    layout: 'force', //图的布局，类型为力导图
+                    symbolSize: 60, // 调整节点的大小
+                    roam: true, // 是否开启鼠标缩放和平移漫游。默认不开启。如果只想要开启缩放或者平移,可以设置成 'scale' 或者 'move'。设置成 true 为都开启
+                    edgeSymbol: ['circle', 'arrow'],
+                    edgeSymbolSize: [1, 10],
+                    focusNodeAdjacency: true,
+                    itemStyle: {
+                        borderColor: '#fff',
+                        borderWidth: 1,
+                        shadowBlur: 10,
+                        shadowColor: 'rgba(0, 0, 0, 0.3)'
+                    },
+                    edgeLabel: {
+                        normal: {
+                            show: true,
+                            formatter: function (x) {
+                                return x.data.type;
+                            },
+                            textStyle: {
+                                fontSize: '10rem'
+                            }
+                        }
+                    },
+
+                    force: {
+                        initLayout: 'circular',
+                        repulsion: [800, 2000], //斥力
+                        edgeLength: [60, 100],
+                        layoutAnimation: true
+                    },
+                    draggable: true,
+                    lineStyle: {
+                        normal: {
+                            show: true,
+                            width: 1,
+                            color: 'source',  //决定边的颜色起点、终点、颜色代码
+                            curveness: 0.1 //边的曲度，支持从 0 到 1 的值，值越大曲度越大。
+                        }
+                    },
+                    label: {  //文本标签
+                        normal: {
+                            show: true,//显示
+                            position: 'inside',//相对于节点标签的位置，默认在节点中间
+                            color: '#ffffff',
+                            //回调函数，你期望节点标签上显示什么
+                            formatter: function (x) {
+                                if (x.data.properties.name !== undefined)
+                                    return x.data.properties.name;
+                                else if (x.data.properties.title !== undefined)
+                                    return x.data.properties.title;
+                                else return x.data.label;
+                            },
+                            textStyle: {
+                                fontSize: 10
+                                // fontSizeMax:50,
+                            }
+                        }
+                    },
+
+                    // 数据
+                    //data: webkitDep.nodes,
+                    //edges: webkitDep.links,
+                    data: nodes,
+                    //links:
+                    edges: edges,
+                    categories: categories,
+
+                }]
+            };
+            myChart.setOption(option, true);
+            {#TODO 双击事件，最终目的#}
+            myChart.on('dblclick', function (params) { //双击事件
+                console.log(params.data.id);
+                console.log(option.series[0].data.length);
+                //根据params.data.id或其它唯一标识符请求节点相关数据，拿到数据push到option.series[0].data和option.series[0].links
+
+                {#TODO 请求后端数据接口未写#}
+                var a = [{
+                    "id": 80,
+                    "uuid": "XDETGG10",
+                    "label": "PICTURE",
+                    "properties": {
+                        "born": "1956",
+                        "name": "Tom Hanks"
+                    }
+                },
+                    {
+                        "id": 81,
+                        "uuid": "XDETGG11",
+                        "label": "TELEPLAY",
+                        "properties": {
+                            "born": "1956",
+                            "name": "Tom Hanks"
+                        }
+                    }];
+                var b = [{
+                    source: '75',
+                    target: '80',
+                    "type": "ACTED_IN",
+                    "id": 200
+                }, {
+                    source: '75',
+                    target: '81',
+                    "type": "ACTED_IN",
+                    "id": 200
+                }];
+
+
+                {#TODO 节点新增类型#}
+                length = Object.keys(types).length;
+                for (i = categories.length; i < length; i++) {
+                    categories[i] = {
+                        name: '类目' + i
+                    };
+                    option.legend[0].data.push('类目' + i)
+                }
+                console.log(categories);
+                {#TODO 节点查重#}
+                for (i = 0; i < a.length; i++) { //节点查重
+                    for (var j = 0; j < nodes.length; j++) {
+                        var repeat = false;
+                        if (a[i].id === nodes[j].id) {
+                            repeat = true;
+                            break;
+                        }
+                    }
+                    if (!repeat) {
+                        if (!types.hasOwnProperty(a[i].label)) {
+                            types[a[i].label] = categoryi;
+                            categoryi++;
+                        }
+                        a[i].category = types[a[i].label];
+                        nodes.push(a[i]);
+                    }
+                }
+
+                {#TODO 边查重#}
+                for (i = 0; i < b.length; i++) { //边查重
+                    for (j = 0; j < edges.length; j++) {
+                        repeat = false;
+                        if (a[i].id === edges[j].id) {
+                            repeat = true;
+                            break;
+                        }
+                    }
+                    if (!repeat) {
+                        edges.push(b[i]);
+                    }
+                }
+                myChart.setOption(option, true);
+                console.log('legend.data', option.legend[0].data);
+            });//双击事件
+
+            document.oncontextmenu = function () {
+                return false;
+            }; //隐藏鼠标右击事件
+            myChart.on('contextmenu', function (params) {//鼠标右击事件事件
+                console.log(params);
+                showMenu(params, [
+                    {
+                        "name": "隐藏节点",
+                        "fn": function () {
+                            for (i = 0; i < nodes.length; i++) {
+                                if (nodes[i].uuid == params.data.uuid) {
+                                    nodes.splice(i, 1);
+                                }
+                                myChart.setOption(option);
+                            }
+                            //alert("触发-菜单1" + params.data);
+                        }
+                    }
+                ]);
+            });//鼠标右击事件
+
+            var style_ul = "padding:0px;margin:0px;border-radius: 5px;background: rgba(3, 3, 3, 0.6);position: absolute;left: 0px;top: 0px;display: none;";
+            var style_li = "list-style:none;padding: 5px 10px;color: #ffff;";
+            var style_li_hover = style_li + "background-color: #00A0E9; color: #ffff;border-radius: 5px;";
+
+            //右键菜单容器
+            var menubox = $("<div class='echartboxMenu' style='" + style_ul + "'><div style='text-align:center;background:#ccc'></div><ul style='margin:0px;padding:0px;'></ul></div>")
+                .appendTo($(document.body));
+
+            //点击其他位置隐藏菜单
+            $(document).click(function () {
+                menubox.hide()
+            });
+
+            //显示隐藏节点菜单
+            var showMenu = function (params, menus) {
+                $("div", menubox).text(params.name);
+                var menulistbox = $("ul", menubox).empty();
+                $(menus).each(function (i, item) {
+                    var li = $("<li style='" + style_li + "'>" + item.name + "</li>")
+                        .mouseenter(function () {
+                            $(this).attr("style", style_li_hover);
+                        })
+                        .mouseleave(function () {
+                            $(this).attr("style", style_li);
+                        })
+                        .click(function () {
+                            item["fn"].call(this);
+                            menubox.hide();
+                        });
+                    menulistbox.append(li);
+                });
+                menubox.css({
+                    "left": params.event.offsetX,
+                    "top": params.event.offsetY
+                }).show();
+            }
+        }
+    </script>
+{% endblock %}

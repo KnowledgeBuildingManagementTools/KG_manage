@@ -1,0 +1,46 @@
+{% extends 'index.html' %}
+{% load static %}
+
+{% block mycss %}
+    <link rel="stylesheet" type="text/css" href="{% static 'F-22战斗机_百度百科_files/wiki-lemma-module_2676ad3.css' %}">
+{% endblock %}
+
+{% block content %}
+    <a class='btn btn-primary btn-sm' href="javascript:history.back(-1);" style="float: right;margin: 10px;">返回</a>
+    <div style="margin:10px;">
+        <div class="layui-card">
+            <div class="layui-card-header"><h2>{{ name }}</h2></div>
+
+            <div class="layui-card-body">
+                <div style="margin:10px;">{{ name }} 知识卡片 ↓</div>
+                <div style="height: 250px;">
+                    <div class="basic-info cmn-clearfix">
+                        <dl class="basicInfo-block basicInfo-left">
+                            {% for foo in card_dict.left %}
+                                <dt class="basicInfo-item name">{{ foo.key }}</dt>
+                                <dd class="basicInfo-item value">
+                                    {{ foo.value }}
+                                </dd>
+                            {% endfor %}
+                        </dl>
+                        <dl class="basicInfo-block basicInfo-right">
+                            {% for foo in card_dict.right %}
+                                <dt class="basicInfo-item name">{{ foo.key }}</dt>
+                                <dd class="basicInfo-item value">
+                                    {{ foo.value }}
+                                </dd>
+                            {% endfor %}
+                        </dl>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block myjs %}
+    <script>
+        document.getElementById("jsxqzsbk").style.display = 'block';
+        document.getElementById("zskp").style.backgroundColor = 'rgba(30,21,21,0.44)';
+    </script>
+{% endblock %}

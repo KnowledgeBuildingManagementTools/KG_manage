@@ -1,0 +1,61 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+.wrapper {
+    width: 100%;
+    height: auto;
+    position: relative;
+    margin-top: auto;
+    margin-right: auto;
+    margin-left: auto;
+    margin-bottom: 0;
+    overflow: auto;
+}
+.fish-bone-axis, .fish-bone-content, .fish-bone-node, .fish-bone-line {
+    position: absolute;
+    background-color: #f5f5f5;
+}
+.fish-bone-axis {
+    top: 200px;
+    height: 10px;
+    width: 95%;
+    left: 10px;
+    border-radius: 5px;
+}
+.fish-bone-content {
+    padding: 16px;
+    width: 201px;
+    text-align: justify;
+    border-radius: 4px;
+    border: 1px solid #f5f5f5;
+    font-size: 14px;
+}
+.fish-bone-node {
+    height: 15px;
+    width: 15px;
+    border-radius: 50%;
+    background-color: #fff;
+    border: 1px solid #038DC5;
+}
+.fish-bone-block {
+    cursor: pointer;
+}
+.fish-bone-line {
+    height: 40px;
+    width: 2px;
+    background-color: #f5f5f5;
+}
+.fish-bone {
+    /* overflow: hidden; */
+    position: relative;
+    height: 400px;
+    width: 1000px;
+}
+.active-node {
+    border-width: 3px;
+    border-style: solid;
+}
+.date-conent {
+    width: 109px;
+}

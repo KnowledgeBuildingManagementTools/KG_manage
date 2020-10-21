@@ -2,146 +2,51 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a665e11a-c64c-4f09-9e75-63b9b8d2a86a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/kg_code_manage/myforms.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/statics/F-22战斗机_百度百科_files/3db44258c9a193efc251355e87af5ce5.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/statics/F-22战斗机_百度百科_files/48540923dd54564e9258ea54fc948b82d158ccbfe10e" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/statics/F-22战斗机_百度百科_files/48540923dd54564eea8af0d7b9de9c82d0584f74" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/statics/F-22战斗机_百度百科_files/4ec2d5628535e5dd7fd075797dc6a7efcf1b629c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/statics/F-22战斗机_百度百科_files/54fbb2fb43166d224309027a4c2309f79152d2e5" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/statics/F-22战斗机_百度百科_files/5ab5c9ea15ce36d3fbd997de30f33a87e850b17a" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/statics/F-22战斗机_百度百科_files/63d9f2d3572c11df54d9abcd692762d0f603c2d0" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/statics/F-22战斗机_百度百科_files/8601a18b87d6277f6f311d5623381f30e924fcb9" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/statics/F-22战斗机_百度百科_files/95eef01f3a292df58a9dbafbb6315c6035a87385" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/statics/F-22战斗机_百度百科_files/960a304e251f95ca2e1509dcc2177f3e660952fc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/statics/F-22战斗机_百度百科_files/962bd40735fae6cd8b9676c704b30f2442a70f72" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/statics/F-22战斗机_百度百科_files/9e31e5b514b16d4c878fa4af141f20a0.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/statics/F-22战斗机_百度百科_files/abclite-2020-s.js.下载" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/statics/F-22战斗机_百度百科_files/ac4bd11373f08202992786d141fbfbedaa641ba2" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/statics/F-22战斗机_百度百科_files/adx.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/statics/F-22战斗机_百度百科_files/ae51f3deb48f8c544aaf44963b292df5e0fe7f0f" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/statics/F-22战斗机_百度百科_files/announcement_cba33f4.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/statics/F-22战斗机_百度百科_files/auto_dup" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/statics/F-22战斗机_百度百科_files/c2fdfc039245d6884c21b390a6c27d1ed21b24e6" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/statics/F-22战斗机_百度百科_files/c83d70cf3bc79f3dc0f1af65b1a1cd11728b2956" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/statics/F-22战斗机_百度百科_files/contribute-flag-1_c1b820f.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/statics/F-22战斗机_百度百科_files/copy_rignt_24.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/statics/F-22战斗机_百度百科_files/cpro.js.下载" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/statics/F-22战斗机_百度百科_files/create_c3f33b6.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/statics/F-22战斗机_百度百科_files/d439b6003af33a87dd701640c05c10385343b54e" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/statics/F-22战斗机_百度百科_files/dbb44aed2e738bd40853d43ca28b87d6277ff949" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/statics/F-22战斗机_百度百科_files/declaration_545ee22.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/statics/F-22战斗机_百度百科_files/distinctiveIcon_a9a2d74.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/statics/F-22战斗机_百度百科_files/e61190ef76c6a7efce1ba351c8b0b851f3deb48fc838" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/statics/F-22战斗机_百度百科_files/eac4b74543a982269bac81b78682b9014a90eb35" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/statics/F-22战斗机_百度百科_files/fb.js.下载" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/statics/F-22战斗机_百度百科_files/fd039245d688d43fa1720c4b7c1ed21b0ff43bab" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/statics/F-22战斗机_百度百科_files/fp.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/statics/F-22战斗机_百度百科_files/hm.js.下载" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/statics/F-22战斗机_百度百科_files/label_1b0bc0e.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/statics/F-22战斗机_百度百科_files/larkplayer_9f95c7c.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/statics/F-22战斗机_百度百科_files/layout_76ea466.js.下载" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/statics/F-22战斗机_百度百科_files/lemmaReferenceTip_d6baf99.js.下载" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/statics/F-22战斗机_百度百科_files/lemmaRelation_496a30a.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/statics/F-22战斗机_百度百科_files/logo-sm.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/statics/F-22战斗机_百度百科_files/logo.js.下载" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/statics/F-22战斗机_百度百科_files/mainContent_de18096.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/statics/F-22战斗机_百度百科_files/mod_4302fe0.js.下载" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/statics/F-22战斗机_百度百科_files/new-icon_a64774d.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/statics/F-22战斗机_百度百科_files/o.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/statics/F-22战斗机_百度百科_files/overlay_543bb29(1).png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/statics/F-22战斗机_百度百科_files/overlay_543bb29.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/statics/F-22战斗机_百度百科_files/pageMask_ff9a193.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/statics/F-22战斗机_百度百科_files/pc右下悬浮135x180（潘玮柏）.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/statics/F-22战斗机_百度百科_files/perfect_b3eae1e.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/statics/F-22战斗机_百度百科_files/searchHeader-n_f9a6e5b.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/statics/F-22战斗机_百度百科_files/share_style0_16.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/statics/F-22战斗机_百度百科_files/sideShare_ce843cd.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/statics/F-22战斗机_百度百科_files/ta-logo-blue_5458427(1).png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/statics/F-22战斗机_百度百科_files/ta-logo-blue_5458427.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/statics/F-22战斗机_百度百科_files/toolButtons-n_8b4919b.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/statics/F-22战斗机_百度百科_files/userInfo-n_7e90184.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/statics/F-22战斗机_百度百科_files/userbar-n_2890903.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/statics/F-22战斗机_百度百科_files/webuploader_08d9db4.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/statics/F-22战斗机_百度百科_files/wh.js.下载" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/statics/F-22战斗机_百度百科_files/wiki-common-base_6ec4028.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/statics/F-22战斗机_百度百科_files/wiki-common-base_fb47678.js.下载" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/statics/F-22战斗机_百度百科_files/wiki-lemma-module-lemmaRelation_a27ce6d.js.下载" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/statics/F-22战斗机_百度百科_files/wiki-lemma-module_2676ad3.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/statics/F-22战斗机_百度百科_files/wiki-lemma_8433d50.js.下载" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/statics/F-22战斗机_百度百科_files/wiki-lemma_cda086e.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/statics/F-22战斗机_百度百科_files/zcqm.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/statics/F-22战斗机_百度百科_files/zhixin_3b0d7a5.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/statics/F-22战斗机_百度百科_files/zhixin_ea4d2ff.js.下载" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/statics/bootstrap-3.3.7-dist/css/bootstrap-theme.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/statics/bootstrap-3.3.7-dist/css/bootstrap-theme.css.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/statics/bootstrap-3.3.7-dist/css/bootstrap-theme.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/statics/bootstrap-3.3.7-dist/css/bootstrap-theme.min.css.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/statics/bootstrap-3.3.7-dist/css/bootstrap.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/statics/bootstrap-3.3.7-dist/css/bootstrap.css.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/statics/bootstrap-3.3.7-dist/css/bootstrap.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/statics/bootstrap-3.3.7-dist/css/bootstrap.min.css.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/statics/bootstrap-3.3.7-dist/fonts/glyphicons-halflings-regular.eot" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/statics/bootstrap-3.3.7-dist/fonts/glyphicons-halflings-regular.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/statics/bootstrap-3.3.7-dist/fonts/glyphicons-halflings-regular.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/statics/bootstrap-3.3.7-dist/fonts/glyphicons-halflings-regular.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/statics/bootstrap-3.3.7-dist/fonts/glyphicons-halflings-regular.woff2" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/statics/bootstrap-3.3.7-dist/js/bootstrap.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/statics/bootstrap-3.3.7-dist/js/bootstrap.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/statics/bootstrap-3.3.7-dist/js/npm.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/statics/css/font.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/statics/css/layui.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/statics/css/xadmin.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/statics/fonts/iconfont.eot" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/statics/fonts/iconfont.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/statics/fonts/iconfont.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/statics/fonts/iconfont.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/statics/js/echarts/config.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/statics/js/echarts/echarts.all.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/statics/js/echarts/echarts.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/statics/js/echarts/esl.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/statics/js/echarts/jquery-3.2.1.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/statics/js/echarts/jquery.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/statics/js/xadmin.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/statics/map/echarts.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/statics/map/jquery-3.2.1.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/F-22战斗机_百度百科.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/add_card_template.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/add_edit_general.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/add_edit_mode.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/add_knowledge_card.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/add_require_wikipedia.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/add_wikipedia_template.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/base.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/card_template.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/datashow.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/edit_card_template.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/edit_knowledge_card.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/edit_require_wikipedia.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/edit_wikipedia_template.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/knowledge_card.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/knowledge_card_preview.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/knowledge_creat.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/not_find.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/noumenon_add.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/noumenon_edit.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/table.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/tree_legend.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/upload_file/知识构建与管理工具设计文档-1014-16.docx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/upload_file/知识构建与管理工具设计文档-V0.1(1).docx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/deployment.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/deployment.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/statics/js/echarts/china.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/knowledge_building/map_previews.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/service_interface/service_interface.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/spectrum_analysis/analysis_aide.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/spectrum_analysis/mapshow.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/useless/timeline.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test_folder/可靠数字孪生.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test_folder/多尺度.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test_folder/自愈控制机理与模型研究.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test_folder/软件缺陷军事规律.xlsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/KG_manage/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/KG_manage/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/KG_manage/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/KG_manage/settings.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/KG_manage/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/KG_manage/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/kg_code_manage/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/kg_code_manage/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/kg_code_manage/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/kg_code_manage/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/statics/admin/css/reset.css" beforeDir="false" afterPath="$PROJECT_DIR$/statics/admin/css/reset.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/statics/css/style.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/statics/css/style.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/F-22战斗机_百度百科.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/add_card_template.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/card_template/add_card_template.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/add_edit_general.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/add_edit_mode.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/add_knowledge_card.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/knowledge_card/add_knowledge_card.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/add_require_wikipedia.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/require_wikipedia/add_require_wikipedia.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/add_wikipedia_template.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/wikipedia_template/add_wikipedia_template.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/card_template.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/card_template/card_template.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/datashow.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/spectrum_analysis/datashow.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/edit_card_template.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/card_template/edit_card_template.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/edit_knowledge_card.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/knowledge_card/edit_knowledge_card.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/edit_require_wikipedia.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/require_wikipedia/edit_require_wikipedia.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/edit_wikipedia_template.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/wikipedia_template/edit_wikipedia_template.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/model_create.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/model_create.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/test.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/test.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/upload_file/网址.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/knowledge_card.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/knowledge_card/knowledge_card.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/knowledge_card_preview.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/knowledge_card/knowledge_card_preview.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/knowledge_creat.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/useless/knowledge_creat.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/knowledge_wikipedia.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/useless/knowledge_wikipedia.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/map_previews.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/model_create.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/knowledge_building/model_create.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/noumenon_add.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/business_model/noumenon_add.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/noumenon_edit.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/business_model/noumenon_edit.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/require_wikipedia.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/require_wikipedia/require_wikipedia.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/require_wikipedia_preview.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/require_wikipedia/require_wikipedia_preview.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/table.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/business_model/table.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/template_preview.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/wikipedia_template/template_preview.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/test.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/tree_legend.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/useless/tree_legend.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/wikipedia_template.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/wikipedia_template/wikipedia_template.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -177,23 +82,31 @@
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/templates" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="restartRequiresConfirmation" value="false" />
     <property name="settings.editor.selected.configurable" value="web.server" />
     <property name="two.files.diff.last.used.file" value="$PROJECT_DIR$/../KG_manage(3)/KG_manage3/manage.py" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\liubing\Desktop\KG_manage\templates" />
+      <recent name="C:\Users\liubing\Desktop\KG_manage\statics\js\echarts" />
       <recent name="C:\Users\liubing\Desktop\KG_manage" />
       <recent name="D:\project\KG_manage\upload_file" />
       <recent name="D:\project\KG_manage\statics" />
-      <recent name="D:\project\KG_manage\kg_code_manage" />
-      <recent name="D:\project\KG_manage\templates" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\liubing\Desktop\KG_manage\templates\useless" />
+      <recent name="C:\Users\liubing\Desktop\KG_manage\templates\service_interface" />
+      <recent name="C:\Users\liubing\Desktop\KG_manage\templates\knowledge_building" />
+      <recent name="C:\Users\liubing\Desktop\KG_manage\templates\common" />
+      <recent name="C:\Users\liubing\Desktop\KG_manage\templates\business_model" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -224,7 +137,7 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="launchJavascriptDebuger" value="false" />
       <option name="port" value="8001" />
-      <option name="host" value="127.0.0.1" />
+      <option name="host" value="0.0.0.0" />
       <option name="additionalOptions" value="" />
       <option name="browserUrl" value="" />
       <option name="runTestServer" value="false" />
@@ -257,7 +170,12 @@
       <workItem from="1603069000575" duration="5497000" />
       <workItem from="1603076666028" duration="20076000" />
       <workItem from="1603119880355" duration="786000" />
-      <workItem from="1603154861767" duration="4084000" />
+      <workItem from="1603154861767" duration="7003000" />
+      <workItem from="1603172207348" duration="16228000" />
+      <workItem from="1603198671275" duration="609000" />
+      <workItem from="1603240263786" duration="11511000" />
+      <workItem from="1603256135072" duration="6444000" />
+      <workItem from="1603265000215" duration="5263000" />
     </task>
     <servers />
   </component>
@@ -339,8 +257,8 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/templates/model_create.html</url>
-          <line>108</line>
+          <url>file://$PROJECT_DIR$/templates/knowledge_building/model_create.html</url>
+          <line>112</line>
           <option name="timeStamp" value="6" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
@@ -353,22 +271,17 @@
           <line>90</line>
           <option name="timeStamp" value="9" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/templates/datashow.html</url>
-          <line>53</line>
-          <option name="timeStamp" value="10" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/templates/datashow.html</url>
-          <line>314</line>
-          <option name="timeStamp" value="12" />
-        </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/kg_code_manage/views.py</url>
-          <line>22</line>
-          <option name="timeStamp" value="7" />
+          <line>123</line>
+          <option name="timeStamp" value="13" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+    <watches-manager>
+      <configuration name="Python.DjangoServer">
+        <watch expression="insert_map_data[0]" />
+      </configuration>
+    </watches-manager>
   </component>
 </project>
