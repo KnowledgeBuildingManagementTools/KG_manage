@@ -1,3 +1,4 @@
+{#todo liuyue#}
 {% extends 'index.html' %}
 {% load static %}
 {% block mycss %}
@@ -17,17 +18,12 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="row">
-                            <div class="col-xs-2">
-                                <select name="noumenon" id="noumenon" class="btn btn-default dropdown-toggle">
-                                    <option value="">请输入本体名称</option>
-                                    {% for noumenon in noumenons %}
-                                        <option value="{{ noumenon }}">{{ noumenon }}</option>
-                                    {% endfor %}
-                                </select>
-                            </div>
-                            <div class="col-xs-3">
-                                <input type="text" id="entity" class="form-control" placeholder="请输入实体名称" value="">
-                            </div>
+                            <div class="col-xs-2"><input type="text" placeholder="请输入开始节点" id="start_point"
+                                                         class="form-control"></div>
+                            <div class="col-xs-2"><input type="text" placeholder="请输入结束节点" id="end_point"
+                                                         class="form-control"></div>
+                            <div class="col-xs-2"><input type="text" placeholder="请输入最大跳数" id="max_num"
+                                                         class="form-control"></div>
                             <div class="col-xs-2">
                                 <input type="button" class="btn btn-w-md btn-primary" value="查询" id="noumenon_serach">
                             </div>
@@ -59,18 +55,14 @@
         document.getElementById("gltfx").style.backgroundColor = 'rgba(30,21,21,0.44)';
 
 
-
         $('#noumenon_serach').click(function () {
-
-            var noumenon = $('#noumenon').val();
-            var entity = $('#entity').val();
-            console.log(noumenon, entity);
-
+            var start_point = $('#start_point').val();
+            var end_point = $('#end_point').val();
+            var max_mun = $('#max_mun').val();
             var formdata = new FormData();
-
-
-            formdata.append("noumenon", noumenon);
-            formdata.append("entity", entity);
+            formdata.append("start_point", start_point);
+            formdata.append("end_point", end_point);
+            formdata.append("end_point", end_point);
 
 
             $.ajax({
@@ -190,6 +182,8 @@
                     edgeLabel: {
                         normal: {
                             show: true,
+
+
                             formatter: function (x) {
                                 return x.data.type;
                             },
@@ -220,12 +214,18 @@
                             position: 'inside',//相对于节点标签的位置，默认在节点中间
                             color: '#ffffff',
                             //回调函数，你期望节点标签上显示什么
+
+
                             formatter: function (x) {
                                 if (x.data.properties.name !== undefined)
-                                    return x.data.properties.name;
+                                    return huanhang(x.data.properties.name);
+                                    {#return x.data.properties.name;#}
                                 else if (x.data.properties.title !== undefined)
-                                    return x.data.properties.title;
-                                else return x.data.label;
+                                    return huanhang(x.data.properties.title);
+                                    {#return x.data.properties.title;#}
+                                else
+                                    return huanhang(x.data.label);
+                                {#return x.data.label;#}
                             },
                             textStyle: {
                                 fontSize: 10
@@ -247,86 +247,100 @@
             myChart.setOption(option, true);
             {#TODO 双击事件，最终目的#}
             myChart.on('dblclick', function (params) { //双击事件
-                console.log(params.data.id);
-                console.log(option.series[0].data.length);
-                //根据params.data.id或其它唯一标识符请求节点相关数据，拿到数据push到option.series[0].data和option.series[0].links
+                    if (params.dataType === "node") {
+                        console.log("双击事件发生");
+                        console.log(params);
 
-                {#TODO 请求后端数据接口未写#}
-                var a = [{
-                    "id": 80,
-                    "uuid": "XDETGG10",
-                    "label": "PICTURE",
-                    "properties": {
-                        "born": "1956",
-                        "name": "Tom Hanks"
-                    }
-                },
-                    {
-                        "id": 81,
-                        "uuid": "XDETGG11",
-                        "label": "TELEPLAY",
-                        "properties": {
-                            "born": "1956",
-                            "name": "Tom Hanks"
+                        console.log(params.data.id);
+                        console.log(option.series[0].data.length);
+                        //根据params.data.id或其它唯一标识符请求节点相关数据，拿到数据push到option.series[0].data和option.series[0].links
+
+                        res_data = request_data(params.data.id, params.data.uuid, params.data.label);
+                        console.log(res_data);
+                        var a = res_data.data.nodes;
+                        var b = res_data.data.edges;
+
+                        console.log(a, b,"11111111111");
+
+                        {#TODO 请求后端数据接口未写#}
+                       {% comment %} var a = [{
+                            "id": 80,
+                            "uuid": "XDETGG10",
+                            "label": "PICTURE",
+                            "properties": {
+                                "born": "1956",
+                                "name": "Tom Hanks"
+                            }
+                        },
+                            {
+                                "id": 81,
+                                "uuid": "XDETGG11",
+                                "label": "TELEPLAY",
+                                "properties": {
+                                    "born": "1956",
+                                    "name": "Tom Hanks"
+                                }
+                            }];
+                        var b = [{
+                            source: '75',
+                            target: '80',
+                            "type": "ACTED_IN",
+                            "id": 200
+                        }, {
+                            source: '75',
+                            target: '81',
+                            "type": "ACTED_IN",
+                            "id": 200
+                        }];
+{% endcomment %}
+
+                        {#TODO 节点新增类型#}
+                        length = Object.keys(types).length;
+                        for (i = categories.length; i < length; i++) {
+                            categories[i] = {
+                                name: '类目' + i
+                            };
+                            option.legend[0].data.push('类目' + i)
                         }
-                    }];
-                var b = [{
-                    source: '75',
-                    target: '80',
-                    "type": "ACTED_IN",
-                    "id": 200
-                }, {
-                    source: '75',
-                    target: '81',
-                    "type": "ACTED_IN",
-                    "id": 200
-                }];
+                        console.log(categories);
+                        {#TODO 节点查重#}
+                        for (i = 0; i < a.length; i++) { //节点查重
+                            for (var j = 0; j < nodes.length; j++) {
+                                var repeat = false;
+                                if (a[i].id === nodes[j].id) {
+                                    repeat = true;
+                                    break;
+                                }
+                            }
+                            if (!repeat) {
+                                if (!types.hasOwnProperty(a[i].label)) {
+                                    types[a[i].label] = categoryi;
+                                    categoryi++;
+                                }
+                                a[i].category = types[a[i].label];
+                                nodes.push(a[i]);
+                            }
+                        }
 
-
-                {#TODO 节点新增类型#}
-                length = Object.keys(types).length;
-                for (i = categories.length; i < length; i++) {
-                    categories[i] = {
-                        name: '类目' + i
-                    };
-                    option.legend[0].data.push('类目' + i)
+                        {#TODO 边查重#}
+                        for (i = 0; i < b.length; i++) { //边查重
+                            for (j = 0; j < edges.length; j++) {
+                                repeat = false;
+                                if (a[i].id === edges[j].id) {
+                                    repeat = true;
+                                    break;
+                                }
+                            }
+                            if (!repeat) {
+                                edges.push(b[i]);
+                            }
+                        }
+                        myChart.setOption(option, true);
+                        console.log('legend.data', option.legend[0].data);
+                    }
                 }
-                console.log(categories);
-                {#TODO 节点查重#}
-                for (i = 0; i < a.length; i++) { //节点查重
-                    for (var j = 0; j < nodes.length; j++) {
-                        var repeat = false;
-                        if (a[i].id === nodes[j].id) {
-                            repeat = true;
-                            break;
-                        }
-                    }
-                    if (!repeat) {
-                        if (!types.hasOwnProperty(a[i].label)) {
-                            types[a[i].label] = categoryi;
-                            categoryi++;
-                        }
-                        a[i].category = types[a[i].label];
-                        nodes.push(a[i]);
-                    }
-                }
+            );//双击事件
 
-                {#TODO 边查重#}
-                for (i = 0; i < b.length; i++) { //边查重
-                    for (j = 0; j < edges.length; j++) {
-                        repeat = false;
-                        if (a[i].id === edges[j].id) {
-                            repeat = true;
-                            break;
-                        }
-                    }
-                    if (!repeat) {
-                        edges.push(b[i]);
-                    }
-                }
-                myChart.setOption(option, true);
-                console.log('legend.data', option.legend[0].data);
-            });//双击事件
 
             document.oncontextmenu = function () {
                 return false;
@@ -381,10 +395,42 @@
                     menulistbox.append(li);
                 });
                 menubox.css({
-                    "left": params.event.offsetX,
-                    "top": params.event.offsetY
+                    "left": params.event.event.clientX,
+                    "top": params.event.event.clientY
                 }).show();
             }
+        }
+
+        function huanhang(val) {
+            var strs = val.split(' '); //字符串数组
+            var str = '';
+            for (var i = 0, s; s = strs[i++];) { //遍历字符串数组
+                str += s;
+                if (!(i % 1)) str += '\n'; //按需要求余
+            }
+            return str
+        }
+
+        function request_data(id, uuid, label) {
+
+            var res_data = "";
+            $.ajax({
+                url: '{% url 'node_side_nodes' %}',
+                type: 'POST',
+                async: false,
+                data: {"id": id, "uuid": uuid, "label": label},
+                processData: false, // 使数据不做处理
+                contentType: false, // 不要设置Content-Type请求头
+                success: function (data) {
+                    console.log(data);
+                    res_data = data;
+                    {#atlas(data.data.nodes, data.data.edges)#}
+                },
+                error: function (response) {
+                    console.log(response);
+                }
+            });
+            return res_data
         }
     </script>
 {% endblock %}

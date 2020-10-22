@@ -1,0 +1,812 @@
+// var apiUrl = "http://localhost/cg_unit"
+// var apiUrl = "http://localhost:8082/cg_unit"
+
+var apiUrl = "/cg_unit"; //数据请求
+// var apiUrl = "http://172.16.13.61:10087/cg_admin"; //数据请求
+// var apiUrl = "http://192.168.31.10:8082/cg_unit"; //数据请求
+// var apiUrl = "http://172.20.10.2:8082/cg_unit"; //数据请求
+var pubapi ="/api/rest/api/v1.0/pc/content";
+var imgUrl = "/"; // 附件地址
+var imgUrlUeditor = "/cg_unit/ueditor/config"; //百度编辑器
+var webserviece_api = '/'; // webservice 接口
+var collectUrl = "";
+var searchUrl = "/api/rest/api/v1.0/app/global/search"//首页搜索url地址
+//电子招标地址
+//var dzzb = "http://106.38.97.84:41021/sso/index.html";
+var dzzb = "http://ztb.weain.mil.cn/sso/index.html";
+var gfzscq = 'http://gfzscq.weain.mil.cn/';
+//智能推送
+// var baseUrl = 'http://120.27.21.6:82'; //测试环境
+var baseUrl = "";   //本地环境和生产环境
+
+
+/**
+ * 默认的列表页分页每页显示条数
+ * @author WiuLuS
+ * @type {number}
+ */
+var defaultListPageLimit = 10 ;
+var defaultStaticListPageLimit = 20 ;
+document.write("<script language=javascript src='./grayscale.js'></script>");
+//一键置灰
+ajaxAsync('get', '/cgconfigeration/isGray', '', function(res){
+    var navStr = navigator.userAgent.toLowerCase();
+    var gray = res
+    if( gray == 1 )
+      {
+          if(navStr.indexOf("msie 10.0")!==-1||navStr.indexOf("rv:11.0")!==-1){ // 判断是IE10或者IE11
+              grayscale(document.body);
+              grayscale(document.getElementsByTagName("img"));
+          }
+          $("html").addClass("site-gray");
+          // $(this).attr("data-gray", 1);
+      }
+    else
+      {
+          if(navStr.indexOf("msie 10.0")!==-1||navStr.indexOf("rv:11.0")!==-1){ // 判断是IE10或者IE11
+              grayscale.reset(document.body);
+              grayscale.reset(document.getElementsByTagName("img"));
+          }
+          $("html").removeClass("site-gray");
+          // $(this).attr("data-gray", 0);
+      }
+
+  })
+//获取随机字符串
+function generateUUID() {
+	var d = new Date().getTime();
+	if (window.performance && typeof window.performance.now === "function") {
+		d += performance.now(); //use high-precision timer if available
+	}
+	var uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+		var r = (d + Math.random() * 16) % 16 | 0;
+		d = Math.floor(d / 16);
+		return (c == 'x' ? r : (r & 0x3 | 0x8)).toString(16);
+	});
+	return uuid;
+}
+
+var key = CryptoJS.enc.Utf8.parse("LVT1q9c00W4BPmm9");//密钥
+
+//加密方法
+function Encrypt(word){
+	var srcs = CryptoJS.enc.Utf8.parse(word);
+	var encrypted = CryptoJS.AES.encrypt(srcs, key, {mode:CryptoJS.mode.ECB,padding: CryptoJS.pad.Pkcs7});
+	return encrypted.toString();
+}
+
+// 解密方法
+function Decrypt(word){
+	var decrypt = CryptoJS.AES.decrypt(word, key, {mode:CryptoJS.mode.ECB,padding: CryptoJS.pad.Pkcs7});
+	return CryptoJS.enc.Utf8.stringify(decrypt).toString();
+}
+
+//表单格式转换
+function getData (dataObject){
+	var keys = [];
+	if ($.isPlainObject(dataObject)){
+        for (var o in dataObject) {
+        	keys.push(o + '=' + dataObject[o]);
+        }
+    } else {
+        for (var i=0;i<dataObject.length;i++){
+            var map = dataObject[i];
+            keys.push(map.name + '=' + map.value);
+        }
+    }
+	// for (var o in dataObject) {
+	//     console.log(o)
+	//     console.log(dataObject[o])
+	// 	keys.push(o + '=' + dataObject[o]);
+	// }
+	var retstr = keys.join('&');
+	return retstr;
+}
+
+/**
+ *  ajax 对应实体类的方法 CgMemberEntity cgMemberEntity
+ */
+function ajax(type, url, data, success, error, isEncrypt) {
+	isEncrypt = isEncrypt || "isNotEncrypt";
+	var headers = {
+		token: Cookies.get('unit_token') || '',
+		'Content-Type': 'application/x-www-form-urlencoded',
+		isEncrypt:isEncrypt
+	}
+	var dataParams = '';
+	if(isEncrypt=="isEncrypt"){
+		var parameters = '';
+		if(data){
+		    if (data instanceof Object) {
+                data = getData(data);
+            }
+			parameters = Encrypt(decodeURI(data));
+		}
+		var time = getServiceTime();
+		var autograph = Encrypt(time+parameters)
+		var randomNum = generateUUID();
+        // headers.seretBody = parameters;
+        if(type.toUpperCase()=="GET"){
+            dataParams = {"seretBody":parameters,"sign":autograph};
+        }else {
+            dataParams = JSON.stringify({"seretBody":parameters,"sign":autograph});
+        }
+		headers.timestamp = time;
+		// headers.sign = autograph;
+		headers.nonce = randomNum;
+	}else{
+		dataParams = data;
+	}
+	if(type.toUpperCase()=="GET"){
+		if(url.indexOf("?")>=0){
+			url += "&_t=" + new Date().getTime();
+		}else{
+			url += "?_t=" + new Date().getTime();
+		}
+	}
+	$.ajax({
+		headers: headers,
+		url: apiUrl + url,
+		type: type,
+		data: dataParams,
+		success: function (res) {
+			if(res.code==401){//token失效
+				layer.msg("登陆状态失效，请重新登陆",{time:2000},function(){
+					Cookies.remove("unit_token")
+					localStorage.removeItem("user");
+					window.location.href = "/login.html";
+				});
+            }else{
+                success && success(res)
+            }
+		},
+		error: function (err) {
+			error && error(err)
+		}
+
+	});
+}
+
+/**
+ *  ajaxRaw json请求的方法 @RequestBody LoginForm form
+ */
+function ajaxRaw(type, url, data, success, error, isEncrypt) {
+	isEncrypt = isEncrypt || "isNotEncrypt";
+	var headers = {
+		token: Cookies.get('unit_token') || '',
+		'Content-Type': 'application/json',
+		isEncrypt:isEncrypt
+	}
+	var dataParams = '';
+	if(isEncrypt=="isEncrypt"){
+		var parameters = '';
+		if(data){
+            if (data instanceof Object) {
+                data = getData(data);
+            }
+            var dataTemp = null;
+            try {
+                dataTemp = decodeURI(data.replace(/%/g,"%25"));
+            }catch (e) {
+                dataTemp = data;
+            }
+            parameters = Encrypt(dataTemp);
+		}else if(url.indexOf("?")!=-1){
+			parameters = Encrypt(decodeURI(url.substring(url.indexOf("?")+1)));
+			url = url.substring(0, url.indexOf("?"))
+		}
+		var time = getServiceTime();
+		var autograph = Encrypt(time+parameters)
+		var randomNum = generateUUID();
+		// headers.seretBody = parameters;
+        if(type.toUpperCase()=="GET"){
+            dataParams = {"seretBody":parameters,"sign":autograph};
+        }else {
+            dataParams = JSON.stringify({"seretBody":parameters,"sign":autograph});
+        }
+		headers.timestamp = time;
+		// headers.sign = autograph;
+		headers.nonce = randomNum;
+	}else{
+		dataParams = data;
+	}
+	if(type.toUpperCase()=="GET"){
+		if(url.indexOf("?")>=0){
+			url += "&_t=" + new Date().getTime();
+		}else{
+			url += "?_t=" + new Date().getTime();
+		}
+	}
+	$.ajax({
+		url: apiUrl + url,
+		headers: headers,
+		type: type,
+		data: dataParams,
+		dataType: "json",
+		success: function (res) {
+
+			if(res.code==401){//token失效
+				layer.msg("登陆状态失效，请重新登陆",{time:2000},function(){
+					Cookies.remove("unit_token")
+					localStorage.removeItem("user");
+					window.location.href = "/login.html";
+				});
+            }else{
+                success && success(res)
+            }
+		},
+		error: function (err) {
+			error && error(err)
+		}
+	});
+}
+
+/**
+ *  同步的ajax请求
+ */
+function ajaxAsync(type, url, data, success, error, isEncrypt) {
+	isEncrypt = isEncrypt || "isNotEncrypt"
+	var headers = {
+		token: Cookies.get('unit_token') || '',
+		'Content-Type': 'application/json',
+		isEncrypt:isEncrypt
+	}
+	var dataParams = '';
+	if(isEncrypt=="isEncrypt"){
+		var parameters = '';
+		if(data){
+			parameters = Encrypt(getData(JSON.parse(data)));
+		}
+		var time = getServiceTime();
+		var autograph = Encrypt(time+parameters)
+		var randomNum = generateUUID();
+        // headers.seretBody = parameters;
+        if(type.toUpperCase()=="GET"){
+            dataParams = {"seretBody":parameters,"sign":autograph};
+        }else {
+            dataParams = JSON.stringify({"seretBody":parameters,"sign":autograph});
+        }
+		headers.timestamp = time;
+		// headers.sign = autograph;
+		headers.nonce = randomNum;
+	}else{
+		dataParams = data;
+	}
+	if(type.toUpperCase()=="GET"){
+		if(url.indexOf("?")>=0){
+			url += "&_t=" + new Date().getTime();
+		}else{
+			url += "?_t=" + new Date().getTime();
+		}
+	}
+	$.ajax({
+		url: apiUrl + url,
+		headers: headers,
+		type: type,
+		data: dataParams,
+		async: false,
+		dataType: "json",
+		success: function (res) {
+			if(res.code==401){//taken失效
+				layer.msg("登陆状态失效，请重新登陆",{time:2000},function(){
+					Cookies.remove("unit_token")
+					localStorage.removeItem("user");
+					window.location.href = "/login.html";
+				});
+            }else{
+                success && success(res)
+            }
+		},
+		error: function (err) {
+			error && error(err)
+		}
+	});
+}
+
+
+/**
+ * 发布平台
+ */
+function ajaxRawPub(type, url, data, success, error) {
+    if(type.toUpperCase()=="GET"){//ie get缓存兼容
+      if(url.indexOf("?")>=0){
+        url += "&_t=" + new Date().getTime();
+      }else{
+        url += "?_t=" + new Date().getTime();
+      }
+    }
+    $.ajax({
+        url:  url,
+        headers: {
+            token: Cookies.get('unit_token') || '',
+            'Content-Type': 'application/json',
+            isEncrypt:"isNotEncrypt"
+        },
+        type: type,
+        data: data,
+        dataType: "json",
+        success: function (res) {
+            if(res.code==401){//token失效
+                layer.msg("登陆状态失效，请重新登陆",{time:2000},function(){
+                    Cookies.remove("unit_token")
+                    localStorage.removeItem("user");
+                    window.location.href = "/login.html";
+                });
+            }else{
+                success && success(res)
+            }
+        },
+        error: function (err) {
+            error && error(err)
+        }
+    });
+}
+
+/**
+ * 发送请求到发布平台，url前边不添加apiUrl ，此方法是从 common.js 里边copy过来的，因为那个里边url都统一加了 apiUrl
+ * 导致访问路径 404 所以在这里又新增了一个方法。区别于 common.js 里边的。
+ * @param type
+ * @param url
+ * @param data
+ * @param success
+ * @param error
+ * @author WiuLuS : 小党
+ */
+function ajaxRawGetApi(type, url, data, success, error) {
+    if(type.toUpperCase()=="GET"){//ie get缓存兼容
+      if(url.indexOf("?")>=0){
+        url += "&_t=" + new Date().getTime();
+      }else{
+        url += "?_t=" + new Date().getTime();
+      }
+    }
+    $.ajax({
+        url: url,
+        headers: {
+            token: Cookies.get('unit_token') || '',
+            'Content-Type': 'application/json',
+            isEncrypt:"isNotEncrypt"
+        },
+        type: type,
+        data: data,
+        dataType: "json",
+        success: function (res) {
+            if(res.code==401){//token失效
+              layer.msg("登陆状态失效，请重新登陆",{time:2000},function(){
+                Cookies.remove("unit_token")
+                localStorage.removeItem("user");
+                window.location.href = "/login.html";
+              });
+            }else{
+                success && success(res)
+            }
+        },
+        error: function (err) {
+            error && error(err)
+        }
+    });
+}
+
+// function ajaxNoToken(type, url, data, success, error) {
+//     var _self = $(this);
+//     _self.off('click', ajaxNoToken);
+//     if(type.toUpperCase()=="GET"){
+//       if(url.indexOf("?")>=0){
+//         url += "&_t=" + new Date().getTime();
+//       }else{
+//         url += "?_t=" + new Date().getTime();
+//       }
+//     }
+//     $.ajax({
+//         url: apiUrl + url,
+//         type: type,
+//         data: data,
+//         success: function (res) {
+//           _self.on('click', ajaxNoToken);
+
+//           if(res.code==401){
+//             // layer.msg(res.msg);
+//             Cookies.remove("unit_token")
+//             localStorage.removeItem("user");
+//             window.location.href = "/login.html";
+//           }
+//           success && success(res)
+//         },
+//         error: function (err) {
+//           _self.on('click', ajaxNoToken);
+//           // alert("报错了")
+//           error && error(err)
+//         }
+//     });
+// }
+
+function ajaxRawGetApiNoToken(type, url, data, success, error) {
+  if(type.toUpperCase()=="GET"){//ie get缓存兼容
+    if(url.indexOf("?")>=0){
+      url += "&_t=" + new Date().getTime();
+    }else{
+      url += "?_t=" + new Date().getTime();
+    }
+  }
+  $.ajax({
+      url: url,
+      headers: {
+          'Content-Type': 'application/json',
+          isEncrypt:"isNotEncrypt"
+      },
+      type: type,
+      data: data,
+      dataType: "json",
+      success: function (res) {
+          if(res.code==401){//token失效
+            Cookies.remove("unit_token")
+            localStorage.removeItem("user");
+            window.location.href = "/login.html";
+          }else{
+            success && success(res)
+          }
+      },
+      error: function (err) {
+          error && error(err)
+      }
+  });
+}
+
+//图片上传
+function ajaxImg(url, formdata, success, error) {
+  $.ajax({
+    url: apiUrl + url,
+    headers: {
+          token: Cookies.get('unit_token') || '',
+          isEncrypt:"isNotEncrypt"
+    },
+    type: 'post',
+    contentType: false,
+    data: formdata,
+    processData: false,
+    mimeType:"multipart/form-data",
+    dataType: "json",
+    success: function (res) {
+      if(res.code==401){//taken失效
+        layer.msg("登陆状态失效，请重新登陆",{time:2000},function(){
+          Cookies.remove("unit_token")
+          localStorage.removeItem("user");
+          window.location.href = "/login.html";
+        });
+      }else{
+          success && success(res)
+      }
+
+    },
+    error: function (err) {
+      error && error(err)
+    }
+  });
+}
+
+$(function () {
+  $.fn.serializeJson = function () {
+    // 定义一个json对象
+    var serializeObj = {};
+    // this 就是谁调用，就把谁转换为数组
+    var array = this.serializeArray();
+    //遍历数组，
+    $(array).each(function () {
+      //判断是否有对应的名称
+      if (serializeObj[this.name]) {
+        //判断这个名称是否有值，若有多个值，则多个值存到一个数组中
+        if ($.isArray(serializeObj[this.name])) {
+          //若有值，则追加。
+          serializeObj[this.name].push(this.value);
+        } else {
+          serializeObj[this.name] = [serializeObj[this.name], this.value];
+        }
+      } else {
+        // 若无对应的名称 ,则创建名称。然后赋值
+        serializeObj[this.name] = this.value;
+      }
+    });
+    return serializeObj;
+  };
+  // $('.dropdown-toggle').dropdown();
+});
+
+/**
+ * 退出登录
+ */
+function clearLoginInfo() {
+  //document.cookie = "";
+  //清空cookies
+  // console.log(Cookies.get('unit_token'));
+  Cookies.remove("unit_token");
+  // console.log("after remove==="+Cookies.get('unit_token'));
+  //把用户信息删了
+  localStorage.removeItem("user");
+  //把判断用户是否为监管角色状态删除
+  localStorage.removeItem("userMonitorType");
+  //   智能分析start
+Cookies.remove("symbol");
+Cookies.remove("userId");
+Cookies.remove("pushListLength");
+Cookies.remove("pageNo");
+//   智能分析end
+  window.location.href="/";
+  //document.URL=location.href;
+}
+
+//  去掉url中的特殊字符
+function paramsFilter(s) {
+	if(s==undefined|| s==null){
+		return "";
+	}
+	s=s.replace(/\=/g,"");
+	s=s.replace(/\>/g,"");
+	s=s.replace(/\</g,"");
+	s=s.replace(/\%3D/g,"");
+	s=s.replace(/\%3C/g,"");
+	s=s.replace(/\%3D/g,"");
+	return s;
+}
+
+//去掉url中的信息中的特殊字符 防止xss攻击
+function getUrlJson() {
+    var json = {};
+    if (location.search) {
+      var search = location.search.split("?")[1];
+      var searchArray = search.split("&");
+        for (var i in searchArray) {
+            json[searchArray[i].split("=")[0]] = paramsFilter(searchArray[i].split("=")[1])
+        }
+    }
+    return json
+}
+
+var fileSizeType = [];
+fileSizeType[0] = "B" ;
+fileSizeType[1] = "KB" ;
+fileSizeType[2] = "MB" ;
+fileSizeType[3] = "GB" ;
+fileSizeType[4] = "TB" ;
+
+/**
+ * 根据 type 的不同进行文件大小单位转换
+ * @param type  文件大小单位，类型为String
+ * @param fileSize  单位为 B 的文件大小，类型为String
+ * @return 文件大小(向上取整) 类型为String（含单位标识）
+ */
+function getFileSizeBy(type , fileSize) {
+    if (type === fileSizeType[0]){
+        return fileSize + fileSizeType[0];
+    }else if (type === fileSizeType[1]){
+        return Math.ceil(parseInt(fileSize)/1024) ;
+    }else if (type === fileSizeType[2]){
+        return Math.ceil(parseInt(fileSize)/1024/1024);
+    }else if (type === fileSizeType[3]){
+        return Math.ceil(parseInt(fileSize)/1024/1024/1024) ;
+    }else if (type === fileSizeType[4]){
+        return Math.ceil(parseInt(fileSize)/1024/1024/1024/1024) ;
+    }
+}
+
+
+$(function(){
+    $('.computeDaysRemain').each(
+        function () {
+            //获取当前天数
+            var panda = $(this).data("panda");
+            //计算剩余天数
+            //replace 处理ie date.parse()兼容问题
+                var days = computeDaysRemain(panda);
+                //插入进去
+                $(this).html("剩<span class=\"number\" style=\"color: red\"> " + days + " </span>天");
+        }
+    )
+});
+
+
+
+/**
+ *传入截止时间，和当前时间对比，计算剩余天数
+ *
+ * @param sDate1
+ * @param sDate2
+ * @returns {number}
+ */
+function computeDaysRemain(sDate1) {
+    //sDate1和sDate2是2006-12-18格式
+    if (!sDate1){
+        return 0;
+    }
+    try {
+        if (sDate1.length>10){
+            sDate1 = sDate1.substring(0,10);
+        }
+        var dateSpan, iDays, sDate2 ;
+        sDate2 = Date.parse(new Date());
+        sDate1 = Date.parse(sDate1);
+        if (sDate1 < sDate2) {
+            return 0;
+        }
+        dateSpan = Math.abs(sDate1 - sDate2);
+        iDays = Math.ceil(dateSpan / (24 * 3600 * 1000));
+        if (isRealNum(iDays)) {
+            return iDays >= 0 ? iDays : 0;
+        }
+        return 0;
+    } catch (e) {
+        console.log(e.name + ": " + e.message);
+        return 0;
+    }
+}
+function isRealNum(val) {
+    // isNaN()函数 把空串 空格 以及NUll 按照0来处理 所以先去除
+    if (val === "" || val == null) {
+        return false;
+    }
+    if (!isNaN(val)) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+/**
+ * 获取url中指定参数的值
+ * @param variable  url中的参数名
+ * @return url中指定参数的值
+ */
+function getQueryVariable(variable) {
+    var query = window.location.search.substring(1);
+    var vars = query.split("&");
+    for (var i = 0; i < vars.length; i++) {
+        var pair = vars[i].split("=");
+        if (pair[0] == variable) {
+            return pair[1];
+        }
+    }
+    return "";
+}
+
+/**
+ * 进入投诉页面
+ * unitId  投诉来源稿件所属单位ID
+ * unitName 投诉来源稿件所属单位名称
+ * sourceId 投诉来源稿件ID
+ * sourceTitle 投诉来源稿件标题
+ * sourceType 投诉来源稿件入口：10、用户中心；20、采购公告；30、采购需求；40、集中采购；50、预研指南；60、装备市场准入 ；
+ *                              70、通用装备-产品征集；80、通用装备-目录更新需求；90、企业及产品-企业名录；100、企业及产品-产品技术
+ * sourceCreator 投诉来源稿件创建人
+ */
+function turnToComplain(unitId, unitName, sourceId, sourceTitle, sourceType, sourceCreator) {
+    var userD = window.localStorage.getItem('user');
+    if (userD) {
+        userD = JSON.parse(userD);
+    }
+    if (userD && userD.id === sourceCreator) {
+        layer.msg("不可以投诉自己",{time:3000})
+        return;
+    }
+    window.location.href = "/advisoryComplaints/detailsComplaint.html?unitId=" + unitId + "&unitName=" + encodeURIComponent(unitName)
+        + "&sourceId=" + sourceId + "&sourceTitle=" + encodeURIComponent(sourceTitle) + "&sourceType=" + sourceType + "&sourceCreator=" + sourceCreator;
+}
+
+// 列表全选
+/* checkbox全选 */
+$("#selectAll").click(function () {
+    $(":checkbox[name='checkboxid']").prop("checked", this.checked);
+});
+
+
+/*
+ * 根据Value格式化为带有换行、空格格式的HTML代码
+ * @param strValue {String} 需要转换的值
+ * @return  {String}转换后的HTML代码
+ * @example
+ * getFormatCode("测\r\n\s试")  =>  “测<br/> 试”
+ */
+var getFormatCode=function(strValue){
+  return strValue.replace(/\r\n/g, '<br/>').replace(/\n/g, '<br/>').replace(/\s/g, '&nbsp');
+};
+//获取服务器时间
+function getServiceTime() {
+    var res = null;
+    ajaxAsync("GET","/getTime","",function (data) {
+        if (data.code == 0) {
+            res = data.msg;
+            console.log(res);
+        }
+    });
+    return res;
+}
+
+/**
+ * 去外链
+ * @param name
+ */
+function toOuter(name) {
+    var url = '';
+    if (name == "dzzb" && dzzb){
+        url = dzzb
+    }
+    if (name == "gfzscq" && gfzscq) {
+        url = gfzscq
+    }
+    if (url) {
+        window.open(url);
+    }else {
+        layer.msg("功能暂未开通")
+        return
+    }
+}
+  //ie9 以下 placeholder属性bug修改
+//   $(function(){
+//       if(!placeholderSupport()){   // 判断浏览器是否支持 placeholder 不支持则执行一下自定义代码
+//           $('[placeholder]').focus(function() {
+//               var input = $(this);
+//               //判断如果你密码框，获取焦点之后属性修改为密码框 如果没有密码框此处判断可以删除 一下同理
+//               if(input[0].name.indexOf('password')>=0){
+//                 input.prop('type','password');
+//               }
+//               if (input.val() == input.attr('placeholder')) {
+//                   input.val('');
+//                   console.log('focus',input.val());
+//                   input.removeClass('placeholder');
+//               }
+//           }).blur(function() {
+//               var input = $(this);
+//               console.log(input.attr('placeholder'),input.val());
+//               if (input.val() == '' || input.val() == input.attr('placeholder')) {
+//                 //将所有input置为文本框  主要为了重置密码框
+//                   input.prop('type','text');
+//                   input.addClass('placeholder');
+//                   input.val(input.attr('placeholder'));
+//                   console.log('blur',input.val());
+//               }else{
+//                 //密码框填写密码后 密码后恢复 密码框
+//                 if(input[0].name.indexOf('password')>=0){
+//                   input.prop('type','password');
+//                 }
+//               }
+//           }).blur();
+//       };
+//   })
+// //判断placeholder属性是否可以使用的方法
+//   function placeholderSupport() {
+//       return 'placeholder' in document.createElement('input');
+//   }
+
+//兼容ie11localStorage不同页面值不同步问题
+window.onstorage = function(e) {
+    if (e.oldValue !== e.newValue){
+        window.localStorage.setItem(e.key,e.newValue);
+    }
+};
+
+function pushLogToPushService(title,publicUnit,userId,majorField,type,contentId) {
+    var data = {"title":title,"publicUnit":publicUnit,"userId":userId,"majorField":majorField,"type":type,"contentId":contentId};
+    ajaxRawGetApi("POST","/cg_push/push/behaviorLog/add",JSON.stringify(data));
+
+}
+function readPush(id) {
+    ajaxRawGetApi("GET","/cg_push/push/readPushById?id="+id);
+}
+
+function getBrowser() {
+    var ua = navigator.userAgent;//取得浏览器的userAgent字符串
+    if (/firefox/i.test(ua)) {
+        return "Firefox";
+    } else if (/chrome/i.test(ua)) {
+        return "Chrome";
+    }  else {
+        return "IE";
+    }
+}
+// 网站置灰
+function setGray() {
+    var grayCss = document.createElement("link");
+    grayCss.setAttribute("rel", "stylesheet");
+    grayCss.setAttribute("href", "../css/gray.css");
+    console.log(grayCss)
+    document.head.appendChild(grayCss);
+}
+// setGray()

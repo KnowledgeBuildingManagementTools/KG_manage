@@ -17,16 +17,8 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="row">
-                            <div class="col-xs-2">
-                                <select name="noumenon" id="noumenon" class="btn btn-default dropdown-toggle">
-                                    <option value="">请输入本体名称</option>
-                                    {% for noumenon in noumenons %}
-                                        <option value="{{ noumenon }}">{{ noumenon }}</option>
-                                    {% endfor %}
-                                </select>
-                            </div>
                             <div class="col-xs-3">
-                                <input type="text" id="entity" class="form-control" placeholder="请输入实体名称" value="">
+                                <input type="text" id="entity" class="form-control" placeholder="请输入事件名称" value="">
                             </div>
                             <div class="col-xs-2">
                                 <input type="button" class="btn btn-w-md btn-primary" value="查询" id="noumenon_serach">
@@ -59,16 +51,10 @@
 
         $('#noumenon_serach').click(function () {
 
-            var noumenon = $('#noumenon').val();
             var entity = $('#entity').val();
-            console.log(noumenon, entity);
-
             var formdata = new FormData();
 
-
-            formdata.append("noumenon", noumenon);
             formdata.append("entity", entity);
-
 
             $.ajax({
                 url: '{% url 'map_analysis' %}',

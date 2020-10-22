@@ -1,0 +1,2282 @@
+<!DOCTYPE html>
+<!-- saved from url=(0068)http://www.weain.mil.cn/yyzn/646076.shtml?v=20190610000000&id=646076 -->
+<html lang="zh-CN"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>预研指南详情</title>
+    <!--[if lt IE 9]>
+    <script src="./js/html5shiv.min.js"></script>
+    <script src="./js/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Bootstrap -->
+    <link href="./预研指南详情_files/bootstrap.min.css" rel="stylesheet">
+    <link href="./预研指南详情_files/font-awesome.min.css" rel="stylesheet">
+    <link href="./预研指南详情_files/bootstrap-datetimepicker.min.css" rel="stylesheet">
+    <link href="./预研指南详情_files/common.min.css" rel="stylesheet">
+    <link href="./预研指南详情_files/focusPurchaseDetail.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./预研指南详情_files/share.min.css">
+    <link rel="stylesheet" href="./预研指南详情_files/share.css">
+
+    <script src="./预研指南详情_files/jquery.min.js.下载"></script>
+    <script src="./预研指南详情_files/bootstrap.min.js.下载"></script>
+    <script src="./预研指南详情_files/validate.min.js.下载"></script>
+    <script src="./预研指南详情_files/cookie.min.js.下载"></script>
+    <script src="./预研指南详情_files/aes.js.下载"></script>
+    <script src="./预研指南详情_files/common.js.下载"></script><script language="javascript" src="./预研指南详情_files/grayscale.js.下载"></script>
+    <script src="./预研指南详情_files/moment-with-locales.min.js.下载"></script>
+    <script src="./预研指南详情_files/bootstrap-datetimepicker.min.js.下载"></script>
+    <script src="./预研指南详情_files/layui.all.js.下载"></script><link id="layuicss-laydate" rel="stylesheet" href="./预研指南详情_files/laydate.css" media="all"><link id="layuicss-layer" rel="stylesheet" href="./预研指南详情_files/layer.css" media="all"><link id="layuicss-skincodecss" rel="stylesheet" href="./预研指南详情_files/code.css" media="all">
+
+    <script src="./预研指南详情_files/core.js.下载"></script>
+    <script src="./预研指南详情_files/enc-base64.js.下载"></script>
+    <script src="./预研指南详情_files/consultAction.js.下载"></script>
+    <script type="text/javascript" src="./预研指南详情_files/protocolcheck.js.下载"></script>
+    <script src="./预研指南详情_files/yyzn_detail.js.下载"></script>
+    <style>
+        .requirementDetail .secret .nav .right .imgCollect.active {
+            background-image: url(/img/select_collect.png?v=62f163a1c6);
+            cursor: pointer
+        }
+        .describe{
+            font-family: 'Arial Negreta', 'Arial Normal', 'Arial';
+            font-weight: 700;
+            font-style: normal;
+            font-size: 11px;
+            color: #999999;
+            margin-left: 30px;
+            margin-top: 29px;
+        }
+        .errors{
+            height: auto!important;
+        }
+        .goLogin2{
+            text-align: center;
+            color: red;
+        }
+        .demandDocking .guide-form .form-group{
+            display:block;
+        }
+        .content div .txt{
+            margin-left:20px;
+        }
+        .form-control{
+            display: inline-block!important;
+        }
+        table{margin: 10px auto!important;max-width: 100%!important;}
+        table,table tr th, table tr td { border:1px solid #333; }
+        table { width: 800px; min-height: 25px; line-height: 25px; text-align: center; border-collapse: collapse;}
+        .base_form{overflow: hidden;}
+        .base_form>fieldset .base_left .form-group .input-wrapper>.form-control,.base_form>fieldset .base_right .form-group .input-wrapper>.form-control,.department .floor .form-group .input-wrapper>.form-control {
+            width: 255px;
+            height: 49px;
+        }
+        .floor .title{
+            font-weight: 700;
+            font-style: normal;
+            color: rgb(127, 127, 127);
+            font-size: 16px;
+        }
+        .aptitude{
+            margin-left: 179px;
+            font-family: 'Arial Negreta', 'Arial Normal', 'Arial';
+            font-weight: 700;
+            font-style: normal;
+            font-size: 11px;
+            color: #999999;
+        }
+        .sub-btn .basebtn{
+            width: 140px;
+            height: 40px;
+        }
+        .sub-btn button+button{
+            margin-left: 100px;
+        }
+        .demandDocking .guide-form .form-group select{
+            width: 828px;
+            background: #fff;
+            border: 1px solid #ccc;
+            height: 56px;
+        }
+        .project_detail{
+            border: 1px solid rgba(121, 121, 121, 1);
+        }
+        .demandDocking .guide-form .date>input{
+            width: 266px;
+        }
+        /* 清除button默认样式 */
+        .btn_clear{
+            border: 0;
+            background-color: transparent;
+            outline: none;
+        }
+        .btnIcon{
+            float: right;
+            font-size: 14px;
+            color: #02A7F0;
+        }
+        .form-group .form-control{
+            font-size: 16px;
+        }
+        .form-group .form-control:focus{
+            background: #FEF1F1 !important;
+            box-shadow: 0 0 0 0 !important;
+            border-color: transparent;
+            outline: none;
+        }
+        .add_blank{
+            border: 1px solid #0e0e0e;
+            border-radius: 9px;
+            padding: 4px 15px;
+        }
+        .echo{
+            padding: 6px 12px;
+        }
+        .all_title{
+            width: 100%;
+            color: #02A7F0;
+            overflow: hidden
+        }
+        .project_detail{
+            padding-top: 20px;
+        }
+        .project_detail p {
+            padding: 10px 0;
+        }
+        /* 下三模态框 */
+        .myModel .form-group .need-title{
+            text-align: right;
+            padding: 0 12px;
+            display: inline-block;
+            width: 150px;
+        }
+        .myModel .form-group .input-wrapper{
+            display: inline-block;
+
+        }
+        .myModel .form-group .input-wrapper textarea{
+            width:299px ;
+        }
+        .myModel .form-group .input-wrapper input,.myModel .form-group .input-wrapper select{
+            width: 299px;
+            box-sizing: border-box;
+            height: 56px;
+            padding: 6px 12px;
+            font-size: 16px;
+            color: #666;
+            font-family: "Microsoft YaHei";
+            font-weight: 400;
+            background: #f4f4f4;
+            border-color: transparent;
+            box-shadow: 0 0 0 0 !important;
+            border-radius: 0;
+        }
+        .tablebtn{
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            width: 76px;
+            height: 30px;
+        }
+        .subb{
+            text-align: right;
+        }
+        .tablebtn+button{
+            background-color: #02A7F0;
+            margin-left: 45px;
+            margin-right: 142px;
+            color: #fff;
+        }
+        fieldset[disabled] .form-control{
+            background-color: #eee!important;
+        }
+        thead th{
+            text-align: center;
+        }
+        .err{
+            color: red;
+        }
+        /* .requirementDetail .statement {
+        position: relative;
+        top: 149px;
+        } */
+    </style>
+    <script src="./预研指南详情_files/richcoding.js.下载"></script>
+</head>
+
+<body>
+
+    <!-- 头部区域 -->
+    <script src="./预研指南详情_files/header.js.下载"></script><div class="log_head">         <div class="container" style="padding-right: 0px;">            <div class="welcome" onclick="window.location=&#39;/&#39;"><span class="head-login">欢迎访问全军武器装备采购信息网</span></div>            <div class="login_regist" id="userBar">               <span class="head-login" onclick="toOuter(&#39;gfzscq&#39;)">国防知识产权</span>               &nbsp;&nbsp;              <span class="head-login" onclick="window.location.href=&#39;/zbsy/list.shtml&#39;"> 试验鉴定</span>              <span>|</span>
+              <span class="head-login" onclick="window.location.href=&#39;/login.html&#39;">登录</span>              <span onclick="window.location.href=&#39;/personalRegistration.html&#39;" class="head-login">注册</span>            </div>          </div></div><div class="head-back">
+  <div class="head_contant container">
+    <div class="logo-img"></div>
+    <div class="logo-img2"></div>
+    <div class="titleRights">
+      <input type="text" name="searchLeft" placeholder="请输入关键字">
+      <label class="rearchButton" onclick="toSearchHtml()">搜索</label>
+    </div>
+  </div>
+</div>
+  <div class="nav-tab" style="background:#CC1C00">
+    <div class="container" style="padding-right: 0px; padding-left:28px">
+      <ul class="nav navbar-nav" style="display: flex;justify-content: space-around;float: none;">
+        <li style="padding:10px 0;"><a href="http://www.weain.mil.cn/">首页</a></li>
+        <li style="padding:10px 0;;"><a href="http://www.weain.mil.cn/cggg/jdgg/list.shtml">采购公告</a></li>
+        <li style="padding:10px 0;"><a href="http://www.weain.mil.cn/cgxq/jdxq/list.shtml">采购需求</a></li>
+        <li style="padding:10px 0;"><a href="http://www.weain.mil.cn/support/index.html">快速支持</a><span>new</span></li>
+        <li style="padding:10px 0;"><a href="http://www.weain.mil.cn/api/front/list/jzcg">集中采购</a></li>
+        <li style="padding:10px 0;"><a href="http://www.weain.mil.cn/tyzb/list.shtml">通用装备</a></li>
+        <li style="padding:10px 0;"><a href="http://www.weain.mil.cn/fgbz/list.shtml">法规标准</a></li>
+        <li style="padding:10px 0;"><a href="http://www.weain.mil.cn/zbsczr/index.shtml">装备市场准入</a></li>
+        <li style="padding:10px 0;"><a href="http://www.weain.mil.cn/fwzn/list.shtml">服务指南</a></li>
+      </ul>
+    </div>
+  </div>
+
+
+    <script src="./预研指南详情_files/pageBar.js.下载"></script>
+    <!-- banner -->
+    <!-- <div class="nav-banner"> -->
+    <div class="container">
+        <div class="nav-top">
+            <img class="icon" src="./预研指南详情_files/home.png" alt="">
+            <ol class="breadcrumb" id="daohang">
+                <li><a href="http://www.weain.mil.cn/">当前位置：首页</a></li>
+                <li><a href="http://www.weain.mil.cn/api/front/list/yyzn"> 预研指南</a></li>
+            </ol>
+        </div>
+    </div>
+    <!-- </div> -->
+    <input type="hidden" name="demandId" value="646076" id="demandId_">
+    <input type="hidden" name="createBy" value="" id="createBy">
+    <!-- 详情内容 -->
+    <div class="container">
+        <div class="requirementDetail">
+            <div class="content-title" id="nonSecretTitle">共用-41421020501-高效氢气纯化及定向除杂技术</div>
+            <div class="secret">
+                <div class="nav">
+                    <div class="nav-ceil">
+                        <span class="name-ceil">发布时间：</span>
+                        <span class="txt-ceil" id="publishTime"></span>
+                        <!-- <span class="name-ceil" id="shenbaoshijian1">申报开始时间：</span>
+                        <span class="ceil" id="created"></span> -->
+                        <span class="name-ceil" id="shenbaoshijian2">申报结束时间：</span>
+                        <span class="ceil" id="declareEndTime"></span>
+                        <span class="name-ceil">点击次数：</span>
+                        <span class="ceil" id="pv">178</span>
+                        <!-- <span class="name-ceil">支持单位数：</span>
+                        <span class="ceil" id="quasiSupporUnits">1</span> -->
+                    </div>
+                    <div class="right">
+                        <span class="share-wrap">
+                            <div id="share" class="share share-component social-share"><a class="social-share-icon icon-qzone" href="http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http%3A%2F%2Fwww.weain.mil.cn%2Fyyzn%2F646076.shtml%3Fv%3D20190610000000%26id%3D646076&amp;title=%E9%A2%84%E7%A0%94%E6%8C%87%E5%8D%97%E8%AF%A6%E6%83%85&amp;desc=&amp;summary=&amp;site=%E9%A2%84%E7%A0%94%E6%8C%87%E5%8D%97%E8%AF%A6%E6%83%85&amp;pics=http%3A%2F%2Fwww.weain.mil.cn%2Fimg%2Fhome.png%3Fv%3D787940f0e3" target="_blank"></a><a class="social-share-icon icon-qq" href="http://connect.qq.com/widget/shareqq/index.html?url=http%3A%2F%2Fwww.weain.mil.cn%2Fyyzn%2F646076.shtml%3Fv%3D20190610000000%26id%3D646076&amp;title=%E9%A2%84%E7%A0%94%E6%8C%87%E5%8D%97%E8%AF%A6%E6%83%85&amp;source=%E9%A2%84%E7%A0%94%E6%8C%87%E5%8D%97%E8%AF%A6%E6%83%85&amp;desc=&amp;pics=http%3A%2F%2Fwww.weain.mil.cn%2Fimg%2Fhome.png%3Fv%3D787940f0e3" target="_blank"></a><a class="social-share-icon icon-weibo" href="https://service.weibo.com/share/share.php?url=http%3A%2F%2Fwww.weain.mil.cn%2Fyyzn%2F646076.shtml%3Fv%3D20190610000000%26id%3D646076&amp;title=%E9%A2%84%E7%A0%94%E6%8C%87%E5%8D%97%E8%AF%A6%E6%83%85&amp;pic=http%3A%2F%2Fwww.weain.mil.cn%2Fimg%2Fhome.png%3Fv%3D787940f0e3&amp;appkey=" target="_blank"></a><a class="social-share-icon icon-wechat" href="javascript:;" tabindex="-1"><div class="wechat-qrcode bottom"><h4>微信扫一扫：分享</h4><div class="qrcode"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAYAAABw4pVUAAAOGUlEQVR4Xu2ddehtWxHHv8/CTmzs7u4WFUxUTFAxwVZQwcQOnoIJioUBBoJio4KFXdjdgYqNjcnnnjX3fe8+a86ZdeLe331vz1/n7D17rbXX7Jk9vU+Q9D/tHq4j6XNt2I9LulFnijtIeveaqV8t6QEN5xGSXtbBf5akJ3WOv0DS4+zal7TfjPmgNfOytnc2nA9JulUHn3v8zK637oSZIN0tnQmSPGmneA45vaR/bsiGX5V0pXati6wNh1u6DHH1sHYUUYRImsJTJD2jc5xrEXkA4uqVA4uqiCzu/SoDYzoqe/73ODAVWTNBlnd1JkjypJ3iOeRPks66hg0vI+m7DScTWa5loa3wxE3hbZLusiHLI6bQtKaAWDuxHcxE1hsl3afh3E3SWzvjjHIIe/LtNffC3p694ZRF1kyQxY7NBBnklJlDbMNGRZbvtRuGLrIQIYgSwNXejE5OkFEty0XWdG0jhqFrWceVyJoJstiBA/MOmQlygAmSiSAXWY7jaq8fr4gsx3dfFnO9vp1EbKJpTQHN8APtIBrjTdpv92WdLETWTJDFDhxTtbeiQM0cYrvkrpMbSjrNmh38rPlhMsPwqmYE4X+6RhvziZI+3Rn/Tolf6FKSLtDwX2FG3M0l3bgdv4iki7bfGHngAYz5yPb7l2bMnlfSZXcsss4gCXG2Cv4t6RMNocwhlafZcSrORYysW7SLsngIqui91kzuzsXReEg29K7eIaP7NhMk2bEDSRC0iE0jiNeUdCbTQCJi+GITQW+Q9MOGc09JGFHAUyV9rP12DkHEvbcdf5SkO7bfGYdw7WsbzvUt0odofX87fltJj22/Pyjpue33FSTdtf3+pEUhK1rWXyV9YZQ1Gv6pPKJ6tCOG7lwkfHu7tijUTZ5QwAlC7AI1Fci8vS6y+I0aDGzjXGRtiFSgQpANabF82UyQvrf3mBLkpjsj70kDfVHSn9tf17LuLekS7fibTNtBVCAygLdLQkEAviMJrWgVh1xMEtoVgLaF1gUgdsLVf21Jt2nHWVskV/zKXOXufv+dpK83/B+Yb+2Pkr7cjp/FNMadbSEccjQh07Iy56KvbTRANZp1MhoP2cu+zQQ5aVsPDEE+Okjqu0v6deea15g4erCJgkzL+pokRANweUnnab+/lYyPYXhBEyM/66zB3e/OIVzH9cDV7YXtQ5y7rWM67B9MhPq5b0p6aGcNFzIRl23tX0yhOZ0ktL1DsMlLHUv4J52ZtgnhDj4TKXpGEL9gNOskmwy1vmeR7zQeUtmYmSCLXdobQVzLgnVO26HKnSXBugD+p17uFobhmRuOa1me5AAXxThPSHxZPj22BIbcFF6eJCSgbaF1AT81IxRfFoYl4FoWNgbrWAUYfJGS6niIwUhJ/b6kB7aTFV8W7pLHN/wlw9AnYaORaVM4XyLX19zLodO7yu2dEqqXKJethyS5Xm6vx0Oya0eTHCp7QsZJPJhH4E+1rJkgy9t53BIk07LcMPTbdS0re6p4QZ6/cxJjradlYXhGtvxbzP2eaVnufs/WkGlZPze3DuM8pA2AqIxcLyQL65jCPyQ9rx1EIkVE8pCWtSuRVXG/V9h5G5xjpWWR1xsWPImD4TRFAfpR54ZWJjnMBNnsEXAta6cEccPwmZL+01kffqF/teOwIKw4BTSfMBjRPsKII1IXvqns1p8macSn5loWIgpRBeDC/4iJjnD1u5aFCLx0w3H3O/MTBgA+lRQBsfEvajj46r7UfuMTi+jk36xYCW3qup2bdi2L6OHhVNhNst8xCi/cmYTFxsbz9Fyr4ZClgaa1CkZze7N4iLvffT7Xsvx4ltvr3l7H5156no3RcgTXslCkINAhmAmy3v1+TAniEUMMMiJhAC7xc7bfL2yZd9MnHi0DbQN4laRftN/3M/e4X+OGoXPIc8xtDieE2xw74h1tAAw6IoIAhmBwLNz74w4rIj4v2Y4TgQwbxt3v+LIiBMBLmYgm8HkzDM8m6Wqd8V3L8tOMf48OPskjJJEA/3UJssqXBVuhDQC8G8L5t43rxNc2mtvrRZ9s6GM6N1o5tKuiT5/LX+p+nAcksmAqa1vpXJwJstjCzDDcG0HQcAKeLOnU7U9GELSM4JyXmgvdRZYvFpHVUwLePIkY4oIHPFEOLsJdDrzPtBfnELSqUBqIGN5szaOYcYgnOWRDIA5f1znpHEJIIcq3iTCGVoafL5IrfIglLctPuuskI4jjezmCH3ctq8SqhpRlLvo4TpBtcnt9TA9QVWLqGYe4Yeg4mAoRjp7u+RFa1kyQxQ4cVwSB1cK1/mhJaBsArBlRvwonYMBdvIOIlkUEbgrvMuMLbYtkhU2A627dLsSYiySHr5jm5iKL5ApEKpClAbn7HS2LKCngIsvXyv6FIoIkCl/WRiLLB84MQ8fJ6tQ9ycHx95GX5eNXDMOM0PvIy3Jf1hHzrnIu+jtkJshiB7L6kFGuLRMELSsy3kmx7EUGEVlR0pstxA1Dx9mGQyoiy31ZPq/nZaG13b6dxOURxuY3LHvSDUMfx7WsrPlMRWSVCTJK6VH8bQjic2VaVmU9WZKDJ1tv03ymomXNBDFKHbcEIQh/WD+2G3JfFi/Lc1Uey6OEMyqyfFnOIS6yPJWUJAoMXQAtKxIbcC2F+z271UzLWvlS95NZJwf3ZcGekYBW2fNKa41Knfqu3O8ZQbJ7qbjfK3lZ6V6tSiWdCbK8bUedIK5lZVR0keUcAsv2Ukzdl0VAKKJ4Wfa7z8vLtefuRjkgqgeQ7R4tBFFLI2KYrX9Uy3KRlRHERRYi/OFrxIUbhmi1h1sUbmKH+FxOEI8YOs5oXlalxrAiHh2n0g1o+iD0WmtkBBldz0ZJDplhOBNkdPuX8VcSpOJ+z5aQiawsYui+LHe/+/gkJFy5HcDnFIkEGIYRp3d8d7/7cSKKt2wHnEM8+z3zZWX3i5Z1387JTMvioY4UVqKva7MtqxHDCkEcZ9SXlY2f1Rg6/mh7pmyuirc3uzZLcvC8LIgW2TrlJAefcFRkzQRZJtdGBHGR5UO6L8vd7xUtqyKyfC53v7vIyjjEtawPTyKGUWOYiazsKa+437NrXWT91iKGPNT4/gCKdEJkeV7WEWNWS9qyJIdttCxfyDbu96n4WtcmdvSV7O73yrWZLyu7dqmTQ2WSmSCVXVrg7JQgmfvdCeJJDviyIl/LDcOKyKpoWS6y3P1OCmgYhhmHcL7XAbW+tZthZiLLR/PsdwxD9v0QVA1DJ0hlmRUtK8vL8vGdIJV5s+z3LGJYGbOSBpSNU8l+X/kOGc06yRYyE2SxMxsRJKsxpA+Jp5Keo+0+n2iISCKROGrqAGrxAt/LorNODp5K6tnv9K+KlFTnkEpZdFawsw8O8U4OaFC95jMZQdin6POyxCGj3X8y93vFl5W5331Ro81nKmJnHwTJei76ejKCpGvetk59VO2dCbLm8YEgWScHsrMjrRSNJQp2vJMDTzOdCwAv2PGy6KyTQ7Y0Wv+FD8r7ZbmWtU1ZtBfsoKz0+rTjQr+iieIoi/bmM5dr9wyaF+z4fblhSC3h9daxczVAVSmLrtQYZkkO69bJ+eyTR37taI1hpbO1j+9pQH68kv2epZKu1LL8pEcMZ4IsduaoE4TscToLAO+xln1ZJwe0rDM2fM9+r2hZiIRIkCCN9DcdNiE+HR7SjEOyflmVsmjKkaPFnxfs4Ad7dluPl0VTaRu+qQqHIBKjYMez3zEGb9AGQKk6XPJXLYueag7RfGabl3rW4s/nGv0GVaXGMCtH2KY9Uyay/F7K7ne/KOvkMBNk9VtupwRxw7CS5OBalnMI5cmRwODLR8uKCGClCSaGYYgprzF0kUWbwNDumDf6/HpXUl+DN1LOOIR96IUiPMkhIwvriWadGY5zCOKLVwKwdVm0T7hNXlalK6nPdTRrDH3eUfd7hSCOs9NGyjNBVouy7B2ykiBuGGKQhQFYmcoNwwwfX1YU+GQiC1ERjZTdMITgUQaG6ItMdU+2JiM9lAzv/Z6tJxNZrmX5tfQBe347gCkQPU2y8fHtRWER7+T4POvvJaGtTmGpxV9l47fByb7S5iIrGz9zv++7xjBbT2aHOL6nkm5UFr3NZleunQlS2aWGgx0y0vSlOnTmy6LGjnNAxiH4liIl1WsMv2fdITBC0fYAT3LA/X7/NYv0Tg6O6kkO7styHOeQzP3uHOKGoY/jn6s4YrmbeHsrRKl8CzcjSJb9Pvr57so6HScr2MkIsqtPHs0ESSh1IAmyj89V+P1jIEZSBE1meu5o5xDvSupalhuG/oUdnwvDsVeCnX1hB23z6W0A92VlHOLud+9KWqkPWVnS5hHDfX8tuuJ+36aTg2+ef67Cj2dfaauIuFEtKxtzJojtzHFLkF19FMyfEucQPgfR6wKB2zvyqbKupN4vy7UsjMTol4UWFp1CfQ34kCKl0/v24v6PbhKZlkW2fM/9PhWVfEkIcMPQI4blJAcXWbv6WnRGkOyjYFPxEm1fp+IoNjX7wk5FBGUflvSy6Mo4GY4bhuWIYfYOmQmyDSkW184EsW9QVbbzFMkhmeuksmGVz3f7ONt8FCxbT9Z8xvErfXvLEcN9i6yZIAvSzQSRdGJ7jEercP3pP1lzSCYWsoKdiljbR43hVDOEKFMYTSU9kBwyE2SxA+Wiz33YIVnjACfOzCFtNzZpNZ495aMfBaskOWxTsJOtc7SRcjbO6DeoXGT5mDtNcvCBZ4IsdiPz9s4ESR7t44pDKlpNBccjhqN2SFawU5m3kv3u42QfBat8rqLyQRefy31ZZfd75aYrODNBlndpJkjy/cEDzSH/Bwx7+w74amwqAAAAAElFTkSuQmCC"></div><div class="help"><p>微信里点“发现”，扫一下</p><p>二维码便可将本文分享至朋友圈。</p></div></div></a></div>
+                            分享</span>
+                        <span class="consult" onclick="consultAction()">
+                            <img src="./预研指南详情_files/consult.png" alt="">咨询
+                        </span>
+                        <span class="consult" onclick="complain()">
+                            <img src="./预研指南详情_files/complain.png" alt="">投诉
+                        </span>
+                        <span class="imgCollect" id="imgCollect" onclick="collectOrNo()"></span>
+                    </div>
+                </div>
+                <div class="detail col-md-12" style="margin-bottom: 30px;">
+                    <div class="ceil col-md-4">
+                        <p>指南编号：<span id="projectNo">41421020501</span></p>
+                        <p>预研周期：<span id="projectName">共用-41421020501-高效氢气纯化及定向除杂技术年</span></p><!-- 新增 -->
+                    </div>
+                    <div class="ceil col-md-4">
+                        <p>专业领域：<span id="majorField" title="制导与控制技术,电子元器件,动力与传动,可靠性/测试性/维修性,其他">制导与控制技术,电子元器件,动力与传动,可靠性/测试性/维修性,其他</span></p>
+                        <p>拟支持单位数：<span id="quasiSupporUnits">1</span></p><!-- 新增 -->
+                    </div>
+                    <div class="ceil col-md-4">
+                        <p>项目类型：<span id="guideType">共用技术</span></p> <!-- 修改 -->
+                        <p>单个项目经费限额：<span id="guideFund">1.0万元</span></p><!-- 新增 -->
+                    </div>
+                </div>
+                <div class="content">
+                    <div class="title-ceil">
+                        <img src="./预研指南详情_files/btn.png" alt=""><span class="title-txt">主要内容</span>
+                    </div>
+                    <!-- 主要指标 -->
+                    <div class="title-ceil" style="border-bottom: none;padding-bottom: 20px;">
+                        <span class="title-txt">主要指标:</span>
+                        <div class="txt" id="mainIndicator">主要技术指标：
+（1）氢气纯化效率：≥95%。
+（2）纯化后氢气纯度：≥99.999%。
+（3）CO、H2S、NO2等杂质含量：≤0.01ppm。
+（4）供氢压力：≥0.2MPa。
+（5）供氢流量满足燃料电池系统运行需求，实现纯度在线监测。
+进度要求：2年
+成果形式：样机，测试报告，研究报告
+考核方式：第三方检测报告，或现场检测。
+单个项目经费限额：200万元
+拟支持单位数：2</div>
+                        <script>
+                            var htmls1=HtmlUtil.htmlDecode('主要技术指标：\r\n（1）氢气纯化效率：≥95%25。\r\n（2）纯化后氢气纯度：≥99.999%25。\r\n（3）CO、H2S、NO2等杂质含量：≤0.01ppm。\r\n（4）供氢压力：≥0.2MPa。\r\n（5）供氢流量满足燃料电池系统运行需求，实现纯度在线监测。\r\n进度要求：2年\r\n成果形式：样机，测试报告，研究报告\r\n考核方式：第三方检测报告，或现场检测。\r\n单个项目经费限额：200万元\r\n拟支持单位数：2');
+                            $("#mainIndicator").html(decodeURIComponent(htmls1));
+                        </script>
+                    </div>
+                    <!-- 研究目标及主要内容 -->
+                        <div class="title-ceil" style="border-bottom: none;padding-bottom: 20px;">
+                            <span class="title-txt delles1">研究目标及主要内容:</span>
+                            <div class="txt delles1" id="funcUses">
+                            </div>
+                        </div>
+                    <!-- 成果形式 -->
+                    <div class="title-ceil" style="border-bottom: none;padding-bottom: 20px;">
+                        <span class="title-txt delles2">成果形式:</span>
+                        <div class="txt delles2" id="theResultsForm"></div>
+                    </div>
+                    <!-- 考核方式 -->
+                    <div class="title-ceil" style="border-bottom: none;padding-bottom: 20px;">
+                        <span class="title-txt delles3">考核方式:</span>
+                        <div class="txt delles3" id="assessmentMethod"></div>
+                    </div>
+                    <!-- 技术成熟度 -->
+                    <div class="title-ceil" style="border-bottom: none;padding-bottom: 20px;">
+                        <span class="title-txt delles4">技术成熟度:</span>
+                        <div class="txt delles4" id="technologyMaturity"></div>
+                    </div>
+                </div>
+                <div class="content">
+                    <div class="title-ceil">
+                        <img src="./预研指南详情_files/btn.png" alt=""><span class="title-txt">结果公示</span>
+                    </div>
+                    <table>
+                        <thead>
+                            <tr><td>序号</td>
+                            <td>单位名称</td>
+                            <td>申报时间</td>
+                            <td>申报结果</td>
+                        </tr></thead>
+                        <tbody id="publicityList">
+
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="demandDocking" style="border:1px solid #e5e5e5">
+                    <div class="demand-nav">
+                        <ul class="nav nav-tabs">
+                            <li class="active" id="questionTitle" style="display: none;"><a href="http://www.weain.mil.cn/yyzn/646076.shtml?v=20190610000000&amp;id=646076#one" data-toggle="tab">咨询答疑</a></li>
+                            <li><a href="http://www.weain.mil.cn/yyzn/646076.shtml?v=20190610000000&amp;id=646076#two" data-toggle="tab">申报信息</a></li>
+                        </ul>
+                    </div>
+                    <div class="tab-content">
+                        <div class="tab-pane fade in active" id="one">
+                            <div class="question-content" id="questionContent" style="display: none;">
+                                <img src="./预研指南详情_files/answer.png" alt="" class="question-img">
+                                <span class="question-txt">我要提问</span>
+                                （提问时间为<span id="startTime"></span>-<span id="endTime"></span>）
+                                <form class="form" role="form" id="questionForm" onsubmit="return false">
+                                <div class="question-input">
+                                    <textarea name="contentQuestion" id="contentQuestion" cols="100" rows="4" placeholder="请输入..." maxlength="300"></textarea>
+                                    <p><span id="txtNum">0</span>/300</p>
+                                    <button type="button" class="btn btn-default" onclick="questionWay()">提问</button>
+                                </div>
+                                </form>
+                                <div class="answer-list" id="answerList">
+                                </div>
+                                <!-- 分页 -->
+                                <div class="page" id="pageBar"></div>
+                            </div>
+                            <div class="goLogin2" id="goLogin2"></div>
+                        </div>
+                        <div class="tab-pane fade" id="two">
+                            <div id="demandDockingIS" style="">
+                                <div id="demandDockingIF">
+                                    <div class="title-ceil" style="padding: 0px 0 10px;border-bottom: 1px solid #cccccc;margin-bottom: 2em;">
+                                        <img src="./预研指南详情_files/btn.png" alt=""><span class="title-txt" style="margin-left: 10px;font-size: 16px;font-weight: bold;font-family: &#39;微软雅黑&#39;;">基本信息</span>
+                                            <button type="button" class="btnIcon btn_clear" onclick="onCollapse(&#39;#baseForm&#39;,this)" data-toggle="collapse" data-target="#baseForm">收起&nbsp;Λ</button>
+                                    </div>
+                                    <div class="guide-form" id="guide-form">
+                                        <form class="base_form collapse in" role="baseForm" id="baseForm" onsubmit="return false" novalidate="novalidate">
+                                            <fieldset id="fieldset">
+                                            <div class="base_left col-xs-6">
+                                                <div class="form-group  col-xs-12">
+                                                    <label class="need-title "><span>*</span>单位名称：</label>
+                                                    <div class="input-wrapper" style="display: none;" id="unitWrap">
+                                                        <input class="form-control" type="text" name="unitName" id="unitNameh" placeholder="请输入单位名称">
+                                                        <div class="errors"></div>
+                                                    </div>
+                                                    <span class="feedback echo" id="unitName"></span>
+                                                    <input type="hidden" name="guideId" value="646076">
+                                                    <input type="hidden" name="id" id="id">
+                                                </div>
+                                                <div class="form-group  col-xs-12" id="usccWrap">
+                                                    <label class="need-title "><span>*</span>统一社会信用代码：</label>
+                                                    <!-- <div class="input-wrapper" style="display: none;" id="creditCodeWrap">
+                                                        <input class="form-control" type="text" name="creditCode" id="creditCode" placeholder="请输入法人代表">
+                                                        <div class="errors"></div>
+                                                    </div> -->
+                                                    <span class="feedback echo" id="uscc" name="uscc"></span>
+                                                </div>
+                                                <div class="form-group col-xs-12">
+                                                    <label class="need-title"><span>*</span>法人代表：</label>
+                                                    <div class="input-wrapper" style="display: none;" id="legalWarp">
+                                                        <input class="form-control" type="text" name="corporateRepresentative" id="corporateRepresentative" placeholder="请输入法人代表">
+                                                        <div class="errors"></div>
+                                                    </div>
+                                                    <span class="feedback echo" id="representativeName"></span>
+                                                </div>
+                                                <div class="form-group col-xs-12">
+                                                    <label class="need-title"><span>*</span>单位类型：</label>
+                                                    <div class="input-wrapper">
+                                                        <select class="form-control" name="unitType" id="unitType">
+                                                            <option value="军内院校">军内院校</option>
+                                                            <option value="军内科研院所">军内科研院所</option>
+                                                            <option value="军内其他单位">军内其他单位</option>
+                                                            <option value="中科院">中科院</option>
+                                                            <option value="中物院">中物院</option>
+                                                            <option value="航天科技">航天科技</option>
+                                                            <option value="航天科工">航天科工</option>
+                                                            <option value="航空工业">航空工业</option>
+                                                            <option value="兵器工业">兵器工业</option>
+                                                            <option value="兵器装备">兵器装备</option>
+                                                            <option value="中国船舶">中国船舶</option>
+                                                            <option value="电子科技">电子科技</option>
+                                                            <option value="电子信息产业">电子信息产业</option>
+                                                            <option value="中国航发">中国航发</option>
+                                                            <option value="工信部所属地方院校">工信部所属地方院校</option>
+                                                            <option value="教育部及其他地方院校">教育部及其他地方院校</option>
+                                                            <option value="其他国企">其他国企</option>
+                                                            <option value="民营企业">民营企业</option>
+                                                            <option value="">其他</option>
+                                                        </select>
+                                                        <div class="errors"></div>
+
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group col-xs-12">
+                                                    <label class="need-title"><span>*</span>电话号码：</label>
+                                                    <div class="input-wrapper">
+                                                        <input class="form-control" type="text" name="telNo" id="telNo" placeholder="请输入电话号码">
+                                                        <div class="errors"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group col-xs-12">
+                                                    <label class="need-title"><span>*</span>保密资质：</label>
+                                                    <div class="input-wrapper">
+                                                        <select class="form-control" name="confidentialityQualification" id="confidentialityQualification">
+                                                            <option>国家单项</option>
+                                                            <option>国家甲项</option>
+                                                            <option>国家乙项</option>
+                                                            <option>军工一级</option>
+                                                            <option>军工二级</option>
+                                                            <option>军工三级</option>
+                                                        </select>
+                                                        <div class="errors"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group col-xs-12">
+                                                    <label class="need-title">机要地址：</label>
+                                                    <div class="input-wrapper">
+                                                        <input class="form-control" type="text" name="confidentialAddress" id="confidentialAddress" placeholder="请输入机要地址">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group col-xs-12">
+                                                    <label class="need-title"><span>*</span>邮政编码：</label>
+                                                    <div class="input-wrapper">
+                                                        <input class="form-control" type="text" name="postalCode" id="postalCode" placeholder="请输入邮政编码">
+                                                        <div class="errors"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group col-xs-12">
+                                                    <label class="need-title"><span>*</span>单位地址：</label>
+                                                    <div class="input-wrapper">
+                                                        <input class="form-control" type="text" name="unitAddress" id="unitAddress" placeholder="请输入单位地址">
+                                                        <div class="errors"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="base_right col-xs-6">
+                                                <div class="form-group col-xs-12">
+                                                    <label class="need-title"><span>*</span>开户行：</label>
+                                                    <div class="input-wrapper">
+                                                        <input class="form-control" type="text" name="openingBank" id="openingBank" placeholder="请输入开户行">
+                                                        <div class="errors"></div>
+                                                    </div>
+
+                                                </div>
+                                                <div class="form-group col-xs-12">
+                                                    <label class="need-title"><span>*</span>账号名称：</label>
+                                                    <div class="input-wrapper">
+                                                        <input class="form-control" type="text" name="accountName" id="accountName" placeholder="请输入账号名称">
+                                                        <div class="errors"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group col-xs-12">
+                                                    <label class="need-title"><span>*</span>银行账号：</label>
+                                                    <div class="input-wrapper">
+                                                        <input class="form-control" type="text" name="bankAccount" id="bankAccount" placeholder="请输入银行账号">
+                                                        <div class="errors"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="title-ceil col-xs-12" style="padding: 30px 0 10px;border-bottom: 1px solid #cccccc;margin-bottom: 2em;">
+                                                如单位基本信息有误，请提交修改申请（“ <span onclick="toUserIformation()">用户信息编辑</span> ”按钮），待网站审核通过后再进行提交申报，可先保存草稿。
+                                            </div>
+                                            <div class="department">
+                                                <div class="floor col-xs-12 technologySectorLeader">
+                                                    <div class="title col-xs-12">科技部门领导</div>
+                                                    <div>
+                                                        <div class="form-group col-xs-6">
+                                                            <label class="need-title">姓名：</label>
+                                                            <div class="input-wrapper">
+                                                                <input class="form-control" type="text" name="" id="SectorLeader1" placeholder="请输入姓名">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group col-xs-6">
+                                                            <label class="need-title">手机号码：</label>
+                                                            <div class="input-wrapper">
+                                                                <input class="form-control" type="text" name="" oninput="tpCheckout(this)" id="sectorLeader2" placeholder="请输入手机号码">
+                                                                <div class="err"></div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group col-xs-6">
+                                                            <label class="need-title">部门名称：</label>
+                                                            <div class="input-wrapper">
+                                                                <input class="form-control" type="text" name="" id="sectorLeader3" placeholder="请输入部门名称">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group col-xs-6">
+                                                            <label class="need-title">职务：</label>
+                                                            <div class="input-wrapper">
+                                                                <input class="form-control" type="text" name="" id="sectorLeader4" placeholder="请输入职务">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="floor col-xs-12 technologySectorDirector">
+                                                    <div class="title col-xs-12 ">科技部门主管</div>
+                                                    <div>
+                                                        <div class="form-group col-xs-6">
+                                                            <label class="need-title">姓名：</label>
+                                                            <div class="input-wrapper">
+                                                                <input class="form-control" type="text" name="" id="director1" placeholder="请输入姓名">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group col-xs-6">
+                                                            <label class="need-title">手机号码：</label>
+                                                            <div class="input-wrapper">
+                                                                <input class="form-control" type="text" name="" oninput="tpCheckout(this)" id="director2" placeholder="请输入手机号码">
+                                                                <div class="err"></div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group col-xs-6">
+                                                            <label class="need-title">部门名称：</label>
+                                                            <div class="input-wrapper">
+                                                                <input class="form-control" type="text" name="" id="director3" placeholder="请输入职务">
+
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group col-xs-6">
+                                                            <label class="need-title">职务：</label>
+                                                            <div class="input-wrapper">
+                                                                <input class="form-control" type="text" name="" id="director4" placeholder="请输入职务">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="floor col-xs-12 financialDepartmentLeader">
+                                                    <div class="title col-xs-12">财务部门领导</div>
+                                                    <div>
+                                                        <div class="form-group col-xs-6">
+                                                            <label class="need-title">姓名：</label>
+                                                            <div class="input-wrapper">
+                                                                <input class="form-control" type="text" name="" id="tmentLeader1" placeholder="请输入姓名">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group col-xs-6">
+                                                            <label class="need-title">手机号码：</label>
+                                                            <div class="input-wrapper">
+                                                                <input class="form-control" type="text" name="" oninput="tpCheckout(this)" id="tmentLeader2" placeholder="请输入手机号码">
+                                                                <div class="err"></div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group col-xs-6">
+                                                            <label class="need-title">部门名称：</label>
+                                                            <div class="input-wrapper">
+                                                                <input class="form-control" type="text" name="" id="tmentLeader3" placeholder="请输入部门名称">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group col-xs-6">
+                                                            <label class="need-title">职务：</label>
+                                                            <div class="input-wrapper">
+                                                                <input class="form-control" type="text" name="" id="tmentLeader4" placeholder="请输入职务">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="floor col-xs-12 financialDepartmentDirector">
+                                                    <div class="title col-xs-12">财务部门主管</div>
+                                                    <div>
+                                                        <div class="form-group col-xs-6">
+                                                            <label class="need-title">姓名：</label>
+                                                            <div class="input-wrapper">
+                                                                <input class="form-control" type="text" name="" id="tmentDirector1" placeholder="请输入姓名">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group col-xs-6">
+                                                            <label class="need-title">手机号码：</label>
+                                                            <div class="input-wrapper">
+                                                                <input class="form-control" type="text" name="" oninput="tpCheckout(this)" id="tmentDirector2" placeholder="请输入手机号码">
+                                                                <div class="err"></div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group col-xs-6">
+                                                            <label class="need-title">部门名称：</label>
+                                                            <div class="input-wrapper">
+                                                                <input class="form-control" type="text" name="" id="tmentDirector3" placeholder="请输入部门名称">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group col-xs-6">
+                                                            <label class="need-title">职务：</label>
+                                                            <div class="input-wrapper">
+                                                                <input class="form-control" type="text" name="" id="tmentDirector4" placeholder="请输入职务">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="floor col-xs-12">
+                                                    <div class="form-group  col-xs-12 form-fileupload">
+                                                            <label class="title">证明材料及保密资质：</label>
+                                                            <a class="btn_addPic" style="vertical-align: middle;" href="javascript:void(0);" id="fileupload1">
+                                                                <img src="./预研指南详情_files/down.png" alt="">
+                                                                <span style="cursor:pointer;">上传附件</span>
+                                                                <input class="filePrew" type="file" accept="images/*" onchange="uploadFile(this,&#39;project_name&#39;,&#39;frlName&#39;,&#39;frlUrl&#39;)">
+                                                                <input type="hidden" name="frlName" id="frlName">
+                                                                <input type="hidden" name="frlUrl" id="frlUrl">
+                                                                <div class="errors"></div>
+                                                            </a>
+                                                            <span id="project_name"></span>
+                                                    </div>
+                                                    <p class="aptitude">请提交PDF格式文件（单位证明材料）</p>
+                                                </div>
+                                             <!-- 提交 -->
+                                            </div></fieldset>
+                                            <div class="sub-btn col-xs-12">
+                                                <button class="basebtn" type="button" onclick="edit()">编辑</button>
+                                                <button class="basebtn subbtn" type="submit" id="subbtn">保存</button>
+                                            </div>
+                                            </form></div>
+                                        
+                                    </div>
+                                    <div class="guide-form" id="demandForm" style="display: block;">
+                                        <div class="title-ceil" style="padding: 30px 0 10px;margin-bottom:30px;border-bottom: 1px solid #cccccc;">
+                                            <img src="./预研指南详情_files/btn.png" alt=""><span class="title-txt" style="margin-left: 10px;font-size: 16px;font-weight: bold;font-family: &#39;微软雅黑&#39;;">对接报名</span>
+                                        </div>
+                                        <form class="form" role="form" id="guideForm" onsubmit="return false" novalidate="novalidate">
+                                            <div class="form-group col-xs-12">
+                                                <label class="need-title"><span>*</span>指南编码：</label>
+                                                <input type="hidden" name="guideId" id="guideId" value="646076">
+                                                <input type="hidden" id="BooleanId" value="0">
+                                                <input type="hidden" id="guideNo" name="guideNo" value="41421020501">
+                                                <span class="echo">41421020501</span>
+                                            </div>
+                                            <div class="form-group col-xs-12">
+                                                <label class="need-title"><span>*</span>指南名称：</label>
+                                                <input type="hidden" name="guideTitle" value="共用-41421020501-高效氢气纯化及定向除杂技术">
+                                                <span class="echo">共用-41421020501-高效氢气纯化及定向除杂技术</span>
+                                            </div>
+                                            <!-- <div class="form-group col-xs-12">
+                                                <label class="need-title"><span>*</span>项目名称：</label>
+                                                <input type="hidden" name="guideId" id="guideId" value="646076">
+                                                <input type="hidden" name="guideTitle" value="共用-41421020501-高效氢气纯化及定向除杂技术">
+                                                <div class="input-wrapper">
+                                                    <input type="text" name="projectName" class="project-name" disabled
+                                                        value="共用-41421020501-高效氢气纯化及定向除杂技术" placeholder="项目名称">
+                                                </div>
+                                            </div> -->
+                                            <div class="form-group col-xs-12">
+                                                <label class="need-title"><span>*</span>申请人姓名：</label>
+                                                <div class="input-wrapper">
+                                                    <input class="guideInput" type="text" name="applicant" id="applicant">
+                                                    <div class="errors"></div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group col-xs-12">
+                                                <label class="need-title"><span>*</span>手机号：</label>
+                                                <div class="input-wrapper">
+                                                    <input class="guideInput" type="text" name="telphone" id="telphone">
+                                                    <div class="errors"></div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group col-xs-12">
+                                                <label class="need-title"><span>*</span>身份证号：</label>
+                                                <div class="input-wrapper">
+                                                    <input class="guideInput" type="text" name="idCard" id="idCard">
+                                                    <div class="errors"></div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group col-xs-12">
+                                                <label class="need-title">职称：</label>
+                                                <div class="input-wrapper">
+                                                    <select class="form-control" name="creatorTitle" id="creatorTitle">
+                                                        <option>院士</option>
+                                                        <option>教授</option>
+                                                        <option>副教授</option>
+                                                        <option>研究院</option>
+                                                        <option>副研究员</option>
+                                                        <option>员工</option>
+                                                        <option>其他</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="form-group col-xs-12">
+                                                <label class="need-title"><span>*</span>申请经费（万）：</label>
+                                                <div class="input-wrapper">
+                                                    <input class="guideInput" type="text" name="applyFunds" id="applyFunds" maxlength="5" readonly="readonly">
+                                                    <div class="errors"></div>
+                                                </div>
+                                                <div class="errors posi"></div>
+                                            </div>
+                                            <!-- <div class="form-group col-xs-12">
+                                                <label class="need-title" style="vertical-align:middle"><span>*</span>出生年月：</label>
+                                                <div class='input-group date' id='datetimepicker-start' style="vertical-align:middle">
+                                                    <input type='text' class="form-control" placeholder="年-月-日"
+                                                        name="birthdayStr" autocomplete="off" style="padding-right:34px"/>
+                                                    <span class="input-group-addon"> -->
+                                                        <!-- <span class="glyphicon glyphicon-calendar"></span>
+                                                    </span>
+                                                    <div class="errors" ></div>
+                                                </div>
+                                            </div> -->
+                                            <!-- <div class="form-group col-xs-12">
+                                                <label class="need-title"><span>*</span>职称：</label>
+                                                <div class="input-wrapper">
+                                                    <input class="guideInput" type="text" name="creatorTitle">
+                                                </div>
+                                            </div> -->
+                                            <div class="floor col-xs-12">
+                                                <div class="title col-xs-12">分承研（参研）单位</div>
+                                                <div class="floor col-xs-12" style="text-align: right;margin-bottom: 10px;"><button class="btn_clear add_blank" data-toggle="modal" data-target="#myModalPoints" style="margin-right: 20px;" type="button">添加</button></div>
+                                                <table style="width: 1024px">
+                                                    <thead>
+                                                        <tr><th>序号</th>
+                                                        <th>单位名称</th>
+                                                        <th>统一社会信用代码</th>
+                                                        <th>单位类型</th>
+                                                        <th>单位地址</th>
+                                                        <th>法人代表</th>
+                                                        <th>科技部门领导</th>
+                                                        <th>财务部门领导</th>
+                                                        <th>修改</th>
+                                                    </tr></thead>
+                                                    <tbody id="Points">
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                            <div class="form-group col-xs-12 form-fileupload">
+                                                <div class="file">
+                                                    <label class="need-title"><span>*</span>脱密证明：</label>
+                                                    <a style="background-color: orange;" class="btn_addPic" href="javascript:void(0);" id="fileupload2">
+                                                        <img src="./预研指南详情_files/down.png" alt="">
+                                                        <span style="cursor:pointer;">上传附件</span>
+                                                        <input class="filePrew" type="file" accept="images/*" onchange="uploadFile(this,&#39;decryption_name1&#39;,&#39;projectApplicationName&#39;,&#39;projectApplicationPath&#39;)">
+                                                        <input type="hidden" name="projectApplicationName" id="projectApplicationName">
+                                                        <input type="hidden" name="projectApplicationPath" id="projectApplicationPath">
+                                                    </a>
+                                                    <span id="decryption_name1"></span>
+                                                    <p class="describe">x项目申请书 <a style="background-color: orange;color: white;padding: 5px;" href="http://www.weain.mil.cn/renzhengmoban/%E8%84%B1%E5%AF%86%E5%AE%A1%E6%9F%A5%E8%AF%81%E6%98%8E.docx?v=872a8a917f">脱密证明</a> ，加盖单位公章，扫描成pdf上传</p>
+                                                </div>
+                                            </div>
+                                            <div class="form-group  col-xs-12 form-fileupload">
+                                                <div class="file">
+                                                    <label class="need-title"><span>*</span>项目申请书（盲评）：</label>
+                                                    <a class="btn_addPic" href="javascript:void(0);" id="fileupload1">
+                                                        <img src="./预研指南详情_files/down.png" alt="">
+                                                        <span style="cursor:pointer;">上传附件</span>
+                                                        <input class="filePrew" type="file" accept="images/*" onchange="uploadFile(this,&#39;decryption_name2&#39;,&#39;decryptionCertificateName&#39;,&#39;decryptionCertificatePath&#39;)">
+                                                        <input type="hidden" name="decryptionCertificateName" id="decryptionCertificateName">
+                                                        <input type="hidden" name="decryptionCertificatePath" id="decryptionCertificatePath">
+                                                    </a>
+                                                    <span id="decryption_name2"></span>
+                                                    <p class="describe">请提交PDF格式文件</p>
+                                                </div>
+                                            </div>
+                                            <div class="form-group  col-xs-12 form-fileupload">
+                                                <div class="file">
+                                                    <label class="need-title"><span>*</span>项目申请书（会评）：</label>
+                                                    <a class="btn_addPic" href="javascript:void(0);" id="fileupload1">
+                                                        <img src="./预研指南详情_files/down.png" alt="">
+                                                        <span style="cursor:pointer;">上传附件</span>
+                                                        <input class="filePrew" type="file" accept="images/*" onchange="uploadFile(this,&#39;project_name3&#39;,&#39;fileName&#39;,&#39;filePath&#39;)">
+                                                        <input type="hidden" name="fileName" id="fileName">
+                                                        <input type="hidden" name="filePath" id="filePath">
+                                                    </a>
+                                                    <span id="project_name3"></span>
+                                                    <p class="describe">请提交PDF格式文件</p>
+                                                </div>
+                                            </div>
+                                            <!-- <div class="form-group col-xs-12 form-fileupload">
+                                                    <div class="file">
+                                                        <label class="need-title">附件：</label>
+                                                        <a class="btn_addPic" href="javascript:void(0);" id="fileupload">
+                                                            <img src="./img/down.png?v=b8d2c5330a" alt="">
+                                                            <span>上传附件</span>
+                                                            <input class="filePrew" type="file" accept="images/*"
+                                                                onchange="frl_upload(this,'file_name')">
+                                                            <input type="hidden" name="filePath" id="filePath" />
+                                                            <input type="hidden" name="fileName" id="fileName" />
+                                                            <div class="errors"></div>
+                                                        </a>
+                                                        <span id="file_name"></span>
+                                                    </div>
+                                                </div>
+                                                项目详情 -->
+                                                <div class="floor col-xs-12">
+                                                    <div class="title col-xs-12"><span>项目详情</span></div>
+                                                </div>
+                                                <div class="project_detail  col-xs-12">
+                                                    <div class="overall">
+                                                        <div class="all_title">研究总目标</div>
+                                                        <div style="height: 1px; border-bottom: 1px solid #ccc;width: 100% ;"></div>
+                                                        <p>项目研究总目标</p>
+                                                        <textarea class="form-control" name="researchTarget" id="researchTarget" rows="10" maxlength="300" placeholder="最大输入长度300"></textarea>
+                                                    </div>
+                                                    <div class="hierarchy">
+                                                        <div class="all_title">
+                                                            <span>项目研究内容</span>
+                                                            <button type="button" class="btnIcon btn_clear" onclick="onCollapse(&#39;#researchContent&#39;,this)" data-toggle="collapse" data-target="#researchContent">收起&nbsp;Λ</button>
+                                                        </div>
+                                                        <div style="height: 1px; border-bottom: 1px solid #ccc;width: 100% ;"></div>
+                                                        <div class="collapse in" id="researchContent">
+                                                            <p>（一）</p>
+                                                            <textarea class="form-control" name="" id="researchContent1" rows="3" maxlength="300" placeholder="最大输入长度300"></textarea>
+                                                            <p>（二）</p>
+                                                            <textarea class="form-control" name="" id="researchContent2" rows="3" maxlength="300" placeholder="最大输入长度300"></textarea>
+                                                            <p>（三）</p>
+                                                            <textarea class="form-control" name="" id="researchContent3" rows="3" maxlength="300" placeholder="最大输入长度300"></textarea>
+                                                            <p>（四）</p>
+                                                            <textarea class="form-control" name="" id="researchContent4" rows="3" maxlength="300" placeholder="最大输入长度300"></textarea>
+                                                            <p>（五）</p>
+                                                            <textarea class="form-control" name="" id="researchContent5" rows="3" maxlength="300" placeholder="最大输入长度300"></textarea>
+                                                        </div>
+
+                                                    </div>
+
+                                                    <div class="hierarchy">
+                                                        <div class="all_title">
+                                                            <span>项目关键技术</span>
+                                                            <button type="button" class="btnIcon btn_clear" onclick="onCollapse(&#39;#keyTechnology&#39;,this)" data-toggle="collapse" data-target="#keyTechnology">收起&nbsp;Λ</button>
+                                                        </div>
+                                                        <div style="height: 1px; border-bottom: 1px solid #ccc;width: 100% ;"></div>
+                                                        <div class="collapse in" id="keyTechnology">
+                                                            <p>（一）</p>
+                                                            <textarea class="form-control" name="" id="keyTechnology1" maxlength="300" rows="3" placeholder="最大输入长度300"></textarea>
+                                                            <p>（二）</p>
+                                                            <textarea class="form-control" name="" id="keyTechnology2" maxlength="300" rows="3" placeholder="最大输入长度300"></textarea>
+                                                            <p>（三）</p>
+                                                            <textarea class="form-control" name="" id="keyTechnology3" maxlength="300" rows="3" placeholder="最大输入长度300"></textarea>
+                                                            <p>（四）</p>
+                                                            <textarea class="form-control" name="" id="keyTechnology4" maxlength="300" rows="3" placeholder="最大输入长度300"></textarea>
+                                                            <p>（五）</p>
+                                                            <textarea class="form-control" name="" id="keyTechnology5" maxlength="300" rows="3" placeholder="最大输入长度300"></textarea>
+                                                        </div>
+                                                    </div>
+                                                    <div class="floor col-xs-12">
+                                                        <div style="color: #02A7F0;" class="title col-xs-12">实物类成果</div>
+                                                        <div class="floor col-xs-12" style="text-align: right;margin-bottom: 10px;"><button data-toggle="modal" data-target="#achievements" class="btn_clear add_blank" style="margin-right: 130px;" type="button">添加</button></div>
+                                                        <table>
+                                                            <thead>
+                                                                <tr><th>序号</th>
+                                                                <th>成果名称</th>
+                                                                <th>类型</th>
+                                                                <th>其他类型</th>
+                                                                <th>主要规格参数</th>
+                                                                <th>操作</th>
+                                                            </tr></thead>
+                                                            <tbody id="achievementsList">
+
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                    <div class="floor col-xs-12">
+                                                        <div style="color: #02A7F0;" class="title col-xs-12">非实物类成果</div>
+                                                        <div class="floor col-xs-12" style="text-align: right;margin-bottom: 10px;">
+                                                            <button class="btn_clear add_blank" data-toggle="modal" data-target="#achievements2" style="margin-right: 130px;" type="button">添加</button></div>
+                                                        <table>
+                                                            <thead>
+                                                                <tr><th>序号</th>
+                                                                <th>成果名称</th>
+                                                                <th>类型</th>
+                                                                <th>其他类型</th>
+                                                                <th>主要规格参数</th>
+                                                                <th>操作</th>
+                                                            </tr></thead>
+                                                            <tbody id="achievements2List">
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                    <div class="floor col-xs-12">
+                                                        <div class="title col-xs-12" style="color: #02A7F0;">研究进度</div>
+                                                        <div class="col-xs-10" style="margin-left:99px">
+                                                            <div class="form-group col-xs-6" style="margin-bottom: 30px">
+                                                                <label class="control-label noValidation">本合同起始时间：</label>
+                                                                <div class="input-group date" id="question-datetimepicker-start">
+                                                                    <input type="text" class="form-control" placeholder="待定" name="contractStartTime" id="contractStartTime" style="padding-right:32px;">
+                                                                    <span class="input-group-addon">
+                                                                        <span class="glyphicon glyphicon-calendar"></span>
+                                                                    </span>
+                                                                    <div class="errors"></div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group col-xs-6" style="margin-bottom: 30px">
+                                                                <label class="control-label noValidation">  本合同结束时间：</label>
+                                                                <div class="input-group date" id="question-datetimepicker-end">
+                                                                    <input type="text" class="form-control" placeholder="待定" name="contractEndTime" id="contractEndTime" style="padding-right:32px;">
+                                                                    <span class="input-group-addon">
+                                                                        <span class="glyphicon glyphicon-calendar"></span>
+                                                                    </span>
+                                                                    <div class="errors"></div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="floor col-xs-12" style="text-align: right;margin-bottom: 10px;font-weight: 700;"><span style="float: left; margin-left: 120px;">年度研究要求</span>
+                                                            <button data-toggle="modal" data-target="#speed" class="btn_clear add_blank" style="margin-right: 130px;" type="button">添加</button></div>
+                                                        <table>
+                                                            <thead>
+                                                                <tr><th>年度</th>
+                                                                <th>年度指标</th>
+                                                                <th>年度指标内容</th>
+                                                                <th>年度成果形成</th>
+                                                                <th>操作</th>
+                                                            </tr></thead>
+                                                            <tbody id="speedList">
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                    <div class="subb">
+                                                        <button type="button" onclick="pclear()" class="btn_clear tablebtn">清空</button>
+                                                        <!-- <button type="button" class="btn_clear tablebtn">确认</button> -->
+                                                    </div>
+
+                                                </div>
+                                            <!-- 提交 -->
+                                            <div class="sub-btn col-xs-12">
+                                                <button type="button" id="btnSave" onclick="save(&#39;5&#39;)">保存草稿</button>
+                                                <button type="button" id="btnSave" onclick="save(&#39;10&#39;)">提交申报</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <!-- <div class="guide-form" id="demandFormDatails" style="margin-top: 80px">
+                                        <form class="form" role="form" id="guideForm" onsubmit="return false">
+                                            <div class="form-group col-xs-12">
+                                                <label class="need-title"><span>*</span>项目名称2：</label>
+                                                <span class="feedback" id="guideTitleDtail"></span>
+                                            </div>
+                                            <div class="form-group col-xs-12">
+                                                <label class="need-title"><span>*</span>申请经费（万）：</label>
+                                                <span class="feedback" id="applyFundsDtail"></span>
+                                            </div>
+                                            <div class="form-group col-xs-12">
+                                                <label class="need-title"><span>*</span>申请人姓名：</label>
+                                                <span class="feedback" id="applicantDtail"></span>
+                                            </div>
+                                            <div class="form-group col-xs-12">
+                                                <label class="need-title"><span>*</span>身份证号：</label>
+                                                <span class="feedback" id="idCardDtail"></span>
+                                            </div>
+                                            <div class="form-group col-xs-12">
+                                                <label class="need-title"><span>*</span>出生年月：</label>
+                                                <span class="feedback" id="birthdayDtail"></span>
+                                            </div>
+                                            <div class="form-group col-xs-12">
+                                                <label class="need-title"><span>*</span>职称：</label>
+                                                <span class="feedback" id="creatorTitleDtail"></span>
+                                            </div>
+                                            <div class="form-group col-xs-12">
+                                                <label class="need-title"><span>*</span>手机号：</label>
+                                                <span class="feedback" id="telphoneDtail"></span>
+                                            </div>
+                                            <div class="form-group  col-xs-12 form-fileupload">
+                                                <div class="file">
+                                                    <label class="need-title">项目申请书（盲评）：</label>
+                                                    <span id="project_datailName"></span>
+                                                </div>
+                                            </div>
+                                            <div class="form-group col-xs-12 form-fileupload">
+                                                <div class="file">
+                                                    <label class="need-title"><span>*</span>脱密证明：</label>
+                                                    <span id="decryption_datailName"></span>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div> -->
+                                </div>
+                                <div class="goLogin" id="goLogin"><p>请登录填写对接信息</p> <button onclick="window.location.href=&#39;/login.html&#39;" class="login">登录</button></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="statement">
+                    声明：<span class="txt">本内容由军队相关单位提供，任何媒体、互联网站和商业机构不得擅自转载。</span>
+                </div>
+            </div>
+        </div>
+    
+    <!-- 分承研（参研）单位弹出框 -->
+    <div class="modal fade" id="myModalPoints" tabindex="-1" data-backdrop="false" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false">
+        <div class="modal-dialog" style="width:1050px">
+            <div class="modal-content">
+                <div class="modal-header" style="padding: 0;border: none;">
+                    <button type="button" class="close" data-dismiss="modal" data-backdrop="false" onclick="resetClose()" aria-hidden="true">×</button>
+                </div>
+                <div class="modal-body demandDocking" style="margin-top: 0;">
+                    <div class="title-ceil" style="padding: 0px 0 10px;border-bottom: 1px solid #cccccc;margin-bottom: 2em;">
+                        <img src="./预研指南详情_files/btn.png" alt=""><span class="title-txt" style="margin-left: 10px;font-size: 16px;font-weight: bold;font-family: &#39;微软雅黑&#39;;">基本信息</span>
+                    </div>
+                    <div class="guide-form" id="guide-form2">
+                        <form class="base_form collapse in" role="baseForm2" id="baseForm2" onsubmit="return false" novalidate="novalidate">
+                            <fieldset>
+                            <div class="base_left col-xs-6">
+                                <div class="form-group  col-xs-12">
+                                    <label class="need-title "><span>*</span>单位名称：</label>
+                                    <div class="input-wrapper">
+                                        <input class="form-control" type="text" name="unitName" id="unitName2" placeholder="请输入单位名称">
+                                        <div class="errors"></div>
+                                    </div>
+                                </div>
+                                <div class="form-group  col-xs-12">
+                                    <label class="need-title "><span>*</span>社会统一信用代码：</label>
+                                    <div class="input-wrapper">
+                                        <input class="form-control" type="text" name="creditCode" id="creditCode" placeholder="请输入社会统一信用代码">
+                                        <div class="errors"></div>
+                                    </div>
+                                </div>
+                                <div class="form-group col-xs-12">
+                                    <label class="need-title"><span>*</span>单位类型：</label>
+                                    <div class="input-wrapper">
+                                        <select class="form-control" name="unitType" id="unitType2">
+                                            <option value="军内院校">军内院校</option>
+                                            <option value="军内科研院所">军内科研院所</option>
+                                            <option value="军内其他单位">军内其他单位</option>
+                                            <option value="中科院">中科院</option>
+                                            <option value="中物院">中物院</option>
+                                            <option value="航天科技">航天科技</option>
+                                            <option value="航天科工">航天科工</option>
+                                            <option value="航空工业">航空工业</option>
+                                            <option value="兵器工业">兵器工业</option>
+                                            <option value="兵器装备">兵器装备</option>
+                                            <option value="中国船舶">中国船舶</option>
+                                            <option value="电子科技">电子科技</option>
+                                            <option value="电子信息产业">电子信息产业</option>
+                                            <option value="中国航发">中国航发</option>
+                                            <option value="工信部所属地方院校">工信部所属地方院校</option>
+                                            <option value="教育部及其他地方院校">教育部及其他地方院校</option>
+                                            <option value="其他国企">其他国企</option>
+                                            <option value="民营企业">民营企业</option>
+                                            <option value="其他">其他</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group col-xs-12">
+                                    <label class="need-title"><span>*</span>法人代表：</label>
+                                    <div class="input-wrapper">
+                                        <input class="form-control" type="text" name="corporateRepresentative" id="corporateRepresentative2" placeholder="请输入法人代表">
+                                        <div class="errors"></div>
+                                    </div>
+                                </div>
+                                <div class="form-group col-xs-12">
+                                    <label class="need-title"><span>*</span>电话号码：</label>
+                                    <div class="input-wrapper">
+                                        <input class="form-control" type="text" name="telNo" id="telNo2" placeholder="请输入电话号码">
+                                        <div class="errors"></div>
+                                    </div>
+                                </div>
+                                <div class="form-group col-xs-12">
+                                    <label class="need-title"><span>*</span>保密资质：</label>
+                                    <div class="input-wrapper">
+                                        <select class="form-control" name="confidentialityQualification" id="confidentialityQualification2">
+                                            <option value="国家单项">国家单项</option>
+                                            <option value="国家甲项">国家甲项</option>
+                                            <option value="国家乙项">国家乙项</option>
+                                            <option value="军工一级">军工一级</option>
+                                            <option value="军工二级">军工二级</option>
+                                            <option value="军工三级">军工三级</option>
+                                        </select>
+                                        <div class="errors"></div>
+                                    </div>
+                                </div>
+                                <div class="form-group col-xs-12">
+                                    <label class="need-title">机要地址：</label>
+                                    <div class="input-wrapper">
+                                        <input class="form-control" type="text" name="confidentialAddress" id="confidentialAddress2" placeholder="请输入机要地址">
+                                    </div>
+                                </div>
+                                <div class="form-group col-xs-12">
+                                    <label class="need-title"><span>*</span>邮政编码：</label>
+                                    <div class="input-wrapper">
+                                        <input class="form-control" type="text" name="postalCode" id="postalCode2" placeholder="请输入邮政编码">
+                                        <div class="errors"></div>
+                                    </div>
+                                </div>
+                                <div class="form-group col-xs-12">
+                                    <label class="need-title"><span>*</span>单位地址：</label>
+                                    <div class="input-wrapper">
+                                        <input class="form-control" type="text" name="unitAddress" id="unitAddress2" placeholder="请输入单位地址">
+                                        <div class="errors"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="base_right col-xs-6">
+                                <div class="form-group col-xs-12">
+                                    <label class="need-title"><span>*</span>开户行：</label>
+                                    <div class="input-wrapper">
+                                        <input class="form-control" type="text" name="openingBank" id="openingBank2" placeholder="请输入开户行">
+                                        <div class="errors"></div>
+                                    </div>
+                                </div>
+                                <div class="form-group col-xs-12">
+                                    <label class="need-title"><span>*</span>账号名称：</label>
+                                    <div class="input-wrapper">
+                                        <input class="form-control" type="text" name="accountName" id="accountName2" placeholder="请输入账号名称">
+                                        <div class="errors"></div>
+                                    </div>
+                                </div>
+                                <div class="form-group col-xs-12">
+                                    <label class="need-title"><span>*</span>银行账号：</label>
+                                    <div class="input-wrapper">
+                                        <input class="form-control" type="text" name="bankAccount" id="bankAccount2" placeholder="请输入银行账号">
+                                        <div class="errors"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="title-ceil col-xs-12" style="padding: 30px 0 10px;border-bottom: 1px solid #cccccc;margin-bottom: 2em;">
+                            </div>
+
+                            <div class="department">
+                                <div class="floor col-xs-12 " id="technologySectorLeader">
+                                    <div class="title col-xs-12">科技部门领导</div>
+                                    <div>
+                                        <div class="form-group col-xs-6">
+                                            <label class="need-title">姓名：</label>
+                                            <div class="input-wrapper">
+                                                <input class="form-control" type="text" name="" id="mSectorLeader1" placeholder="请输入姓名">
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-xs-6">
+                                            <label class="need-title">手机号码：</label>
+                                            <div class="input-wrapper">
+                                                <input class="form-control" type="text" name="" oninput="tpCheckout(this)" id="mSectorLeader2" placeholder="请输入手机号码">
+                                                <div class="err"></div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-xs-6">
+                                            <label class="need-title">部门名称：</label>
+                                            <div class="input-wrapper">
+                                                <input class="form-control" type="text" name="" id="mSectorLeader3" placeholder="请输入部门名称">
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-xs-6">
+                                            <label class="need-title">职务：</label>
+                                            <div class="input-wrapper">
+                                                <input class="form-control" type="text" name="" id="mSectorLeader4" placeholder="请输入职务">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="floor col-xs-12 " id="technologySectorDirector">
+                                    <div class="title col-xs-12 ">科技部门主管</div>
+                                    <div>
+                                        <div class="form-group col-xs-6">
+                                            <label class="need-title">姓名：</label>
+                                            <div class="input-wrapper">
+                                                <input class="form-control" type="text" name="" id="mDirector1" placeholder="请输入姓名">
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-xs-6">
+                                            <label class="need-title">手机号码：</label>
+                                            <div class="input-wrapper">
+                                                <input class="form-control" type="text" name="" oninput="tpCheckout(this)" id="mDirector2" placeholder="请输入手机号码">
+                                                <div class="err"></div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-xs-6">
+                                            <label class="need-title">部门名称：</label>
+                                            <div class="input-wrapper">
+                                                <input class="form-control" type="text" name="" id="mDirector3" placeholder="请输入部门名称">
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-xs-6">
+                                            <label class="need-title">职务：</label>
+                                            <div class="input-wrapper">
+                                                <input class="form-control" type="text" name="" id="mDirector4" placeholder="请输入职务">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="floor col-xs-12 " id="financialDepartmentLeader">
+                                    <div class="title col-xs-12">财务部门领导</div>
+                                    <div>
+                                        <div class="form-group col-xs-6">
+                                            <label class="need-title">姓名：</label>
+                                            <div class="input-wrapper">
+                                                <input class="form-control" type="text" name="" id="mTmentLeader1" placeholder="请输入姓名">
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-xs-6">
+                                            <label class="need-title">手机号码：</label>
+                                            <div class="input-wrapper">
+                                                <input class="form-control" type="text" name="" oninput="tpCheckout(this)" id="mTmentLeader2" placeholder="请输入手机号码">
+                                                <div class="err"></div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-xs-6">
+                                            <label class="need-title">部门名称：</label>
+                                            <div class="input-wrapper">
+                                                <input class="form-control" type="text" name="" id="mTmentLeader3" placeholder="请输入部门名称">
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-xs-6">
+                                            <label class="need-title">职务：</label>
+                                            <div class="input-wrapper">
+                                                <input class="form-control" type="text" name="" id="mTmentLeader4" placeholder="请输入职务">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="floor col-xs-12 " id="financialDepartmentDirector">
+                                    <div class="title col-xs-12">财务部门主管</div>
+                                    <div>
+                                        <div class="form-group col-xs-6">
+                                            <label class="need-title">姓名：</label>
+                                            <div class="input-wrapper">
+                                                <input class="form-control" type="text" name="" id="mTmentDirector1" placeholder="请输入姓名">
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-xs-6">
+                                            <label class="need-title">手机号码：</label>
+                                            <div class="input-wrapper">
+                                                <input class="form-control" type="text" name="" oninput="tpCheckout(this)" id="mTmentDirector2" placeholder="请输入手机号码">
+                                                <div class="err"></div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-xs-6">
+                                            <label class="need-title">部门名称：</label>
+                                            <div class="input-wrapper">
+                                                <input class="form-control" type="text" name="" id="mTmentDirector3" placeholder="请输入部门名称">
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-xs-6">
+                                            <label class="need-title">职务：</label>
+                                            <div class="input-wrapper">
+                                                <input class="form-control" type="text" name="" id="mTmentDirector4" placeholder="请输入职务">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="floor col-xs-12">
+                                    <div class="form-group  col-xs-12 form-fileupload">
+                                            <label class="title">证明材料及保密资质：</label>
+                                            <a class="btn_addPic" style="vertical-align: middle;" href="javascript:void(0);" id="fileupload1">
+                                                <img src="./预研指南详情_files/down.png" alt="">
+                                                <span style="cursor:pointer;">上传附件</span>
+                                                <input class="filePrew" type="file" accept="images/*" onchange="uploadFile(this,&#39;project_name2&#39;,&#39;frlName&#39;,&#39;frlUrl&#39;)">
+                                                <input type="hidden" name="frlUrl" id="frlUrl2">
+                                                <input type="hidden" name="frlName" id="frlName2">
+                                                <div class="errors"></div>
+                                            </a>
+                                            <span id="project_name2"></span>
+                                    </div>
+                                    <p class="aptitude">请提交PDF格式文件（单位证明材料）</p>
+                                </div>
+                                </div>
+                            </fieldset>
+
+                        </form>
+                    </div>
+                </div>
+                 <!-- 提交 -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" onclick="resetClose()">关闭</button>
+                    <button type="button" class="btn btn-primary" id="saveModal">保存</button>
+                    <button type="button" style="display: none;" class="btn btn-primary" id="editModal">编辑</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 非实物类成果（一）弹出框 -->
+    <div class="modal fade myModel" id="achievements" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h4 class="modal-title" id="myModalLabel">添加信息</h4>
+                </div>
+                <div class="modal-body">
+                    <form id="achievementsForm">
+                    <div class="form-group col-xs-12">
+                        <label class="need-title">成果名称：</label>
+                        <div class="input-wrapper">
+                            <input class="guideInput" type="text" name="name" id="achievementsname">
+                        </div>
+                    </div>
+                    <div class="form-group col-xs-12">
+                        <label class="need-title">类型：</label>
+                        <div class="input-wrapper">
+                            <select class="form-control" name="type" id="achievementstype">
+                                <option value="样品">样品</option>
+                                <option value="样件">样件</option>
+                                <option value="缩比件">缩比件</option>
+                                <option value="原理样件">原理样件</option>
+                                <option value="工程样件">工程样件</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group col-xs-12">
+                        <label class="need-title">其他类型：</label>
+                        <div class="input-wrapper">
+                            <input class="guideInput" type="text" name="otherType" id="achievementsotherType">
+                        </div>
+                    </div>
+                    <div class="form-group col-xs-12">
+                        <label class="need-title">主要规格和参数：</label>
+                        <div class="input-wrapper">
+                            <textarea class="form-control" name="params" id="achievementsparams" rows="3"></textarea>
+                        </div>
+                    </div>
+                </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-primary achievementsSave">确认</button>
+                    <button type="button" style="display: none;" class="btn btn-primary achievementsedit">修改</button>
+
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal -->
+    </div>
+    <!-- 非实物类成果（二）弹出框-->
+    <div class="modal fade myModel" id="achievements2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h4 class="modal-title" id="myModalLabel">添加信息</h4>
+                </div>
+                <div class="modal-body">
+                    <form id="achievements2Form">
+                    <div class="form-group col-xs-12">
+                        <label class="need-title">成果名称：</label>
+                        <div class="input-wrapper">
+                            <input class="guideInput" type="text" name="name" id="achievements2name">
+                        </div>
+                    </div>
+                    <div class="form-group col-xs-12">
+                        <label class="need-title">类型：</label>
+                        <div class="input-wrapper">
+                            <select class="form-control" name="type" id="achievements2type">
+                                <option value="算法">算法</option>
+                                <option value="模型">模型</option>
+                                <option value="计算机软件">计算机软件</option>
+                                <option value="仿真系统">仿真系统</option>
+                                <option value="GIF报告">GIF报告</option>
+                                <option value="设计文件">设计文件</option>
+                                <option value="试验报告">试验报告</option>
+                                <option value="测试报告">测试报告</option>
+                                <option value="标椎与规范">标椎与规范</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group col-xs-12">
+                        <label class="need-title">其他类型：</label>
+                        <div class="input-wrapper">
+                            <input class="guideInput" type="text" name="otherType" id="achievements2otherType">
+                        </div>
+                    </div>
+                    <div class="form-group col-xs-12">
+                        <label class="need-title">主要规格和参数：</label>
+                        <div class="input-wrapper">
+                            <textarea class="form-control" name="params" id="achievements2params" rows="3"></textarea>
+                        </div>
+                    </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-primary achievements2Save">确认</button>
+                    <button type="button" style="display: none;" class="btn btn-primary achievements2edit">修改</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal -->
+    </div>
+    <!-- 研究进度弹出框 -->
+    <div class="modal fade myModel" id="speed" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h4 class="modal-title" id="myModalLabel">年度研究要求</h4>
+                </div>
+                <div class="modal-body">
+                    <form id="speedForm">
+                        <div class="form-group col-xs-12">
+                            <label class="need-title">年度：</label>
+                            <div class="input-wrapper">
+                                <input class="guideInput" type="text" name="year" id="year">
+                            </div>
+                        </div>
+                        <div class="form-group col-xs-12">
+                            <label class="need-title">年度目标：</label>
+                            <div class="input-wrapper">
+                                <textarea class="form-control" maxlength="300" name="target" id="target" rows="3"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group col-xs-12">
+                            <label class="need-title">年度研究内容：</label>
+                            <div class="input-wrapper">
+                                <textarea class="form-control" name="content" maxlength="300" id="content" rows="3"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group col-xs-12">
+                            <label class="need-title">年度成果形成：</label>
+                            <div class="input-wrapper">
+                                <textarea class="form-control" name="researchResults" maxlength="300" id="researchResults" rows="3"></textarea>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    <button type="button" class="btn btn-primary researchProgresSave">确认</button>
+                    <button type="button" style="display: none;" class="btn btn-primary researchProgresEdit">修改</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal -->
+    </div>
+
+    <embed id="jctPlugin" type="application/juncaitong" width="1" height="1">
+
+    <!-- 脚注区域 -->
+    <footer>
+
+
+
+  
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<div class="container">
+  <!-- 友情链接区域 -->
+  <div class="link-ceil active" id="friendLink">
+    <span style="padding-right: 30px;">友情链接</span>
+          <a class="links" href="http://www.mod.gov.cn/">中华人民共和国国防部</a>
+          <a class="links" href="http://www.81.cn/">中国军网</a>
+          <a class="links" href="http://jmjh.miit.gov.cn/loadWebMessage.action">国家军民融合公共服务平台</a>
+  </div>
+
+  <!-- 脚注区域 -->
+  <div class="footer">
+    <div class="container">
+      <ul>
+        <li class="text-center">主办单位：<a id="hostUnit">中央军委装备发展部 &nbsp;</a>
+          <a id="recordNo" style="margin-left: 20px">京ICP备19020514</a>
+          <a href="http://www.weain.mil.cn/webEntrance.html" style="margin-left: 25px"><img src="./预研指南详情_files/bottom_icon_map.png" alt="" style="margin-top: -6px;margin-right: 5px;"> 网站地图</a>
+          <a href="http://www.weain.mil.cn/aboutUs.html" style="margin-left: 26px"><img src="./预研指南详情_files/bottom_icon_about.png" alt="" style="margin-top: -6px;margin-right: 5px;"> 关于我们</a>
+        </li>
+        <li class="text-center">
+          <span style="margin-right:10px">联系地址：<a id="address">北京市海淀区阜成路26号院资料楼一楼装备采购信息服务中心</a></span>
+          <span style="margin-right:10px">联系电话：<a id="phone">010-68370745</a></span>
+          <span>电子邮箱：<a id="email">zbcgxxw@weain.mil.cn</a></span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+<!--侧边栏-->
+<div class="rightSidebar" style="position:fixed;top:40%;bottom:60%">
+  <div class="first_code">
+    <div class="qr_code" style="z-index:999">
+      <span class="enterpriseCode"></span>
+    </div>
+    <div class="around" style="left: -134px;display: none;">
+      <div class="around-weixin">
+        <span class="around-txt">微信公众号</span>
+        <span class="sider-weixin">
+        <!-- <img src="/img/weixin.png?v=c79d5de591" alt=""> -->
+        </span>
+      </div>
+      <div class="around-app">
+        <span class="around-txt">APP下载</span>
+        <span class="sider-app">
+        <!-- <img src="/img/app.png?v=ee1d91884f" alt=""> -->
+        </span>
+      </div>
+    </div>
+  </div>
+  <div class="second_call_center">
+    <div class="call_center" style="z-index:999">
+      <span class="ears"></span>
+      <div class="center-txt">呼叫中心</div>
+    </div>
+    <div class="call-around" style="left:-132px;display: none;">
+      <span class="artificial"></span>
+      <div class="call-contact">
+        <span class="call-ceil">联系电话：</span>
+        <span>010-68370745 </span>
+      </div>
+      <button class="call-btn" onclick="contact()">客服咨询</button>
+    </div>
+  </div>
+  <!-- <div class="serch_modle" id="serch_modle">
+    <img src="/img/left_icon_search.png?v=5322931676" class="search_imgs search_click" alt="">
+    <div class="serch_img">
+      <div class="serch_modle" style="z-index:999"  onclick="toSearchHtml()"><img src="/img/left_icon_search.png?v=5322931676" class="search_imgs" alt=""></div>
+      <input type="search" name="searchLeft" class="side-search" placeholder="请输入您搜索的内容">
+    </div>
+  </div> -->
+</div>
+<script src="./预研指南详情_files/consultAction.js.下载"></script>
+<script src="./预研指南详情_files/protocolcheck.js.下载"></script>
+<script src="./预研指南详情_files/layui.all.js.下载"></script>
+<script>
+  $(function () {
+    //右侧搜索显示功能
+    $("#serch_modle").on({
+      "mouseenter": function () {
+        $(".side-search").stop(true).animate({
+          "left": "-234px"
+        }, 400)
+      },
+      "mouseleave": function () {
+        $(".side-search").stop(true).animate({
+          "left": "66px"
+        }, 400)
+      }
+    });
+    var authoritys = JSON.parse(localStorage.getItem("authority"));
+
+    for (var j = 0; j < authoritys.length; j++) {
+      var authority = authoritys[j];
+      if (authority == null || authority == '') {
+        continue;
+      }
+      authority = authority.replace(/:/g, "-");
+      var eles = $("." + authority);
+      for (var i = 0; i < eles.length; i++) {
+        var value = eles[i];
+        $(value).removeClass("qxkz")
+      }
+    }
+
+  });
+  //右侧搜索 搜索功能
+  $(".search_click").on("click", function () {
+    var val = $("input[name='searchLeft']").val();
+    if(val==''){
+      layer.msg("请输入搜索内容",{time:2000});
+      return;
+    }
+    sessionStorage.setItem("searchWord",val);
+    window.location.href = "/search.html"
+  });
+  $(".first_code").hover(function () {
+    $(".around").stop(true).animate({
+      "left":"toggle"
+    }, 400)
+  })
+
+  $(".second_call_center").hover(function () {
+    $(".call-around").stop(true).animate({
+      "left":"toggle"
+    }, 400)
+  })
+
+  function contact() {
+    if (Cookies.get('unit_token')) {
+      consultjsImpl("首页咨询", "首页咨询", "", "首页咨询", "", "helpdesk");
+    }else {
+      layer.msg("请先登录",
+              {time:2000},
+              function() {
+                window.location.href = "/login.html";
+              });
+    }
+  }
+
+
+</script>
+
+
+</footer>
+    <script src="./预研指南详情_files/jquery.qrcode.js.下载"></script>
+    <script src="./预研指南详情_files/jquery.share.min.js.下载"></script>
+    <script>
+        var htmls2='应用背景：燃料电池对高纯度氢源需求。\\r\n研究目标针对氢燃料电池对高品质氢气的要求，开展高效氢气纯化器设计技术、CO等有害杂质定向消除技术、氢气纯度在线监测技术研究，保障燃料电池系统用氢品质要求。技术成熟度达到5级。\\r\n';
+        $("#applyFunds").val('1.0')
+        if (htmls2){
+            var jsonEntity = JSON.parse(htmls2)
+            if(HtmlUtil.htmlDecode(jsonEntity.mainContent)){
+                $("#funcUses").html(HtmlUtil.htmlDecode(jsonEntity.mainContent));
+            }else{
+                $(".delles1").hide()
+            }
+            if(HtmlUtil.htmlDecode(jsonEntity.theResultsForm)){
+               $("#theResultsForm").html(HtmlUtil.htmlDecode(jsonEntity.theResultsForm));
+            }else{
+                $(".delles2").hide()
+            }
+            if(HtmlUtil.htmlDecode(jsonEntity.assessmentMethod)){
+                $("#assessmentMethod").html(HtmlUtil.htmlDecode(jsonEntity.assessmentMethod));
+            }else{
+                $(".delles3").hide()
+            }
+            if(HtmlUtil.htmlDecode(jsonEntity.technologyMaturity)){
+                $("#technologyMaturity").html(HtmlUtil.htmlDecode(jsonEntity.technologyMaturity));
+            }else{
+                $(".delles4").hide()
+            }
+        }else {
+            $(".delles").each(function () {
+                $(this).remove();
+            })
+        }
+    </script>
+    <script>
+        // $("header").load("/section/index_nav_0.shtml");
+        $("footer").load("/section/footer_0.shtml");
+        var tokes = Cookies.get('unit_token')
+        if (tokes == null || tokes == undefined) {
+            $(".token_hide").hide();
+        } else {
+            $(".token_hide").show();
+        }
+        $('#share').share({sites: ['qzone', 'qq', 'weibo','wechat']});
+        var user = window.localStorage.getItem('user');
+        var userInfo = null;
+        if(user){
+            userInfo = JSON.parse(user);
+            pushLog("ll",userInfo.id);
+        }
+        var id = $("#demandId_").val();
+        var cgRedisStatisticForm = {
+            contentClassFlag: 40,
+            contentId: id,
+            dataType: 10
+        };
+        var projectNumber = $("#projectNo").html();
+        if (!projectNumber){
+            $("#projectNo").parent().hide();
+        }
+        // $('#demandForm').hide();
+        $(function () {
+            var user = window.localStorage.getItem('user');
+            if(user){
+                user = JSON.parse(user);
+            }
+            if (!user) {
+                return;
+            }
+            var type = getQueryVariable("type");
+            setZhuanti(type);
+            // sadsadsad
+            ajax("get", "/cg/cgpreresearchguide/getDept", '',
+                function (res) {
+                    if(res.data.unitName){
+                        $('#unitName').html(res.data.unitName)
+                        $('#unitNameh').val(res.data.unitName)
+                    }else{
+
+                        if(user){
+                            var unitName=user.unitName || '';
+                            if(unitName===""||unitName==null){
+                                unitName=user.directlyUnitName==null||user.directlyUnitName===""?user.largeUnitName:user.directlyUnitName
+                            }
+
+                            if(unitName===""||unitName==null){
+                                unitName=user.deptName;
+                            }
+                            $('#unitName').html(unitName)
+                            $('#unitNameh').val(unitName)
+                        }
+
+                    }
+
+                    $('#uscc').html(res.data.uscc)
+                    if(res.data.representativeName) {
+                        $('#corporateRepresentative').val(res.data.representativeName)
+                        $('#representativeName').html(res.data.representativeName)
+                    }
+                    $('#unitNature').html(res.data.unitNature)
+                    $('#mobile').html(res.data.mobile)
+                    $('#cityId').html(res.data.cityId)
+                    $('#registeredAddr').html(res.data.registeredAddr)
+                    if(user.memberType == 40){
+                        // $("#unitWrap").show()
+                        // $("#unitName").hide()
+                        // $('#unitNameh').val("")
+                        $("#legalWarp").show()
+                        $("#usccWrap").hide()
+                        $("#representativeName").hide()
+                    }
+
+                    // $('#unitName').html(res.data.unitName)
+
+                });
+            // 处理专业领域展示不全问题。
+            // var mf = $("#majorField").html() ;
+            // if (mf){
+            //     $("#majorField").html("<a href='javascript:void(0)' style='color: #333333;text-decoration:none;' title="+mf+">"+mf.substring(0,20)+"...</a>")
+            // }
+        })
+        //设置专题时的标题
+        function setZhuanti(type) {
+            if (!type){
+                return;
+            }
+            //设置title
+            document.title = '专题发布详情';
+            var url = encodeURI(getQueryVariable("url"))+"?type="+type;
+            var html =
+                '<li><a href="/">当前位置：首页</a></li>'+
+                '<li><a href="'+url+'">专题发布</a></li>'+
+                '<li><a>专题发布详情</a></li>';
+            $("#daohang").html(html);
+        }
+        // 申报用户详情
+        $(function () {
+            $("#demandDockingIS").show();
+            ajax("get", "/cg/cgpreresearchguide/info/" + id, '',
+                function (res) {
+                    // 答疑开始时间
+                    var questionStartTime =res.cgPreresearchGuide.questionStartTime.substring(0,10)+" 00:00:00";
+                    var startTime = Date.parse(questionStartTime.replace(/-/g,"/"));
+                    // 答疑结束时间
+                    var questionEndTime=res.cgPreresearchGuide.questionEndTime.substring(0,10)+" 00:00:00";
+                    var endTime =  Date.parse(questionEndTime.replace(/-/g,"/"));
+                    // 目前时间
+                    var nowdate = Date.parse(formatDate(new Date()));
+                    if (res.code == 0) {
+                        $("#declareEndTime").html(res.cgPreresearchGuide.declareEndTime?res.cgPreresearchGuide.declareEndTime.substring(0,10):"")
+                        if (!res.cgPreresearchGuide.declareEndTime){
+                            $("#shenbaoshijian2").hide();
+                        }
+                        // 发布时间
+                        $('#publishTime').html(res.cgPreresearchGuide.publishTime?res.cgPreresearchGuide.publishTime.substring(0,10):"")
+                        // 答疑开始时间
+                        $('#startTime').html(res.cgPreresearchGuide.questionStartTime?res.cgPreresearchGuide.questionStartTime.substring(0,10):"")
+                        // 答疑结束时间
+                        $('#endTime').html(res.cgPreresearchGuide.questionEndTime?res.cgPreresearchGuide.questionEndTime.substring(0,10):"")
+                        // 发布单位
+                        $("#acceptanceUnit").html(res.cgPreresearchGuide.unitName);
+                        $("#acceptanceUnit").attr("title",res.cgPreresearchGuide.unitName);
+                        $("#created").html(res.cgPreresearchGuide.declareStartTime?res.cgPreresearchGuide.declareStartTime.substring(0,10):"")
+                        if (!res.cgPreresearchGuide.declareStartTime){
+                            $("#shenbaoshijian1").hide();
+                        }
+                        if (startTime > nowdate || endTime < nowdate )  {
+                            $('#questionContent').hide()
+                            var texts = ' <p style="color:red">提问时间为'+questionStartTime+'--'+questionEndTime+'</p>'
+                            $('#goLogin2').html(texts)
+                        }
+
+                    }
+               }
+            )
+            var userinfos = window.localStorage.getItem('user');
+            if(userinfos){
+                userinfos = JSON.parse(userinfos);
+            }
+            // 未登录不能对接并且提示去登陆
+            if (userinfos) {
+                if (userinfos.auditState != 30) {
+                    // $("#demandDockingIF").hide();
+                    $("#demandDockingIS").hide();
+                    var goLogin = '<p>对不起，您不是网站企事业单位认证用户，不具备对接的权限！</p>';
+                    $("#goLogin").html(goLogin)
+                    return;
+                }
+                if (!(userinfos.memberType == 20 || userinfos.memberType == 30 || userinfos.memberType == 40)) {
+                    // $("#demandDockingIF").hide();
+                    $("#demandDockingIS").hide();
+                    var goLogin = '<p>对不起，您不是网站企事业单位认证用户，不具备对接的权限！</p>';
+                    $("#goLogin").html(goLogin)
+                    return;
+                }
+                var loginMode = window.localStorage.getItem('loginMode');
+                if(loginMode){
+                    loginMode = JSON.parse(loginMode);
+                }
+                if (loginMode != '010') {
+                    // $("#demandDockingIF").hide();
+                    $("#demandDockingIS").hide();
+                    var goLogin = '<p>网站单位认证用户具备对接权限，请使用证书登录！</p>';
+                    $("#goLogin").html(goLogin)
+                    return false;
+                }
+                // $("#demandDockingIF").show();
+                $('#questionContent').show();
+                $('#questionTitle').show();
+            }else {
+                // $("#demandDockingIF").hide();
+                $("#demandDockingIS").hide();
+                var goLogin = '<p>请登录填写对接信息</p>' +
+                    ' <button onclick="window.location.href=\'/login.html\'" class="login">登录</button>';
+                $("#goLogin").html(goLogin);
+                $('#questionContent').hide();
+                $('#questionTitle').hide();
+            }
+            ajax("get", "/cg/cgpreresearchguide/info/" + id, '',
+                function (res) {
+                    var declareEndTime=res.cgPreresearchGuide.declareEndTime;
+                    var declareStartTime=res.cgPreresearchGuide.declareStartTime;
+                    if (res.cgPreresearchGuide.declareEndTime && res.cgPreresearchGuide.declareStartTime) {
+                        $('#demandDockingIS').show()
+                    } else {
+                        $('#demandDockingIS').hide()
+                        var goLogin = ' <p style="color:red">申报未开始</p>'
+                        $("#goLogin").html(goLogin);
+                        return
+                    }
+                    //对接截止日期到了之后不能对接
+                    declareEndTime=declareEndTime.substring(0,10)+" 23:59:59";
+                    var deadline = Date.parse(declareEndTime.replace(/-/g,"/"));
+                    var declareStartTimes = Date.parse(declareStartTime.replace(/-/g,"/"));
+                    var nowdate = Date.parse(formatDate(new Date()));
+                    var acceptanceUnit = $("#acceptanceUnit").html();
+                    var userInfoa = window.localStorage.getItem('user');
+                    if(userInfoa){
+                        userInfoa = JSON.parse(userInfoa);
+                    }
+                    if (!userInfoa){
+                        return;
+                    }
+                    if (declareStartTimes > nowdate||deadline < nowdate) {
+                        $('#demandDockingIS').hide()
+                        var goLogin = ' <p style="color:red">申报时间为'+declareStartTime+'--'+declareEndTime+'</p>'
+                        $("#goLogin").html(goLogin);
+                        return
+                    }
+                    if(userInfoa.id==res.cgPreresearchGuide.createorId ){
+                        $('#demandDockingIS').hide()
+                        var goLogin = ' <p style="color:red">自己不能对接自己发布的指南</p>'
+                        $("#goLogin").html(goLogin);
+                        return
+                    }
+
+                    // 线下不能对接 只有线上可以对接
+                    if(res.cgPreresearchGuide.dockingMethod==1){
+                        $('#demandDockingIS').show()
+                    }else if(res.cgPreresearchGuide.dockingMethod==0){
+                        $('#demandDockingIS').hide()
+                        return;
+                    }
+                    if(res.cgPreresearchGuide.declareType=="开启"){
+                        $('#demandDockingIS').show()
+                    }else if(res.cgPreresearchGuide.declareType=="关闭"){
+                        $('#demandDockingIS').hide()
+                        return;
+                    }
+                });
+                isDeclares()
+                function isDeclares(){
+                    var userInfoa = window.localStorage.getItem('user');
+                    if(userInfoa){
+                        userInfoa = JSON.parse(userInfoa);
+                    }
+                    if (!userInfoa){
+                        return;
+                    }
+                    ajaxRaw("GET","/cg/cgguidedeclare/isDeclare/"+$("#guideId").val(),'',function(res){
+                           if(res.code != 200){
+                               $("#demandDockingIS").hide();
+                               console.log(res,"---------2")
+                               var goLogin = '<p class="background:red">'+res.msg+'</p>';
+                              $("#goLogin").html(goLogin)
+                           }
+                    })
+                }
+
+
+            $('#question-datetimepicker-start,#question-datetimepicker-end').datetimepicker({
+                format: 'YYYY-MM-DD HH:mm:ss',
+                locale: moment.locale('zh-cn')
+            });
+            $("input").blur('input',function(){
+                var ends=new Date($("#contractEndTime").val().replace(/-/g,'/')).getTime()
+                var stars=new Date($("#contractStartTime").val().replace(/-/g,'/')).getTime();
+                if(ends<stars){
+                    layer.msg("合同结束时间不能小于合同开始时间");
+                    $(this).val("");
+                }
+            })
+        })
+
+         //时间格式化yyyy-MM-dd
+            function formatDate(date) {
+                var myyear = date.getFullYear();
+                var mymonth = date.getMonth() + 1;
+                var myweekday = date.getDate();
+
+                if (mymonth < 10) {
+                    mymonth = "0" + mymonth;
+                }
+                if (myweekday < 10) {
+                    myweekday = "0" + myweekday;
+                }
+                return (myyear + "/" + mymonth + "/" + myweekday);
+            }
+        $(function () {
+            var userinfos = window.localStorage.getItem('user');
+            if(userinfos){
+                userinfos = JSON.parse(userinfos);
+            }
+            if (!userinfos) {
+                return;
+            }
+        });
+        ajax("get", "/cg/cgpreresearchguide/getPv" + "?id=" + id, "", function (res) {
+            if (res.code == 0) {
+                $("#pv").html(res.pv);
+            }
+        });
+        ajaxRaw("post", "/front/cgRedisStatistic", JSON.stringify(cgRedisStatisticForm), function (res) {
+
+        });
+
+        function look() {
+            window.location = imgUrl + "数据迁移"
+        }
+
+        $('#datetimepicker-start').datetimepicker({
+            format: 'YYYY-MM-DD',
+            locale: moment.locale('zh-cn')
+        });
+        //collectOrNo($("#nonSecretTitle").html());
+        //附件上传方法上传
+        function uploadFile(e, id,name,url) {
+            if(e.files[0].type!='application/pdf'){
+              layer.msg('请提交PDF格式文件')
+              return;
+            }
+            var formdata = new FormData();
+            formdata.append('file', e.files[0]);
+            ajaxImg("/uploadLocal", formdata, function (result) {
+                if (result.code == 0) {
+                    $(e).siblings('input[name='+name+']')
+                    $('#' + id).html(result.file.fileName)
+                    $(e).siblings('input[name='+name+']').val(result.file.fileName)
+                    $(e).siblings('input[name='+url+']').val(result.file.url)
+
+                }
+            })
+        }
+        //脱密证明上传
+        // function upload_decryption(e, id) {
+        //     if(e.files[0].type!='application/pdf'){
+        //       layer.msg('请扫描成pdf上传')
+        //       return;
+        //     }
+        //     var formdata = new FormData();
+        //     formdata.append('file', e.files[0]);
+        //     ajaxImg("/uploadLocal", formdata, function (result) {
+        //         if (result.code == 0) {
+        //             $('#' + id).html(result.file.fileName)
+        //             $("#decryptionCertificateName").val(result.file.fileName)
+        //             $("#decryptionCertificatePath").val(result.file.url)
+        //         }
+        //     })
+        // }
+        //附件上传
+        // function frl_upload(e, id) {
+        //     var formdata = new FormData();
+        //     formdata.append('file', e.files[0]);
+        //     ajaxImg("/uploadLocal", formdata, function (result) {
+        //         if (result.code == 0) {
+        //             $('#' + id).html(result.file.fileName)
+        //             $("#fileName").val(result.file.fileName)
+        //             $("#filePath").val(result.file.url)
+        //         }
+        //     })
+        // }
+        //保存
+        // function save() {
+        //     if ($("input[name=telphone]").val() == '' || $("input[name=projectName]").val() == '' || $("input[name=applyFunds]").val() == '' || $("input[name=birthdayStr]").val() == '' || $("input[name=creatorTitle]").val() == '' || $("input[name=idCard]").val() == '' || $("input[name=applicant]").val() == '') {
+        //         layer.msg("必填项不能为空");
+        //         return false;
+        //     }
+        //     var mobileReg = /^[1][3,4,5,6,7,8,9][0-9]{9}$/;
+        //     var idReg = /^[1-9]\d{5}(18|19|20)\d{2}((0[1-9])|(1[0-2]))(([0-2][1-9])|10|20|30|31)\d{3}[0-9Xx]$/
+        //
+        //     if(!mobileReg.test($("input[name=telphone]").val())){
+        //         layer.msg("请输入正确的手机号");
+        //         return false;
+        //     }
+        //     if(!idReg.test($("input[name=idCard]").val())){
+        //         layer.msg("请输入正确的身份证号");
+        //         return false;
+        //     }
+        //     if($("input[name=decryptionCertificatePath]").val()==''){
+        //         layer.msg("脱密证明附件必传");
+        //         return false;
+        //     }
+        //     if($("input[name=creatorTitle]").val().length>20){
+        //         layer.msg("职称不能超过20个字符");
+        //         return false;
+        //     }
+        //     if($("input[name=projectApplicationPath]").val()==''){
+        //         layer.msg("项目申请书（盲评）必传");
+        //         return false;
+        //     }
+        //     $("#btnSave").attr("disabled", true);
+        //     ajaxRaw("post", "/cg/cgguidedeclare/save", JSON.stringify($("#guideForm").serializeJson()), function (result) {
+        //         console.log(result)
+        //         if (result.code == 0) {
+        //             $("#btnSave").attr("disabled", false);
+        //             layer.msg("申报成功。", { time: 3000 }, function () {
+        //                 window.location.href="/demandDocking/preGuide.html";
+        //             });
+        //         } else {
+        //             $("#btnSave").attr("disabled", false);
+        //             layer.msg(result.msg, { time: 3000 });
+        //         }
+        //     },function () {
+        //
+        //     },"isEncrypt")
+        // }
+        var json = getUrlJson();
+        var dwfId = json.id;
+        var contentType_, title;
+        var readPushId = json.readPush;
+        if (readPushId){
+            readPush(readPushId);
+        }
+        var ajaxCollectDemandSuccess = function (successData) {
+
+            if (successData.code == 0) {
+                if (successData.collect == true) {
+                    $(".imgCollect").addClass("active");
+                } else {
+                    $(".imgCollect").removeClass("active")
+                }
+            } else {
+                $(".imgCollect").removeClass("active");
+            }
+        };
+        var ajaxCollectDemandError = function (errorData) {
+
+            $(".imgCollect").removeClass("active")
+        };
+        var user = window.localStorage.getItem('user');
+        if(user){
+            user = JSON.parse(user);
+        }
+        //查看当前用户对当前稿件的收藏状态，并修改收藏按钮状态
+        if (user){
+            collectInfo(user.id, $("#demandId_").val(), $("#nonSecretTitle").html());
+        }
+        function MilitaryDemandCollectParam(contentId_, memberId_, contentTitle_) {
+            this.contentId = contentId_;
+            this.memberId = memberId_;
+            this.contentTitle = contentTitle_;
+            // if (contentType == 0){
+            this.contentType = "yyzn";
+            // } else if (contentType == 1) {
+            //     this.contentType = "jggg";
+            // }
+        }
+        //查看当前用户对当前稿件的收藏状态，并修改收藏按钮状态
+        function collectInfo(userId, demandId, title) {
+            if (!userId) {
+                $(".imgCollect").removeClass("active")
+                return;
+            }
+            if (demandId) {
+                var collect = new MilitaryDemandCollectParam(
+                    demandId,
+                    userId,
+                    title);
+                ajaxAsync("POST", "/front/cg/demand/collectALL/info", JSON.stringify(collect), ajaxCollectDemandSuccess, ajaxCollectDemandError);
+            }
+        }
+        //点击收藏按钮改变稿件收藏状态
+        function collectOrNo() {
+            if (!userInfo) {
+                $(".imgCollect").removeClass("active");
+                layer.msg("用户未登录!")
+                return;
+            }
+            if ($("#demandId_").val()) {
+                var collect = new MilitaryDemandCollectParam(
+                    $("#demandId_").val(),
+                    userInfo.id,
+                    $("#nonSecretTitle").html()
+                );
+                ajaxAsync("POST", "/front/cg/demand/collectALL", JSON.stringify(collect), ajaxCollectDemandSuccess, ajaxCollectDemandError);
+                if ( $(".imgCollect").hasClass('active')) {
+                    pushLog("sc",userInfo.id);
+                }
+            }
+        }
+
+
+        //投诉
+        function complain() {
+            var userinfos = window.localStorage.getItem('user');
+            if(userinfos){
+                userinfos = JSON.parse(userinfos);
+            }
+            if (!userinfos) {
+                $(".imgCollect").removeClass("active");
+                layer.msg("用户未登录!")
+                return;
+            }
+            if (userinfos.auditState != 30) {
+                $(".imgCollect").removeClass("active");
+                layer.msg("您不是企事业认证用户，不具备此权限！")
+                return;
+            }
+            if (!(userinfos.memberType == 20 || userinfos.memberType == 30 || userinfos.memberType == 40 || userinfos.memberType == 60)) {
+                $(".imgCollect").removeClass("active");
+                layer.msg("您不是企事业认证用户，不具备此权限！")
+                return;
+            }
+            turnToComplain('', $("#acceptanceUnit").html(), dwfId, $("#nonSecretTitle").html(), '50', userInfo.id);
+        }
+
+        //咨询
+        function consultAction() {
+            if(!Cookies.get('unit_token')){
+							  $(".imgCollect").removeClass("active");
+                layer.msg("用户未登录")
+                return
+            }
+					if (userInfo.memberType == 10 && userInfo.auditState != 30 ) {
+						$(".imgCollect").removeClass("active");
+						layer.msg("个人用户不具备此权限!")
+						return;
+					}
+            var conten = $("#mainIndicator").text();
+            var nonSecretTitle = $("#nonSecretTitle").text();
+            var typetitle = $("#typetitle").text();
+	        var createdBy=$("#createBy").val();
+//            consultjs(nonSecretTitle, conten, "", typetitle, "",createdBy);
+	        consultjs(nonSecretTitle,conten,"/img/app_slices/yyzn-big.png?v=785f590dd0","预研指南","/img/app_slices/yyzn.png?v=16c14099e0",createdBy);
+        }
+
+        //计算输入文本框的字数
+        var txt = document.getElementById("contentQuestion");
+        var txtNum = document.getElementById("txtNum");
+        txt.addEventListener("keyup", function(){
+            txtNum.textContent = txt.value.length;
+        })
+        //提问
+        function questionWay(){
+            pushLog("gz",userInfo.id);
+            var questionForm = {
+            'guideId':$('#demandId_').val(),
+            'questionContent':$('textarea[name=contentQuestion]').val()
+            };
+            ajaxRaw("post", "/cg/cgguidequestionsandanswers/save",JSON.stringify(questionForm),function (result) {
+            if (result.code == 0) {
+                layer.msg("提问成功");
+                $('textarea[name=contentQuestion]').val('')
+                $("#txtNum").text(0)
+            } else {
+                layer.msg(result.msg)
+            }
+            }),"","isEncrypt"
+        }
+        var answerLimit  =  5
+        //问题列表
+        $(function () {
+            answerListWay(1,answerLimit)
+            // loadway()
+        })
+         //当前页码
+        var answerPageSize = sessionStorage.getItem("all_currPage") ;
+
+        answerPageSize = answerPageSize?answerPageSize:1;
+        var answerCount  = ''
+        var answerId = $('#demandId_').val()
+        function answerListWay(){
+            var aa = sessionStorage.getItem("all_currPage")?sessionStorage.getItem("all_currPage"):1;
+            var userinfos = window.localStorage.getItem('user');
+            if(userinfos){
+                userinfos = JSON.parse(userinfos);
+            }
+            if (!userinfos) {
+                return;
+            }
+            ajax("get",'/cg/cgguidequestionsandanswers/list?page='+aa+'&limit='+answerLimit+'&guideId='+answerId,"",function (res) {
+            if (res.code==0){
+                var answerList = res.data;
+                var str = '';
+                answercount = res.count
+                for (var i = 0; i < answerList.length; i++) {
+                var map = answerList[i];
+                var answerContent = map.answers!=null?map.answers:'待解答......'
+                str +='<div class="answer-ceil">'+
+                        '<img src="../img/btn.png?v=5d5ee40b21" alt="" class="answer-img">'+
+                        '<span class="answer-txt" id="answerTxt">'+map.createByName+'</span>'+
+                        '<h4 id="questionTitle">'+map.questions+'</h4>'+
+                        '<span class="answer-content" id="answerContent">'+answerContent+'</span>'+
+                        '</div>'
+                }
+            }
+            if(answerPageSize == 1){
+                $("#answerList").html("")
+            }
+            $("#answerList").html(str)
+            $("#pageBar").html("");
+            if(res.count==0||res.data.length==0){
+                $("#pageBar").html("<div class='empty-style-reset' id='empty-style'><img src='../img/empty_data.png?v=4ba0e7b0d4'><span class='empty-txt' style='display: block;margin-top: 20px;text-align: center;color: #E0DEDE;font-size: 18px;'>暂无内容</span></div>");
+                return false;
+            }
+            page(answerPageSize, answerLimit, res.count, 'pageBarOnClickFunction', 'pageBar');
+            })
+        }
+
+        //点击查询
+        var pageBarOnClickFunction = function searchDemandListByParamHasPage(currPage_) {
+            answerPageSize = currPage_ ;
+            sessionStorage.setItem("all_currPage", currPage_);
+            answerListWay();
+        };
+
+        function pushLog(type,id) {
+            pushLogToPushService("共用-41421020501-高效氢气纯化及定向除杂技术",
+                "",
+                id,
+                "制导与控制技术,电子元器件,动力与传动,可靠性/测试性/维修性,其他",
+                type,
+                "646076"
+            )
+        }
+
+       //下拉加载
+        // function loadway(){
+        //     var self = this 68345ed7fg wrtvsxbcgfz
+        //     window.onscroll = function () {
+        //     var scrollTop = document.documentElement.scrollTop || document.body.scrollTop
+        //     var windowHeight = document.documentElement.clientHeight || document.body.clientHeight
+        //     var scrollHeight = document.documentElement.scrollHeight || document.body.scrollHeight
+        //     if (scrollTop + windowHeight + 100 > scrollHeight) {
+        //         if (self.answerPageSize * self.answerLimit >= self.answercount) {
+        //         self.load= false
+        //         return
+        //     }
+        //         if (self.load) {
+        //         self.answerPageSize++
+        //         self.answerListWay()
+        //         }
+        //         self.load = false
+        //         setTimeout(function(){
+        //             self.load = true
+        //         }, 1000)
+        //     }
+        //     }
+        // }
+                    // 表单校验
+    </script>
+
+
+
+
+</body></html>

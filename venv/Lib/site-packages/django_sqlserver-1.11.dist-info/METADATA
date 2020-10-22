@@ -1,0 +1,23 @@
+Metadata-Version: 2.1
+Name: django-sqlserver
+Version: 1.11
+Summary: Django backend database support for MS SQL Server and pytds.
+Home-page: https://github.com/denisenkom/django-sqlserver
+Author: Mikhail Denisenko
+Author-email: denisenkom@gmail.com
+License: MIT
+Platform: UNKNOWN
+Classifier: Development Status :: 4 - Beta
+Classifier: Framework :: Django
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3.3
+Classifier: Programming Language :: Python :: 3.4
+Classifier: Topic :: Internet :: WWW/HTTP
+Classifier: Topic :: Database
+Requires-Dist: python-tds
+Requires-Dist: django-mssql (>=1.7)
+
+UNKNOWN
+
+

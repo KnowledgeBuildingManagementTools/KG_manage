@@ -1,0 +1,217 @@
+var unit_token = Cookies.get('unit_token');
+var userBar = '';
+// var pushStatus =  Cookies.get('pushStatus')||1;
+var pushStatus=0;
+if (unit_token) {
+    //放到最前面，希望它能早点执行
+    ajaxAsync("GET", "/periodOfToken?token=" + unit_token, "", function (result) {
+        if (result.code != 0) {
+            //token过期了
+            Cookies.remove("unit_token");
+            window.localStorage.removeItem('user');
+            unit_token = null;
+            layer.msg("登录状态失效");
+        }
+    })
+}
+
+var ref = document.referrer;
+if (!ref) {
+    $.getJSON("/auth.json", function (date) {
+        var pathname = window.location.pathname;
+        pathname = pathname.replace("/", "");
+        var auth = date[pathname];
+        // console.log(auth)
+        if (auth && !unit_token) {
+            layer.msg("请您先登录", { time: 3000 })
+            window.location.href = "/login.html";
+            return;
+        }
+        var loginMode = window.localStorage.getItem('loginMode');
+        if (auth && (auth.indexOf("noMode") < 0) && loginMode != '"010"') {
+            layer.msg("请使用证书登录", { time: 3000 })
+            window.location.href = "/";
+            return;
+        }
+        var authoritys = JSON.parse(localStorage.getItem("authority"));
+        var falg = null;
+        if (auth) {
+            var s = auth.split(",");
+            for (var a = 0; a < s.length; a++) {
+                if (a == "noMode") {
+                    continue;
+                }
+                if (authoritys.indexOf(s[a]) >= 0) {
+                    falg = true;
+                    break;
+                }
+            }
+            if (!falg) {
+                layer.msg("您没有权限", { time: 3000 })
+                window.location.href = "/";
+                return;
+            }
+        }
+    });
+}
+var user = window.localStorage.getItem('user');
+if (unit_token) {
+    if (user) {
+        user = JSON.parse(user);
+    }
+
+    var unitName = "";
+    if (user) {
+        unitName = user.unitName || '';
+        if (!unitName) {
+            if (user.directlyUnitName) {
+                unitName = user.directlyUnitName;
+            } else if (user.largeUnitName) {
+                unitName = user.largeUnitName;
+            } else {
+                unitName = user.deptName;
+            }
+        }
+        //当军队用户的单位为  其他  的时候，上面的几个部门名称都查不到，所以就直接默认为他的militrayName
+        if (!unitName) {
+            unitName = user.militaryName;
+        }
+        if (user.memberType == 10) {
+            unitName = user.trueName;
+        }
+        if (unitName && unitName.length > 15) {
+            unitName = unitName.slice(0, 15) + "...";
+        }
+        if (!unitName) {
+            unitName = "帐号异常";
+        }
+        // console.log("5",unitName);
+        // debugger
+        // ajax('get','/front/cgmessage/getCount','',function(res){
+        //     console.log(res)
+        //     if(res&&res.code == 0){
+        //         if(res.count>0){
+        //             $('.sign_num').html(res.count)
+        //             $('.sign_num').css('display','inline-block')
+        //         }else{
+        //             $('.sign_num').css('display','none')
+        //         }
+        //     }
+        // })
+    }
+    userBar = '' +
+        '<div class="log_head">' +
+        '     <div class="container" style="padding-right: 0px;">' +
+        '       <div class="welcome "  onclick="window.location=\'/\'"><span class="head-login">欢迎访问全军武器装备采购信息网</span></div>' +
+        '       <div class="login_regist" id="userBar" >' +
+        '           <span class="head-login" onclick="toOuter(\'gfzscq\')">国防知识产权</span>' +
+        '           &nbsp;&nbsp;' +
+        '          <span class="head-login" onclick="window.location.href=\'/zbsy/list.shtml\'"> 试验鉴定</span>' ;
+        if (pushStatus == 0){
+            userBar+= '              <span class="head-login" id="recomend" onclick="window.location.href=\'/userCenter/recommendedYou.html\'"> 为您推荐<strong id="circle"></strong></span>' ;
+        }
+
+    userBar  +=  '           <span>|</span>' +
+        '           <span onclick="window.location.href=\'/userCenter/userCenter.html\'"><img style="height: 16px;margin-right: 5px;cursor: pointer" src="/newIndex/img/avatar30.png">' +
+        '           <span class="head-login" style="padding-left: 0px">' + unitName + '</span></span>' +
+        '<div class="sign_num"></div>' +
+        '           <span class="head-login" onclick="clearLoginInfo();" >退出</span>' +
+        '        </div>' +
+        '      </div>' +
+        '</div>';
+
+} else {
+    userBar = '' +
+        '' +
+        '<div class="log_head">' +
+        '         <div class="container" style="padding-right: 0px;">' +
+        '            <div class="welcome" onclick="window.location=\'/\'"><span class="head-login">欢迎访问全军武器装备采购信息网</span></div>' +
+        '            <div class="login_regist" id="userBar" >' +
+        '               <span class="head-login" onclick="toOuter(\'gfzscq\')">国防知识产权</span>' +
+        '               &nbsp;&nbsp;' +
+        '              <span class="head-login" onclick="window.location.href=\'/zbsy/list.shtml\'"> 试验鉴定</span>' +
+        '              <span>|</span>\n' +
+        '              <span class="head-login" onclick="window.location.href=\'/login.html\'">登录</span>' +
+        '              <span onclick="window.location.href=\'/personalRegistration.html\'" class="head-login">注册</span>' +
+        '            </div>' +
+        '          </div>' +
+        '</div>';
+}
+var html = userBar +
+    '<div class="head-back">\n' +
+    '  <div class="head_contant container">\n' +
+    '    <div class="logo-img"></div>\n' +
+    '    <div class="logo-img2"></div>\n' +
+    '    <div class="titleRights">\n' +
+    '      <input type="text" name="searchLeft" placeholder="请输入关键字">\n' +
+    '      <label class="rearchButton" onclick="toSearchHtml()">搜索</label>\n' +
+    '    </div>\n' +
+    '  </div>\n' +
+    '</div>\n' +
+    '  <div class="nav-tab" style="background:#CC1C00">\n' +
+    '    <div class="container" style="padding-right: 0px; padding-left:28px">\n' +
+    '      <ul class="nav navbar-nav" style="display: flex;justify-content: space-around;float: none;">\n' +
+    '        <li  style="padding:10px 0;"><a href="/">首页</a></li>\n' +
+    '        <li  style="padding:10px 0;;"><a href="/cggg/jdgg/list.shtml">采购公告</a></li>\n' +
+    '        <li style="padding:10px 0;"><a href="/cgxq/jdxq/list.shtml" >采购需求</a></li>\n' +
+    '        <li style="padding:10px 0;"><a href="/support/index.html" >快速支持</a><span>new</span></li>\n' +
+    '        <li style="padding:10px 0;"><a href="/api/front/list/jzcg" >集中采购</a></li>\n' +
+    '        <li style="padding:10px 0;"><a href="/tyzb/list.shtml" >通用装备</a></li>\n' +
+    '        <li style="padding:10px 0;"><a href="/fgbz/list.shtml" >法规标准</a></li>\n' +
+    '        <li style="padding:10px 0;"><a href="/zbsczr/index.shtml" >装备市场准入</a></li>\n' +
+    '        <li style="padding:10px 0;"><a href="/fwzn/list.shtml" >服务指南</a></li>\n' +
+    '      </ul>\n' +
+    '    </div>\n' +
+    '  </div>\n' +
+    '</div>\n';
+document.write(html);
+document.close();
+function toSearchHtml() {
+    var val = $("input[name='searchLeft']").val();
+    if (val == '') {
+        layer.msg("请输入搜索内容", { time: 2000 });
+        return;
+    }
+    sessionStorage.setItem("searchWord", val);
+    window.location.href = "/search.html"
+}
+$(document).on('click', '.sign_num', function () {
+    window.location.href = '/userCenter/messageCenter.html'
+})
+$("input[name='searchLeft']").keypress(function (e) {
+    if (e.which == 13) {
+        toSearchHtml();
+    }
+});
+if (window.location.pathname == "/search.html") {
+    $(".titleRights").hide();
+}
+$(document).ready(function () {
+    $(".nav li a").click(function () {
+        $(".nav li a").removeClass("active");
+        $(this).addClass("active");
+    })
+});
+// placeholder兼容ie9
+$(function () {
+    if (!placeholderSupport()) {   // 判断浏览器是否支持 placeholder
+        $('[placeholder]').focus(function () {
+            var input = $(this);
+            if (input.val() == input.attr('placeholder')) {
+                input.val('');
+                input.removeClass('placeholder');
+            }
+        }).blur(function () {
+            var input = $(this);
+            if (input.val() == '' || input.val() == input.attr('placeholder')) {
+                input.addClass('placeholder');
+                input.val(input.attr('placeholder'));
+            }
+        }).blur();
+    };
+})
+function placeholderSupport() {
+    return 'placeholder' in document.createElement('input');
+}
+
+

@@ -1,0 +1,138 @@
+/**
+ * 需求对接app的js
+ * 参数说明：
+ *
+ *
+ *
+ *
+ *
+ *
+ * */
+var isMac = function() {
+	return /macintosh|mac os x/i.test(navigator.userAgent);
+}();
+
+var isWindows = function() {
+	return /windows|win32/i.test(navigator.userAgent);
+}();
+
+var isLinuxAndFirefox = function() {
+	return /firefox/i.test(navigator.userAgent) && /linux/i.test(navigator.userAgent);
+}();
+
+function consultjs(title,desc,thumbUrl,category,icon,userId) {
+	if(userId&&userId!='0'){
+		ajaxAsync("GET","/front/cgmember/detail/"+userId , "" ,
+			function (data) {
+				if(data.code==500){
+					consultjsImpl(title,desc,thumbUrl,category,icon,"helpdesk")
+					layer.alert("正在启动军采通...",{time:5000});
+				}else{
+					consultjsImpl(title,desc,thumbUrl,category,icon,data.cgMember.userName)
+					layer.alert("正在启动军采通...",{time:5000});
+				}
+			},
+			function(err){
+				consultjsImpl(title,desc,thumbUrl,category,icon,"helpdesk")
+				layer.alert("正在启动军采通...",{time:5000});
+			}
+		);
+	}else{
+		layer.msg("用户不在线",{time:2000});
+	}
+	
+	// layer.alert("正在启动军采通...",{time:5000});
+}
+
+function consultjsImpl(title,desc,thumbUrl,category,icon,userId) {
+
+
+	var prefixUrl ="/";
+	desc=desc.substring(0,100);
+	var params = {
+		action: "consult",                        // 动作类型：consult - 需求咨询
+		sso_token: Cookies.get('unit_token'),          // 单点登录平台的 access token，如果当前军采通客户端未启动，可以利用该token自动登录
+		account: userId,             // 该需求或公告的发布者，即本次咨询的目标对象，填写其账户名
+		share_web_title: title,       // 需求或公告的标题
+		share_web_url: window.location.href,           // 需求或公告详情页面 URL
+		share_web_desc: desc,         // 需求或公告的概述
+		share_web_thumb: prefixUrl+thumbUrl,    // 需求或公告的题图 URL
+		share_web_category: category, // 需求或公告所属的栏目或分类，如“军工需求”、“军队需求”、“军工公告”、“军队公告”等
+		share_web_icon: prefixUrl+icon,         // 小图标 URL，作用类似网页的 favicon
+	};
+
+	// JSON 字符串
+	var paramStr = JSON.stringify(params);
+	console.log("params: " + paramStr);
+
+	// 对JSON字符串进行Base64编码
+	var s = CryptoJS.enc.Utf8.parse(paramStr);
+	base64 = CryptoJS.enc.Base64.stringify(s);
+	console.log("param base64 raw: " + base64);
+
+	console.log(navigator.userAgent);
+
+
+
+	// 调用军采通客户端
+	if (isMac) {
+		console.log("launch juncaitong in macOS");
+		window.protocolCheck("juncaitong://?ak-data=" + base64,
+			function () {
+				alert("您未安装军采通客户端软件");
+				// TODO: 跳转到下载页面等后续处理
+				window.open("http://desktopdn.akeychat.cn/JCT3.0.6.0/JunCaiTong.v3.0.6.0.dmg")
+			}
+		);
+	}
+	else if (isWindows) {
+		console.log("launch juncaitong in Windows");
+		window.protocolCheck("juncaitong://ak-data=" + base64,
+			function () {
+				alert("您未安装军采通客户端软件");
+				// TODO: 跳转到下载页面等后续处理
+				window.open("http://desktopdn.akeychat.cn/JCT3.0.6.0/JunCaiTongSetup.v3.0.6.0.exe")
+			}
+		);
+	}
+	else if (isLinuxAndFirefox) {
+		console.log("launch juncaitong in Firefox@Linux");
+
+		var plugin = document.getElementById("jctPlugin");
+		if (plugin && plugin.consult) {
+			if (plugin.consult("juncaitong://ak-data=" + base64)) {
+				alert("您未安装军采通客户端软件");
+				// TODO: 跳转到下载页面等后续处理
+				window.open("http://desktopdn.akeychat.cn/JCT3.0.7.0/juncaitong-3.0.7.0.deb")
+			}
+		}
+		else {
+			alert("未安装军采通火狐浏览器插件");
+		}
+	}
+
+
+
+	// 调用军采通客户端
+	// if (isMac) {
+	// 	console.log("launch juncaitong in macOS");
+	// 	window.location.href = "juncaitong://?ak-data=" + base64;
+	// }
+	// else if (isWindows) {
+	// 	console.log("launch juncaitong in Windows");
+	// 	window.location.href = "juncaitong://ak-data=" + base64;
+	// }
+	// else if (isLinuxAndFirefox) {
+	// 	console.log("launch juncaitong in Firefox@Linux");
+	//
+	// 	var plugin = document.getElementById("jctPlugin");
+	// 	if (plugin && plugin.consult) {
+	// 		plugin.consult("juncaitong://ak-data=" + base64);
+	// 	}
+	// 	else {
+	// 		alert("未安装军采通火狐浏览器插件");
+	// 	}
+	// }
+
+
+}

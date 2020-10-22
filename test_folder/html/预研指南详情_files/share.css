@@ -1,0 +1,29 @@
+.share-wrap {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    border-radius: 4px;
+    color: #fff;
+    background: #CC1C00;
+    padding: 6px 8px;
+    margin-right: 10px;
+    cursor: pointer;
+    height: 32px;
+}
+.share-wrap:hover .share{
+    display: block
+}
+.share {
+    position: absolute;
+    width: 200px;
+    top: 30px;
+    padding: 20px;
+    border-right: 4px;
+    box-shadow: 1px 1px 2px 2px #eee;
+    display: none;
+    background: #fff;
+}
+.wechat-qrcode .qrcode img {
+    width: 100px;
+    height: 100px;
+}

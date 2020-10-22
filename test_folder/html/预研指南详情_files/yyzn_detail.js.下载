@@ -1,0 +1,981 @@
+
+         // 分承研全局变量
+          var pointsThe = []
+          // 实物类成果变量
+          var achievements = []
+          // 非实物类成果变量
+          var achievements2 = []
+          // 年度研究变量
+          var researchProgres =[]
+        // 结果公示
+
+        function publicityList(){
+          ajax('GET',"/cg/cgguidedeclare/declareResult/" +$("#guideId").val(),'',function (res){
+            if(res.code == 0){
+              var htmls = ""
+              if(res.result.length){
+                for(var i=0;i<res.result.length;i++){
+                var html = ""
+                       html +=  "<tr>"
+                       html +=      "<td>"+(i+1)+"</td>"
+                       html +=      "<td>"+res.result[i].unitName+"</td>"
+                       html +=      "<td>"+res.result[i].declareTime+"</td>"
+                       html +=      "<td>入围</td>"
+                       html +=  "</tr>"
+                  htmls += html
+                }
+              }else{
+                // htmls = "<div class='empty-style-reset' id='empty-style'><img src='../img/empty_data.png'><span class='empty-txt' style='display: block;margin-top: 20px;text-align: center;color: #E0DEDE;font-size: 18px;'>暂无内容</span></div>"
+              }
+              $("#publicityList").html(htmls)
+            }
+          })
+        }
+       // 展开 关闭
+        function onCollapse(id,that){
+            var that = that
+            if( $(id).is(":hidden") ){
+            $(that).html("收起&nbsp;Λ")
+           }else{
+            $(that).html("展开&nbsp;V")
+           }
+        }
+        // 基本信息编辑
+        function edit(){
+          layer.msg("您可以编辑了！");
+          $("#subbtn").removeAttr("disabled")
+          $("#fieldset").removeAttr("disabled")
+        }
+        // 处理基础信息四大部门数据
+        function jsonString(jqObject){
+          var ObjectData =  $("."+jqObject+" input")
+          var json = {}
+          for(var i=0;i<ObjectData.length;i++){
+            var key = (ObjectData.eq(i).attr('id'))
+            json[key] = ObjectData.eq(i).val()
+          }
+          var jsonNew = {}
+          jsonNew[jqObject] = JSON.stringify(json)
+          return jsonNew
+        }
+        // 处理基础信息四大部门数据回显
+        function detailsParse(variable,obj){
+
+          var ObjectData =  $("."+variable+" input")
+          for (key in obj) {
+            for(var i=0;i<ObjectData.length;i++){
+                if(key == ObjectData.eq(i).attr('id')){
+                  ObjectData.eq(i).val(obj[key])
+               }
+            }
+          }
+        }
+
+        // 初始化获取详情数据
+        $(function(){
+          getInfo()
+          getDetails()
+          publicityList()
+        })
+        // 表单校验
+        $(document).ready(function () {
+            $('#baseForm')
+                    .validate({
+                      rules: {
+                        unitType: {
+                          rangelength:[1,100],
+                          required: true
+                        },
+                        telNo: {
+                            required: true,
+                            checkTelephone:true,
+                        },
+                        corporateRepresentative: {
+                          required: true,
+                        },
+                        confidentialityQualification: {
+                           required: true,
+                        },
+                        unitAddress: {
+                           required: true,
+                        },
+                        postalCode: {
+                           required: true,
+                        },
+                        openingBank: {
+                          required: true,
+                        },
+                        accountName: {
+                          required: true,
+                        },
+                        bankAccount: {
+                          required: true,
+                        },
+
+                      },
+                      messages: {
+                          unitType:{
+                            required:"单位类型不能为空",
+                          },
+                          telNo: {
+                              required: "电话号码不能为空"
+                          },
+                          corporateRepresentative: {
+                            required: "法人代表不能为空"
+                          },
+                          confidentialityQualification: {
+                            required: "保密资质不能为空"
+                          },
+                          unitAddress: {
+                            required: "单位地址不能为空"
+                          },
+                          postalCode: {
+                            required: "邮政编码不能为空"
+                          },
+                          openingBank: {
+                            required: "开户行不能为空"
+                          },
+                          accountName: {
+                            required: "账号名称不能为空",
+                          },
+                          bankAccount: {
+                            required: "银行账号不能为空",
+                          },
+
+                        },
+                      errorElement: "div",
+                      errorPlacement: function (error, element) {
+                        error.appendTo(element.parent().find(".errors"));
+                      },
+                      // 提交表单
+                      submitHandler: function (form) {
+                        // //Use Ajax to submit form data
+                        $(".subbtn").attr("disabled",'disabled')
+                        var $form =$("#baseForm").serializeJson()
+                        // console.log($("#baseForm").serializeJson())
+                        var technologySectorLeader = jsonString('technologySectorLeader')
+                        var technologySectorDirector = jsonString('technologySectorDirector')
+                        var financialDepartmentLeader = jsonString('financialDepartmentLeader')
+                        var financialDepartmentDirector = jsonString('financialDepartmentDirector')
+                        $.extend( true,$form ,technologySectorLeader,technologySectorDirector ,financialDepartmentLeader ,financialDepartmentDirector)
+                       if($("#id").val()){
+                          ajaxRaw("post", "/cg/cgguidebasicinformation/update", JSON.stringify($form), function (result) {
+                          if (result.code == 0) {//根据返回值进行跳转
+                             layer.msg("修改成功！");
+                             getInfo()
+                             $("#subbtn").removeAttr("disabled")
+                          } else {
+                             layer.msg("修改失败！");
+                             $("#subbtn").removeAttr("disabled")
+                          }
+                        });
+                      }else{
+                          ajaxRaw("post", "/cg/cgguidebasicinformation/save", JSON.stringify($form), function (result) {
+                            if (result.code == 0) {//根据返回值进行跳转
+                               layer.msg("保存成功！");
+                               getInfo()
+                               $("#subbtn").removeAttr("disabled")
+                            } else {
+                               layer.msg("保存失败！");
+                               $("#subbtn").removeAttr("disabled")
+                            }
+                          });
+                        }
+                      }
+
+                    });
+                    $.validator.addMethod("checkTelephone", function (value, element, params) {
+                        var checkInfo1 = /^(0|86|17951)?(13[0-9]|15[012356789]|17[01678]|18[0-9]|14[57])[0-9]{8}$/;
+                        var checkInfo2 = /^(0[0-9]{2,3}\-)([2-9][0-9]{6,7})+(\-[0-9]{1,4})?$/;
+                        return this.optional(element) || (checkInfo1.test(value)||checkInfo2.test(value));
+                        }, "手机号码或者座机号码格式有误");
+
+                })
+                // 基本信息回显
+                function getInfo() {
+                  ajax("GET", "/cg/cgguidebasicinformation/info/"+$("#guideId").val(),"", function (result) {
+                     if (result.code == 0) {//根据返回值进行跳转
+                       if(result.cgGuideBasicinformation){
+                         $("#fieldset").attr("disabled","disabled")
+                         $("#unitType").val(result.cgGuideBasicinformation.unitType)
+                         $("#id").val(result.cgGuideBasicinformation.id)
+                         $("#corporateRepresentative").val(result.cgGuideBasicinformation.corporateRepresentative)
+                         $("#telNo").val(result.cgGuideBasicinformation.telNo)
+                         $("#confidentialityQualification").val(result.cgGuideBasicinformation.confidentialityQualification)
+                         $("#confidentialAddress").val(result.cgGuideBasicinformation.confidentialAddress)
+                         $("#postalCode").val(result.cgGuideBasicinformation.postalCode)
+                         $("#unitAddress").val(result.cgGuideBasicinformation.unitAddress)
+                         $("#openingBank").val(result.cgGuideBasicinformation.openingBank)
+                         $("#accountName").val(result.cgGuideBasicinformation.accountName)
+                         $("#bankAccount").val(result.cgGuideBasicinformation.bankAccount)
+                         var technologySectorLeader = JSON.parse(result.cgGuideBasicinformation.technologySectorLeader)
+                         var technologySectorDirector = JSON.parse(result.cgGuideBasicinformation.technologySectorDirector)
+                         var financialDepartmentLeader = JSON.parse(result.cgGuideBasicinformation.financialDepartmentLeader)
+                         var financialDepartmentDirector = JSON.parse(result.cgGuideBasicinformation.financialDepartmentDirector)
+                         detailsParse('technologySectorLeader',technologySectorLeader)
+                         detailsParse('technologySectorDirector',technologySectorDirector)
+                         detailsParse('financialDepartmentLeader',financialDepartmentLeader)
+                         detailsParse('financialDepartmentDirector',financialDepartmentDirector)
+                         $("#frlUrl").val(result.cgGuideBasicinformation.frlUrl)
+                         $("#frlName").val(result.cgGuideBasicinformation.frlName)
+                         if(result.cgGuideBasicinformation.frlUrl){
+                           var frlUrl = '<a herf="'+imgUrl+result.cgGuideBasicinformation.frlUrl+'">'+result.cgGuideBasicinformation.frlName+'</a>'
+                           $('#project_name').html(frlUrl)
+                         }
+                       }else{
+                         $("#fieldset").removeAttr("disabled")
+                       }
+                  }
+                  });
+                 }
+                //  手机号码校验
+                 function tpCheckout(e){
+                  var checkInfo1 = /^(0|86|17951)?(13[0-9]|15[012356789]|17[01678]|18[0-9]|14[57])[0-9]{8}$/;
+                  var checkInfo2 = /^(0[0-9]{2,3}\-)([2-9][0-9]{6,7})+(\-[0-9]{1,4})?$/;
+                 var $val = $(e).val()
+                 if(checkInfo1.test($val)||checkInfo2.test($val)){
+                  $(e).next().html("")
+                 }else if($(e).val()==''){
+                  $(e).next().html("")
+                 }else {
+                  $(e).next().html("手机格式有误")
+                     return
+                 }
+                }
+              // 分承研（参研）单位 添加弹框校验
+              $(document).ready(function () {
+
+                $('#baseForm2')
+                        .validate({
+                          rules: {
+                            unitType: {
+                              rangelength:[1,100],
+                              required: true
+                            },
+                            unitName:{
+                              required: true
+                            },
+                            creditCode:{
+                              required: true,
+                              pattern:true,
+                            },
+                            telNo: {
+                                required: true,
+                                checkTelephone:true,
+                            },
+                            corporateRepresentative: {
+                              required: true,
+                            },
+                            confidentialityQualification: {
+                               required: true,
+                            },
+                            unitAddress: {
+                               required: true,
+                            },
+                            postalCode: {
+                               required: true,
+                            },
+                            openingBank: {
+                              required: true,
+                            },
+                            accountName: {
+                              required: true,
+                            },
+                            bankAccount: {
+                              required: true,
+                            },
+
+                          },
+                          messages: {
+                              unitType:{
+                                required:"单位类型不能为空",
+                              },
+                              unitName:{
+                                required: '单位名称不能为空'
+                              },
+                              creditCode:{
+                                required: '社会统一信用代码不能为空'
+                              },
+                              telNo: {
+                                  required: "电话号码不能为空"
+                              },
+                              corporateRepresentative: {
+                                required: "法人代表不能为空"
+                              },
+                              confidentialityQualification: {
+                                required: "保密资质不能为空"
+                              },
+                              unitAddress: {
+                                required: "单位地址不能为空"
+                              },
+                              postalCode: {
+                                required: "邮政编码不能为空"
+                              },
+                              openingBank: {
+                                required: "开户行不能为空"
+                              },
+                              accountName: {
+                                required: "账号名称不能为空",
+                              },
+                              bankAccount: {
+                                required: "银行账号不能为空",
+                              },
+
+                            },
+                          errorElement: "div",
+                          errorPlacement: function (error, element) {
+                            error.appendTo(element.parent().find(".errors"));
+                          },
+                          submitHandler: function (form) {
+                          }
+
+                        });
+                        $.validator.addMethod("pattern", function (value, element, params) {
+                          var checkInfo1 = /^[^_IOZSVa-z\W]{2}\d{6}[^_IOZSVa-z\W]{10}$/g;
+                          return this.optional(element) || (checkInfo1.test(value));
+                          }, "不符合统一社会信用代码编码规则");
+                        $.validator.addMethod("checkTelephone", function (value, element, params) {
+                            var checkInfo1 = /^(0|86|17951)?(13[0-9]|15[012356789]|17[01678]|18[0-9]|14[57])[0-9]{8}$/;
+                            var checkInfo2 = /^(0[0-9]{2,3}\-)([2-9][0-9]{6,7})+(\-[0-9]{1,4})?$/;
+                            return this.optional(element) || (checkInfo1.test(value)||checkInfo2.test(value));
+                            }, "手机号码或者座机号码格式有误");
+
+                    })
+
+
+                    // 分承研保存
+                    $(document).on('click','#saveModal',function(){
+                      $("#editModal").hide()
+                      if($('#baseForm2').valid()){
+                        var $form2 =$("#baseForm2").serializeJson()
+                        var technologySectorLeader = textareaStr('technologySectorLeader')
+                        var technologySectorDirector = textareaStr('technologySectorDirector')
+                        var financialDepartmentLeader = textareaStr('financialDepartmentLeader')
+                        var financialDepartmentDirector = textareaStr('financialDepartmentDirector')
+                        $.extend( true,$form2 ,technologySectorLeader,technologySectorDirector ,financialDepartmentLeader ,financialDepartmentDirector)
+                        pointsThe.push($form2)
+                        PointsTheList()
+                        // 清空表单
+                        var reset = $('#baseForm2 input,#baseForm2 select')
+                        $("#project_name2").html("")
+                        for(var i = 0 ;i<reset.length;i++){
+                          reset.eq(i).val('')
+                        }
+                        // 关闭弹框
+                        $('#myModalPoints').modal('hide')
+                      }
+                    })
+                    // 分承研删除
+                    $(document).on('click','.pointsDel',function(){
+                      var index = $(this).data('index')
+                      pointsThe.splice(index,1)
+                      PointsTheList()
+                    })
+                    // 分承研修改
+                    $(document).on('click','.pointsEdit',function(){
+                      var index = $(this).data('index')
+                      $('#saveModal').hide()
+                      $('#editModal').show()
+                      $('#editModal').data('index',index)
+                      $("#unitName2").val(pointsThe[index].unitName)
+                      $('#creditCode').val(pointsThe[index].creditCode)
+                      $("#unitType2").val(pointsThe[index].unitType)
+                      $("#corporateRepresentative2").val(pointsThe[index].corporateRepresentative)
+                      $("#telNo2").val(pointsThe[index].telNo)
+                      $("#confidentialityQualification2").val(pointsThe[index].confidentialityQualification)
+                      $("#confidentialAddress2").val(pointsThe[index].confidentialAddress)
+                      $("#postalCode2").val(pointsThe[index].postalCode)
+                      $("#unitAddress2").val(pointsThe[index].unitAddress)
+                      $("#openingBank2").val(pointsThe[index].openingBank)
+                      $("#accountName2").val(pointsThe[index].accountName)
+                      $("#bankAccount2").val(pointsThe[index].bankAccount)
+                      $("#frlName2").val(pointsThe[index].frlName)
+                      $("#frlUrl2").val(pointsThe[index].frlUrl)
+                      var technologySectorLeader =JSON.parse(pointsThe[index].technologySectorLeader)
+                      var technologySectorDirector =JSON.parse(pointsThe[index].technologySectorDirector)
+                      var financialDepartmentLeader =JSON.parse(pointsThe[index].financialDepartmentLeader)
+                      var financialDepartmentDirector =JSON.parse(pointsThe[index].financialDepartmentDirector)
+                      textareaParse('technologySectorLeader',technologySectorLeader)
+                      textareaParse('technologySectorDirector',technologySectorDirector)
+                      textareaParse('financialDepartmentLeader',financialDepartmentLeader)
+                      textareaParse('financialDepartmentDirector',financialDepartmentDirector)
+                      if(pointsThe[index].frlName){
+                          var frlUrl = '<a herf="'+imgUrl+pointsThe[index].frlUrl+'">'+pointsThe[index].frlName+'</a>'
+                          $('#project_name2').html(frlUrl)
+                      }
+                      $('#myModalPoints').modal('show')
+                      PointsTheList()
+                    })
+                  // 分承研编辑保存
+                $(document).on('click','#editModal',function (){
+                  if($('#baseForm2').valid()){
+                    var index = $('#editModal').data('index')
+                    var $form2 =$("#baseForm2").serializeJson()
+                    // console.log($("#baseForm").serializeJson())
+                    var technologySectorLeader = textareaStr('technologySectorLeader')
+                    var technologySectorDirector = textareaStr('technologySectorDirector')
+                    var financialDepartmentLeader = textareaStr('financialDepartmentLeader')
+                    var financialDepartmentDirector = textareaStr('financialDepartmentDirector')
+                    $.extend( true,$form2 ,technologySectorLeader,technologySectorDirector ,financialDepartmentLeader ,financialDepartmentDirector)
+                    pointsThe[index] = $form2
+                    PointsTheList()
+                    // 清空表单
+                    var reset = $('#baseForm2 input,#baseForm2 select')
+                    $("#project_name2").html("")
+                    for(var i = 0 ;i<reset.length;i++){
+                      reset.eq(i).val('')
+                    }
+                    // 关闭弹框
+                    $('#myModalPoints').modal('hide')
+                    setTimeout(function(){
+                          $('#saveModal').show()
+                          $('#editModal').hide()
+                    },1000)
+
+                  }
+                })
+                function resetClose(){
+                  $("#myModalPoints").modal("hide")
+                  var reset = $('#baseForm2 input,#baseForm2 select')
+                  for(var i = 0 ;i<reset.length;i++){
+                    reset.eq(i).val('')
+                  }
+                }
+                  // // 清空弹框表单
+                  // $('#myModalPoints').on('hide.bs.modal', function () {
+                  //   layer('弹框关闭了')
+                  // })
+                    // 分承研列表
+                    function PointsTheList(){
+                      var htmls = ''
+                      if(pointsThe.length){
+                        for(var i=0;i<pointsThe.length;i++){
+                          var html = ''
+                          var mSectorLeader1 = pointsThe[i].technologySectorLeader?JSON.parse(pointsThe[i].technologySectorLeader).mSectorLeader1:''
+                          var mTmentLeader1 = pointsThe[i].financialDepartmentLeader?JSON.parse(pointsThe[i].financialDepartmentLeader).mTmentLeader1:''
+                          html += '<tr>'
+                          html += '<td>'+(i+1)+'</td>'
+                          html += '<td>'+pointsThe[i].unitName+'</td>'
+                          html += '<td>'+pointsThe[i].creditCode+'</td>'
+                          html += '<td>'+pointsThe[i].unitType+'</td>'
+                          html += '<td>'+pointsThe[i].unitAddress+'</td>'
+                          html += '<td>'+pointsThe[i].corporateRepresentative+'</td>'
+                          html += '<td>'+mSectorLeader1+'</td>  '
+                          html += '<td>'+mTmentLeader1+'</td>'
+                          html += '<td><input type="button" class="btn_clear pointsDel" data-index="'+i+'" style="color: red;"  value="删除"><input type="button" class="btn_clear pointsEdit" data-index="'+i+'" style="color:#02A7F0" value="修改"></td>'
+                          html += '</tr>'
+                          htmls +=html
+                        }
+                      }else{
+                          // htmls = "<div class='empty-style-reset' id='empty-style'><img src='../img/empty_data.png'><span class='empty-txt' style='display: block;margin-top: 20px;text-align: center;color: #E0DEDE;font-size: 18px;'>暂无内容</span></div>"
+                      }
+                      $("#Points").html(htmls)
+                    }
+                      // 项目详情 -- 非实物类成果
+
+                      // 保存
+                      $(document).on('click','.achievementsSave',function (){
+                        $('.achievementsSave').show()
+                        $('.achievementsedit').hide()
+                        var $form2 =$("#achievementsForm").serializeJson()
+                        var flag = []
+                        for(i in $form2){
+                           if($form2[i]!=''){
+                            flag.push(true)
+                          }
+
+                        }
+                        if(flag.length === 0) {
+                          $('#achievements').modal('hide')
+                          return}
+                        achievements.push($form2)
+                        // 清空表单
+                        var reset = $('#achievementsForm input,#achievementsForm select,#achievementsForm textarea')
+                        for(var i = 0 ;i<reset.length;i++){
+                          reset.eq(i).val('')
+                        }
+                        // 关闭弹框
+                        achievementsList()
+                        $('#achievements').modal('hide')
+                      })
+                      // 非实物类成果（一）
+                      // 列表
+                      function achievementsList(){
+                        var htmls = ''
+                        if(achievements.length){
+                          for(var i=0;i<achievements.length;i++){
+                          var html = ''
+                              html +=  '<tr>'
+                              html +=   '<td>'+(i+1)+'</td>'
+                              html +=   '<td>'+achievements[i].name+'</td>'
+                              html +=   '<td>'+achievements[i].type+'</td>'
+                              html +=   '<td>'+achievements[i].otherType+'</td>'
+                              html +=   '<td>'+achievements[i].params+'</td>'
+                              html +=   '<td><input type="button" data-index="'+i+'"  class="btn_clear achievementsDel" style="color: red;"  value="删除"><input type="button" data-index="'+i+'" class="btn_clear achievementsEdit" style="color:#02A7F0" value="修改"></td>'
+                              html +=  '</tr>'
+                              htmls +=html
+                          }
+                        }else{
+                          // htmls = "<div class='empty-style-reset' id='empty-style'><img src='../img/empty_data.png'><span class='empty-txt' style='display: block;margin-top: 20px;text-align: center;color: #E0DEDE;font-size: 18px;'>暂无内容</span></div>"
+                        }
+                        $("#achievementsList").html(htmls)
+                      }
+                      // 删除
+                      $(document).on('click','.achievementsDel',function (){
+                        layer.msg('点击删除')
+                        var index = $(this).data('index')
+                        achievements.splice(index,1)
+                        achievementsList()
+                      })
+                      // 修改回显
+                      $(document).on('click','.achievementsEdit',function (){
+                        layer.msg('点击修改')
+                        var index = $(this).data('index')
+                        $("#achievementsname").val(achievements[index].name)
+                        $("#achievementstype").val(achievements[index].type)
+                        $("#achievementsotherType").val(achievements[index].otherType)
+                        $("#achievementsparams").val(achievements[index].params)
+                        $('.achievementsedit').show()
+                        $('.achievementsSave').hide()
+                        $('.achievementsedit').data('index',index)
+                        $('#achievements').modal('show')
+                        achievementsList()
+                      })
+                      // 修改保存
+                      $(document).on('click','.achievementsedit',function(){
+                        var $form2 =$("#achievementsForm").serializeJson()
+                        var index = $(this).data('index')
+                        achievements[index] = $form2
+                        // 清空表单
+                        var reset = $('#achievementsForm input,#achievementsForm select,#achievementsForm textarea')
+                        for(var i = 0 ;i<reset.length;i++){
+                          reset.eq(i).val('')
+                        }
+                        // 关闭弹框
+                        achievementsList()
+                        $('#achievements').modal('hide')
+                      })
+                      // 非实物类成果（二）
+                      // 保存
+                      $(document).on('click','.achievements2Save',function (){
+                        $('.achievements2Save').show()
+                        $('.achievements2edit').hide()
+                        var $form2 =$("#achievements2Form").serializeJson()
+                        var flag = []
+                        for(i in $form2){
+                           if($form2[i]!=''){
+                            flag.push(true)
+                          }
+
+                        }
+                        if(flag.length === 0) {
+                          $('#achievements2').modal('hide')
+                          return}
+                        achievements2.push($form2)
+                        // 清空表单
+                        var reset = $('#achievements2Form input,#achievements2Form select,#achievements2Form textarea')
+                        for(var i = 0 ;i<reset.length;i++){
+                          reset.eq(i).val('')
+                        }
+                        // 关闭弹框
+                        achievements2List()
+                        $('#achievements2').modal('hide')
+                      })
+                      // 列表
+                      function achievements2List(){
+                        var htmls = ''
+                        if(achievements2.length){
+                          for(var i=0;i<achievements2.length;i++){
+                          var html = ''
+                              html +=  '<tr>'
+                              html +=   '<td>'+(i+1)+'</td>'
+                              html +=   '<td>'+achievements2[i].name+'</td>'
+                              html +=   '<td>'+achievements2[i].type+'</td>'
+                              html +=   '<td>'+achievements2[i].otherType+'</td>'
+                              html +=   '<td>'+achievements2[i].params+'</td>'
+                              html +=   '<td><input type="button" data-index="'+i+'"  class="btn_clear achievements2Del" style="color: red;"  value="删除"><input type="button" data-index="'+i+'" class="btn_clear achievements2Edit" style="color:#02A7F0" value="修改"></td>'
+                              html +=  '</tr>'
+                              htmls +=html
+                          }
+                        }else{
+                          // htmls = "<div class='empty-style-reset' id='empty-style'><img src='../img/empty_data.png'><span class='empty-txt' style='display: block;margin-top: 20px;text-align: center;color: #E0DEDE;font-size: 18px;'>暂无内容</span></div>"
+                        }
+                        $("#achievements2List").html(htmls)
+                      }
+                      // 删除
+                      $(document).on('click','.achievements2Del',function (){
+                        layer.msg('点击删除')
+                        var index = $(this).data('index')
+                        achievements2.splice(index,1)
+                        achievements2List()
+                      })
+                      // 修改回显
+                      $(document).on('click','.achievements2Edit',function (){
+                        layer.msg('点击修改')
+                        var index = $(this).data('index')
+                        $("#achievements2name").val(achievements2[index].name)
+                        $("#achievements2type").val(achievements2[index].type)
+                        $("#achievements2otherType").val(achievements2[index].otherType)
+                        $("#achievements2params").val(achievements2[index].params)
+                        $('.achievements2edit').show()
+                        $('.achievements2Save').hide()
+                        $('.achievements2edit').data('index',index)
+                        $('#achievements2').modal('show')
+                        achievements2List()
+                      })
+                      // 修改保存
+                      $(document).on('click','.achievements2edit',function(){
+                        var $form2 =$("#achievements2Form").serializeJson()
+                        var index = $(this).data('index')
+                        achievements2[index] = $form2
+                        // 清空表单
+                        var reset = $('#achievements2Form input,#achievements2Form select,#achievements2Form textarea')
+                        for(var i = 0 ;i<reset.length;i++){
+                          reset.eq(i).val('')
+                        }
+                        // 关闭弹框
+                        achievements2List()
+                        $('#achievements2').modal('hide')
+                      })
+                      // 年度研究要求<------------------------------>
+                      // 保存
+
+                      $(document).on('click','.researchProgresSave',function (){
+                        $('.researchProgresSave').show()
+                        $('.researchProgresEdit').hide()
+                        var $form2 =$("#speedForm").serializeJson()
+                        var flag = []
+                        for(i in $form2){
+                          if($form2[i]!=''){
+                            flag.push(true)
+                          }
+                        }
+                        if(flag.length === 0){
+                          $('#speed').modal('hide')
+                          return;
+                        }
+                        researchProgres.push($form2)
+                        // 清空表单
+                        var reset = $('#speedForm input,#speedForm select,#speedForm textarea')
+                        for(var i = 0 ;i<reset.length;i++){
+                          reset.eq(i).val('')
+                        }
+                        // 关闭弹框
+                        speedList()
+                        $('#speed').modal('hide')
+                      })
+                      // 列表
+                      function speedList(){
+                        var htmls = ''
+                        if(researchProgres.length){
+                          for(var i=0;i<researchProgres.length;i++){
+                          var html = ''
+                              html +=  '<tr>'
+                              html +=   '  <td>'+researchProgres[i].year+'</td>'
+                              html +=   '<td>'+researchProgres[i].target+'</td>'
+                              html +=   '<td>'+researchProgres[i].content+'</td>'
+                              html +=   '<td>'+researchProgres[i].researchResults+'</td>'
+                              html +=   '<td><input type="button" data-index="'+i+'"  class="btn_clear speedDel" style="color: red;"  value="删除"><input type="button" data-index="'+i+'" class="btn_clear speedEdit" style="color:#02A7F0" value="修改"></td>'
+                              html +=  '</tr>'
+                              htmls +=html
+                          }
+                        }else{
+                          // htmls = "<div class='empty-style-reset' id='empty-style'><img src='../img/empty_data.png'><span class='empty-txt' style='display: block;margin-top: 20px;text-align: center;color: #E0DEDE;font-size: 18px;'>暂无内容</span></div>"
+                        }
+                        $("#speedList").html(htmls)
+                      }
+                      // 删除
+                      $(document).on('click','.speedDel',function (){
+                        layer.msg('点击删除')
+                        var index = $(this).data('index')
+                        researchProgres.splice(index,1)
+                        speedList()
+                      })
+                      // 修改回显
+                      $(document).on('click','.speedEdit',function (){
+                        layer.msg('点击修改')
+                        var index = $(this).data('index')
+                        $("#year").val(researchProgres[index].year)
+                        $("#target").val(researchProgres[index].target)
+                        $("#content").val(researchProgres[index].content)
+                        $("#researchResults").val(researchProgres[index].researchResults)
+                        $('.researchProgresEdit').show()
+                        $('.researchProgresSave').hide()
+                        $('.researchProgresEdit').data('index',index)
+                        $('#speed').modal('show')
+                        speedList()
+                      })
+                      // 确认修改
+                      $(document).on('click','.researchProgresEdit',function(){
+                        var $form2 =$("#speedForm").serializeJson()
+                        var index = $(this).data('index')
+                        researchProgres[index] = $form2
+                        // 清空表单
+                        var reset = $('#speedForm input,#speedForm select,#speedForm textarea')
+                        for(var i = 0 ;i<reset.length;i++){
+                          reset.eq(i).val('')
+                        }
+                        // 关闭弹框
+                        speedList()
+                        $('#speed').modal('hide')
+                        $('.researchProgresSave').show()
+                        $('.researchProgresEdit').hide()
+                      })
+
+                     $(document).ready(function(){
+                       $('#guideForm')
+                                  .validate({
+                                    rules:{
+                                      applicant:{
+                                        required: true,
+                                      },
+                                      telphone:{
+                                        required: true,
+                                        checkTelephone:true,
+                                      },
+                                      idCard:{
+                                        required: true,
+                                        checkIdCard:true,
+                                      },
+                                      applyFunds:{
+                                        required: true,
+                                      },
+                                    },
+                                    messages:{
+                                      applicant:{
+                                        required:'申请人姓名不能为空'
+                                      },
+                                      telphone:{
+                                        required: '手机号不能为空',
+                                      },
+                                      idCard:{
+                                        required: '身份证号不能为空',
+                                      },
+                                      applyFunds:{
+                                        required: '申请经费不能为空',
+                                      },
+                                    },
+                                    errorElement:'div',
+                                    errorPlacement:function (error, element) {
+                                      error.appendTo(element.parent().find(".errors"));
+                                    },
+                                    submitHandler:function (form){
+                                    }
+                                  })
+                                  $.validator.addMethod("checkTelephone", function (value, element, params) {
+                                    var checkInfo1 = /^(0|86|17951)?(13[0-9]|15[012356789]|17[01678]|18[0-9]|14[57])[0-9]{8}$/;
+                                    var checkInfo2 = /^(0[0-9]{2,3}\-)([2-9][0-9]{6,7})+(\-[0-9]{1,4})?$/;
+                                    return this.optional(element) || (checkInfo1.test(value)||checkInfo2.test(value));
+                                    }, "手机号码或者座机号码格式有误");
+                                $.validator.addMethod("checkIdCard", function (value, element, params) {
+                                  var checkInfo1 = /(^\d{15}$)|(^\d{17}(x|X|\d)$)/;
+                                  return this.optional(element) || (checkInfo1.test(value));
+                                  }, "身份证号码格式有误");
+
+                     })
+                      // 申报信息保存
+                      function save(auditState){
+                        for(var i=0,len=$(".project_detail textarea").length;i<len;i++){
+                          if($(".project_detail textarea").eq(i).val().length>300){
+                            layer.msg("文本域的长度不能超过300")
+                            return false;
+                             }
+                           }
+                        if( $("#BooleanId").val()=='0'){
+
+                          if($('#guideForm').valid()){
+                              if($("input[name=projectApplicationPath]").val()==''){
+                                  layer.msg("脱密证明附件必传");
+                                  return false;
+                              }
+                              if($("input[name=decryptionCertificatePath]").val()==''){
+                                layer.msg("项目申请书（盲评）附件必传");
+                                return false;
+                              }
+                              if($("input[name=filePath]").val()==''){
+                              layer.msg("项目申请书（会评）附件必传");
+                              return false;
+                              }
+                            var $form = $('#guideForm')
+                            var json = $form.serializeJson()
+                            var researchContent = textareaStr('researchContent')
+                            var keyTechnology = textareaStr('keyTechnology')
+                            $.extend(true,json,researchContent,keyTechnology,{'achievements':achievements},{'auditState':auditState},
+                            {'achievements2':achievements2},{'participateUnit':pointsThe},{'speed':researchProgres})
+                            ajaxRaw("post", "/cg/cgguidedeclare/saveDeclare", JSON.stringify(json),function (result) {
+                              if (result.code == 0) {
+                                  pushLog("dj",userInfo.id);
+                                layer.msg('成功',{ time:3000 },function () {
+                                    window.location.href = "/demandDocking/preGuide.html";
+                                });
+                              } else {
+                                layer.msg('失败')
+                              }
+                          })
+                          }else{
+                            layer.msg('提交信息未通过校验')
+                          }
+                        }else{
+
+                          if($('#guideForm').valid()){
+                            if($("input[name=projectApplicationPath]").val()==''){
+                              layer.msg("脱密证明附件必传");
+                              return false;
+                            }
+                            if($("input[name=decryptionCertificatePath]").val()==''){
+                              layer.msg("项目申请书（盲评）附件必传");
+                              return false;
+                            }
+                            if($("input[name=filePath]").val()==''){
+                            layer.msg("项目申请书（会评）附件必传");
+                            return false;
+                            }
+                            var $form = $('#guideForm')
+                            var json = $form.serializeJson()
+                            var researchContent = textareaStr('researchContent')
+                            var keyTechnology = textareaStr('keyTechnology')
+                              var id = $("#BooleanId").val();
+                            $.extend(true,json,researchContent,keyTechnology,{'achievements':achievements},{'auditState':auditState},
+                            {'achievements2':achievements2},{'participateUnit':pointsThe},{'speed':researchProgres},{id:id})
+                            ajaxRaw("post", "/cg/cgguidedeclare/updateDeclare", JSON.stringify(json),function (result) {
+                              if (result.code == 0) {
+                                  pushLog("dj",userInfo.id);
+                                layer.msg('修改成功',{ time:3000 },function () {
+                                      window.location.href = "/demandDocking/preGuide.html";
+                                  });
+                              } else {
+                                layer.msg('修改失败')
+                              }
+                          })
+                          }else{
+                            layer.msg('提交信息未通过校验')
+                          }
+                        }
+                      }
+                      // 保存
+                      function textareaStr(jqObject){
+                        var ObjectData =  $("#"+jqObject+" textarea ,#"+jqObject+" input")
+                        var json = {}
+                        for(var i=0;i<ObjectData.length;i++){
+                          var key = (ObjectData.eq(i).attr('id'))
+                          json[key] = ObjectData.eq(i).val()
+                        }
+                        var jsonNew = {}
+                        jsonNew[jqObject] = JSON.stringify(json)
+                        return jsonNew
+                      }
+                      // 回显
+                      function textareaParse(variable,obj){
+
+                        var ObjectData =  $("#"+variable+" textarea, #"+variable+" input")
+                        for (key in obj) {
+                          for(var i=0;i<ObjectData.length;i++){
+                              if(key == ObjectData.eq(i).attr('id')){
+                                ObjectData.eq(i).val(obj[key])
+                             }
+                          }
+                        }
+                      }
+                      function getDetails() {
+                        ajax("GET", "/cg/cgguidedeclare/details/"+$("#guideId").val(),"", function (result) {
+                           if (result.code == 0) {//根据返回值进行跳转
+                             if(result.cgGuideDeclareEntity){
+                              $("#BooleanId").val(result.cgGuideDeclareEntity.id)
+                              //  $("#fieldset").attr("disabled","disabled")
+                               $("#applyFunds").val(result.cgGuideDeclareEntity.applyFunds)
+                               $("#applicant").val(result.cgGuideDeclareEntity.applicant)
+                               $("#idCard").val(result.cgGuideDeclareEntity.idCard)
+                               $("#creatorTitle").val(result.cgGuideDeclareEntity.creatorTitle)
+                               $("#telphone").val(result.cgGuideDeclareEntity.telphone)
+                               $("#researchTarget").val(result.cgGuideDeclareEntity.researchTarget)
+                               $("#contractStartTime").val(result.cgGuideDeclareEntity.contractStartTime)
+                               $("#contractEndTime").val(result.cgGuideDeclareEntity.contractEndTime)
+                               $("#projectApplicationPath").val(result.cgGuideDeclareEntity.projectApplicationPath)
+                               $("#projectApplicationName").val(result.cgGuideDeclareEntity.projectApplicationName)
+                               $("#decryptionCertificatePath").val(result.cgGuideDeclareEntity.decryptionCertificatePath)
+                               $("#decryptionCertificateName").val(result.cgGuideDeclareEntity.decryptionCertificateName)
+                               $("#filePath").val(result.cgGuideDeclareEntity.filePath)
+                               $("#fileName").val(result.cgGuideDeclareEntity.fileName)
+                               if(result.cgGuideDeclareEntity.projectApplicationName){
+                                var frlUrl = '<a herf="'+imgUrl+result.cgGuideDeclareEntity.projectApplicationPath+'">'+result.cgGuideDeclareEntity.projectApplicationName+'</a>'
+                                $('#decryption_name1').html(frlUrl)
+                               }
+                               if(result.cgGuideDeclareEntity.decryptionCertificateName){
+                                var frlUrl = '<a herf="'+imgUrl+result.cgGuideDeclareEntity.decryptionCertificatePath+'">'+result.cgGuideDeclareEntity.decryptionCertificateName+'</a>'
+                                $('#decryption_name2').html(frlUrl)
+                               }
+                               if(result.cgGuideDeclareEntity.fileName){
+                                var frlUrl = '<a herf="'+imgUrl+result.cgGuideDeclareEntity.filePath+'">'+result.cgGuideDeclareEntity.fileName+'</a>'
+                                $('#project_name3').html(frlUrl)
+                               }
+                               var researchContent = JSON.parse(result.cgGuideDeclareEntity.researchContent)
+                               var keyTechnology = JSON.parse(result.cgGuideDeclareEntity.keyTechnology)
+                               textareaParse('researchContent',researchContent)
+                               textareaParse('keyTechnology',keyTechnology)
+                               achievements = deleteJson(result.achievements)
+                               achievements2 = deleteJson(result.achievements2)
+                               pointsThe =  deleteJson(result.basicinformation)
+                               researchProgres = deleteJson(result.speedEntityList)
+                               achievementsList()
+                               PointsTheList()
+                               achievements2List()
+                               speedList()
+
+                             }else{
+                               $("#BooleanId").val("0")
+                             }
+                        }
+                        });
+                       }
+                       //去掉id
+                       function deleteJson(json){
+                           for(var i=0;i<json.length;i++){
+                               for(var key in json[i]){
+                                   if(key == 'id'){
+                                       delete json[i][key]
+                                   }
+                               }
+                           }
+                            return json
+                       }
+                       var user = window.localStorage.getItem('user');
+                       var userInfo = null;
+                       if(user){
+                         userInfo = JSON.parse(user);
+                       }
+                       var memberId = userInfo&&userInfo.memberType;
+                       function toUserIformation() {
+                        if (memberId == 10) { //个人用户
+                          window.location.href = "../userInformation/personalUser.html"
+                        } else if (memberId == 20 || memberId == 120) { //企业用户（20：企业用户 120：隶属军工的企业用户）
+                          window.location.href = "../userInformation/enterpriseEnterprise.html"
+                        } else if (memberId == 30) { //军工
+                          window.location.href = "../userInformation/enterpriseEnterprise.html"
+                        } else if (memberId == 40) { //军队
+                          window.location.href = "../userInformation/armyUser.html"
+                        } else if (memberId == 50) { //专家用户
+                          window.location.href = "../userInformation/expertUser.html"
+                        } else if (memberId == 60) { //专项用户
+                          window.location.href = "../userInformation/specialUser.html"
+                        }
+                      }
+
+                      // 前台申报信息-基本信息，单位名称、社会统一信用代码、法人代表都回显，且不可修改。军队用户报名时增加判断，如果是军队用户，单位名称需要手工输入，无需输入统一社会信用代码，法人代表需要手工输入
+
+
+         // 清空
+         function pclear(){
+          var pd = $(".project_detail")
+           pd.find("textarea").each(function(index,item){
+              item.value=""
+           });
+           pd.find("input").each(function(index,item){
+             item.value=""
+           });
+           achievements = []
+           achievements2 = []
+           researchProgres = []
+           achievementsList()
+           achievements2List()
+           speedList()
+        }
