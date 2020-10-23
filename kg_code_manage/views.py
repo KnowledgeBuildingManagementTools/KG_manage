@@ -3,6 +3,7 @@ import os
 import json
 import math
 import uuid
+# from docx import Document
 
 from django.views import View
 from django.http import JsonResponse, HttpResponse
@@ -28,11 +29,6 @@ def model(request):
     else:
         # 上传文件
         file_type = request.POST.get('file_type')
-        # sql文件解析
-        # html文件解析
-        # word文档解析
-        # excel文件解析
-        # txt文件解析
         file_obj = request.FILES.get('file')
         file_path = os.path.join(project_base_path, 'upload_file', file_obj.name)
         try:
@@ -51,27 +47,6 @@ def model(request):
             "relationship": "技术指标",
             "tail_node": "异构知识种类不少于5种；知识的存储容量规模达到万级，不少于1GB；",
             "tail_type": "技术指标"
-        }, {
-            "id": "10003",
-            "head_node": "异构知识的统一存储、映射、检索和接口技术",
-            "head_type": "项目",
-            "relationship": "专业领域",
-            "tail_node": "探测与识别",
-            "tail_type": "专业领域"
-        }, {
-            "id": "10004",
-            "head_node": "异构知识的统一存储、映射、检索和接口技术",
-            "head_type": "项目",
-            "relationship": "专业领域",
-            "tail_node": "计算机与软件    ",
-            "tail_type": "专业领域"
-        }, {
-            "id": "10005",
-            "head_node": "异构知识的统一存储、映射、检索和接口技术",
-            "head_type": "项目",
-            "relationship": "专业领域",
-            "tail_node": "探测与识别",
-            "tail_type": "专业领域"
         }]
         """
 
@@ -79,6 +54,9 @@ def model(request):
             res_data = excel_to_dict(file_path).get("data")
         elif file_type == "txt":
             pass
+            # with open(file_path, 'r', encoding='utf-8') as fout:
+            #     txt_content_list = fout.read().split('\n\n')
+
         elif file_type == "docx,doc":
             pass
         elif file_type == "html":
@@ -796,6 +774,7 @@ def association_analysis(request):
 
         data = requests.post(settings.neo4j_ip + '/kg/path/query',
                              data={"start_node_uuid": start_node_uuid, "end_node_uuid": end_node_uuid, "headers": headers, "level": maxnum})
+
         data = data.json()
 
         datas = []
@@ -814,6 +793,40 @@ def association_analysis(request):
         res_data = {'code': 1, "msg": "success", 'data': {"nodes": datas, "edges": edgeall}}
 
         print(res_data)
+
+        return JsonResponse(res_data)
+    else:
+        return render(request, 'not_find.html')
+
+
+def node_analysis(request):
+    if request.method == "GET":
+        return render(request, "spectrum_analysis/node_analysis.html")
+    elif request.method == "POST":
+        node_name = request.POST.get("node_name")
+        node_name_uuid = str(uuid.uuid5(uuid.NAMESPACE_DNS, node_name))
+
+        headers = {'content_type': 'multipart/form-data; boundary=--------------------------879346903113862253548472'}
+
+        data = requests.post(settings.neo4j_ip + '/kg/node/query',
+                             data={"uuid": node_name_uuid, "headers": headers, })
+        data = data.json()
+        print(data)
+
+        datas = []
+        for sg_data in data.get('data').get('nodes'):
+            datas.append({"id": sg_data.get("id"), "uuid": sg_data.get("uuid"), "label": sg_data.get("label"), "properties": {"name": sg_data.get("name"), "create_time": sg_data.get("created_time")}})
+
+        edgeall = []
+        for sg_data in data.get('data').get('edges'):
+            edgeall.append({
+                "source": str(sg_data.get("start_node_id")),
+                "target": str(sg_data.get("end_node_id")),
+                "type": sg_data.get("type"),
+                "id": sg_data.get("id")
+            })
+
+        res_data = {'code': 1, "msg": "success", 'data': {"nodes": datas, "edges": edgeall}}
 
         return JsonResponse(res_data)
     else:

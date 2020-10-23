@@ -91,6 +91,7 @@ urlpatterns = [
     path('noumenon_edit',views.noumenon_edit ,name="noumenon_edit"),
     path('noumenon_edit_submit',views.noumenon_edit_submit ,name="noumenon_edit_submit"),
     path('association_analysis',views.association_analysis ,name="association_analysis"),
+    path('node_analysis',views.node_analysis ,name="node_analysis"),
     path('map_analysis',views.map_analysis ,name="map_analysis"),
     path('analysis_aide',views.analysis_aide ,name="analysis_aide"),
     path('node_side_nodes', views.node_side_nodes, name="node_side_nodes"),

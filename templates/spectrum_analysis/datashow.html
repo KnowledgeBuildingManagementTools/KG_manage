@@ -297,7 +297,7 @@
 						for (var type in types) {
 							categories.push({name: type});
 							option.legend[0].data.push(type)
-							
+
 						}
                         console.log(categories);
                         {#TODO 节点查重#}
@@ -349,7 +349,7 @@
                         "name": "隐藏节点",
                         "fn": function () {
                             for (i = 0; i < nodes.length; i++) {
-                                if (nodes[i].uuid == params.data.uuid) {
+                                if (nodes[i].uuid === params.data.uuid) {
                                     nodes.splice(i, 1);
                                 }
                                 myChart.setOption(option);

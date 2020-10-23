@@ -56,3 +56,19 @@ class Card_template(models.Model):
     name = models.CharField(verbose_name='知识卡片模板名称', max_length=50)
     content = models.CharField(verbose_name='知识卡片模板内容', max_length=5000, null=True)
     create_time = models.DateTimeField(verbose_name='创建时间', auto_now_add=True, null=True)
+
+
+class Histogram(models.Model):
+    id = models.AutoField(verbose_name='id', primary_key=True)
+    class_name = models.CharField(verbose_name='种类名称', max_length=50)
+    time = models.CharField(verbose_name='时间',  max_length=100)
+    require_count = models.CharField(verbose_name='个数', max_length=50)
+
+
+class Timeline(models.Model):
+    id = models.AutoField(verbose_name='id', primary_key=True)
+    time = models.DateField(verbose_name='时间')
+    event_name = models.CharField(verbose_name='事件名称', max_length=100)
+    event_content = models.CharField(verbose_name='事件内容', max_length=2000)
+
+
