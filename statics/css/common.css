@@ -1,0 +1,64 @@
+/*按钮样式*/
+.my-btn{
+    background-color: #0A318A;
+    border-radius: 5px;
+    color: #fff;
+}
+
+.my-btn:hover{
+    background-color: #0d5aa7;
+}
+
+.my-btn:active{
+    background-color: red;
+}
+
+/*下拉框样式*/
+.my-select{
+    height: 38px;
+    border-radius: 5px;
+}
+
+/*输入框样式*/
+.my-input{
+    height: 38px;
+    border-radius: 5px;
+}
+
+/*表格样式*/
+table{
+    /*width: 100%;*/
+}
+
+table thead{
+    border-bottom: 2px #ddd solid;
+}
+
+table thead tr{
+    height: 50px;
+}
+
+table tbody tr{
+    /*height: 70px;*/
+}
+
+table tbody tr:hover{
+    /*background-color: #00b5f9;    */
+    background-color: #5974ab;
+    color: #fff;
+    /*height: 70px;*/
+}
+
+table tbody tr td{
+    padding: 10px 0;
+}
+
+
+
+
+
+
+
+
+
+

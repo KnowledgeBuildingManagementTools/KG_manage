@@ -2,109 +2,93 @@
 {% load static %}
 
 {% block mycss %}
-    <link rel="stylesheet" type="text/css" href="{% static 'F-22战斗机_百度百科_files/wiki-lemma-module_2676ad3.css' %}">
+    {#    <link rel="stylesheet" type="text/css" href="{% static 'F-22战斗机_百度百科_files/wiki-lemma-module_2676ad3.css' %}">#}
+    <link rel="stylesheet" type="text/css" href="{% static 'F-22战斗机_百度百科_files/wiki_tem_preview.css' %}">
 {% endblock %}
 
 {% block content %}
-    <a class='btn btn-primary btn-sm' href="javascript:history.back(-1);" style="float: right;margin: 10px;">返回</a>
-    <div style="margin:10px;">
-        <div class="layui-card">
-            <div class="layui-card-header"><h2>{{ name }}</h2></div>
+    <a class='btn btn-primary btn-sm my-btn' href="javascript:history.back(-1);"
+       style="float: left;margin: 10px;">返回</a>
+    <div class="main-box">
+        {#    标题、简介加卡片#}
+        <div>
+            {#            标题#}
 
-            <div class="layui-card-body">
-                <div style="margin:10px;">{{ name }}简介内容</div>
-                <div style="margin:10px;">{{ name }}知识卡片内容</div>
-                <div style="margin:10px;">知识卡片示例 ↓</div>
+            <div><h1 class="wiki-title">{{ name }}</h1></div>
+
+            {#        简介#}
+            <div>
+                <div class="wiki-intro">{{ name }}歼-20（英文：Chengdu J-20，代号：威龙，北约代号：Fire
+                    Fang，译文：火焰獠牙）是中航工业成都飞机工业集团公司研制的一款具备高隐身性、高态势感知、高机动性等能力的隐形第五代制空战斗机，解放军研制的最新一代（欧美旧标准为第四代，新标准以及俄罗斯标准为第五代）双发重型隐形战斗机，用于接替歼10、歼11等第三代空中优势/多用途歼击机的未来重型歼击机型号，该机将担负我军未来对空、对海的主权维护任务。
+                </div>
+
+
+                {#            卡片#}
                 <div style="height: 250px;">
                     <div class="basic-info cmn-clearfix">
                         <dl class="basicInfo-block basicInfo-left">
-                            <dt class="basicInfo-item name">中文名称</dt>
-                            <dd class="basicInfo-item value">
-                                xxx
-                            </dd>
-                            <dt class="basicInfo-item name">英文名称</dt>
-                            <dd class="basicInfo-item value">
-                                xxx<sup class="sup--normal" data-sup="3" data-ctrmap=":3,">
-                                [3]</sup><a class="sup-anchor" name="ref_[3]_54559">&nbsp;</a>
-                            </dd>
-                            <dt class="basicInfo-item name">前型/级</dt>
-                            <dd class="basicInfo-item value">
-                                <a target="_blank" href="https://baike.baidu.com/item/F-15%E6%88%98%E6%96%97%E6%9C%BA/564755" data-lemmaid="564755">xxx</a><sup class="sup--normal" data-sup="2"
-                                                                                                                                                                data-ctrmap=":2,">
-                                [2]</sup><a class="sup-anchor" name="ref_[2]_54559">&nbsp;</a>
-                            </dd>
-                            <dt class="basicInfo-item name">研制时间</dt>
-                            <dd class="basicInfo-item value">
-                                xxxx年-xxxx年<sup class="sup--normal" data-sup="3" data-ctrmap=":3,">
-                                [3]</sup><a class="sup-anchor" name="ref_[3]_54559">&nbsp;</a>
-                            </dd>
-                            <dt class="basicInfo-item name">服役时间</dt>
-                            <dd class="basicInfo-item value">
-                                xxxx年
-                            </dd>
-                            <dt class="basicInfo-item name">定型时间</dt>
-                            <dd class="basicInfo-item value">
-                                xxxx年
-                            </dd>
-                            <dt class="basicInfo-item name">国&nbsp;&nbsp;&nbsp;&nbsp;家</dt>
-                            <dd class="basicInfo-item value">
-                                <a target="_blank" href="https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD/125486" data-lemmaid="125486">xx</a>
-                            </dd>
-                            <dt class="basicInfo-item name">立项时间</dt>
-                            <dd class="basicInfo-item value">
-                                xxxx年
-                            </dd>
+                            {% for foo in card_dict.left %}
+                                <dt class="basicInfo-item name">{{ foo.key }}</dt>
+                                <dd class="basicInfo-item value">
+                                    {{ foo.value }}
+                                </dd>
+                            {% endfor %}
                         </dl>
                         <dl class="basicInfo-block basicInfo-right">
-                            <dt class="basicInfo-item name">首飞时间</dt>
-                            <dd class="basicInfo-item value">
-                                xxxx年
-                            </dd>
-                            <dt class="basicInfo-item name">制造商</dt>
-                            <dd class="basicInfo-item value">
-                                xxx公司、xxxx公司
-                            </dd>
-                            <dt class="basicInfo-item name">数&nbsp;&nbsp;&nbsp;&nbsp;量</dt>
-                            <dd class="basicInfo-item value">
-                                xxx架
-                            </dd>
-                            <dt class="basicInfo-item name">单机造价</dt>
-                            <dd class="basicInfo-item value">
-                                xxx美元
-                            </dd>
-                            <dt class="basicInfo-item name">主要用户</dt>
-                            <dd class="basicInfo-item value">
-                                <a target="_blank" href="https://baike.baidu.com/item/%E7%BE%8E%E5%9B%BD%E7%A9%BA%E5%86%9B">xxxx</a>
-                            </dd>
-                            <dt class="basicInfo-item name">衍生型</dt>
-                            <dd class="basicInfo-item value">
-                                <a target="_blank" href="https://baike.baidu.com/item/X-44">X-44</a>、<a target="_blank" href="https://baike.baidu.com/item/FB-22">xxxx</a>、<a target="_blank"
-                                                                                                                                                                              href="https://baike.baidu.com/item/F-35">F-35</a>
-                            </dd>
-                            <dt class="basicInfo-item name">绰&nbsp;&nbsp;&nbsp;&nbsp;号</dt>
-                            <dd class="basicInfo-item value">
-                                xxxx
-                            </dd>
-                            <dt class="basicInfo-item name">通&nbsp;&nbsp;&nbsp;&nbsp;称</dt>
-                            <dd class="basicInfo-item value">
-                                xxxx
-                            </dd>
+                            {% for foo in card_dict.right %}
+                                <dt class="basicInfo-item name">{{ foo.key }}</dt>
+                                <dd class="basicInfo-item value">
+                                    {{ foo.value }}
+                                </dd>
+                            {% endfor %}
                         </dl>
                     </div>
                 </div>
+
+
+                {#                    <div class="basic-info cmn-clearfix">#}
+                {#                        <dl class="basicInfo-block basicInfo-left">#}
+                {#                            {% for foo in card_dict.left %}#}
+                {#                                <dt class="basicInfo-item name">{{ foo.key }}</dt>#}
+                {#                                <dd class="basicInfo-item value">#}
+                {#                                    {{ foo.value }}#}
+                {#                                </dd>#}
+                {#                            {% endfor %}#}
+                {#                        </dl>#}
+                {#                        <dl class="basicInfo-block basicInfo-right">#}
+                {#                            {% for foo in card_dict.right %}#}
+                {#                                <dt class="basicInfo-item name">{{ foo.key }}</dt>#}
+                {#                                <dd class="basicInfo-item value">#}
+                {#                                    {{ foo.value }}#}
+                {#                                </dd>#}
+                {#                            {% endfor %}#}
+                {#                        </dl>#}
+                {#                    </div>#}
             </div>
         </div>
 
+        {#    模板内容---标题加内容#}
         {% for single_data in res_data %}
-            <div class="layui-card">
-                <div class="layui-card-header"><h2>{{ single_data.key }}</h2></div>
-                <div class="layui-card-body">
-                    <div style="margin:10px;">{{ single_data.value }}</div>
+            <div>
+                <div><h2 class="context-tite">{{ single_data.key }}</h2></div>
+                <div>
+                    <div class="context-text">{{ single_data.value }}</div>
                 </div>
             </div>
         {% endfor %}
-
     </div>
+
+
+
+    {#        {% for single_data in res_data %}#}
+    {#            <div class="layui-card">#}
+    {#                <div class="layui-card-header"><h2>{{ single_data.key }}</h2></div>#}
+    {#                <div class="layui-card-body">#}
+    {#                    <div style="margin:10px;">{{ single_data.value }}</div>#}
+    {#                </div>#}
+    {#            </div>#}
+    {#        {% endfor %}#}
+
 {% endblock %}
 
 

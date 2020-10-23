@@ -3,8 +3,6 @@ import os
 import json
 import math
 import uuid
-import pandas as pd
-
 
 from django.views import View
 from django.http import JsonResponse, HttpResponse
@@ -14,6 +12,8 @@ from kg_code_manage import models, myforms
 from kg_code_manage.models import History
 from django.shortcuts import render, redirect
 import requests
+
+from kg_code_manage.utils import excel_to_dict
 
 project_base_path = os.getcwd()
 
@@ -43,6 +43,7 @@ def model(request):
             pass
 
         # 请求文件抽取的结果数据
+        """
         res_data = [{
             "id": "10002",
             "head_node": "异构知识的统一存储、映射、检索和接口技术",
@@ -73,15 +74,20 @@ def model(request):
             "tail_type": "专业领域"
         }]
         """
-        data = pd.read_excel(file_path, index_col = ['头实体','头实体类型','关系类型','尾实体','尾实体类型']
-)
-        print(data)
-        """
 
-
+        if file_type == "xls,xlsx":
+            res_data = excel_to_dict(file_path).get("data")
+        elif file_type == "txt":
+            pass
+        elif file_type == "docx,doc":
+            pass
+        elif file_type == "html":
+            pass
+        elif file_type == "sql":
+            pass
 
         res = {'code': 0, 'data': res_data}
-
+        print(res)
         return JsonResponse(res)
 
 
@@ -94,21 +100,21 @@ def insert_map(request):
         head_type = sg_map.get("head_type")
         uuid_head_node = str(uuid.uuid5(uuid.NAMESPACE_DNS, head_node))
         create_time1 = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-        res_data1 = {"label": head_type, "uuid": uuid_head_node, "name": head_node, "create_time": create_time1}
-        response1 = requests.post(settings.service_ip + '/kg/node/insert', data=res_data1)
+        res_data1 = {"label": head_type, "uuid": uuid_head_node, "name": head_node, "created_time": create_time1}
+        response1 = requests.post(settings.neo4j_ip + '/kg/node/insert', data=res_data1)
 
         tail_node = sg_map.get("tail_node")
         tail_type = sg_map.get("tail_type")
         uuid_tail_node = str(uuid.uuid5(uuid.NAMESPACE_DNS, tail_node))
         create_time2 = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-        res_data2 = {"label": tail_type, "uuid": uuid_tail_node, "name": tail_node, "create_time": create_time2}
-        response2 = requests.post(settings.service_ip + '/kg/node/insert', data=res_data2)
+        res_data2 = {"label": tail_type, "uuid": uuid_tail_node, "name": tail_node, "created_time": create_time2}
+        response2 = requests.post(settings.neo4j_ip + '/kg/node/insert', data=res_data2)
 
         # 插入实体之间的关系
         relation = sg_map.get("relation")
         create_time3 = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         res_data3 = {"start_node_uuid": uuid_head_node, "end_node_uuid": uuid_tail_node, "relation_type": relation, "created_time": create_time3}
-        response3 = requests.post(settings.service_ip + '/kg/edge/insert', data=res_data3)
+        response3 = requests.post(settings.neo4j_ip + '/kg/edge/insert', data=res_data3)
 
     res = {'code': 0, 'data': "已插入到知识图谱"}
     return JsonResponse(res)
@@ -208,7 +214,7 @@ class Add_wikipedia(View):
 class Edit_wikipedia(View):
     def get(self, request, id):
         Wikipedia_template = models.Wikipedia_template.objects.filter(pk=id).first()
-        card_id_list = Wikipedia_template.card_template.split('，')
+        card_id_list = [] if Wikipedia_template.card_template == '' else Wikipedia_template.card_template.split('，')
 
         selected_card_list = models.Card_template.objects.filter(id__in=card_id_list)
         selected_card_id = [sg_card.id for sg_card in selected_card_list]
@@ -216,13 +222,12 @@ class Edit_wikipedia(View):
         all_card_list = models.Card_template.objects.filter()
         return render(request, 'wikipedia_template/edit_wikipedia_template.html', {"Wikipedia_template": Wikipedia_template, "all_card_list": all_card_list, "selected_card_id": selected_card_id})
 
-    def post(self, request):
+    def post(self, request, id):
         name = request.POST.get("name")
         content = request.POST.get("content")
         card_template = '，'.join(request.POST.getlist("card_template"))
-        models.Wikipedia_template.objects.create(name=name, content=content, card_template=card_template)
+        models.Wikipedia_template.objects.filter(pk=id).update(name=name, content=content, card_template=card_template)
         return redirect('wikipedia_template')
-
 
 
 def delete_wikipedia(request, n):
@@ -239,9 +244,10 @@ def preview_wikipedia(request, n):
     all_content_list = template_content.split("，")[1:]
 
     # 知识卡片模板内容
-    card_template_list = template_obj.card_template.split('，')
+    card_template_list = [] if template_obj.card_template == '' else template_obj.card_template.split('，')
     card_template = models.Card_template.objects.filter(id__in=card_template_list)
     all_card_list = []
+
     for sg_ct in card_template:
         card_list = sg_ct.content.split("，")
         card_dict = {"left": card_list[:math.ceil(len(card_list) / 2)], "right": card_list[math.ceil(len(card_list) / 2):]}
@@ -256,17 +262,22 @@ class Require_wikipedia(View):
     def get(self, request):
         # 查询所有的模板名称
         template_name_list = [{"id": sg_tem.id, "name": sg_tem.name} for sg_tem in models.Wikipedia_template.objects.filter()]
+        # 查询所有的知识卡片名称
+        card_name_list = [{"id": sg_card.id, "name": sg_card.name} for sg_card in models.Knowledge_card.objects.filter()]
 
         # 查询所有的需求百科
         all_wikipedia_data = models.Require_wikipedia.objects.filter()
         res_data = [{"id": sg_data.id, "name": sg_data.name, "create_time": sg_data.create_time} for sg_data in all_wikipedia_data]
-        return render(request, 'require_wikipedia/require_wikipedia.html', {"template_name_list": template_name_list, "res_data": res_data})
+        return render(request, 'require_wikipedia/require_wikipedia.html', {"template_name_list": template_name_list, "card_name_list": card_name_list, "res_data": res_data})
 
     def post(self, request):
         choiced_template_id = request.POST.get("template_choiced")
+        choiced_card_id = request.POST.get("knowledge_card_choiced")
         template_content = models.Wikipedia_template.objects.filter(id=choiced_template_id).first().content
+        card_content = models.Knowledge_card.objects.filter(id=choiced_card_id).first().content
         template_content_list = template_content.split('，')
-        return render(request, 'require_wikipedia/add_require_wikipedia.html', {'template_content_list': template_content_list, 'template_content': template_content})
+        return render(request, 'require_wikipedia/add_require_wikipedia.html',
+                      {'template_content_list': template_content_list, 'template_content': template_content, 'card_content': card_content, 'choiced_card_id': choiced_card_id})
 
 
 def add_require_wikipedia(request):
@@ -274,6 +285,7 @@ def add_require_wikipedia(request):
     id = request.POST.get("id")
     name = request.POST.get("name")
     all_tem = request.POST.get("all_tem")
+    card_id = request.POST.get("card_id")
     template_content_list = all_tem.split('，')
     template_content_dict = {}
     for sg_tem_con in template_content_list:
@@ -281,9 +293,9 @@ def add_require_wikipedia(request):
     template_content_str = json.dumps(template_content_dict)
 
     if id:
-        models.Require_wikipedia.objects.filter(id=id).update(name=name, content=template_content_str)
+        models.Require_wikipedia.objects.filter(id=id).update(name=name, content=template_content_str, knowledge_card=card_id)
     else:
-        models.Require_wikipedia.objects.create(name=name, content=template_content_str)
+        models.Require_wikipedia.objects.create(name=name, content=template_content_str, knowledge_card=card_id)
     return redirect('require_wikipedia')
 
 
@@ -292,8 +304,19 @@ def preview_require_wikipedia(request, id):
     require_wikipedia_obj = models.Require_wikipedia.objects.filter(pk=id).first()
     name = require_wikipedia_obj.name
     content = json.loads(require_wikipedia_obj.content)
+    knowledge_card = require_wikipedia_obj.knowledge_card
+
+    knowledge_card_content = models.Knowledge_card.objects.filter(pk=int(knowledge_card)).first()
+
+    card_content = json.loads(knowledge_card_content.content)
+
+    all_card_list = [{'key': key, 'value': value} for key, value in card_content.items()]
+
+    card_dict = {"left": all_card_list[:math.ceil(len(all_card_list) / 2)], "right": all_card_list[math.ceil(len(all_card_list) / 2):]}
+
     res_data = [{"key": key, "value": value} for key, value in content.items()]
-    return render(request, 'require_wikipedia/require_wikipedia_preview.html', {"name": name, "res_data": res_data})
+
+    return render(request, 'require_wikipedia/require_wikipedia_preview.html', {"name": name, "res_data": res_data, 'knowledge_card': knowledge_card, 'card_dict': card_dict})
 
 
 def edit_require_wikipedia(request, id):
@@ -758,153 +781,92 @@ def noumenon_edit_submit(request):
 
 def association_analysis(request):
     if request.method == "GET":
-        res = ["项目", "学校", "外协公司"]
-        return render(request, 'spectrum_analysis/datashow.html', context={"noumenons": res})
+
+        return render(request, 'spectrum_analysis/datashow.html')
     elif request.method == "POST":
-        noumenon = request.POST.get("noumenon")
-        entity = request.POST.get("entity")
+        start_point = request.POST.get("start_point")
+        start_node_uuid = str(uuid.uuid5(uuid.NAMESPACE_DNS, start_point))
 
-        datas = [{
-            "id": 71,
-            "uuid": "XDETGG1",
-            "label": "Person",
-            "properties": {
-                "born": "1956",
-                "name": "Tom Hanks"
-            }
-        }, {
-            "id": 72,
-            "uuid": "XDETGG2",
-            "label": "Person",
-            "properties": {
-                "born": "1956",
-                "name": "Tom Hanks"
-            }
-        }, {
-            "id": 73,
-            "uuid": "XDETGG3",
-            "label": "Movie",
-            "properties": {
-                "title": "Joe Versus the Volcano",
-                "tagline": "A story of love, lava and burning desire.",
-                "released": "1990"
-            }
-        }, {
-            "id": 74,
-            "uuid": "XDETGG4",
-            "label": "MUSIC",
-            "properties": {
-                "born": "1956",
-                "name": "Tom Hanks"
-            }
-        }, {
-            "id": 75,
-            "uuid": "XDETGG5",
-            "label": "Person",
-            "properties": {
-                "born": "1956",
-                "name": "Tom Hanks"
-            }
-        }, {
-            "id": 76,
-            "uuid": "XDETGG6",
-            "label": "Movie",
-            "properties": {
-                "title": "Joe Versus the Volcano",
-                "tagline": "A story of love, lava and burning desire.",
-                "released": "1990"
-            }
-        }, {
-            "id": 77,
-            "uuid": "XDETGG7",
-            "label": "Person",
-            "properties": {
-                "born": "1956",
-                "name": "Tom Hanks"
-            }
-        }, {
-            "id": 78,
-            "uuid": "XDETGG8",
-            "label": "Movie",
-            "properties": {
-                "title": "Joe Versus the Volcano",
-                "tagline": "A story of love, lava and burning desire.",
-                "released": "1990"
-            }
-        }, {
-            "id": 79,
-            "uuid": "XDETGG9",
-            "label": "Person",
-            "properties": {
-                "name": "John Patrick Stanley",
-                "born": 1950
-            }
-        }]
+        end_point = request.POST.get("end_point")
+        end_node_uuid = str(uuid.uuid5(uuid.NAMESPACE_DNS, end_point))
 
-        edgeall = [{
-            "source": '71',
-            "target": '78',
-            "type": "ACTED_IN",
-            "id": 98
-        }, {
-            "source": '79',
-            "target": '78',
-            "type": "DIRECTED",
-            "id": 101
-        }, {
-            "source": '79',
-            "target": '77',
-            "type": "DIRECTED",
-            "id": 102
-        }, {
-            "source": '77',
-            "target": '76',
-            "type": "DIRECTED",
-            "id": 103
-        }, {
-            "source": '76',
-            "target": '75',
-            "type": "DIRECTED",
-            "id": 104
-        }, {
-            "source": '75',
-            "target": '74',
-            "type": "DIRECTED",
-            "id": 105
-        }, {
-            "source": '74',
-            "target": '73',
-            "type": "DIRECTED",
-            "id": 106
-        }, {
-            "source": '73',
-            "target": '72',
-            "type": "DIRECTED",
-            "id": 107
-        }, {
-            "source": '74',
-            "target": '72',
-            "type": "DIRECTED",
-            "id": 108
-        }, {
-            "source": '72',
-            "target": '76',
-            "type": "DIRECTED",
-            "id": 109
-        }]
+        maxnum = request.POST.get("max_num", "")
 
-        res = {'code': 1, "msg": "success", 'data': {"nodes": datas, "edges": edgeall}}
-        return JsonResponse(res)
+        headers = {'content_type': 'multipart/form-data; boundary=--------------------------879346903113862253548472'}
+
+        data = requests.post(settings.neo4j_ip + '/kg/path/query',
+                             data={"start_node_uuid": start_node_uuid, "end_node_uuid": end_node_uuid, "headers": headers, "level": maxnum})
+        data = data.json()
+
+        datas = []
+        for sg_data in data.get('data').get('nodes'):
+            datas.append({"id": sg_data.get("id"), "uuid": sg_data.get("uuid"), "label": sg_data.get("label"), "properties": {"name": sg_data.get("name"), "create_time": sg_data.get("created_time")}})
+
+        edgeall = []
+        for sg_data in data.get('data').get('edges'):
+            edgeall.append({
+                "source": str(sg_data.get("start_node_id")),
+                "target": str(sg_data.get("end_node_id")),
+                "type": sg_data.get("type"),
+                "id": sg_data.get("id")
+            })
+
+        res_data = {'code': 1, "msg": "success", 'data': {"nodes": datas, "edges": edgeall}}
+
+        print(res_data)
+
+        return JsonResponse(res_data)
     else:
         return render(request, 'not_find.html')
 
 
+def node_side_nodes(request):
+    id = request.POST.get("id")
+    uuid = request.POST.get("uuid")
+    label = request.POST.get("label")
+
+    data = requests.post(settings.neo4j_ip + '/kg/node/query',
+                         data={"uuid ": uuid, "label": label})
+
+    a = [{
+        "id": 80,
+        "uuid": "XDETGG10",
+        "label": "PICTURE",
+        "properties": {
+            "born": "1956",
+            "name": "Tom Hanks"
+        }
+    },
+        {
+            "id": 81,
+            "uuid": "XDETGG11",
+            "label": "TELEPLAY",
+            "properties": {
+                "born": "1956",
+                "name": "Tom Hanks"
+            }
+        }]
+
+    b = [{
+        'source': '75',
+        'target': '80',
+        "type": "ACTED_IN",
+        "id": 200
+    }, {
+        'source': '75',
+        'target': '81',
+        "type": "ACTED_IN",
+        "id": 200
+    }]
+
+    res = {'code': 1, "msg": "success", 'data': {"nodes": a, "edges": b}}
+    return JsonResponse(data)
+
+
 def map_analysis(request):
     if request.method == "GET":
-        res = ["项目", "学校", "外协公司"]
-        return render(request, 'spectrum_analysis/mapshow.html', context={"noumenons": res})
+        return render(request, 'spectrum_analysis/mapshow.html')
     elif request.method == "POST":
-        noumenon = request.POST.get("noumenon")
         entity = request.POST.get("entity")
 
         geoCoordMap = {
@@ -1099,7 +1061,6 @@ def map_analysis(request):
             "武汉": [114.31, 30.52],
             "大庆": [125.03, 46.58]
         }
-
 
         data = [
             {"name": "海门", "value": 9},
@@ -1304,7 +1265,6 @@ def analysis_aide(request):
     return render(request, 'spectrum_analysis/analysis_aide.html')
 
 
-
 def histogram(request):
     if request.method == "POST":
         histogram_text = request.POST.get("histogram_text")
@@ -1367,30 +1327,27 @@ def history_load(request):
         res_dict["node"] = res.node
         res_dict["record"] = res.record
         res_dict["time"] = res.time
-        print('ddsddd',res.node)
+        print('ddsddd', res.node)
         data.append(res_dict)
     data1 = [{"node": "项目", "record": "新增", "time": '2020-02-23'},
-            {"node": "项目", "record": "新增", "time": '2020-02-23'},
-            {"node": "项目", "record": "新增", "time": '2020-02-23'},
-            {"node": "项目", "record": "新增", "time": '2020-02-23'},
-            {"node": "项目", "record": "新增", "time": '2020-02-23'},
-            {"node": "项目", "record": "新增", "time": '2020-02-23'}]
+             {"node": "项目", "record": "新增", "time": '2020-02-23'},
+             {"node": "项目", "record": "新增", "time": '2020-02-23'},
+             {"node": "项目", "record": "新增", "time": '2020-02-23'},
+             {"node": "项目", "record": "新增", "time": '2020-02-23'},
+             {"node": "项目", "record": "新增", "time": '2020-02-23'}]
     print(data)
     count = len(data)
     res = {"code": 0, "count": count, "msg": "success", "data": data}
     return JsonResponse(res)
 
+
 def history_delete(request):
     id = request.GET.get("id")
     print(id)
-    data = History.objects.filter(id = id).delete()
+    data = History.objects.filter(id=id).delete()
     if data:
         res = {"status": 1}
     else:
         res = {"status": 0}
 
     return JsonResponse(res)
-
-
-
-

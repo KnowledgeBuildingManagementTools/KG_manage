@@ -22,13 +22,13 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
-            <form action="{% url 'add_wikipedia_template' %}" method="post">
+            <form action="{% url 'edit_wikipedia_template' Wikipedia_template.id %}" method="post">
                 {% csrf_token %}
-                <input type="text" name="all_tem" style="display: none;" value="{{ template_content }}">
+                <input type="text" name="id" style="display: none;" value="{{ Wikipedia_template.id }}">
                 <span style="font-weight: bold;">百科模板名称</span>
                 <input type="text" name="name" class="form-control" value="{{ Wikipedia_template.name }}">
 
-                <span style="font-weight: bold;">百科模板内容</span>
+                <span style="font-weight: bold;">百科模板内容</span><span style="color: red;font-weight: bold;"> （百科模板内容之间请用中文逗号分隔开） </span>
                 <input type="text" name="content" class="form-control" value="{{ Wikipedia_template.content }}">
 
                 <span style="font-weight: bold;">关联知识卡片模板</span>
@@ -41,6 +41,7 @@
                         {% endif %}
                     {% endfor %}
                 </select>
+
                 <br>
                 <button type="submit" class="btn btn-primary" style="margin-top: 3px">提交</button>
                 <a class='btn btn-primary' href="javascript:history.back(-1);" style="margin-right: 10px;">取消</a>

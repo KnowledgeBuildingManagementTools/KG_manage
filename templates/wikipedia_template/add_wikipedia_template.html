@@ -28,7 +28,7 @@
                 <span style="font-weight: bold;">百科模板名称</span>
                 <input type="text" name="name" class="form-control">
 
-                <span style="font-weight: bold;">百科模板内容</span>
+                <span style="font-weight: bold;">百科模板内容</span><span style="color: red;font-weight: bold;"> （百科模板内容之间请用中文逗号分隔开） </span>
                 <input type="text" name="content" class="form-control">
 
                 <span style="font-weight: bold;">关联知识卡片模板</span>
@@ -37,6 +37,7 @@
                         <option value= '{{ sg_card.id }}'>{{sg_card.name}}</option>
                     {% endfor %}
                 </select>
+
                 <br>
                 <button type="submit" class="btn btn-primary" style="margin-top: 3px">提交</button>
                 <a class='btn btn-primary' href="javascript:history.back(-1);" style="margin-right: 10px;">取消</a>

@@ -5,3 +5,8 @@
 # * 'gtrp' and 'gtr' create a GET request with or without query parameters;
 # * 'ptr' and 'ptrp' create a POST request with a simple or parameter-like body;
 # * 'mptr' and 'fptr' create a POST request to submit a form with a text or file field (multipart/form-data);
+
+POST http://127.0.0.1:5000/kg/path/query
+
+Content-Type: multipart/form-data; start_node_uuid="53c2552b-a5f5-52a9-a68f-2652caacfcc4"&end_node_uuid="ef1713cc-8519-54b1-8e2c-6a9b696b9dea"
+

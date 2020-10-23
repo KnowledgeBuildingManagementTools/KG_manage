@@ -8,7 +8,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>title</title>
-    <link href="{% static 'bootstrap-3.3.7-dist/css/bootstrap.min.css' %}" rel="stylesheet">
+    {#    <link href="{% static 'bootstrap-3.3.7-dist/css/bootstrap.min.css' %}" rel="stylesheet">#}
+    {#    <link href="{% static 'bootstrap-3.3.7-dist/css/bootstrap.min.css' %}" rel="stylesheet">#}
+
 </head>
 
 <body>
@@ -21,17 +23,25 @@
 {% block content %}
     <div class='container-fluid'>
         <!-- 添加记录 -->
-        <a class='btn btn-primary btn-sm' href="{% url 'add_wikipedia_template' %}" style="height: 37px;text-align: center;line-height: 30px;">添加</a>
-        <form action="{% url 'search_wikipedia' %}" style="display: inline;">
-    <button class='btn btn-primary btn-sm' type="submit" style="float: right;height: 37px;text-align: center;line-height: 30px;">搜索</button>
-    <input type="text" name="template_name" id="template_name" class="form-control"    placeholder="请输入要搜索的模板名称" style="width:200px;float: right">
+        <a class='btn btn-primary  my-btn' href="{% url 'add_wikipedia_template' %}"
+           style="float: left;margin-left: 10px;">返回</a>
+
+        {#        <a class='btn btn-primary btn-sm' href="{% url 'add_wikipedia_template' %}" style="height: 38px;text-align: center;line-height: 30px;">添加</a>#}
+        <form action="{% url 'search_wikipedia' %}" >
+            <button class='btn btn-primary my-btn' type="submit"
+                    style="float: right;margin-left: 20px">搜索
+            </button>
+            <input type="text" name="template_name" id="template_name" class="form-control my-input"
+                   placeholder="请输入要搜索的模板名称"
+                   style="width:200px;float: right">
         </form>
 
-        <p></p>
 
-        <div class="form-group">
+        <div class="form-group" style="margin: 50px 10px;padding: 10px; background-color: #ffffff">
             <!-- 页面信息展示 -->
-            <table class="table table-bordered table-hover table-striped">
+            {#            <table class="table table-bordered table-hover table-striped">#}
+            <table>
+
                 <thead>
                 <tr>
                     <th style="width:5%;text-align: center;"></th>
@@ -50,9 +60,9 @@
                         <td>{{ single_data.name }}</td>
                         <td>{{ single_data.content }}</td>
                         <td>{{ single_data.mu_card_name }}</td>
-                        <td><a href="{% url 'edit_wikipedia_template' single_data.id %}" class="btn">编辑</a>
-                            <a href="{% url 'delete_wikipedia' single_data.id %}" class="btn">删除</a>
-                            <a href="{% url 'preview_wikipedia' single_data.id %}" class="btn">预览</a></td>
+                        <td><a href="{% url 'edit_wikipedia_template' single_data.id %}" class="btn my-btn">编辑</a>
+                            <a href="{% url 'delete_wikipedia' single_data.id %}" class="btn my-btn">删除</a>
+                            <a href="{% url 'preview_wikipedia' single_data.id %}" class="btn my-btn">预览</a></td>
                     </tr>
                 {% endfor %}
                 </tbody>

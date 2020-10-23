@@ -8,7 +8,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>title</title>
-    <link href="{% static 'bootstrap-3.3.7-dist/css/bootstrap.min.css' %}" rel="stylesheet">
+{#    <link href="{% static 'bootstrap-3.3.7-dist/css/bootstrap.min.css' %}" rel="stylesheet">#}
+        <link href="{% static 'css/common.css' %}" rel="stylesheet">
+
 </head>
 
 <body>
@@ -21,27 +23,35 @@
 {% block content %}
     <div class='container-fluid'>
         <!-- 添加记录 -->
-        <form action="{% url 'search_require_wikipedia' %}" style="display: inline;">
-            <button class='btn btn-primary btn-sm' type="submit" style="float: right;height: 37px;text-align: center;line-height: 30px;">搜索</button>
-            <input type="text" name="search_name" id="search_name" class="form-control" placeholder="请输入要搜索的需求百科名称" style="width:auto;float: right;">
+        <form action="{% url 'search_require_wikipedia' %}">
+            <button class='btn btn-primary my-btn' type="submit" style="float: right;margin:0 10px 0 20px">搜索</button>
+            <input type="text" name="search_name" id="search_name" class="form-control my-input" placeholder="需求百科名称" style="width:auto;float: right;">
         </form>
 
         <!-- 模板选择框 -->
         <form action="" method="post">
-            <span >模板选择</span>
-            <select id="template_choiced" class="form-control" style="display: inline;width: auto;" name="template_choiced">
+            <span style="margin: 0 10px 0 10px">模板选择</span>
+            <select id="template_choiced" class="form-control my-select" style="display: inline;width: auto;margin-right: 30px" name="template_choiced">
                 {% for sg_tem in template_name_list %}
                     <option value="{{ sg_tem.id }}">{{ sg_tem.name }}</option>
                 {% endfor %}
             </select>
-            <button class='btn btn-primary btn-sm' type="submit" style="height: 37px;text-align: center;line-height: 30px;">添加</button>
+
+                <!-- 知识卡片选择框 -->
+            <span style="margin: 0 10px 0 10px">知识卡片选择</span>
+            <select id="knowledge_card_choiced" class="form-control my-select" style="display: inline;width: auto;margin-right: 30px" name="knowledge_card_choiced">
+                {% for sg_card in card_name_list %}
+                    <option value="{{ sg_card.id }}">{{ sg_card.name }}</option>
+                {% endfor %}
+            </select>
+            <button class='btn btn-primary my-btn' type="submit">添加</button>
         </form>
 
         <p></p>
 
-        <div class="form-group">
+        <div class="form-group" style="margin: 10px 10px;padding: 10px; background-color: #ffffff">
             <!-- 页面信息展示 -->
-            <table class="table table-bordered table-hover table-striped">
+            <table style="width: 100%">
                 <thead>
                 <tr>
                     <th style="width:5%;text-align: center;"></th>
@@ -59,9 +69,9 @@
                         <td>{{ single_data.name }}</td>
                         <td>{{ single_data.create_time|date:"Y-m-d H:i:s" }}</td>
                         <td>
-                            <a href="{% url 'edit_require_wikipedia' single_data.id %}" class="btn">编辑</a>
-                            <a href="{% url 'delete_require_wikipedia' single_data.id %}" class="btn">删除</a>
-                            <a href="{% url 'preview_require_wikipedia' single_data.id %}" class="btn">预览</a>
+                            <a href="{% url 'edit_require_wikipedia' single_data.id %}" class="btn my-btn">编辑</a>
+                            <a href="{% url 'delete_require_wikipedia' single_data.id %}" class="btn my-btn">删除</a>
+                            <a href="{% url 'preview_require_wikipedia' single_data.id %}" class="btn my-btn">预览</a>
                         </td>
                     </tr>
                 {% endfor %}

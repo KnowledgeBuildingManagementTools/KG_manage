@@ -148,4 +148,7 @@ STATICFILES_DIRS = [
 
 service_ip = 'http://192.168.43.189:8989'
 
+# neo4j数据库
+neo4j_ip = 'http://127.0.0.1:5000/'
+
 

@@ -8,7 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>title</title>
-    <link href="{% static 'bootstrap-3.3.7-dist/css/bootstrap.min.css' %}" rel="stylesheet">
+{#    <link href="{% static 'bootstrap-3.3.7-dist/css/bootstrap.min.css' %}" rel="stylesheet">#}
 </head>
 
 <body>
@@ -21,21 +21,23 @@
 {% block content %}
     <div class='container-fluid'>
         <!-- 知识卡片/模板 选择 -->
-        <label for="">知识卡片/模板：</label>
-        <select name="card_template_choiced" id="card_template_choiced" class="form-control" onchange="card_template_choiced()" style="width: auto;display: inline;">
+        <span style="margin: 0 10px 0 10px">知识卡片/模板：</span>
+
+{#        <label for="">知识卡片/模板：</label>#}
+        <select name="card_template_choiced" id="card_template_choiced" class="form-control my-select" onchange="card_template_choiced()" style="width: auto;display: inline;margin-right: 10px">
             <option value="知识卡片模板">知识卡片模板</option>
             <option value="知识卡片">知识卡片</option>
         </select>
         &nbsp;&nbsp;&nbsp;
         <!-- 添加记录 -->
-        <label for="">知识卡片模板添加：</label>
-        <a class='btn btn-primary btn-sm' href="{% url 'add_card_template' %}" style="height: 37px;text-align: center;line-height: 30px;">添加</a>
+{#        <label for="">知识卡片模板添加：</label>#}
+        <a class='btn btn-primary my-btn' href="{% url 'add_card_template' %}" style="text-align: center;">添加</a>
 
         <p></p>
 
-        <div class="form-group">
+        <div class="form-group" style="margin: 10px 10px;padding: 10px; background-color: #ffffff">
             <!-- 页面信息展示 -->
-            <table class="table table-bordered table-hover table-striped">
+            <table>
                 <thead>
                 <tr>
                     <th style="width:5%;text-align: center;"></th>
@@ -55,8 +57,8 @@
                         <td>{{ single_data.content }}</td>
                         <td>{{ single_data.create_time|date:"Y-m-d H:i:s" }}</td>
                         <td>
-                            <a href="{% url 'edit_card_template' single_data.id %}" class="btn">编辑</a>
-                            <a href="{% url 'delete_card_template' single_data.id %}" class="btn">删除</a>
+                            <a href="{% url 'edit_card_template' single_data.id %}" class="btn my-btn">编辑</a>
+                            <a href="{% url 'delete_card_template' single_data.id %}" class="btn my-btn">删除</a>
                         </td>
                     </tr>
                 {% endfor %}

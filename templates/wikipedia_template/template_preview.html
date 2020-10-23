@@ -2,19 +2,26 @@
 {% load static %}
 
 {% block mycss %}
-    <link rel="stylesheet" type="text/css" href="{% static 'F-22战斗机_百度百科_files/wiki-lemma-module_2676ad3.css' %}">
+{#    <link rel="stylesheet" type="text/css" href="{% static 'F-22战斗机_百度百科_files/wiki-lemma-module_2676ad3.css' %}">#}
+    <link rel="stylesheet" type="text/css" href="{% static 'F-22战斗机_百度百科_files/wiki_tem_preview.css' %}">
+
 {% endblock %}
 
 {% block content %}
-    <a class='btn btn-primary btn-sm' href="javascript:history.back(-1);" style="float: right;margin: 10px;">返回</a>
-    <div style="margin:10px;">
-        <div class="layui-card">
-            <div class="layui-card-header"><h3>{{ template_name }}</h3></div>
+    <a class='btn btn-primary btn-sm my-btn' href="javascript:history.back(-1);" style="float: left;margin: 10px;">返回</a>
+    <div class="main-box">
 
-            <div class="layui-card-body">
-                <div style="margin:10px;">{{ template_name }}简介内容</div>
-                <div style="margin:10px;">{{ template_name }}知识卡片内容</div>
-                <div style="margin:10px;">知识卡片示例 ↓</div>
+{#    标题、简介加卡片#}
+        <div>
+    {#            标题#}
+            <div><h1 class="wiki-title">{{ template_name }}</h1></div>
+
+    {#        简介#}
+            <div>
+                <div class="wiki-intro">{{ template_name }}歼-20（英文：Chengdu J-20，代号：威龙，北约代号：Fire Fang，译文：火焰獠牙）是中航工业成都飞机工业集团公司研制的一款具备高隐身性、高态势感知、高机动性等能力的隐形第五代制空战斗机，解放军研制的最新一代（欧美旧标准为第四代，新标准以及俄罗斯标准为第五代）双发重型隐形战斗机，用于接替歼10、歼11等第三代空中优势/多用途歼击机的未来重型歼击机型号，该机将担负我军未来对空、对海的主权维护任务。</div>
+{#                <div style="margin:10px;">{{ template_name }}知识卡片内容</div>#}
+{#                <div style="margin:10px;">知识卡片示例 ↓</div>#}
+    {#            卡片#}
                 {% for sg_card in all_card_list %}
                     <div style="height: 250px;">
                         <div class="basic-info cmn-clearfix">
@@ -40,11 +47,12 @@
             </div>
         </div>
 
+{#    模板内容---标题加内容#}
         {% for single_data in data_list %}
-            <div class="layui-card">
-                <div class="layui-card-header"><h2>{{ single_data }}</h2></div>
-                <div class="layui-card-body">
-                    <div style="margin:10px;">{{ single_data }}内容</div>
+            <div>
+                <div><h2 class="context-tite">{{ single_data }}</h2></div>
+                <div>
+                    <div class="context-text">{{ single_data }}歼20是我国自主研制的第五代战斗机，它的研制实现了既定的四大目标——打造跨代新机、引领技术发展、创新研发体系、建设卓越团队。打造跨代新机，是按照性能、技术和进度要求，研制开发我国自己的新一代隐身战斗机。引领技术发展，指通过自主创新实现强军兴军的目标。歼20在态势感知、信息对抗、协同作战等多方面取得了突破，这是中国航空工业从跟跑到并跑，再到领跑的必由之路。创新研发体系，是指建设最先进的飞机研制条件和研制流程。通过一大批大国重器的研制，我们建立了具有我国特色的数字化研发体系。建设卓越团队，是指通过型号研制，锤炼一支爱党爱国的研制队伍，这些拥有报国情怀、创新精神的优秀青年是航空事业未来发展的生力军。未来，我们将在战斗机的机械化、信息化、智能化发展征程上不断前行</div>
                 </div>
             </div>
         {% endfor %}

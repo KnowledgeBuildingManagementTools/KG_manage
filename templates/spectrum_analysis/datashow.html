@@ -18,9 +18,9 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="row">
-                            <div class="col-xs-2"><input type="text" placeholder="请输入开始节点" id="start_point"
+                            <div class="col-xs-2"><input type="text" placeholder="请输入开始节点名称" id="start_point"
                                                          class="form-control"></div>
-                            <div class="col-xs-2"><input type="text" placeholder="请输入结束节点" id="end_point"
+                            <div class="col-xs-2"><input type="text" placeholder="请输入结束节点名称" id="end_point"
                                                          class="form-control"></div>
                             <div class="col-xs-2"><input type="text" placeholder="请输入最大跳数" id="max_num"
                                                          class="form-control"></div>
@@ -58,11 +58,11 @@
         $('#noumenon_serach').click(function () {
             var start_point = $('#start_point').val();
             var end_point = $('#end_point').val();
-            var max_mun = $('#max_mun').val();
+            var max_num = $('#max_num').val();
             var formdata = new FormData();
             formdata.append("start_point", start_point);
             formdata.append("end_point", end_point);
-            formdata.append("end_point", end_point);
+            formdata.append("max_num", max_num);
 
 
             $.ajax({
@@ -104,11 +104,9 @@
             });
             var categories = [];
             var length = Object.keys(types).length;
-            for (var i = 0; i < length; i++) {
-                categories[i] = {
-                    name: '类目' + i
-                };
-            }
+			for (var  type in types){
+				categories.push({name:type})
+			}
             option = {
 
                 // 提示框的配置
@@ -296,12 +294,11 @@
 
                         {#TODO 节点新增类型#}
                         length = Object.keys(types).length;
-                        for (i = categories.length; i < length; i++) {
-                            categories[i] = {
-                                name: '类目' + i
-                            };
-                            option.legend[0].data.push('类目' + i)
-                        }
+						for (var type in types) {
+							categories.push({name: type});
+							option.legend[0].data.push(type)
+							
+						}
                         console.log(categories);
                         {#TODO 节点查重#}
                         for (i = 0; i < a.length; i++) { //节点查重
@@ -400,19 +397,13 @@
                 }).show();
             }
         }
-
         function huanhang(val) {
-            var strs = val.split(' '); //字符串数组
-            var str = '';
-            for (var i = 0, s; s = strs[i++];) { //遍历字符串数组
-                str += s;
-                if (!(i % 1)) str += '\n'; //按需要求余
-            }
+            var length = val.length;
+            str = val.substring(0, Math.ceil(length /2)) +"\n"+val.substring(Math.ceil(length /2),length);
             return str
         }
 
         function request_data(id, uuid, label) {
-
             var res_data = "";
             $.ajax({
                 url: '{% url 'node_side_nodes' %}',

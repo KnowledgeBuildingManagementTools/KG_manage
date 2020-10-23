@@ -93,6 +93,7 @@ urlpatterns = [
     path('association_analysis',views.association_analysis ,name="association_analysis"),
     path('map_analysis',views.map_analysis ,name="map_analysis"),
     path('analysis_aide',views.analysis_aide ,name="analysis_aide"),
+    path('node_side_nodes', views.node_side_nodes, name="node_side_nodes"),
     path('histogram',views.histogram ,name="histogram"),
     path('timeline',views.timeline ,name="timeline"),
     path('history_load',views.history_load ,name="history_load"),

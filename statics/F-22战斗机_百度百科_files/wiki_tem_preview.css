@@ -1,0 +1,109 @@
+/*按钮样式*/
+.my-btn{
+    /*background-color: #0A318A;*/
+    float: left;
+    margin: 10px;
+    height: 30px;
+}
+
+.my-btn:hover{
+    /*background-color: #0d5aa7;*/
+}
+
+/*百科整体内容*/
+.main-box{
+    margin:100px 10% 100px;
+    border: 1px solid #aaa;
+    border-radius: 2px;
+    padding: 29px 29px 0;
+    background: #fff;
+
+}
+
+/*百科标题*/
+.wiki-title{
+    font-size: 34px;
+    line-height: 1.15;
+    font-weight: 400;
+    vertical-align: sub;
+}
+
+/*百科简介*/
+.wiki-intro{
+    margin:40px 0 15px 0;
+    font-size: 14px;
+    word-wrap: break-word;
+    color: #333;
+    text-indent: 2em;
+    line-height: 24px;
+}
+
+/*基础信息卡片*/
+.basic-info{
+    margin: 20px 20px 35px;
+    clear: both;
+    *overflow: hidden;
+    width: 100%;
+
+}
+
+.basic-info .basicInfo-block {
+    width: 395px;
+    float: left
+}
+
+.basic-info .basicInfo-block .basicInfo-item {
+    line-height: 26px;
+    display: block;
+    padding: 0;
+    margin: 0;
+    float: left
+}
+
+.basic-info .basicInfo-block .basicInfo-item.name {
+    width: 90px;
+    padding: 0 5px 0 12px;
+    font-weight: 700;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    word-wrap: normal;
+    color: #999;
+    border-bottom: 1px dashed #aaa;
+
+}
+
+.basic-info .basicInfo-block .basicInfo-item.value {
+    zoom: 1;
+    color: #333;
+    width: 305px;
+    float: left;
+    position: relative;
+    word-break: break-all;
+            border-bottom: 1px dashed #aaa;
+        /*border-right: 1px solid #aaa;*/
+
+}
+
+/*模板内容---标题*/
+.context-tite{
+    padding: 0 8px 0 27px;
+    line-height: 24px;
+    font-size: 22px;
+    font-weight: 400;
+    color: #000;
+    background: #fff;
+    border-left: 10px solid #4f9cee;
+    position: relative;
+    right: 29px;
+}
+
+/*模板内容-文本*/
+.context-text{
+    font-size: 14px;
+    word-wrap: break-word;
+    color: #333;
+    margin-bottom: 20px;
+    text-indent: 2em;
+    line-height: 24px;
+}

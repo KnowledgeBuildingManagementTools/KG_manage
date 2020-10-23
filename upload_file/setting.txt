@@ -1,0 +1,406 @@
+/**
+ * xx仓数据类型和组件名称
+ */
+//这是一个示例，随后自己添加
+// const 仓的名字 = {
+//    type2: "MiddleTop",跟后台约定的图块类型:"组件名字"
+//    type1: "lefttop"跟后台约定的图块类型:"组件名字"
+//   };
+// export default {
+//   仓的名字,
+// };
+
+// ps：区块编码写在页面上，直接在页面上绑定绑定名字:blockCode 命名格式：**仓+第几块   
+//     例如：financeOne(财务仓第一块)  :blockCode=financeOne
+//     图块类型命名格式：**仓+类型几  例如：financeTypeOne(财务仓类型一)
+// 组件名字最好也带上哪个舱
+ const finance={
+    financeTypeEight:"FinanceTypeEight",//跟后台约定的图块类型:"组件名字"
+    financeMiddleTop: "MiddleTop",
+    financeMiddleBottom: "MiddleBottom",
+    financeTwoBar: "LeftFirst",
+    financeHorizontalBar: "LeftSecond",
+    financeNoIconLine: "LeftThird",
+    financeBarLine: "RightFirst",
+    financeTwoIconLine: "RightSecond"
+ }
+ export default {
+    finance,
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// 年月组件名
+const fieldName = {
+   month:'month',
+   year:'year',
+   value:'value',
+   type:'type',
+   thisYear:'now',
+   contrast:'compare'
+}
+
+
+
+
+
+
+
+
+
+
+
+const financeLists = {
+  chartCode: "financeEight", //图块编码
+  orgCode: "", //组织机构
+  businessCode: "", //指标编码
+  businessName: "资产负债率", //指标名称
+  chartType: "FinanceTypeEight", //图块类型
+};
+
+const typicalData1 = {
+  businessCode: "", //指标编码
+  orgCode: "", //组织机构
+  value:[
+    {
+      month:'1',
+      value:8.5
+    },
+    {
+      month:'2',
+      value:6.1
+    },
+    {
+      month:'3',
+      value:7.1
+    },
+    {
+      month:'4',
+      value:6.8
+    },
+    {
+      month:'5',
+      value:4.7
+    },
+    {
+      month:'6',
+      value:6.3
+    },
+    {
+      month:'7',
+      value:5.5
+    },
+    {
+      month:'9',
+      value:8.1
+    },
+    {
+      month:'10',
+      value:4.5
+    },
+    {
+      month:'11',
+      value:3.4
+    },
+    {
+      month:'12',
+      value:7.4
+    },
+    {
+      year:'2016',
+      value:36.5
+    },
+    {
+      year:'2017',
+      value:38.1
+    },
+    {
+      month:'8',
+      value:4.9
+    },
+    {
+      year:'2018',
+      value:43.7
+    },
+    {
+      year:'2019',
+      value:49.6
+    },
+    {
+      year:'2020',
+      value:52.6
+    },
+  ]
+}
+
+const typicalData2 = {
+  businessCode: "", //指标编码
+  orgCode: "", //组织机构
+  value:[
+    {
+      month:'1',
+      type:'compare',
+      value:8.5
+    },
+    {
+      month:'2',
+      type:'compare',
+      value:6.1
+    },
+    {
+      month:'3',
+      type:'compare',
+      value:7.1
+    },
+    {
+      month:'4',
+      type:'compare',
+      value:6.8
+    },
+    {
+      month:'5',
+      type:'compare',
+      value:4.7
+    },
+    {
+      month:'6',
+      type:'compare',
+      value:6.3
+    },
+    {
+      month:'7',
+      type:'compare',
+      value:5.5
+    },
+    {
+      month:'9',
+      type:'compare',
+      value:8.1
+    },
+    {
+      month:'10',
+      type:'compare',
+      value:4.5
+    },
+    {
+      month:'11',
+      type:'compare',
+      value:3.4
+    },
+    {
+      month:'12',
+      type:'compare',
+      value:7.4
+    },
+    {
+      year:'2016',
+      type:'compare',
+      value:36.5
+    },
+    {
+      year:'2017',
+      type:'compare',
+      value:38.1
+    },
+    {
+      month:'8',
+      type:'compare',
+      value:4.9
+    },
+    {
+      year:'2018',
+      type:'compare',
+      value:43.7
+    },
+    {
+      year:'2019',
+      type:'compare',
+      value:49.6
+    },
+    {
+      year:'2020',
+      type:'compare',
+      value:52.6
+    },
+    {
+      month:'1',
+      type:'now',
+      value:8.5
+    },
+    {
+      month:'2',
+      type:'now',
+      value:6.1
+    },
+    {
+      month:'3',
+      type:'now',
+      value:7.1
+    },
+    {
+      month:'4',
+      type:'now',
+      value:6.8
+    },
+    {
+      month:'5',
+      type:'now',
+      value:4.7
+    },
+    {
+      month:'6',
+      type:'now',
+      value:6.3
+    },
+    {
+      month:'7',
+      type:'now',
+      value:5.5
+    },
+    {
+      month:'9',
+      type:'now',
+      value:8.1
+    },
+    {
+      month:'10',
+      type:'now',
+      value:4.5
+    },
+    {
+      month:'11',
+      type:'now',
+      value:3.4
+    },
+    {
+      month:'12',
+      type:'now',
+      value:7.4
+    },
+    {
+      year:'2016',
+      type:'now',
+      value:36.5
+    },
+    {
+      year:'2017',
+      type:'now',
+      value:38.1
+    },
+    {
+      month:'8',
+      type:'now',
+      value:4.9
+    },
+    {
+      year:'2018',
+      type:'now',
+      value:43.7
+    },
+    {
+      year:'2019',
+      type:'now',
+      value:49.6
+    },
+    {
+      year:'2020',
+      type:'now',
+      value:52.6
+    },
+  ]
+}
+
+export default ({
+  service,
+  request,
+  serviceForMock,
+  requestForMock,
+  mock,
+  faker,
+  tools,
+}) => ({
+  //真实数据请求示例
+  /**
+   * @description 请求项目中的文件
+   * @param {String} url 文件地址
+   */
+  // FILE_GET() {
+  //   return request({
+  //     baseURL: process.env.BASE_URL,
+  //     url,
+  //     method: "get",
+  //   });
+  // },
+
+  //模拟数据的请求
+  financeList() {
+    // 模拟数据
+    mock
+      .onAny("/chart/getInfo")
+      .reply(...tools.responseSuccess({ list:financeLists }));
+    // 接口请求
+    return requestForMock({
+      url: "/chart/getInfo",
+      method: "get",
+    });
+  },
+
+  //模拟“营业收入”数据的请求
+  businessCost() {
+    // 模拟数据
+    mock
+      .onAny("/finance/businessCost")
+      .reply(...tools.responseSuccess(typicalData1));
+    // 接口请求
+    return requestForMock({
+      url: "/finance/businessCost",
+      method: "get",
+    });
+  },
+
+  //模拟“营业收入”数据的请求
+  businessIncome() {
+    // 模拟数据
+    mock
+      .onAny("/finance/businessIncome")
+      .reply(...tools.responseSuccess(typicalData2));
+    // 接口请求
+    return requestForMock({
+      url: "/finance/businessIncome",
+      method: "get",
+    });
+  },
+
+  //模拟数据的请求
+  financeRightThirdData() {
+    // 模拟数据
+    mock
+      .onAny("/demo/business/issues/142/fetch")
+      .reply(...tools.responseSuccess({ list: financeRightThird }));
+    // 接口请求
+    return requestForMock({
+      url: "/demo/business/issues/142/fetch",
+      method: "get",
+    });
+  },
+});
+
+
+
+
+
+
+

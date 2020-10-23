@@ -40,6 +40,7 @@ class Require_wikipedia(models.Model):
     id = models.AutoField(verbose_name='id', primary_key=True)
     name = models.CharField(verbose_name='需求百科名称', max_length=50)
     content = models.TextField(verbose_name='需求百科内容')
+    knowledge_card = models.CharField(verbose_name='知识卡片', max_length=50, null=True)
     create_time = models.DateTimeField(verbose_name='创建时间', auto_now_add=True, null=True)
 
 
