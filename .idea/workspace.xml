@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="dceb64f5-5e02-4e18-881a-a5d96b52be3c" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="dceb64f5-5e02-4e18-881a-a5d96b52be3c" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,6 +15,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1jE17KWbPbwxTLHNG8mH3TfXhey" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/statics/css" />
@@ -86,7 +85,7 @@
       <updated>1603354268387</updated>
       <workItem from="1603354271096" duration="11353000" />
       <workItem from="1603368800306" duration="977000" />
-      <workItem from="1603412779006" duration="1916000" />
+      <workItem from="1603412779006" duration="1917000" />
     </task>
     <servers />
   </component>
