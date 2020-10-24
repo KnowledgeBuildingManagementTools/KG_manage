@@ -14,15 +14,17 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="card">
-                    <div class="card-toolbar clearfix">
+                    <div class="card-toolbar clearfix" style="padding-bottom: 10px">
 
                         <div style="margin-bottom: 30px;width: 800px">
                             <input type="text" name="path" readonly hidden="hidden">
                             <input id="choose_file" type="file" multiple="multiple"
                                    style="height: 0;width: 0;z-index: -1;" name="choosed_file"
                                    onChange="return process_file(this)">
-                            <select name="file_type" id="file_type"
+                            <select name="file_type" id="file_type" style="float: left"
+{#                                    class="my-select">#}
                                     class="btn btn-default dropdown-toggle my-select">
+
                                 <option value="" style="color: gray;display: none;">请选择上传文件类型</option>
                                 <option value="sql">SQL文件</option>
                                 <option value="html">网页html源码111</option>
@@ -30,14 +32,15 @@
                                 <option value="xls,xlsx">Excel文档</option>
                                 <option value="txt">txt文档</option>
                             </select>
-                            <input id="hidden_btn" type="button" onclick="getElementById('choose_file').click()"
-                                   class="btn btn-primary my-btn" style="margin-left: 15px" value="选择文件">
-                            <p class="layui-inline" style="color: red" id="file_name"></p>
 
+
+                            <input id="hidden_btn" type="button" onclick="getElementById('choose_file').click()"
+                                   class="my-btn" style="margin-left: 15px;float: left" value="选择文件">
                             <input type="submit" id="file_assess"
                                    data-loading-text="处理中..."
-                                   class="btn btn-primary my-btn" style="margin-left: 10px"
+                                   class="my-btn" style="margin-left: 10px;float: left"
                                    value="抽取">
+                            <p class="my-input-p" id="file_name">&nbsp;&nbsp;&nbsp;&nbsp;</p>
                         </div>
                     </div>
                 </div>
@@ -49,8 +52,8 @@
                 <div class="card">
                     <div class="card-toolbar clearfix">
                         <!-- <input type="button" onclick="map_preview()" class="btn btn-primary" value="知识图谱预览" style="display: none;" id="map_preview"> -->
-                        <input type="button" onclick="insert_map()" class="btn btn-primary my-btn" value="插入" style="display: none;" id="insert_map">
-                        <table id="extract_data">
+                        <input type="button" onclick="insert_map()" class="my-btn" value="插入" style="display: none;" id="insert_map">
+                        <table id="extract_data" class="my-table">
                             <thead id="ex_data_thead" style="display: none;">
                             <tr>
 {#                                <th style="font-weight: bolder;font-size: 15px;"><input type="checkbox" id="all_choice"></th>#}

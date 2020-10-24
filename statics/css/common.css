@@ -3,14 +3,29 @@
     background-color: #0A318A;
     border-radius: 5px;
     color: #fff;
+    height: 38px;
+    border: none;
+    display: inline-block;
+    outline:none;
+    padding-left: 10px;
+    padding-right: 10px;
+
 }
 
 .my-btn:hover{
     background-color: #0d5aa7;
+    border: none;
+    outline:none;
+    color: #fff;
+
 }
 
+
 .my-btn:active{
-    background-color: red;
+    background-color: #5974ab;
+    color: #fff;
+    border: none 0px;
+    outline:none;
 }
 
 /*下拉框样式*/
@@ -26,31 +41,57 @@
 }
 
 /*表格样式*/
-table{
+.my-table{
     /*width: 100%;*/
 }
 
-table thead{
+.my-table thead{
     border-bottom: 2px #ddd solid;
 }
 
-table thead tr{
+.my-table thead tr{
     height: 50px;
 }
 
-table tbody tr{
+.my-table tbody tr{
     /*height: 70px;*/
 }
 
-table tbody tr:hover{
+.my-table tbody tr:hover{
     /*background-color: #00b5f9;    */
     background-color: #5974ab;
     color: #fff;
     /*height: 70px;*/
 }
 
-table tbody tr td{
+.my-table tbody tr td{
     padding: 10px 0;
+}
+
+/*拟输入框p标签*/
+.my-input-p{
+    /*height: 38px;*/
+    display: inline;
+    /*border: 1px solid #eee;*/
+    margin: 0;
+    padding: 0px;
+    color: #67c23a;
+    position: relative;
+    top: 8px;
+    left: 20px;
+    /*border-radius: 5px;*/
+}
+
+
+
+
+/*修改原有样式*/
+
+.layui-table-tips-c:before {
+    /*修改layui  table里面的叉号图标*/
+    position: relative;
+    right: 1px;
+    top: -4px;
 }
 
 
