@@ -24,12 +24,12 @@
     <div class='container-fluid'>
         <!-- 添加记录 -->
         <a class='btn btn-primary  my-btn' href="{% url 'add_wikipedia_template' %}"
-           style="float: left;margin-left: 10px;">返回</a>
+           style="float: left;margin-left: 10px;">添加</a>
 
         {#        <a class='btn btn-primary btn-sm' href="{% url 'add_wikipedia_template' %}" style="height: 38px;text-align: center;line-height: 30px;">添加</a>#}
         <form action="{% url 'search_wikipedia' %}" >
             <button class='btn btn-primary my-btn' type="submit"
-                    style="float: right;margin-left: 20px">搜索
+                    style="float: right;margin-left: 20px;margin-right: 10px">搜索
             </button>
             <input type="text" name="template_name" id="template_name" class="form-control my-input"
                    placeholder="请输入要搜索的模板名称"
@@ -40,7 +40,7 @@
         <div class="form-group" style="margin: 50px 10px;padding: 10px; background-color: #ffffff">
             <!-- 页面信息展示 -->
             {#            <table class="table table-bordered table-hover table-striped">#}
-            <table>
+            <table class="my-table">
 
                 <thead>
                 <tr>
