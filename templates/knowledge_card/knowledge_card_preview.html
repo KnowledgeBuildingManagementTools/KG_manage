@@ -2,17 +2,20 @@
 {% load static %}
 
 {% block mycss %}
-    <link rel="stylesheet" type="text/css" href="{% static 'F-22战斗机_百度百科_files/wiki-lemma-module_2676ad3.css' %}">
+{#    <link rel="stylesheet" type="text/css" href="{% static 'F-22战斗机_百度百科_files/wiki-lemma-module_2676ad3.css' %}">#}
+    <link rel="stylesheet" type="text/css" href="{% static 'F-22战斗机_百度百科_files/wiki_tem_preview.css' %}">
 {% endblock %}
 
 {% block content %}
-    <a class='btn btn-primary btn-sm' href="javascript:history.back(-1);" style="float: right;margin: 10px;">返回</a>
-    <div style="margin:10px;">
-        <div class="layui-card">
-            <div class="layui-card-header"><h2>{{ name }}</h2></div>
+{#    <a class='btn btn-primary btn-sm' href="javascript:history.back(-1);" style="float: right;margin: 10px;">返回</a>  #}
+    <button type="button" class="my-btn" style="margin: 15px 25px;height: 38px" onclick="javascript:history.back(-1);">返回</button>
 
-            <div class="layui-card-body">
-                <div style="margin:10px;">{{ name }} 知识卡片 ↓</div>
+    <div class="main-box">
+{#        <div class="layui-card">#}
+            <div><h1 class="wiki-title">{{ name }}</h1></div>
+
+            <div>
+{#                <div style="margin:10px;">{{ name }} 知识卡片 ↓</div>#}
                 <div style="height: 250px;">
                     <div class="basic-info cmn-clearfix">
                         <dl class="basicInfo-block basicInfo-left">
@@ -34,7 +37,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+{#        </div>#}
     </div>
 {% endblock %}
 
