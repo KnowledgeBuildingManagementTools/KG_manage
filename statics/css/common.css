@@ -1,75 +1,76 @@
 /*按钮样式*/
-.my-btn{
+.my-btn {
     background-color: #0A318A;
     border-radius: 5px;
     color: #fff;
     height: 38px;
     border: none;
     display: inline-block;
-    outline:none;
-    padding-left: 10px;
-    padding-right: 10px;
+    outline: none;
+    /*padding-left: 10px;*/
+    /*padding-right: 10px;*/
+    padding: 7px 15px;
 
 }
 
-.my-btn:hover{
+.my-btn:hover {
     background-color: #0d5aa7;
     border: none;
-    outline:none;
+    outline: none;
     color: #fff;
 
 }
 
 
-.my-btn:active{
+.my-btn:active {
     background-color: #5974ab;
     color: #fff;
     border: none 0px;
-    outline:none;
+    outline: none;
 }
 
 /*下拉框样式*/
-.my-select{
+.my-select {
     height: 38px;
     border-radius: 5px;
 }
 
 /*输入框样式*/
-.my-input{
+.my-input {
     height: 38px;
     border-radius: 5px;
 }
 
 /*表格样式*/
-.my-table{
+.my-table {
     /*width: 100%;*/
 }
 
-.my-table thead{
+.my-table thead {
     border-bottom: 2px #ddd solid;
 }
 
-.my-table thead tr{
+.my-table thead tr {
     height: 50px;
 }
 
-.my-table tbody tr{
+.my-table tbody tr {
     /*height: 70px;*/
 }
 
-.my-table tbody tr:hover{
+.my-table tbody tr:hover {
     /*background-color: #00b5f9;    */
     background-color: #5974ab;
     color: #fff;
     /*height: 70px;*/
 }
 
-.my-table tbody tr td{
+.my-table tbody tr td {
     padding: 10px 0;
 }
 
 /*拟输入框p标签*/
-.my-input-p{
+.my-input-p {
     /*height: 38px;*/
     display: inline;
     /*border: 1px solid #eee;*/
@@ -83,8 +84,6 @@
 }
 
 
-
-
 /*修改原有样式*/
 
 .layui-table-tips-c:before {
@@ -94,8 +93,21 @@
     top: -4px;
 }
 
+/*知识百科下面的添加编辑页面--------开始*/
 
+.wiki-add-edit .span-div {
+    text-align: right;
 
+}
+
+@media (max-width: 992px) {
+    .wiki-add-edit .span-div {
+        text-align: left;
+
+    }
+}
+
+/*知识百科下面的添加编辑页面--------结束*/
 
 
 

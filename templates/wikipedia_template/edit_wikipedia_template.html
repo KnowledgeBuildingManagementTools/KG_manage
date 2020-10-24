@@ -19,36 +19,134 @@
 
 
 {% block content %}
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <form action="{% url 'edit_wikipedia_template' Wikipedia_template.id %}" method="post">
-                {% csrf_token %}
-                <input type="text" name="id" style="display: none;" value="{{ Wikipedia_template.id }}">
-                <span style="font-weight: bold;">百科模板名称</span>
-                <input type="text" name="name" class="form-control" value="{{ Wikipedia_template.name }}">
+{#<div class="container-fluid">#}
+{#    <div class="row">#}
+{#        <div class="col-md-8 col-md-offset-2">#}
 
-                <span style="font-weight: bold;">百科模板内容</span><span style="color: red;font-weight: bold;"> （百科模板内容之间请用中文逗号分隔开） </span>
-                <input type="text" name="content" class="form-control" value="{{ Wikipedia_template.content }}">
+        <div class="wiki-add-edit" style="margin: 20px;background-color: #ffffff;padding:20px">
 
-                <span style="font-weight: bold;">关联知识卡片模板</span>
-                <select name='card_template' multiple='multiple' class="form-control">
+
+        <form action="{% url 'add_wikipedia_template' %}" method="post">
+            {% csrf_token %}
+            <input type="text" name="all_tem" style="display: none;" value="{{ template_content }}">
+
+            <div class="row" style="margin-bottom: 30px">
+                <div class="col-xs-6 col-md-4">
+                    <div class="span-div" style="color:#333333;line-height: 38px;">百科模板名称</div>
+                </div>
+                <div class="col-xs-12 col-md-4">
+                    <input type="text" name="name" class="form-control">
+                </div>
+            </div>
+
+
+            {#            <span style="font-weight: bold;">百科模板名称</span>#}
+            {#            <input type="text" name="name" class="form-control">#}
+
+            <div class="row" style="margin-bottom: 30px">
+                <div class="col-xs-6 col-md-4">
+                    <div class="span-div" style="color:#333333;line-height: 38px;">百科模板内容</div>
+
+                </div>
+                <div class="col-xs-12 col-md-4">
+                    <textarea class="form-control" name="content" rows="3">{{ Wikipedia_template.content }}</textarea>
+                    {#                    <input type="text" name="content" class="form-control">#}
+
+                </div>
+                <div class="col-xs-12 col-md-4">
+                    <span style="color: #e6a23c;line-height: 38px;"> （百科模板内容之间请用中文逗号分隔开） </span>
+                </div>
+            </div>
+
+
+            <div class="row" style="margin-bottom: 30px">
+                <div class="col-xs-6 col-md-4">
+                    <div class="span-div" style="color:#333333;line-height: 38px;">关联知识卡片模板</div>
+
+                </div>
+                <div class="col-xs-12 col-md-4">
                     {% for sg_card in all_card_list %}
+
+                        <div class="checkbox" style="width: 48%;display: inline-block">
+                            <label><input name='card_template' type="checkbox" style="color: #333333"
+                                          value="{{ sg_card.id }}">{{ sg_card.name }}</label>
+                        </div>
+
                         {% if sg_card.id in selected_card_id %}
-                            <option value= '{{ sg_card.id }}' selected>{{sg_card.name}}</option>
+{#                            <option value= '{{ sg_card.id }}' selected>{{sg_card.name}}</option>#}
+
+                            <div class="checkbox" style="width: 48%;display: inline-block">
+                            <label><input name='card_template' checked type="checkbox" style="color: #333333"
+                                          value="{{ sg_card.id }}">{{ sg_card.name }}</label>
+                        </div>
                         {% else %}
-                            <option value= '{{ sg_card.id }}' selected>{{sg_card.name}}</option>
+{#                            <option value= '{{ sg_card.id }}'>{{sg_card.name}}</option>#}
+
+                            <div class="checkbox" style="width: 48%;display: inline-block">
+                            <label><input name='card_template' type="checkbox" style="color: #333333"
+                                          value="{{ sg_card.id }}">{{ sg_card.name }}</label>
+                        </div>
                         {% endif %}
                     {% endfor %}
-                </select>
 
-                <br>
-                <button type="submit" class="btn btn-primary" style="margin-top: 3px">提交</button>
-                <a class='btn btn-primary' href="javascript:history.back(-1);" style="margin-right: 10px;">取消</a>
-            </form>
-        </div>
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="col-xs-6 col-md-4">
+                </div>
+                <div class="col-xs-12 col-md-4">
+                    <div style="width: 49%;float: left">
+                        <button type="submit" class="my-btn" style="margin-right: 20px">提交</button>
+                    </div>
+                    {#                    <a class='my-btn' style="display: inline-block" href="javascript:history.back(-1);" >取消</a>#}
+                    <div style="width: 49%;float: left">
+
+                        <button type="button" class="my-btn" onclick="javascript:history.back(-1);">取消</button>
+                    </div>
+
+                </div>
+            </div>
+            {#            <br>#}
+
+        </form>
     </div>
-</div>
+
+
+
+
+
+
+
+{#    <div class="wiki-add-edit" style="margin: 20px;background-color: #ffffff;padding:20px">#}
+{#            <form action="{% url 'edit_wikipedia_template' Wikipedia_template.id %}" method="post">#}
+{#                {% csrf_token %}#}
+{#                <input type="text" name="id" style="display: none;" value="{{ Wikipedia_template.id }}">#}
+{#                <span style="font-weight: bold;">百科模板名称</span>#}
+{#                <input type="text" name="name" class="form-control" value="{{ Wikipedia_template.name }}">#}
+{##}
+{#                <span style="font-weight: bold;">百科模板内容</span><span style="color: red;font-weight: bold;"> （百科模板内容之间请用中文逗号分隔开） </span>#}
+{#                <input type="text" name="content" class="form-control" value="{{ Wikipedia_template.content }}">#}
+{##}
+{#                <span style="font-weight: bold;">关联知识卡片模板</span>#}
+{#                <select name='card_template' multiple='multiple' class="form-control">#}
+{#                    {% for sg_card in all_card_list %}#}
+{#                        {% if sg_card.id in selected_card_id %}#}
+{#                            <option value= '{{ sg_card.id }}' selected>{{sg_card.name}}</option>#}
+{#                        {% else %}#}
+{#                            <option value= '{{ sg_card.id }}'>{{sg_card.name}}</option>#}
+{#                        {% endif %}#}
+{#                    {% endfor %}#}
+{#                </select>#}
+{##}
+{#                <br>#}
+{#                <button type="submit" class="btn btn-primary" style="margin-top: 3px">提交</button>#}
+{#                <a class='btn btn-primary' href="javascript:history.back(-1);" style="margin-right: 10px;">取消</a>#}
+{#            </form>#}
+{#        </div>#}
+{#    </div>#}
+{#</div>#}
 {% endblock %}
 
 {% block myjs %}

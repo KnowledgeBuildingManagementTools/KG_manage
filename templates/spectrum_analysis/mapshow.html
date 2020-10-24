@@ -30,17 +30,17 @@
                 </div>
             </div>
         </div>
-{#        <div class="row">#}
-{#            <div class="col-lg-12">#}
-{#                <div class="card">#}
-{#                    <div class="card-body">#}
+        {#        <div class="row">#}
+        {#            <div class="col-lg-12">#}
+        {#                <div class="card">#}
+        {#                    <div class="card-body">#}
 
-                        <div id="map_pic" style="width: 100%;height: calc(100vh - 215px)"></div>
+        <div id="map_pic" style="width: 100%;height: calc(100vh - 215px)"></div>
 
-{#                    </div>#}
-{#                </div>#}
-{#            </div>#}
-{#        </div>#}
+        {#                    </div>#}
+        {#                </div>#}
+        {#            </div>#}
+        {#        </div>#}
     </div>
 {% endblock %}
 
@@ -80,56 +80,6 @@
 
             var myChart = echarts.init(document.getElementById('map_pic'));
 
-            var provincedata = {
-                '上海': [121.4648, 31.2891],
-                '新疆': [87.9236, 43.5883],
-                '甘肃': [103.5901, 36.3043],
-                '北京': [116.4551, 40.2539],
-                '江苏': [118.8062, 31.9208],
-                '广西': [108.479, 23.1152],
-                '江西': [116.0046, 28.6633],
-                '安徽': [117.29, 32.0581],
-                '内蒙古': [111.4124, 40.4901],
-                '黑龙江': [127.9688, 45.368],
-                '天津': [117.4219, 39.4189],
-                '山西': [112.3352, 37.9413],
-                '广东': [113.5107, 23.2196],
-                '四川': [103.9526, 30.7617],
-                '西藏': [91.1865, 30.1465],
-                '云南': [102.9199, 25.4663],
-                '浙江': [119.5313, 29.8773],
-                '湖北': [114.3896, 30.6628],
-                '辽宁': [123.1238, 42.1216],
-                '山东': [117.1582, 36.8701],
-                '海南': [110.3893, 19.8516],
-                '河北': [114.4995, 38.1006],
-                '福建': [119.4543, 25.9222],
-                '青海': [101.4038, 36.8207],
-                '陕西': [109.1162, 34.2004],
-                '贵州': [106.6992, 26.7682],
-                '河南': [113.4668, 34.6234],
-                '重庆': [107.7539, 30.1904],
-                '宁夏': [106.3586, 38.1775],
-                '吉林': [125.8154, 44.2584],
-                '湖南': [113.0823, 28.568],
-                '香港': [114.1654, 22.2753],
-                '澳门': [113.5491, 22.1987],
-                '台湾': [121.5200, 25.0307]
-            };
-            var convergeoCoord = function (provincedata) {
-                var res = [];
-                for (var key in provincedata) {
-                    var geoCoord = provincedata[key]; //记录坐标
-                    if (geoCoord) {
-                        res.push({
-                            value: geoCoord,
-                            name: key
-                        });
-                    }
-                }
-                //console.log(res);
-                return res;
-            };
 
             var convertData = function (data) {
                 var res = [];
@@ -195,59 +145,59 @@
                         color: "#fff"
                     }
                 },
-            {#geo: {#}
-            {#    map: 'china',#}
-            {#    //center: [104.114129, 37.550339],#}
-            {#    //zoom: 5,#}
-            {#    roam: true,#}
-            {#    label: {#}
-            {#        emphasis: {#}
-            {#            show: false#}
-            {#        }#}
-            {#    },#}
-            {#    itemStyle: {#}
-            {#        normal: {#}
-            {#            areaColor: '#323c48',   //地图颜色#}
-            {#            borderColor: '#111'  //  区域边线颜色#}
-            {#        },#}
-            {#        emphasis: {#}
-            {#            areaColor: '#2a333d'  //鼠标停留区域颜色#}
-            {#        }#}
-            {#    }#}
+                {#geo: {#}
+                {#    map: 'china',#}
+                {#    //center: [104.114129, 37.550339],#}
+                {#    //zoom: 5,#}
+                {#    roam: true,#}
+                {#    label: {#}
+                {#        emphasis: {#}
+                {#            show: false#}
+                {#        }#}
+                {#    },#}
+                {#    itemStyle: {#}
+                {#        normal: {#}
+                {#            areaColor: '#323c48',   //地图颜色#}
+                {#            borderColor: '#111'  //  区域边线颜色#}
+                {#        },#}
+                {#        emphasis: {#}
+                {#            areaColor: '#2a333d'  //鼠标停留区域颜色#}
+                {#        }#}
+                {#    }#}
                 series: [
-                              {
-            type: "map",
-            map: "china",
-            // name: "地图",
-            roam: false,
-            zoom: 1.2,
-            aspectScale: 0.75, //长宽比
-            label: {
-              normal: {
-                show: true,
-                fontSize: this.mapFontSize,
-                color: "rgba(74,178,254,0.8)"
-              },
-              emphasis: {
-                show: false,
-                textStyle: {
-                  color: "rgba(74,178,254,0.8)"
-                }
-              }
-            },
-            itemStyle: {
-              normal: {
-                areaColor: "#002292",
-                borderColor: "#0036ba",
-                borderWidth: 1
-              },
-              emphasis: {
-                show: false,
-                areaColor: "#002292"
-              }
-            },
-            data: data
-          },
+                    {
+                        type: "map",
+                        map: "china",
+                        // name: "地图",
+                        roam: false,
+                        zoom: 1.2,
+                        aspectScale: 0.75, //长宽比
+                        label: {
+                            normal: {
+                                show: true,
+                                fontSize: this.mapFontSize,
+                                color: "rgba(74,178,254,0.8)"
+                            },
+                            emphasis: {
+                                show: false,
+                                textStyle: {
+                                    color: "rgba(74,178,254,0.8)"
+                                }
+                            }
+                        },
+                        itemStyle: {
+                            normal: {
+                                areaColor: "#002292",
+                                borderColor: "#0036ba",
+                                borderWidth: 1
+                            },
+                            emphasis: {
+                                show: false,
+                                areaColor: "#002292"
+                            }
+                        },
+                        data: data
+                    },
                     {
                         name: 'ampshow',
                         type: 'scatter',
@@ -278,36 +228,6 @@
                                     return colorall[j];
                                 }
                             },
-                            emphasis: {
-                                borderColor: '#ff2e1d',
-                                borderWidth: 0
-                            }
-                        }
-                    },
-                    {
-                        name: '省区',
-                        type: 'scatter',
-                        coordinateSystem: 'geo',
-                        data: convergeoCoord(provincedata),
-                        symbolSize: 1,
-                        label: {
-                            normal: {
-                                show: true,
-                                position: 'center',
-                                color: '#cc9025',
-                                formatter: function (x) {
-                                    return x.data.name;
-                                },
-                                textStyle: {
-                                    fontSize: 10
-                                }
-                            },
-                            emphasis: {
-                                show: false
-                            }
-                        },
-                        itemStyle: {
-                            normal: {},
                             emphasis: {
                                 borderColor: '#ff2e1d',
                                 borderWidth: 0

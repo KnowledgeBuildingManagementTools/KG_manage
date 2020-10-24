@@ -19,27 +19,85 @@
 
 
 {% block content %}
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <form action="{% url 'add_require_wikipedia' %}" method="post">
-                {% csrf_token %}
-                <input type="text" name="all_tem" style="display: none;" value="{{ all_tem }}">
-                <input type="text" name="id" style="display: none;" value="{{ id }}">
-                <span style="font-weight: bold;">需求百科名称</span>
-                <input type="text" name="name" class="form-control" value="{{ name }}">
-                {% for sg_con in content %}
-                    <span style="font-weight: bold;">{{ sg_con.key }}</span>
-                    <input type="text" name="{{ sg_con.key }}" class="form-control" value="{{ sg_con.value }}">
-                {% endfor %}
-                <br>
-                <button type="submit" class="btn btn-primary" style="margin-top: 3px">提交</button>
-                <a class='btn btn-primary' href="javascript:history.back(-1);" style="margin-right: 10px;">取消</a>
-            </form>
-        </div>
+    <div class="wiki-add-edit" style="margin: 20px;background-color: #ffffff;padding:20px">
+        <form action="{% url 'add_require_wikipedia' %}" method="post">
+            {% csrf_token %}
+            <input type="text" name="all_tem" style="display: none;" value="{{ all_tem }}">
+            <input type="text" name="id" style="display: none;" value="{{ id }}">
+
+            <div class="row" style="margin-bottom: 30px">
+                <div class="col-xs-6 col-md-4">
+                    <div class="span-div" style="color:#333333;line-height: 38px;">需求百科名称</div>
+                </div>
+                <div class="col-xs-12 col-md-4">
+                    <input type="text" name="name" class="form-control" value="{{ name }}">
+                </div>
+            </div>
+
+
+
+
+            {% for sg_con in content %}
+
+                <div class="row" style="margin-bottom: 30px">
+                    <div class="col-xs-6 col-md-4">
+                        <div class="span-div" style="color:#333333;line-height: 38px;">{{ sg_con.key }}</div>
+                    </div>
+                    <div class="col-xs-12 col-md-6">
+                        {#                        <input type="text" name="{{ sg_tem_con }}" class="form-control">#}
+                        <textarea class="form-control" name="{{ sg_con.key }}" rows="3">{{ sg_con.value }}</textarea>
+
+                    </div>
+                </div>
+
+            {% endfor %}
+
+            <div class="row">
+                <div class="col-xs-6 col-md-4">
+                </div>
+                <div class="col-xs-12 col-md-4">
+                    <div style="width: 49%;float: left">
+                        <button type="submit" class="my-btn" style="margin-right: 20px">提交</button>
+                    </div>
+                    <div style="width: 49%;float: left">
+
+                        <button type="button" class="my-btn" onclick="javascript:history.back(-1);">取消</button>
+                    </div>
+
+                </div>
+            </div>
+        </form>
+
     </div>
-</div>
 {% endblock %}
+
+
+
+
+{#{% block content %}#}
+{#    <div class="container-fluid">#}
+{#        <div class="row">#}
+{#            <div class="col-md-8 col-md-offset-2">#}
+{#                <form action="{% url 'add_require_wikipedia' %}" method="post">#}
+{#                    {% csrf_token %}#}
+{#                    <input type="text" name="all_tem" style="display: none;" value="{{ all_tem }}">#}
+{#                    <input type="text" name="id" style="display: none;" value="{{ id }}">#}
+{#                    <span style="font-weight: bold;">需求百科名称</span>#}
+{#                    <input type="text" name="name" class="form-control" value="{{ name }}">#}
+{#                    {% for sg_con in content %}#}
+{#                        <span style="font-weight: bold;">{{ sg_con.key }}</span>#}
+{#                        <input type="text" name="{{ sg_con.key }}" class="form-control" value="{{ sg_con.value }}">#}
+{#                    {% endfor %}#}
+{#                    <br>#}
+{#                    <button type="submit" class="btn btn-primary" style="margin-top: 3px">提交</button>#}
+{#                    <a class='btn btn-primary' href="javascript:history.back(-1);" style="margin-right: 10px;">取消</a>#}
+{#                </form>#}
+{#            </div>#}
+{#        </div>#}
+{#    </div>#}
+{#{% endblock %}#}
+
+
 
 {% block myjs %}
     <script>

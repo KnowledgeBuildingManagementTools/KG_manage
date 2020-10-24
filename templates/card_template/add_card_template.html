@@ -19,30 +19,57 @@
 
 
 {% block content %}
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <form action="{% url 'add_card_template' %}" method="post">
-                {% csrf_token %}
-                <input type="text" name="all_tem" style="display: none;" value="{{ template_content }}">
-                <span style="font-weight: bold;">知识卡片名称</span>
-                <input type="text" name="name" class="form-control">
+    <div class="wiki-add-edit" style="margin: 20px;background-color: #ffffff;padding:20px">
+        <form action="{% url 'add_card_template' %}" method="post">
+            {% csrf_token %}
+            <input type="text" name="all_tem" style="display: none;" value="{{ template_content }}">
 
-                <span style="font-weight: bold;">知识卡片内容</span><span style="color: red;font-weight: bold;"> （知识卡片内容之间请用中文逗号分隔开） </span>
-                <input type="text" name="content" class="form-control">
 
-                <br>
-                <button type="submit" class="btn btn-primary" style="margin-top: 3px">提交</button>
-                <a class='btn btn-primary' href="javascript:history.back(-1);" style="margin-right: 10px;">取消</a>
-            </form>
-        </div>
+            <div class="row" style="margin-bottom: 30px">
+                <div class="col-xs-6 col-md-4">
+                    <div class="span-div" style="color:#333333;line-height: 38px;">知识卡片名称</div>
+                </div>
+                <div class="col-xs-12 col-md-4">
+                    <input type="text" name="name" class="form-control">
+                </div>
+            </div>
+
+            <div class="row" style="margin-bottom: 30px">
+                <div class="col-xs-6 col-md-4">
+                    <div class="span-div" style="color:#333333;line-height: 38px;">知识卡片内容</div>
+                </div>
+                <div class="col-xs-12 col-md-4">
+                    <textarea class="form-control" name="content" rows="3"></textarea>
+
+                </div>
+                <div class="col-xs-12 col-md-4">
+                    <span style="color: #e6a23c;line-height: 38px;"> （知识卡片内容之间请用中文逗号分隔开） </span>
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="col-xs-6 col-md-4">
+                </div>
+                <div class="col-xs-12 col-md-4">
+                    <div style="width: 49%;float: left">
+                        <button type="submit" class="my-btn" style="margin-right: 20px">提交</button>
+                    </div>
+                    {#                    <a class='my-btn' style="display: inline-block" href="javascript:history.back(-1);" >取消</a>#}
+                    <div style="width: 49%;float: left">
+
+                        <button type="button" class="my-btn" onclick="javascript:history.back(-1);">取消</button>
+                    </div>
+
+                </div>
+            </div>
+        </form>
     </div>
-</div>
 {% endblock %}
 
 {% block myjs %}
     <script>
-        document.getElementById("jsxqzsbk").style.display='block';
-        document.getElementById("zskp").style.backgroundColor='rgba(30,21,21,0.44)';
+        document.getElementById("jsxqzsbk").style.display = 'block';
+        document.getElementById("zskp").style.backgroundColor = 'rgba(30,21,21,0.44)';
     </script>
 {% endblock %}
