@@ -2,22 +2,35 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dceb64f5-5e02-4e18-881a-a5d96b52be3c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/kg_code_manage/migrations/0003_histogram_timeline.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/kg_code_manage/migrations/0004_auto_20201023_1706.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/kg_code_manage/migrations/0005_auto_20201023_1709.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/kg_code_manage/migrations/0006_auto_20201023_1717.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/spectrum_analysis/node_analysis.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/kg_code_manage/migrations/0007_data_mining.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/kg_code_manage/migrations/0008_auto_20201024_1949.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/kg_code_manage/migrations/0009_auto_20201026_0016.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/kg_code_manage/migrations/0010_correlation_analysis.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/correlation_analysis_model/model_edit.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/correlation_analysis_model/model_import.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/correlation_analysis_model/model_map_show.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/data_mining_model/business_model_building.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/data_mining_model/model_edit.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/data_mining_model/model_import.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/data_mining_model/model_map_show.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/knowledge_reasoning_model/model_edit.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/knowledge_reasoning_model/model_import.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/knowledge_reasoning_model/model_map_show.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/wikipedia_template/wikipedia_classification.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/KG_manage/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/KG_manage/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/home" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/kg_code_manage/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/kg_code_manage/admin.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/kg_code_manage/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/kg_code_manage/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/kg_code_manage/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/kg_code_manage/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/business_model/table.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/business_model/table.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/knowledge_building/model_create.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/knowledge_building/model_create.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/require_wikipedia/edit_require_wikipedia.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/require_wikipedia/edit_require_wikipedia.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/service_interface/service_interface.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/service_interface/service_interface.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/spectrum_analysis/analysis_aide.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/spectrum_analysis/analysis_aide.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/spectrum_analysis/datashow.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/spectrum_analysis/datashow.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/spectrum_analysis/node_analysis.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/spectrum_analysis/node_analysis.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -58,6 +71,14 @@
   <component name="DjangoConsoleOptions" custom-start-script="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)">
     <option name="myCustomStartScript" value="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -65,24 +86,27 @@
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
     <property name="DatabaseDriversLRU" value="exasol" />
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/templates/spectrum_analysis" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/templates/wikipedia_template" />
     <property name="restartRequiresConfirmation" value="false" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\liubing\Desktop\KG_manage\templates\spectrum_analysis" />
-      <recent name="E:\Desktop\KG_manage3\KG_manage\statics\css" />
-      <recent name="E:\Desktop\KG_manage3\KG_manage\statics\F-22战斗机_百度百科_files" />
-      <recent name="E:\Desktop\KG_manage3\KG_manage\templates\wikipedia_template" />
-      <recent name="E:\Desktop\KG_manage3\KG_manage\templates\require_wikipedia" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\liubing\Desktop\KG_manage\templates\knowledge_reasoning_model" />
+      <recent name="C:\Users\liubing\Desktop\KG_manage\templates\data_mining_model" />
       <recent name="E:\Desktop\KG_manage3\KG_manage\kg_code_manage" />
       <recent name="E:\Desktop\KG_manage3\KG_manage\templates\knowledge_card" />
       <recent name="E:\Desktop\KG_manage3\KG_manage\templates\require_wikipedia" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\liubing\Desktop\KG_manage\templates\wikipedia_template" />
+      <recent name="C:\Users\liubing\Desktop\KG_manage\templates\knowledge_reasoning_model" />
+      <recent name="C:\Users\liubing\Desktop\KG_manage\templates\correlation_analysis_model" />
+      <recent name="C:\Users\liubing\Desktop\KG_manage\templates\data_mining_model" />
+      <recent name="C:\Users\liubing\Desktop\KG_manage\templates\spectrum_analysis" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -97,7 +121,29 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Django server.KG_manage">
+    <configuration name="test" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="KG_manage" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="KG_manage" type="Python.DjangoServer" factoryName="Django server">
       <module name="KG_manage" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -122,6 +168,11 @@
       <option name="customRunCommand" value="" />
       <method v="2" />
     </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.test" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="ServiceViewManager">
     <option name="allServicesViewState">
@@ -145,7 +196,13 @@
       <updated>1603354268387</updated>
       <workItem from="1603354271096" duration="11353000" />
       <workItem from="1603368800306" duration="977000" />
-      <workItem from="1603412779006" duration="18830000" />
+      <workItem from="1603412779006" duration="19610000" />
+      <workItem from="1603501088894" duration="1950000" />
+      <workItem from="1603503958818" duration="6813000" />
+      <workItem from="1603522741097" duration="23095000" />
+      <workItem from="1603550492711" duration="121000" />
+      <workItem from="1603587309839" duration="16054000" />
+      <workItem from="1603672566902" duration="12820000" />
     </task>
     <servers />
   </component>
@@ -170,30 +227,68 @@
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/kg_code_manage/views.py</url>
-          <line>774</line>
+          <line>789</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/kg_code_manage/views.py</url>
-          <line>56</line>
+          <line>57</line>
           <option name="timeStamp" value="2" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/kg_code_manage/views.py</url>
-          <line>772</line>
+          <line>788</line>
           <option name="timeStamp" value="3" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/kg_code_manage/views.py</url>
-          <line>812</line>
+          <line>838</line>
           <option name="timeStamp" value="4" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/kg_code_manage/views.py</url>
-          <line>805</line>
-          <option name="timeStamp" value="5" />
+          <line>297</line>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/kg_code_manage/views.py</url>
+          <line>273</line>
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/kg_code_manage/views.py</url>
+          <line>835</line>
+          <option name="timeStamp" value="10" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/test.py</url>
+          <line>7</line>
+          <option name="timeStamp" value="13" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/kg_code_manage/views.py</url>
+          <line>1114</line>
+          <option name="timeStamp" value="17" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/kg_code_manage/views.py</url>
+          <line>1185</line>
+          <option name="timeStamp" value="20" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/kg_code_manage/views.py</url>
+          <line>1227</line>
+          <option name="timeStamp" value="21" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/kg_code_manage/views.py</url>
+          <line>822</line>
+          <option name="timeStamp" value="22" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/KG_manage$test.coverage" NAME="test Coverage Results" MODIFIED="1603681408739" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

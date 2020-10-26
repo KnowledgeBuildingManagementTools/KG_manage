@@ -1,0 +1,66 @@
+{% extends 'index.html' %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>title</title>
+</head>
+
+<body>
+
+{% block title %}
+    <span class="navbar-page-title"> JSXQ知识百科 - 百科分类 </span>
+{% endblock %}
+
+
+{% block content %}
+    <div class='container-fluid'>
+        <form action="{% url 'search_wikipedia_classification' %}" >
+            <button class='btn btn-primary my-btn' type="submit"
+                    style="float: right;margin-left: 20px;margin-right: 10px">搜索
+            </button>
+            <input type="text" name="wikipedia_classification" id="wikipedia_classification" class="form-control my-input"
+                   placeholder="请输入要搜索的百科分类名称"
+                   style="width:250px;float: right">
+        </form>
+
+
+        <div class="form-group" style="margin: 50px 10px;padding: 10px; background-color: #ffffff">
+            <!-- 页面信息展示 -->
+            <table class="my-table" style="width: 100%">
+
+                <thead>
+                <tr>
+                    <th style="width:5%;text-align: center;">序号</th>
+                    <th style="width:20%;text-align: center;">百科名称</th>
+                    <th style="width:25%;text-align: center;">百科类别</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for single_data in wikipedia_template_obj %}
+                    <tr style="text-align: center">
+                        <td>{{ forloop.counter }}</td>
+                        <td>{{ single_data.name }}</td>
+                        <td>{{ single_data.name }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}
+
+{% block myjs %}
+    <script>
+        document.getElementById("jsxqzsbk").style.display = 'block';
+        document.getElementById("bkfl").style.backgroundColor = 'rgba(30,21,21,0.44)';
+    </script>
+{% endblock %}
+
+</body>
+
+</html>

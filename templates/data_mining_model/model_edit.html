@@ -1,0 +1,79 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title></title>
+    <link rel="stylesheet" href="{% static 'js/lib/layui/css/layui.css' %}">
+</head>
+<body>
+
+<div class="layui-container" style="margin-top: 30px">
+    <div class="layui-row">
+        <input type="text" style="display: none;" name="model_id" id="model_id" value="{{ model_obj.id }}">
+        <div style="margin-top: 10px;">
+            <div style="margin-top: 10px;margin-bottom: 5px;">
+                <label style="font-weight: bold;">数据挖掘模型名称</label>
+            </div>
+            <input type="text" name="model_name" id="model_name" class="layui-input" value="{{ model_obj.name }}" readonly>
+        </div>
+        <div style="margin-top: 10px;">
+            <div style="margin-top: 10px;margin-bottom: 5px;">
+                <label style="font-weight: bold;">参数(节点标签)</label>
+            </div>
+            <input type="text" name="label" id="label" class="layui-input" value="{{ model_obj.label }}">
+        </div>
+        <div style="margin-top: 10px;">
+            <div style="margin-top: 10px;margin-bottom: 5px;">
+                <label style="font-weight: bold;">参数(节点唯一标识)</label>
+            </div>
+            <input type="text" name="uuid" id="uuid" class="layui-input" value="{{ model_obj.uuid }}">
+        </div>
+    </div>
+
+    <div>
+        <button type="submit" class="layui-btn" style="float: right;" id="sub"> 确认</button>
+    </div>
+</div>
+</div>
+
+<script type="text/javascript" src="{% static 'js/jquery.min.js' %}"></script>
+<script src="{% static 'js/lib/layui/layui.js' %}"></script>
+<script>
+    function process_file(obj) {
+        $('#file_name').html($('#choose_file').val().split('\\').slice(-1))
+    }
+
+    $('#sub').click(function () {
+        var name = $('#model_name').val();
+        var label = $('#label').val();
+        var uuid = $('#uuid').val();
+        var id = $('#model_id').val();
+
+        if(name === undefined){
+            alert("模型名称不能为空！！！");
+        }else if(label === undefined){
+            alert("参数(节点标签)");
+        }else if(uuid === undefined){
+            alert("参数(节点唯一标识)");
+        }else{
+            $.ajax({
+            url: '{% url 'model_edit' %}',
+            type: 'post',
+            data: {'id': id, 'name': name, 'label': label, 'uuid': uuid},
+            success: function (res) {
+                if (res["code"] == "1") {
+                    window.parent.layer.closeAll();
+                    window.parent.location.reload();
+                } else {
+                    alert(res["msg"]);
+                }
+            }
+        })
+        }
+    });
+</script>
+
+</body>
+</html>

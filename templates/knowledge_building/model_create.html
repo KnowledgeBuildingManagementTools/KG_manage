@@ -6,7 +6,7 @@
 {% endblock %}
 
 {% block title %}
-    <span class="navbar-page-title"> JSXQ业务模型构建 - 知识构建 </span>
+    <span class="navbar-page-title" id="sign"> JSXQ业务模型构建 - 知识构建 </span>
 {% endblock %}
 
 {% block content %}
@@ -22,7 +22,7 @@
                                    style="height: 0;width: 0;z-index: -1;" name="choosed_file"
                                    onChange="return process_file(this)">
                             <select name="file_type" id="file_type" style="float: left"
-{#                                    class="my-select">#}
+                                    {#                                    class="my-select">#}
                                     class="btn btn-default dropdown-toggle my-select">
 
                                 <option value="" style="color: gray;display: none;">请选择上传文件类型</option>
@@ -47,33 +47,33 @@
             </div>
         </div>
 
-{#        <div class="row">#}
-{#            <div class="col-lg-12">#}
-{#                <div class="card">#}
-{#                    <div class="card-toolbar clearfix">#}
-                        <!-- <input type="button" onclick="map_preview()" class="btn btn-primary" value="知识图谱预览" style="display: none;" id="map_preview"> -->
+        {#        <div class="row">#}
+        {#            <div class="col-lg-12">#}
+        {#                <div class="card">#}
+        {#                    <div class="card-toolbar clearfix">#}
+        <!-- <input type="button" onclick="map_preview()" class="btn btn-primary" value="知识图谱预览" style="display: none;" id="map_preview"> -->
         <div style="background-color: #ffffff;padding: 25px;">
-                        <input type="button" onclick="insert_map()" class="my-btn" value="插入" style="display: none;" id="insert_map">
-                        <table id="extract_data" class="my-table">
-                            <thead id="ex_data_thead" style="display: none;">
-                            <tr>
-{#                                <th style="font-weight: bolder;font-size: 15px;"><input type="checkbox" id="all_choice"></th>#}
-                                <th style="font-weight: bolder;font-size: 15px;width:10%;text-align: center">序号</th>
-                                <th style="font-weight: bolder;font-size: 15px;width:20%;text-align: center">头实体</th>
-                                <th style="font-weight: bolder;font-size: 15px;width:15%;text-align: center">头实体类型</th>
-                                <th style="font-weight: bolder;font-size: 15px;width:20%;text-align: center">关系类型</th>
-                                <th style="font-weight: bolder;font-size: 15px;width:20%;text-align: center">尾实体</th>
-                                <th style="font-weight: bolder;font-size: 15px;width:15%;text-align: center">尾实体类型</th>
-                            </tr>
-                            </thead>
-                            <tbody id="ex_data_tbody">
-                            </tbody>
-                        </table>
-            </div>
-{#                    </div>#}
-{#                </div>#}
-{#            </div>#}
-{#        </div>#}
+            <input type="button" onclick="insert_map()" class="my-btn" value="插入" style="display: none;" id="insert_map">
+            <table id="extract_data" class="my-table">
+                <thead id="ex_data_thead" style="display: none;">
+                <tr>
+                    {#                                <th style="font-weight: bolder;font-size: 15px;"><input type="checkbox" id="all_choice"></th>#}
+                    <th style="font-weight: bolder;font-size: 15px;width:10%;text-align: center">序号</th>
+                    <th style="font-weight: bolder;font-size: 15px;width:20%;text-align: center">头实体</th>
+                    <th style="font-weight: bolder;font-size: 15px;width:15%;text-align: center">头实体类型</th>
+                    <th style="font-weight: bolder;font-size: 15px;width:20%;text-align: center">关系类型</th>
+                    <th style="font-weight: bolder;font-size: 15px;width:20%;text-align: center">尾实体</th>
+                    <th style="font-weight: bolder;font-size: 15px;width:15%;text-align: center">尾实体类型</th>
+                </tr>
+                </thead>
+                <tbody id="ex_data_tbody">
+                </tbody>
+            </table>
+        </div>
+        {#                    </div>#}
+        {#                </div>#}
+        {#            </div>#}
+        {#        </div>#}
     </div>
 {% endblock %}
 
@@ -83,8 +83,14 @@
     <script type="text/javascript" src="{% static 'js/xadmin.js' %}"></script>
 
     <script type="text/javascript">
-        document.getElementById("jsxqywmxgj").style.display = 'block';
-        document.getElementById("zsgj").style.backgroundColor = 'rgba(30,21,21,0.44)';
+        var sign = "{{ sign }}";
+        if (sign === "0") {
+            document.getElementById("jsxqywmxgj").style.display = 'block';
+            document.getElementById("zsgj").style.backgroundColor = 'rgba(30,21,21,0.44)';
+        } else if (sign === "1") {
+            document.getElementById("zstpfwjk").style.display = 'block';
+            document.getElementById("wbjxfw").style.backgroundColor = 'rgba(30,21,21,0.44)';
+        }
 
 
         // 判断元素在不在数组方法
@@ -250,7 +256,7 @@
             // 将抽取到的三元组信息传到后端，后端请求接口存储到数据库
             var insert_map_data = JSON.stringify(get_table_data());
             console.log(insert_map_data);
-            xadmin.open("三元组图谱预览","{% url 'map_preview' %}?insert_map_data="+insert_map_data,1200,580)
+            xadmin.open("三元组图谱预览", "{% url 'map_preview' %}?insert_map_data=" + insert_map_data, 1200, 580)
 
             /*
             $.ajax({

@@ -36,16 +36,18 @@
                         <li class="nav-item nav-item-has-subnav">
                             <a href="javascript:void(0)"><i class="mdi mdi-home"></i> JSXQ业务模型构建</a>
                             <ul class="nav nav-subnav" id="jsxqywmxgj">
-                                <li><a id="zsgj" href="{% url 'model' %}">知识构建</a></li>
-                                <li><a id="ywmxgj" href="{% url 'noumenon' %}">业务模型构建</a></li>
+                                <li><a id="zsgj" href="{% url 'model' %}?sign=0">数据推理分析模型构建</a></li>
+                                <li><a id="ywmxgj" href="{% url 'data_mining_model' %}">业务模型构建</a></li>
                             </ul>
                         </li>
-                        <li class="nav-item nav-item-has-subnav" >
+
+                        <li class="nav-item nav-item-has-subnav">
                             <a href="javascript:void(0)"><i class="mdi mdi-layers"></i> JSXQ知识百科</a>
                             <ul class="nav nav-subnav" id="jsxqzsbk">
-                                <li><a id="bkmb" href="{% url 'wikipedia_template' %}" >百科模板</a></li>
+                                <li><a id="bkfl" href="{% url 'wikipedia_classification' %}">百科分类</a></li>
+                                <li><a id="bkmb" href="{% url 'wikipedia_template' %}">百科模板</a></li>
                                 <li><a id="xqbk" href="{% url 'require_wikipedia' %}">需求百科</a></li>
-                                <li><a id="zskp" href="{% url 'card_template' %}" >知识卡片</a></li>
+                                <li><a id="zskp" href="{% url 'card_template' %}">知识卡片</a></li>
                             </ul>
 
                         </li>
@@ -53,13 +55,22 @@
                             <a href="javascript:void(0)"><i class="mdi mdi-arrange-send-to-back
 "></i> JSXQ图谱分析</a>
                             <ul class="nav nav-subnav" id="jsxqtpfx">
-                                <li><a id="tfstfx" href="{% url 'node_analysis' %}">图谱实体分析</a></li>
-                                <li><a id="gltfx" href="{% url 'association_analysis' %}">关联图分析</a></li>
+                                <li><a id="gltfx" href="{% url 'association_analysis' %}?sign=0">关联图分析</a></li>
                                 <li><a id="dtfx" href="{% url 'map_analysis' %}">地图分析</a></li>
                                 <li><a id="fxzs" href="{% url 'analysis_aide' %}">分析助手</a></li>
                             </ul>
                         </li>
-                        <li class="nav-item "><a id="zstpfwjk" href="{% url 'service_interface' %}"><i class="mdi mdi-file-presentation-box"></i> 知识图谱服务接口</a>
+                        <li class="nav-item nav-item-has-subnav">
+                            <a href="javascript:void(0)"><i class="mdi mdi-arrange-send-to-back
+"></i> 知识图谱服务接口</a>
+
+                            <ul class="nav nav-subnav" id="zstpfwjk">
+                                <li><a id="tfbtfw" href="{% url 'noumenon' %}">图谱本体服务</a></li>
+                                <li><a id="zsjsfw" href="{% url 'node_analysis' %}">知识检索服务</a></li>
+                                <li><a id="zstpfxfw" href="{% url 'association_analysis' %}?sign=1">知识图谱分析服务</a></li>
+                                <li><a id="wbjxfw" href="{% url 'model' %}?sign=1">文本解析服务</a></li>
+                                <li><a id="zstpfwjk_child" href="{% url 'service_interface' %}">知识图谱服务接口</a></li>
+                            </ul>
                         </li>
                     </ul>
                 </nav>

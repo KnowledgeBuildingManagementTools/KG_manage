@@ -32,6 +32,11 @@ urlpatterns = [
     # 知识百科
     path('knowledge_wikipedia', views.knowledge_wikipedia, name="knowledge_wikipedia"),
 
+    # 百科分类展示
+    path('wikipedia_classification', views.wikipedia_classification, name="wikipedia_classification"),
+    # 百科分类搜索
+    path('search_wikipedia_classification', views.search_wikipedia_classification, name="search_wikipedia_classification"),
+
     # 百科模板 - 展示
     path('wikipedia_template', views.Wikipedia_template.as_view(), name="wikipedia_template"),
     # 百科模板 - 搜索
@@ -79,24 +84,69 @@ urlpatterns = [
     path('preview_knowledge_card/<int:id>/', views.preview_knowledge_card, name="preview_knowledge_card"),
 
     # 知识图谱服务接口
-
     path('service_interface', views.service_interface, name="service_interface"),
 
-    path('chart',views.chart ,name="chart"),
-    path('noumenon',views.noumenon ,name="noumenon"),
-    path('noumenon_load',views.noumenon_load ,name="noumenon_load"),
-    path('noumenon_create',views.noumenon_create ,name="noumenon_create"),
-    path('noumenon_add',views.noumenon_add ,name="noumenon_add"),
-    path('noumenon_delete',views.noumenon_delete ,name="noumenon_delete"),
-    path('noumenon_edit',views.noumenon_edit ,name="noumenon_edit"),
-    path('noumenon_edit_submit',views.noumenon_edit_submit ,name="noumenon_edit_submit"),
-    path('association_analysis',views.association_analysis ,name="association_analysis"),
-    path('node_analysis',views.node_analysis ,name="node_analysis"),
-    path('map_analysis',views.map_analysis ,name="map_analysis"),
-    path('analysis_aide',views.analysis_aide ,name="analysis_aide"),
+    # 业务模型构建服务接口中--推理分析
+    path('chart', views.chart, name="chart"),
+
+    # 本体页面服务接口
+    path('noumenon', views.noumenon, name="noumenon"),
+
+    # 本体全部查询接口
+    path('noumenon_load', views.noumenon_load, name="noumenon_load"),
+    # 请求创建本体服务窗口接口
+    path('noumenon_create', views.noumenon_create, name="noumenon_create"),
+    # 提交本体创建
+    path('noumenon_add', views.noumenon_add, name="noumenon_add"),
+    # 本体删除
+    path('noumenon_delete', views.noumenon_delete, name="noumenon_delete"),
+    # 本体更新请求页面
+    path('noumenon_edit', views.noumenon_edit, name="noumenon_edit"),
+    # 本体更新提交
+    path('noumenon_edit_submit', views.noumenon_edit_submit, name="noumenon_edit_submit"),
+    # 实体点查询
+    path('node_analysis', views.node_analysis, name="node_analysis"),
+    # 图谱展示
+    path('association_analysis', views.association_analysis, name="association_analysis"),
+    # 地图展示
+    path('map_analysis', views.map_analysis, name="map_analysis"),
+    # 分析助手请求页面接口
+    path('analysis_aide', views.analysis_aide, name="analysis_aide"),
+    # 双击图谱node时
     path('node_side_nodes', views.node_side_nodes, name="node_side_nodes"),
-    path('histogram',views.histogram ,name="histogram"),
-    path('timeline',views.timeline ,name="timeline"),
-    path('history_load',views.history_load ,name="history_load"),
-    path('history_delete',views.history_delete ,name="history_delete"),
+    # 直方图分析接口
+    path('histogram', views.histogram, name="histogram"),
+    # 时间线
+    path('timeline', views.timeline, name="timeline"),
+    # 历史分析接口
+    path('history_load', views.history_load, name="history_load"),
+    # 历史数据删除接口
+    path('history_delete', views.history_delete, name="history_delete"),
+
+    path('data_mining_model', views.data_mining_model, name="data_mining_model"),
+    # 业务模型构建 - 数据挖掘模型导入
+    path('model_import', views.Model_import.as_view(), name="model_import"),
+    # 业务构建模型 - 数据挖掘模型运行
+    path('model_run/', views.Model_run.as_view(), name="model_run"),
+
+    # 业务模型构建 - 数据挖掘模型修改
+    path('model_edit', views.Model_edit.as_view(), name="model_edit"),
+
+    # 业务模型构建 - 知识推理模型导入
+    path('knowledge_reasoning_model_import', views.Knowledge_reasoning_model_import.as_view(), name="knowledge_reasoning_model_import"),
+
+    # 业务模型构建 - 关联分析模型导入
+    path('correlation_analysis_model_import', views.Correlation_analysis_model_import.as_view(), name="correlation_analysis_model_import"),
+
+    # 业务模型构建 - 知识推理模型修改
+    path('knowledge_reasoning_model_edit', views.Knowledge_reasoning_model_edit.as_view(), name="knowledge_reasoning_model_edit"),
+
+    # 业务模型构建 - 关联分析模型修改
+    path('correlation_analysis_model_edit', views.Correlation_analysis_model_edit.as_view(), name="correlation_analysis_model_edit"),
+
+    # 业务构建模型 - 数据挖掘模型运行
+    path('knowledge_reasoning_model_run', views.Knowledge_reasoning_model_run.as_view(), name="knowledge_reasoning_model_run"),
+
+    # 业务模型构建 - 关联分析模型运行 correlation_analysis_model_run
+    path('correlation_analysis_model_run', views.Correlation_analysis_model_run.as_view(), name="correlation_analysis_model_run"),
 ]

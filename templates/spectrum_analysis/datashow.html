@@ -6,7 +6,7 @@
     <script type="text/javascript" src="{% static 'js/echarts/echarts.js' %}"></script>
 {% endblock %}
 {% block title %}
-    <span class="navbar-page-title">JSXQ图谱分析 - 关联图分析</span>
+    <span class="navbar-page-title" id="datashow_title"></span>
 {% endblock %}
 {% block content %}
 
@@ -34,23 +34,23 @@
                 </div>
             </div>
         </div>
-{#        <div class="row">#}
-{#            <div class="col-lg-12">#}
-{#                <div class="card">#}
-{#                    <div class="card-body">#}
-                        <div id="main" style="width: 100%;height: calc(100vh - 215px)"></div>
-{#                    </div>#}
-{#                </div>#}
-{#            </div>#}
-{#        </div>#}
+        <div id="main" style="width: 100%;height: calc(100vh - 215px)"></div>
     </div>
 
 
 {% endblock %}
 {% block myjs %}
     <script type="text/javascript">
-        document.getElementById("jsxqtpfx").style.display = 'block';
-        document.getElementById("gltfx").style.backgroundColor = 'rgba(30,21,21,0.44)';
+        var sign = "{{ sign }}";
+        if (sign === "0") {
+            document.getElementById("jsxqtpfx").style.display = 'block';
+            document.getElementById("gltfx").style.backgroundColor = 'rgba(30,21,21,0.44)';
+            $("#datashow_title").text("JSXQ图谱分析 - 关联图分析");
+        } else if (sign === "1") {
+            document.getElementById("zstpfwjk").style.display = 'block';
+            document.getElementById("zstpfxfw").style.backgroundColor = 'rgba(30,21,21,0.44)';
+            $("#datashow_title").text("知识图谱服务接口 - 知识图谱分析服务");
+        }
 
 
         $('#noumenon_serach').click(function () {
@@ -102,9 +102,9 @@
             });
             var categories = [];
             var length = Object.keys(types).length;
-			for (var  type in types){
-				categories.push({name:type})
-			}
+            for (var type in types) {
+                categories.push({name: type})
+            }
             option = {
 
                 // 提示框的配置
@@ -244,60 +244,20 @@
             {#TODO 双击事件，最终目的#}
             myChart.on('dblclick', function (params) { //双击事件
                     if (params.dataType === "node") {
-                        console.log("双击事件发生");
-                        console.log(params);
-
-                        console.log(params.data.id);
-                        console.log(option.series[0].data.length);
                         //根据params.data.id或其它唯一标识符请求节点相关数据，拿到数据push到option.series[0].data和option.series[0].links
-
                         res_data = request_data(params.data.id, params.data.uuid, params.data.label);
-                        console.log(res_data);
                         var a = res_data.data.nodes;
                         var b = res_data.data.edges;
 
-                        console.log(a, b,"11111111111");
 
-                        {#TODO 请求后端数据接口未写#}
-                       {% comment %} var a = [{
-                            "id": 80,
-                            "uuid": "XDETGG10",
-                            "label": "PICTURE",
-                            "properties": {
-                                "born": "1956",
-                                "name": "Tom Hanks"
-                            }
-                        },
-                            {
-                                "id": 81,
-                                "uuid": "XDETGG11",
-                                "label": "TELEPLAY",
-                                "properties": {
-                                    "born": "1956",
-                                    "name": "Tom Hanks"
-                                }
-                            }];
-                        var b = [{
-                            source: '75',
-                            target: '80',
-                            "type": "ACTED_IN",
-                            "id": 200
-                        }, {
-                            source: '75',
-                            target: '81',
-                            "type": "ACTED_IN",
-                            "id": 200
-                        }];
-{% endcomment %}
+                        {% comment %}         {#TODO 节点新增类型#}
+                                 length = Object.keys(types).length;
+                                 for (var type in types) {
+                                     categories.push({name: type});
+                                     option.legend[0].data.push(type)
 
-                        {#TODO 节点新增类型#}
-                        length = Object.keys(types).length;
-						for (var type in types) {
-							categories.push({name: type});
-							option.legend[0].data.push(type)
-
-						}
-                        console.log(categories);
+                                 }
+                                 console.log(categories);{% endcomment %}
                         {#TODO 节点查重#}
                         for (i = 0; i < a.length; i++) { //节点查重
                             for (var j = 0; j < nodes.length; j++) {
@@ -310,6 +270,8 @@
                             if (!repeat) {
                                 if (!types.hasOwnProperty(a[i].label)) {
                                     types[a[i].label] = categoryi;
+                                    categories.push({name: a[i].label});
+                                    option.legend[0].data.push(a[i].label);
                                     categoryi++;
                                 }
                                 a[i].category = types[a[i].label];
@@ -341,7 +303,6 @@
                 return false;
             }; //隐藏鼠标右击事件
             myChart.on('contextmenu', function (params) {//鼠标右击事件事件
-                console.log(params);
                 showMenu(params, [
                     {
                         "name": "隐藏节点",
@@ -395,9 +356,10 @@
                 }).show();
             }
         }
+
         function huanhang(val) {
             var length = val.length;
-            str = val.substring(0, Math.ceil(length /2)) +"\n"+val.substring(Math.ceil(length /2),length);
+            str = val.substring(0, Math.ceil(length / 2)) + "\n" + val.substring(Math.ceil(length / 2), length);
             return str
         }
 
@@ -408,15 +370,12 @@
                 type: 'POST',
                 async: false,
                 data: {"id": id, "uuid": uuid, "label": label},
-                processData: false, // 使数据不做处理
-                contentType: false, // 不要设置Content-Type请求头
                 success: function (data) {
-                    console.log(data);
                     res_data = data;
                     {#atlas(data.data.nodes, data.data.edges)#}
                 },
                 error: function (response) {
-                    console.log(response);
+
                 }
             });
             return res_data

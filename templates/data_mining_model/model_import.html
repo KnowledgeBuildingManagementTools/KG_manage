@@ -1,0 +1,96 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title></title>
+    <link rel="stylesheet" href="{% static 'js/lib/layui/css/layui.css' %}">
+</head>
+<body>
+
+<div class="layui-container" style="margin-top: 30px">
+    <div class="layui-row">
+        <div style="margin-top: 10px;">
+            <div style="margin-top: 10px;margin-bottom: 5px;">
+                <label style="font-weight: bold;">数据挖掘模型名称</label>
+            </div>
+            <input type="text" name="model_name" id="model_name" class="layui-input">
+        </div>
+        <div style="margin-top: 10px;">
+            <div style="margin-top: 10px;margin-bottom: 5px;">
+                <label style="font-weight: bold;">参数(节点标签)</label>
+            </div>
+            <input type="text" name="label" id="label" class="layui-input">
+        </div>
+        <div style="margin-top: 10px;">
+            <div style="margin-top: 10px;margin-bottom: 5px;">
+                <label style="font-weight: bold;">参数(节点唯一标识)</label>
+            </div>
+            <input type="text" name="uuid" id="uuid" class="layui-input">
+        </div>
+        <div style="margin-top: 10px;">
+            <div style="margin-top: 10px;margin-bottom: 5px;">
+                <label style="font-weight: bold;">上传模型文件</label> <span style="color: black">&nbsp;&nbsp;(支持zip格式模型文件)</span>
+            </div>
+            <!-- 校验文件上传标志位 -->
+            <input type="text" name="path" id="path" readonly hidden="hidden">
+            <!-- 封装文件上传按钮 -->
+            <input id="choose_file" type="file" multiple="multiple"
+                   style="height: 0;width: 0;z-index: -1;" name="choosed_file"
+                   onChange="return process_file(this)">
+            <input id="hidden_btn" type="button" onclick="getElementById('choose_file').click()"
+                   class="layui-btn btn-primary" value="选择数据挖掘模型文件">
+                        <!-- 文件名称显示标签 -->
+            <span class="my-input-p" id="file_name">&nbsp;&nbsp;&nbsp;&nbsp;</span>
+
+        </div>
+    </div>
+
+    <div>
+        <button type="submit" class="layui-btn" style="float: right;" id="sub"> 确认</button>
+    </div>
+</div>
+</div>
+
+<script type="text/javascript" src="{% static 'js/jquery.min.js' %}"></script>
+<script src="{% static 'js/lib/layui/layui.js' %}"></script>
+<script>
+    function process_file(obj) {
+        $('#file_name').html($('#choose_file').val().split('\\').slice(-1))
+    }
+
+    $('#sub').click(function () {
+        var name = $('#model_name').val();
+        var label = $('#label').val();
+        var uuid = $('#uuid').val();
+        console.log(name);
+        console.log(label);
+        console.log(uuid);
+
+        if(name === undefined){
+            alert("模型名称不能为空！！！");
+        }else if(label === undefined){
+            alert("参数(节点标签)");
+        }else if(uuid === undefined){
+            alert("参数(节点唯一标识)");
+        }else{
+            $.ajax({
+            url: '{% url 'model_import' %}',
+            type: 'post',
+            data: {'name': name, 'label': label, 'uuid': uuid},
+            success: function (res) {
+                if (res["code"] == "1") {
+                    window.parent.layer.closeAll();
+                    window.parent.location.reload();
+                } else {
+                    alert(res["msg"]);
+                }
+            }
+        })
+        }
+    });
+</script>
+
+</body>
+</html>

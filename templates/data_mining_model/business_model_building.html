@@ -1,0 +1,323 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block mycss %}
+    <script type="text/javascript" src="{% static 'js/echarts/echarts.js' %}"></script>
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <script src="{% static 'fishbone/html2canvas.js' %}"></script>
+    <script src="{% static 'fishbone/fishBone2.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'fishbone/fishBone2.css' %}">
+    <link href="{% static 'js/lib/layui/css/layui.css' %}" rel="stylesheet">
+{% endblock %}
+{% block title %}
+    <span class="navbar-page-title">JSXQ图谱分析 - 分析助手</span>
+{% endblock %}
+{% block content %}
+    <div class="container-fluid">
+        <ul id="myTab" class="nav nav-tabs">
+            <li class="active">
+                <a href="#data_mining" data-toggle="tab">数据挖掘模型</a>
+            </li>
+            <li>
+                <a href="#knowledge_reasoning" data-toggle="tab">知识推理模型</a>
+            </li>
+            <li>
+                <a href="#correlation_analysis" data-toggle="tab">关联分析模型</a>
+            </li>
+
+        </ul>
+        <div id="myTabContent" class="tab-content">
+            <!-- 数据挖掘内容 -->
+            <div class="tab-pane fade in active" id="data_mining">
+                <div class='container-fluid'>
+                    <!-- 数据挖掘模型导入 -->
+                    <button class="my-btn" style="margin-left: 10px;float: left" id="model_import"> 数据挖掘模型导入</button>
+                    <div class="form-group" style="margin: 50px 10px;padding: 10px; background-color: #ffffff">
+                        <!-- 页面信息展示 -->
+                        <table class="table table-bordered table-hover table-striped">
+
+                            <thead>
+                            <tr>
+                                <th style="text-align: center;">序号</th>
+                                <th style="text-align: center;">模型名称</th>
+                                <th style="text-align: center;">参数(节点标签)</th>
+                                <th style="text-align: center;">参数(节点唯一标识)</th>
+                                <th style="text-align: center;">模型操作</th>
+                            </tr>
+                            </thead>
+
+                            <tbody>
+                            {% for single_data in data_mining_obj %}
+                                <tr style="text-align: center">
+                                    <td>{{ forloop.counter }}</td>
+                                    <td>{{ single_data.name }}</td>
+                                    <td>{{ single_data.label }}</td>
+                                    <td>{{ single_data.uuid }}</td>
+                                    <td>
+                                        <button class="my-btn" id="model_edit" onclick="model_edit({{ single_data.id }})"> 更改模型配置</button>
+                                        <button class="my-btn" id="run_model" onclick="model_run({{ single_data.id }})"> 运行</button>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 知识推理内容 -->
+            <div class="tab-pane fade" id="knowledge_reasoning">
+                <div class='container-fluid'>
+                    <!-- 知识推理模型导入 -->
+                    <button class="my-btn" style="margin-left: 10px;float: left" id="knowledge_reasoning_model_import"> 知识推理模型导入</button>
+                    <div class="form-group" style="margin: 50px 10px;padding: 10px; background-color: #ffffff">
+                        <!-- 页面信息展示 -->
+                        <table class="table table-bordered table-hover table-striped">
+
+                            <thead>
+                            <tr>
+                                <th style="text-align: center;">序号</th>
+                                <th style="text-align: center;">模型名称</th>
+                                <th style="text-align: center;">参数(开始节点)</th>
+                                <th style="text-align: center;">参数(关系类型)</th>
+                                <th style="text-align: center;">模型操作</th>
+                            </tr>
+                            </thead>
+
+                            <tbody>
+                            {% for single_data in knowledge_reasoning_obj %}
+                                <tr style="text-align: center">
+                                    <td>{{ forloop.counter }}</td>
+                                    <td>{{ single_data.name }}</td>
+                                    <td>{{ single_data.start_node_uuid }}</td>
+                                    <td>{{ single_data.relation_type }}</td>
+                                    <td>
+                                        <button class="my-btn" id="model_edit" onclick="knowledge_reasoning_model_edit({{ single_data.id }})"> 更改模型配置</button>
+                                        <button class="my-btn" id="run_model" onclick="knowledge_reasoning_model_run({{ single_data.id }})"> 运行</button>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 关联分析内容 -->
+            <div class="tab-pane fade" id="correlation_analysis">
+                <div class='container-fluid'>
+                    <!-- 关联分析模型导入 -->
+                    <button class="my-btn" style="margin-left: 10px;float: left" id="correlation_analysis_model_import"> 关联分析模型导入</button>
+                    <div class="form-group" style="margin: 50px 10px;padding: 10px; background-color: #ffffff">
+                        <!-- 页面信息展示 -->
+                        <table class="table table-bordered table-hover table-striped">
+
+                            <thead>
+                            <tr>
+                                <th style="text-align: center;">序号</th>
+                                <th style="text-align: center;">模型名称</th>
+                                <th style="text-align: center;">参数(开始节点uuid)</th>
+                                <th style="text-align: center;">参数(终止节点uuid)</th>
+                                <th style="text-align: center;">模型操作</th>
+                            </tr>
+                            </thead>
+
+                            <tbody>
+                            {% for single_data in correlation_analysis_obj %}
+                                <tr style="text-align: center">
+                                    <td>{{ forloop.counter }}</td>
+                                    <td>{{ single_data.name }}</td>
+                                    <td>{{ single_data.start_node_uuid }}</td>
+                                    <td>{{ single_data.end_node_uuid }}</td>
+                                    <td>
+                                        <button class="my-btn" id="model_edit" onclick="correlation_analysis_model_edit({{ single_data.id }})"> 更改模型配置</button>
+                                        <button class="my-btn" id="run_model" onclick="correlation_analysis_model_run({{ single_data.id }})"> 运行</button>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+{% endblock %}
+
+{% block myjs %}
+    <script src="{% static 'js/lib/layui/layui.js' %}"></script>
+    <script>
+        // 左侧菜单栏固定
+        document.getElementById("jsxqywmxgj").style.display = 'block';
+        document.getElementById("ywmxgj").style.backgroundColor = 'rgba(30,21,21,0.44)';
+
+        // 模型导入导入弹框
+        $('#model_import').click(function () {
+            layui.use(['layer', 'form'], function () {
+                var layer = layui.layer,
+                    form = layui.form;
+                layer.open({
+                    type: 2,
+                    anim: 2,//弹出方式
+                    shade: 0.3, //遮罩透明度
+                    maxmin: true, //允许全屏最小化
+                    shadeClose: true,//点击外部不关闭
+                    area: ['800px', '450px'],
+                    title: '数据挖掘模型导入',  //题目
+                    content: "{% url 'model_import' %}"
+                });
+            })
+        });
+
+        // 知识推理模型导入弹框
+        $('#knowledge_reasoning_model_import').click(function () {
+            layui.use(['layer', 'form'], function () {
+                var layer = layui.layer,
+                    form = layui.form;
+                layer.open({
+                    type: 2,
+                    anim: 2,//弹出方式
+                    shade: 0.3, //遮罩透明度
+                    maxmin: true, //允许全屏最小化
+                    shadeClose: true,//点击外部不关闭
+                    area: ['800px', '450px'],
+                    title: '知识推理模型导入',  //题目
+                    content: "{% url 'knowledge_reasoning_model_import' %}"
+                });
+            })
+        });
+
+        // 关联分析模型导入弹框
+        $('#correlation_analysis_model_import').click(function () {
+            layui.use(['layer', 'form'], function () {
+                var layer = layui.layer,
+                    form = layui.form;
+                layer.open({
+                    type: 2,
+                    anim: 2,//弹出方式
+                    shade: 0.3, //遮罩透明度
+                    maxmin: true, //允许全屏最小化
+                    shadeClose: true,//点击外部不关闭
+                    area: ['800px', '450px'],
+                    title: '关联分析模型导入',  //题目
+                    content: "{% url 'correlation_analysis_model_import' %}"
+                });
+            })
+        });
+
+        // 修改模型配置
+        function model_edit(model_id) {
+            layui.use(['layer', 'form'], function () {
+                var layer = layui.layer,
+                    form = layui.form;
+                layer.open({
+                    type: 2,
+                    anim: 2,//弹出方式
+                    shade: 0.3, //遮罩透明度
+                    maxmin: true, //允许全屏最小化
+                    shadeClose: true,//点击外部不关闭
+                    area: ['800px', '450px'],
+                    title: '数据挖掘模型配置修改',  //题目
+                    content: "{% url 'model_edit' %}?model_id=" + model_id
+                });
+            })
+        }
+
+        // 修改知识推理模型配置
+        function knowledge_reasoning_model_edit(model_id) {
+            layui.use(['layer', 'form'], function () {
+                var layer = layui.layer,
+                    form = layui.form;
+                layer.open({
+                    type: 2,
+                    anim: 2,//弹出方式
+                    shade: 0.3, //遮罩透明度
+                    maxmin: true, //允许全屏最小化
+                    shadeClose: true,//点击外部不关闭
+                    area: ['800px', '450px'],
+                    title: '知识推理模型配置修改',  //题目
+                    content: "{% url 'knowledge_reasoning_model_edit' %}?model_id=" + model_id
+                });
+            })
+        }
+
+        // 修改关联分析模型配置
+        function correlation_analysis_model_edit(model_id) {
+            layui.use(['layer', 'form'], function () {
+                var layer = layui.layer,
+                    form = layui.form;
+                layer.open({
+                    type: 2,
+                    anim: 2,//弹出方式
+                    shade: 0.3, //遮罩透明度
+                    maxmin: true, //允许全屏最小化
+                    shadeClose: true,//点击外部不关闭
+                    area: ['800px', '450px'],
+                    title: '关联分析模型配置修改',  //题目
+                    content: "{% url 'correlation_analysis_model_edit' %}?model_id=" + model_id
+                });
+            })
+        }
+
+
+        // 数据挖掘模型运行
+        function model_run(model_id) {
+            layui.use(['layer', 'form'], function () {
+                var layer = layui.layer,
+                    form = layui.form;
+                layer.open({
+                    type: 2,
+                    anim: 2,
+                    shade: 0.3,
+                    maxmin: true,
+                    shadeClose: true,
+                    area: ['800px', '450px'],
+                    title: '数据挖掘模型运行',
+                    content: "{% url 'model_run' %}?model_id=" + model_id
+                });
+            })
+        }
+
+        // 知识推理模型运行
+        function knowledge_reasoning_model_run(model_id) {
+            layui.use(['layer', 'form'], function () {
+                var layer = layui.layer,
+                    form = layui.form;
+                layer.open({
+                    type: 2,
+                    anim: 2,
+                    shade: 0.3,
+                    maxmin: true,
+                    shadeClose: true,
+                    area: ['800px', '450px'],
+                    title: '知识推理模型运行',
+                    content: "{% url 'knowledge_reasoning_model_run' %}?model_id=" + model_id
+                });
+            })
+        }
+
+        // 关联分析模型运行
+        function correlation_analysis_model_run(model_id) {
+            layui.use(['layer', 'form'], function () {
+                var layer = layui.layer,
+                    form = layui.form;
+                layer.open({
+                    type: 2,
+                    anim: 2,
+                    shade: 0.3,
+                    maxmin: true,
+                    shadeClose: true,
+                    area: ['800px', '450px'],
+                    title: '关联分析模型运行',
+                    content: "{% url 'correlation_analysis_model_run' %}?model_id=" + model_id
+                });
+            })
+        }
+    </script>
+{% endblock %}
+
+
+
